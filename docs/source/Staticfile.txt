@@ -1,0 +1,2 @@
+cd source/
+touch Staticfile  #Ãû×Ö±ØĞëÊÇStaticfile
