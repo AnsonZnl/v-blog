@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NodeJS文件系统（fs）与流（stream） | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.25688d1b.js" as="script"><link rel="preload" href="/assets/js/2.b2df5d16.js" as="script"><link rel="preload" href="/assets/js/29.fac34056.js" as="script"><link rel="prefetch" href="/assets/js/10.b310ae98.js"><link rel="prefetch" href="/assets/js/11.68b37c29.js"><link rel="prefetch" href="/assets/js/12.c93e0435.js"><link rel="prefetch" href="/assets/js/13.1bdea796.js"><link rel="prefetch" href="/assets/js/14.d630dd31.js"><link rel="prefetch" href="/assets/js/15.95b3e0b6.js"><link rel="prefetch" href="/assets/js/16.6422eeda.js"><link rel="prefetch" href="/assets/js/17.3888dfd4.js"><link rel="prefetch" href="/assets/js/18.a9d9940f.js"><link rel="prefetch" href="/assets/js/19.a5ce5bfc.js"><link rel="prefetch" href="/assets/js/20.169c1129.js"><link rel="prefetch" href="/assets/js/21.40c405dc.js"><link rel="prefetch" href="/assets/js/22.b8efc644.js"><link rel="prefetch" href="/assets/js/23.72235025.js"><link rel="prefetch" href="/assets/js/24.af4bb339.js"><link rel="prefetch" href="/assets/js/25.128b00ad.js"><link rel="prefetch" href="/assets/js/26.c8c2954e.js"><link rel="prefetch" href="/assets/js/27.cf6b05af.js"><link rel="prefetch" href="/assets/js/28.3eb1fd84.js"><link rel="prefetch" href="/assets/js/3.8438a9e1.js"><link rel="prefetch" href="/assets/js/30.909facc0.js"><link rel="prefetch" href="/assets/js/31.833eec8f.js"><link rel="prefetch" href="/assets/js/32.822cc5d4.js"><link rel="prefetch" href="/assets/js/33.bc6871ef.js"><link rel="prefetch" href="/assets/js/34.f2625853.js"><link rel="prefetch" href="/assets/js/35.639ba4c8.js"><link rel="prefetch" href="/assets/js/36.bc172e32.js"><link rel="prefetch" href="/assets/js/37.87c51cb5.js"><link rel="prefetch" href="/assets/js/38.0c8e8cbf.js"><link rel="prefetch" href="/assets/js/39.72a1d3fe.js"><link rel="prefetch" href="/assets/js/4.d0098715.js"><link rel="prefetch" href="/assets/js/40.543f2865.js"><link rel="prefetch" href="/assets/js/41.aef1d946.js"><link rel="prefetch" href="/assets/js/42.2f81aa07.js"><link rel="prefetch" href="/assets/js/43.2b9ffcfb.js"><link rel="prefetch" href="/assets/js/44.5c0982f8.js"><link rel="prefetch" href="/assets/js/45.5f1b2e53.js"><link rel="prefetch" href="/assets/js/46.eafafe21.js"><link rel="prefetch" href="/assets/js/47.4b727178.js"><link rel="prefetch" href="/assets/js/48.af1f9f41.js"><link rel="prefetch" href="/assets/js/49.6c62706f.js"><link rel="prefetch" href="/assets/js/5.78b527c1.js"><link rel="prefetch" href="/assets/js/50.745c400a.js"><link rel="prefetch" href="/assets/js/51.2394aa11.js"><link rel="prefetch" href="/assets/js/52.3e6e53a5.js"><link rel="prefetch" href="/assets/js/53.cc97228b.js"><link rel="prefetch" href="/assets/js/54.a65e1dc6.js"><link rel="prefetch" href="/assets/js/55.20254ba9.js"><link rel="prefetch" href="/assets/js/56.f01b42f6.js"><link rel="prefetch" href="/assets/js/57.7d7af392.js"><link rel="prefetch" href="/assets/js/58.1067a24f.js"><link rel="prefetch" href="/assets/js/59.1131681d.js"><link rel="prefetch" href="/assets/js/6.77492e46.js"><link rel="prefetch" href="/assets/js/60.a3111d51.js"><link rel="prefetch" href="/assets/js/61.2ea4ed06.js"><link rel="prefetch" href="/assets/js/62.8a7f0795.js"><link rel="prefetch" href="/assets/js/63.94978d1f.js"><link rel="prefetch" href="/assets/js/64.279d588a.js"><link rel="prefetch" href="/assets/js/65.a8def40c.js"><link rel="prefetch" href="/assets/js/66.e8d0ea43.js"><link rel="prefetch" href="/assets/js/67.5e5595a2.js"><link rel="prefetch" href="/assets/js/68.e05b81fe.js"><link rel="prefetch" href="/assets/js/69.e2481251.js"><link rel="prefetch" href="/assets/js/7.cee22c78.js"><link rel="prefetch" href="/assets/js/70.648f97c5.js"><link rel="prefetch" href="/assets/js/71.2ab1e735.js"><link rel="prefetch" href="/assets/js/72.49cf62cf.js"><link rel="prefetch" href="/assets/js/73.b14ac5fc.js"><link rel="prefetch" href="/assets/js/74.a2f88699.js"><link rel="prefetch" href="/assets/js/75.d685d1e6.js"><link rel="prefetch" href="/assets/js/76.f04e8aaa.js"><link rel="prefetch" href="/assets/js/77.0f81abf6.js"><link rel="prefetch" href="/assets/js/78.9a002b85.js"><link rel="prefetch" href="/assets/js/79.20df5526.js"><link rel="prefetch" href="/assets/js/8.5e2fa482.js"><link rel="prefetch" href="/assets/js/80.e09c57f4.js"><link rel="prefetch" href="/assets/js/9.de3c4ef1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5a2ff11451882559e225a140" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5a2ff11451882559e225a140" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable"><span>JavaScript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable"><span>小程序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable router-link-active open"><span>Node</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/Node/" aria-current="page" class="sidebar-link">Node目录</a></li><li><a href="/articles/Node/NodeJS安装和使用.html" class="sidebar-link">NodeJS安装和使用</a></li><li><a href="/articles/Node/NodeJs文件系统（fs）与流（stream）.html" class="active sidebar-link">NodeJs文件系统（fs）与流（stream）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/Node/NodeJs文件系统（fs）与流（stream）.html#文件系统（file-system）：" class="sidebar-link">文件系统（File System）：</a></li></ul></li><li><a href="/articles/Node/使用Node.js写一个简单的api接口.html" class="sidebar-link">使用Node.js写一个简单的api接口</a></li><li><a href="/articles/Node/使用Express搭建一个简单的服务器.html" class="sidebar-link">使用Express搭建一个简单的服务器</a></li><li><a href="/articles/Node/使用Node.js 搭建静态服务器.html" class="sidebar-link">使用Node.js 搭建静态服务器</a></li><li><a href="/articles/Node/CommonJS模块化开发.html" class="sidebar-link">CommonJS模块化开发</a></li><li><a href="/articles/Node/MongoDB学习之Mongoose的使用.html" class="sidebar-link">MongoDB学习之Mongoose的使用</a></li><li><a href="/articles/Node/MongoDB中常用语句.html" class="sidebar-link">MongoDB中常用语句</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="文件系统（file-system）："><a href="#文件系统（file-system）：" class="header-anchor">#</a> <strong>文件系统（File System）：</strong></h2> <ol><li>在Node中，文件系统的交互是非常重要的，服务器的本质就是将本地的文件发送给客户端，</li> <li>Node通过fs模块来和文件系统进行交互，该模块提供了一些标准的文件访问API类打开、读取、写入文件、以及与其交互。</li> <li>要是用fs模块，首先要从核心模块中加载； 使用 const fs= require('fs') ; 来引入</li></ol> <h3 id="fs使用特点："><a href="#fs使用特点：" class="header-anchor">#</a> fs使用特点：</h3> <ol><li>fs模块中的所有操作都有两种形式可供选择同步和异步，</li> <li>同步文件系统会阻塞程序的执行，也就是除非操作完毕，否则不会向下执行代码。</li> <li>异步文件系统不会阻塞程序的执行，而是在操作完成时，通过回调函数将结果返回。</li></ol> <div class="language- extra-class"><pre class="language-text"><code>//1\. 引入模块
+const fs= require(&quot;fs&quot;);
+// console.log(fs)
+
+//2\. 打开文件
+// fs.open 异步读取（通常用异步 需设置回调函数）  
+// fs.openSync 同步读取（读取时会阻塞线程）
+
+let hello = fs.openSync(&quot;hello.txt&quot;, &quot;w&quot;);
+//                     不存在会自动新建
+
+//3\. 写入内容
+fs.writeFileSync(hello,'hello word!');
+
+//4\. 保存并退出
+fs.closeSync(hello);
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B631" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="文件操作："><a href="#文件操作：" class="header-anchor">#</a> 文件操作：</h3> <ol><li>打开文件：
+<code>fs.open(path,flags[,mode],callback)</code>
+异步打开 异步都是回调 回调嵌套回调
+<code>fs.openSync(path,flags[,mode])</code>
+同步打开</li></ol> <p>文件标记（flags）： <a href="http://nodejs.cn/api/fs.html#fs_fs_open_path_flags_mode_callback" target="_blank" rel="noopener noreferrer">http://nodejs.cn/api/fs.html#fs_fs_open_path_flags_mode_callback<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>一、同步打开文件</p> <div class="language- extra-class"><pre class="language-text"><code>    //1\. 引入模块 
+    let fs = require('fs');
+
+    //2.打开文件 同步
+    var fd=fs.openSync('1.txt', 'w');
+
+    //3.写入内容
+    fs.writeFileSync(fd,&quot;hello world!&quot;); 
+
+    //4\. 保存并关闭
+    fs.closeSync(fd);
+</code></pre></div><p>二、异步打开文件</p> <div class="language- extra-class"><pre class="language-text"><code>   //1.引入模块
+   let fs = require('fs');
+
+   //2\. 打开文件
+   fs.open('1.txt', 'a', (err, fd)=&gt;{
+       //2.1判断是否出错
+       if(!err){
+           //正确 2.2写入文件
+           fs.writeFile(fd, &quot;今天天.....气真好！&quot;, (err)=&gt;{
+                //2.2.1 写入成功
+                if(!err){
+                    console.log('写入成功');
+                }else{
+                    throw err;
+                }
+                //2.3 关闭文件
+                fs.close(fd, (err)=&gt;{
+                    if(!err){
+                        console.log('文件以保存并关闭')
+                    }else{
+                        throw err;
+                    }
+                })
+           })
+       }else{
+           throw err;
+       }
+   })
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B632" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="使用文件流写入"><a href="#使用文件流写入" class="header-anchor">#</a> 使用文件流写入</h3> <p>文件流写入： <a href="http://nodejs.cn/api/fs.html#fs_fs_createwritestream_path_options" target="_blank" rel="noopener noreferrer">http://nodejs.cn/api/fs.html#fs_fs_createwritestream_path_options<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>//同步操作
+
+//1\. 引入模块
+let fs= require('fs');
+
+//2.建立通道
+let ws = fs.createWriteStream('fsw.txt')
+
+//3.打开通道
+ws.once('open', ()=&gt;{
+    console.log('通道已经打开');
+})
+
+ws.once('close', ()=&gt;{
+    console.log('通道已经关闭');
+})
+
+//4\. 写入内容
+ws.write('我爱你，');
+ws.write('我爱你，');
+ws.write('我爱你，');
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B633" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="读写文件："><a href="#读写文件：" class="header-anchor">#</a> 读写文件：</h3> <p>文档地址：<a href="http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback" target="_blank" rel="noopener noreferrer">http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+读取文档：</p> <div class="language- extra-class"><pre class="language-text"><code>//1\. 引入模块
+let fs = require('fs');
+
+//2\. 读取文件
+fs.readFile('source/hello.txt','utf8',(err,data)=&gt;{
+    //判断是否成功
+    if(!err){
+        console.log(data);//
+        // console.log(data.toString());
+        //data 默认读取的是二进制 使用toString() 方法转换成
+    }else{
+        throw err;
+    }
+})
+
+读取图片：
+
+//3\. 读取图片
+fs.readFile(&quot;source/psb.jpg&quot;,(err,data)=&gt;{
+    //判断是否成功
+    if(!err){
+        //写入图片
+        fs.writeFile('img.jpg', data, (err)=&gt;{
+            if(!err){
+                console.log('写入成功！')
+            }else{
+                throw err;
+            }
+        })
+    }else{
+        throw err;
+    }
+});
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B634" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><strong>读取视频:</strong></p> <div class="language- extra-class"><pre class="language-text"><code>//1\. 引入模块
+let fs= require('fs');
+
+//2\. 读取视频
+fs.readFile('source/cddbb.mp4', (err, data)=&gt;{
+    if(!err){
+        // 写入视频
+        fs.writeFile('nmx.mp4', data, (err)=&gt;{
+            if(!err){
+                console.log('写入成功！');
+            }else{
+                throw err;
+            }
+        })
+    }else{
+        throw err;
+    }
+})
+
+//3\. 流式文件的读入（批量文件处理）
+let re= fs.createReadStream('source/cddbb.mp4');
+//建立读取流
+let ws= fs.createWriteStream('新建的视频.mp4');
+//建立写入流
+
+//4\. 创建管道
+re.pipe(ws);//文件流传输
+console.log('文件流传输完成')
+</code></pre></div><p>参考：<a href="https://www.jb51.net/article/133553.htm" target="_blank" rel="noopener noreferrer">详解NodeJS文件系统fs<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+我的GitHub总结的<a href="https://github.com/AnsonZnl/StudyNodeJS" target="_blank" rel="noopener noreferrer">NodeJS笔记<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/Node/NodeJS安装和使用.html" class="prev">
+        NodeJS安装和使用
+      </a></span> <span class="next"><a href="/articles/Node/使用Node.js写一个简单的api接口.html">
+        使用Node.js写一个简单的api接口
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.25688d1b.js" defer></script><script src="/assets/js/2.b2df5d16.js" defer></script><script src="/assets/js/29.fac34056.js" defer></script>
+  </body>
+</html>

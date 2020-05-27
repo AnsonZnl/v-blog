@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>我对JavaScript中this的一些理解 | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.25688d1b.js" as="script"><link rel="preload" href="/assets/js/2.b2df5d16.js" as="script"><link rel="preload" href="/assets/js/22.b8efc644.js" as="script"><link rel="prefetch" href="/assets/js/10.b310ae98.js"><link rel="prefetch" href="/assets/js/11.68b37c29.js"><link rel="prefetch" href="/assets/js/12.c93e0435.js"><link rel="prefetch" href="/assets/js/13.1bdea796.js"><link rel="prefetch" href="/assets/js/14.d630dd31.js"><link rel="prefetch" href="/assets/js/15.95b3e0b6.js"><link rel="prefetch" href="/assets/js/16.6422eeda.js"><link rel="prefetch" href="/assets/js/17.3888dfd4.js"><link rel="prefetch" href="/assets/js/18.a9d9940f.js"><link rel="prefetch" href="/assets/js/19.a5ce5bfc.js"><link rel="prefetch" href="/assets/js/20.169c1129.js"><link rel="prefetch" href="/assets/js/21.40c405dc.js"><link rel="prefetch" href="/assets/js/23.72235025.js"><link rel="prefetch" href="/assets/js/24.af4bb339.js"><link rel="prefetch" href="/assets/js/25.128b00ad.js"><link rel="prefetch" href="/assets/js/26.c8c2954e.js"><link rel="prefetch" href="/assets/js/27.cf6b05af.js"><link rel="prefetch" href="/assets/js/28.3eb1fd84.js"><link rel="prefetch" href="/assets/js/29.fac34056.js"><link rel="prefetch" href="/assets/js/3.8438a9e1.js"><link rel="prefetch" href="/assets/js/30.909facc0.js"><link rel="prefetch" href="/assets/js/31.833eec8f.js"><link rel="prefetch" href="/assets/js/32.822cc5d4.js"><link rel="prefetch" href="/assets/js/33.bc6871ef.js"><link rel="prefetch" href="/assets/js/34.f2625853.js"><link rel="prefetch" href="/assets/js/35.639ba4c8.js"><link rel="prefetch" href="/assets/js/36.bc172e32.js"><link rel="prefetch" href="/assets/js/37.87c51cb5.js"><link rel="prefetch" href="/assets/js/38.0c8e8cbf.js"><link rel="prefetch" href="/assets/js/39.72a1d3fe.js"><link rel="prefetch" href="/assets/js/4.d0098715.js"><link rel="prefetch" href="/assets/js/40.543f2865.js"><link rel="prefetch" href="/assets/js/41.aef1d946.js"><link rel="prefetch" href="/assets/js/42.2f81aa07.js"><link rel="prefetch" href="/assets/js/43.2b9ffcfb.js"><link rel="prefetch" href="/assets/js/44.5c0982f8.js"><link rel="prefetch" href="/assets/js/45.5f1b2e53.js"><link rel="prefetch" href="/assets/js/46.eafafe21.js"><link rel="prefetch" href="/assets/js/47.4b727178.js"><link rel="prefetch" href="/assets/js/48.af1f9f41.js"><link rel="prefetch" href="/assets/js/49.6c62706f.js"><link rel="prefetch" href="/assets/js/5.78b527c1.js"><link rel="prefetch" href="/assets/js/50.745c400a.js"><link rel="prefetch" href="/assets/js/51.2394aa11.js"><link rel="prefetch" href="/assets/js/52.3e6e53a5.js"><link rel="prefetch" href="/assets/js/53.cc97228b.js"><link rel="prefetch" href="/assets/js/54.a65e1dc6.js"><link rel="prefetch" href="/assets/js/55.20254ba9.js"><link rel="prefetch" href="/assets/js/56.f01b42f6.js"><link rel="prefetch" href="/assets/js/57.7d7af392.js"><link rel="prefetch" href="/assets/js/58.1067a24f.js"><link rel="prefetch" href="/assets/js/59.1131681d.js"><link rel="prefetch" href="/assets/js/6.77492e46.js"><link rel="prefetch" href="/assets/js/60.a3111d51.js"><link rel="prefetch" href="/assets/js/61.2ea4ed06.js"><link rel="prefetch" href="/assets/js/62.8a7f0795.js"><link rel="prefetch" href="/assets/js/63.94978d1f.js"><link rel="prefetch" href="/assets/js/64.279d588a.js"><link rel="prefetch" href="/assets/js/65.a8def40c.js"><link rel="prefetch" href="/assets/js/66.e8d0ea43.js"><link rel="prefetch" href="/assets/js/67.5e5595a2.js"><link rel="prefetch" href="/assets/js/68.e05b81fe.js"><link rel="prefetch" href="/assets/js/69.e2481251.js"><link rel="prefetch" href="/assets/js/7.cee22c78.js"><link rel="prefetch" href="/assets/js/70.648f97c5.js"><link rel="prefetch" href="/assets/js/71.2ab1e735.js"><link rel="prefetch" href="/assets/js/72.49cf62cf.js"><link rel="prefetch" href="/assets/js/73.b14ac5fc.js"><link rel="prefetch" href="/assets/js/74.a2f88699.js"><link rel="prefetch" href="/assets/js/75.d685d1e6.js"><link rel="prefetch" href="/assets/js/76.f04e8aaa.js"><link rel="prefetch" href="/assets/js/77.0f81abf6.js"><link rel="prefetch" href="/assets/js/78.9a002b85.js"><link rel="prefetch" href="/assets/js/79.20df5526.js"><link rel="prefetch" href="/assets/js/8.5e2fa482.js"><link rel="prefetch" href="/assets/js/80.e09c57f4.js"><link rel="prefetch" href="/assets/js/9.de3c4ef1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5a2ff11451882559e225a140" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5a2ff11451882559e225a140" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable router-link-active open"><span>JavaScript</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/JavaScript/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/articles/JavaScript/创建对象的几种方法及优缺点.html" class="sidebar-link">创建对象的几种方法及优缺点</a></li><li><a href="/articles/JavaScript/关于跨域.html" class="sidebar-link">关于跨域</a></li><li><a href="/articles/JavaScript/理解JS原型链.html" class="sidebar-link">理解JS原型链</a></li><li><a href="/articles/JavaScript/深浅拷贝.html" class="sidebar-link">深浅拷贝</a></li><li><a href="/articles/JavaScript/双向数据绑定的原理.html" class="sidebar-link">双向数据绑定的原理</a></li><li><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html" class="active sidebar-link">我对JavaScript中this的一些理解</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html#this-是什么" class="sidebar-link">this 是什么</a></li><li class="sidebar-sub-header"><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html#this-指向的四种情况" class="sidebar-link">this 指向的四种情况</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html#_1-全局的函数调用，this指向window" class="sidebar-link">1. 全局的函数调用，this指向window</a></li><li class="sidebar-sub-header"><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html#_2-作为对象方法的调用，this指向该对象" class="sidebar-link">2. 作为对象方法的调用，this指向该对象</a></li><li class="sidebar-sub-header"><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html#_3-作为构造函数调用，this指向实例" class="sidebar-link">3. 作为构造函数调用，this指向实例</a></li><li class="sidebar-sub-header"><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html#_4-使用call-apply-bind调用-this指向第一个参数" class="sidebar-link">4. 使用call/apply/bind调用, this指向第一个参数</a></li></ul></li><li class="sidebar-sub-header"><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html#深入理解" class="sidebar-link">深入理解</a></li></ul></li><li><a href="/articles/JavaScript/Array的push与unshift方法性能比较分析.html" class="sidebar-link">Array的push与unshift方法性能比较分析</a></li><li><a href="/articles/JavaScript/JavaScript的预编译过程分析.html" class="sidebar-link">JavaScript的预编译过程分析</a></li><li><a href="/articles/JavaScript/JavaScript对象原型链.html" class="sidebar-link">JavaScript对象原型链</a></li><li><a href="/articles/JavaScript/JavaScript中基本数据类型和引用数据类型的区别.html" class="sidebar-link">JavaScript中基本数据类型和引用数据类型的区别</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable"><span>小程序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable"><span>Node</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>因为日常工作中经常使用到<code>this</code>，而且在JavaScript中<code>this</code>的指向问题也很容易让人混淆一部分知识。<br>
+这段时间翻阅了一些书籍也查阅了网上一些资料然后结合自己的经验，为了能让自己更好的理解<code>this</code>，进而总结一篇文章。</p> <h2 id="this-是什么"><a href="#this-是什么" class="header-anchor">#</a> this 是什么</h2> <p><code>this</code>是 JavaScript 语言的一个关键字。它是函数运行时，在函数体内部自动生成的一个对象，只能在函数体内部使用。<br>
+实际是在函数被调用时才发生的绑定，也就是说<code>this</code>具体指向什么，取决于你是怎么调用的函数。</p> <h2 id="this-指向的四种情况"><a href="#this-指向的四种情况" class="header-anchor">#</a> this 指向的四种情况</h2> <p>这四种情况基本涵盖了JavaScript中常见的<code>this</code>指向问题</p> <h3 id="_1-全局的函数调用，this指向window"><a href="#_1-全局的函数调用，this指向window" class="header-anchor">#</a> 1. 全局的函数调用，this指向window</h3> <div class="language- extra-class"><pre class="language-text"><code>var a = 1;
+function fn() {
+   console.log(this.a);
+}
+fn();  // 1
+</code></pre></div><p>这种 情况下的<code>this</code>其实就是<code>window</code>对象，这个很好理解。
+但是还有一种情况，就是匿名函数的<code>this</code>也会指向<code>window</code>。</p> <div class="language- extra-class"><pre class="language-text"><code>var a= 'window';
+var obj={a: 'object'}
+obj.fn=function(){
+	console.log(this.a);//Object
+	+function(){
+		console.log(this.a)//window
+	}()
+}
+obj.fn()
+</code></pre></div><p>匿名函数的执行环境具有全局性，因此它的<code>this</code>对象通常指向windows。<br>
+如果对此有疑惑，可以看知乎上的答案：<a href="https://www.zhihu.com/question/21958425" target="_blank" rel="noopener noreferrer">知乎 - 匿名函数的this指向为什么是window?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="_2-作为对象方法的调用，this指向该对象"><a href="#_2-作为对象方法的调用，this指向该对象" class="header-anchor">#</a> 2. 作为对象方法的调用，this指向该对象</h3> <div class="language- extra-class"><pre class="language-text"><code>var a ='window'
+var obj={
+  a: 'object',
+  fn: function(){
+    console.log(this.a);
+  }
+}
+
+obj.fn(); // object
+</code></pre></div><p>当函数作为某个对象的方法调用时，<code>this</code>就指这个函数所在的对象。</p> <h3 id="_3-作为构造函数调用，this指向实例"><a href="#_3-作为构造函数调用，this指向实例" class="header-anchor">#</a> 3. 作为构造函数调用，this指向实例</h3> <div class="language- extra-class"><pre class="language-text"><code>function fn() {
+　this.x = 1;
+}
+var obj = new fn();
+console.log(obj.x) // 1
+</code></pre></div><p>构造函数中的<code>this</code>，在通过<code>new</code>之后会生成一个新对象，this就指这个新对象。<br>
+对<code>new</code>有疑问的话，可以看 <a href="https://github.com/mqyqingfeng/Blog/issues/13" target="_blank" rel="noopener noreferrer">冴羽的博客 JavaScript深入之new的模拟实现 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="_4-使用call-apply-bind调用-this指向第一个参数"><a href="#_4-使用call-apply-bind调用-this指向第一个参数" class="header-anchor">#</a> 4. 使用call/apply/bind调用, this指向第一个参数</h3> <div class="language- extra-class"><pre class="language-text"><code>var obj1={
+  a: 'boj1'
+}
+var obj2={
+  a: 'obj2'
+}
+var obj3={
+  a: 'obj3'
+}
+function fn(){
+  console.log(this.a);
+}
+// apply
+fn.apply(obj1);// 'obj1'
+// call
+fn.call(obj2);// 'obj2'
+// bind
+var fnBind= fn.bind(obj3);
+fnBind();// 'obj3'
+</code></pre></div><p><code>call/ apply / bind</code>都有一个共同的特点，就是改变<code>this</code>的指向，使用这种方法可以把别人的方法拿过来用到自己身上。</p> <p>第一个参数为 <code>null</code> 的时候，视为指向 <code>window</code>.</p> <div class="language- extra-class"><pre class="language-text"><code>var a='window'
+var obj={
+  a: 'boj',
+  fn: function (){
+    console.log(this.a);
+  }
+}
+obj.fn.call(null);// 'window'
+</code></pre></div><p>在这里如果是<code>obj.fn()</code>调用的<code>fn()</code>方法，<code>this</code>应该指向<code>obj</code>没错。
+但是因为<code>call(null)</code>的存在，改变了指向，所以<code>this</code>指向了<code>window</code>。</p> <h2 id="深入理解"><a href="#深入理解" class="header-anchor">#</a> 深入理解</h2> <p>正因为比较难理解，所以<code>this</code>指向也是面试时最容易遇到的问题，比如下面这道我曾遇到的一个面试题：</p> <div class="language- extra-class"><pre class="language-text"><code>var length = 10;
+function fn(){
+  console.log(this.length);
+}
+var obj = {
+  length: 5,
+  method: function(fn){
+    fn();//10
+    arguments[0]();//2 这里的this指向的arguments，所以获取的是arguments.length
+  }
+};
+obj.method(fn, 1);
+</code></pre></div><p>在这道题里，不仅考察了对<code>this</code>熟悉程度，还考察了函数的传参形式、作用域、以及<code>arguments</code>这种特殊的数组的理解。<br>
+只有真正理解了这些才能正确的判断<code>this</code>究竟指向了谁。<br>
+所以，只有对<code>JavaScript</code>中的各项知识点深入理解，才会对<code>this</code>的概念越加清晰。</p> <p>参考：<br> <a href="http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html" target="_blank" rel="noopener noreferrer">阮一峰 - Javascript 的 this 用法<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br> <a href="http://caibaojian.com/deep-in-javascript-this.html" target="_blank" rel="noopener noreferrer">前端开发博客 - 深入理解JavaScript this<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/JavaScript/双向数据绑定的原理.html" class="prev">
+        双向数据绑定的原理
+      </a></span> <span class="next"><a href="/articles/JavaScript/Array的push与unshift方法性能比较分析.html">
+        Array的push与unshift方法性能比较分析
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.25688d1b.js" defer></script><script src="/assets/js/2.b2df5d16.js" defer></script><script src="/assets/js/22.b8efc644.js" defer></script>
+  </body>
+</html>

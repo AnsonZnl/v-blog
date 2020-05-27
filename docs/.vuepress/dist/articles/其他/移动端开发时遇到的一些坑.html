@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>移动端开发时遇到的一些坑 | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.25688d1b.js" as="script"><link rel="preload" href="/assets/js/2.b2df5d16.js" as="script"><link rel="preload" href="/assets/js/60.a3111d51.js" as="script"><link rel="prefetch" href="/assets/js/10.b310ae98.js"><link rel="prefetch" href="/assets/js/11.68b37c29.js"><link rel="prefetch" href="/assets/js/12.c93e0435.js"><link rel="prefetch" href="/assets/js/13.1bdea796.js"><link rel="prefetch" href="/assets/js/14.d630dd31.js"><link rel="prefetch" href="/assets/js/15.95b3e0b6.js"><link rel="prefetch" href="/assets/js/16.6422eeda.js"><link rel="prefetch" href="/assets/js/17.3888dfd4.js"><link rel="prefetch" href="/assets/js/18.a9d9940f.js"><link rel="prefetch" href="/assets/js/19.a5ce5bfc.js"><link rel="prefetch" href="/assets/js/20.169c1129.js"><link rel="prefetch" href="/assets/js/21.40c405dc.js"><link rel="prefetch" href="/assets/js/22.b8efc644.js"><link rel="prefetch" href="/assets/js/23.72235025.js"><link rel="prefetch" href="/assets/js/24.af4bb339.js"><link rel="prefetch" href="/assets/js/25.128b00ad.js"><link rel="prefetch" href="/assets/js/26.c8c2954e.js"><link rel="prefetch" href="/assets/js/27.cf6b05af.js"><link rel="prefetch" href="/assets/js/28.3eb1fd84.js"><link rel="prefetch" href="/assets/js/29.fac34056.js"><link rel="prefetch" href="/assets/js/3.8438a9e1.js"><link rel="prefetch" href="/assets/js/30.909facc0.js"><link rel="prefetch" href="/assets/js/31.833eec8f.js"><link rel="prefetch" href="/assets/js/32.822cc5d4.js"><link rel="prefetch" href="/assets/js/33.bc6871ef.js"><link rel="prefetch" href="/assets/js/34.f2625853.js"><link rel="prefetch" href="/assets/js/35.639ba4c8.js"><link rel="prefetch" href="/assets/js/36.bc172e32.js"><link rel="prefetch" href="/assets/js/37.87c51cb5.js"><link rel="prefetch" href="/assets/js/38.0c8e8cbf.js"><link rel="prefetch" href="/assets/js/39.72a1d3fe.js"><link rel="prefetch" href="/assets/js/4.d0098715.js"><link rel="prefetch" href="/assets/js/40.543f2865.js"><link rel="prefetch" href="/assets/js/41.aef1d946.js"><link rel="prefetch" href="/assets/js/42.2f81aa07.js"><link rel="prefetch" href="/assets/js/43.2b9ffcfb.js"><link rel="prefetch" href="/assets/js/44.5c0982f8.js"><link rel="prefetch" href="/assets/js/45.5f1b2e53.js"><link rel="prefetch" href="/assets/js/46.eafafe21.js"><link rel="prefetch" href="/assets/js/47.4b727178.js"><link rel="prefetch" href="/assets/js/48.af1f9f41.js"><link rel="prefetch" href="/assets/js/49.6c62706f.js"><link rel="prefetch" href="/assets/js/5.78b527c1.js"><link rel="prefetch" href="/assets/js/50.745c400a.js"><link rel="prefetch" href="/assets/js/51.2394aa11.js"><link rel="prefetch" href="/assets/js/52.3e6e53a5.js"><link rel="prefetch" href="/assets/js/53.cc97228b.js"><link rel="prefetch" href="/assets/js/54.a65e1dc6.js"><link rel="prefetch" href="/assets/js/55.20254ba9.js"><link rel="prefetch" href="/assets/js/56.f01b42f6.js"><link rel="prefetch" href="/assets/js/57.7d7af392.js"><link rel="prefetch" href="/assets/js/58.1067a24f.js"><link rel="prefetch" href="/assets/js/59.1131681d.js"><link rel="prefetch" href="/assets/js/6.77492e46.js"><link rel="prefetch" href="/assets/js/61.2ea4ed06.js"><link rel="prefetch" href="/assets/js/62.8a7f0795.js"><link rel="prefetch" href="/assets/js/63.94978d1f.js"><link rel="prefetch" href="/assets/js/64.279d588a.js"><link rel="prefetch" href="/assets/js/65.a8def40c.js"><link rel="prefetch" href="/assets/js/66.e8d0ea43.js"><link rel="prefetch" href="/assets/js/67.5e5595a2.js"><link rel="prefetch" href="/assets/js/68.e05b81fe.js"><link rel="prefetch" href="/assets/js/69.e2481251.js"><link rel="prefetch" href="/assets/js/7.cee22c78.js"><link rel="prefetch" href="/assets/js/70.648f97c5.js"><link rel="prefetch" href="/assets/js/71.2ab1e735.js"><link rel="prefetch" href="/assets/js/72.49cf62cf.js"><link rel="prefetch" href="/assets/js/73.b14ac5fc.js"><link rel="prefetch" href="/assets/js/74.a2f88699.js"><link rel="prefetch" href="/assets/js/75.d685d1e6.js"><link rel="prefetch" href="/assets/js/76.f04e8aaa.js"><link rel="prefetch" href="/assets/js/77.0f81abf6.js"><link rel="prefetch" href="/assets/js/78.9a002b85.js"><link rel="prefetch" href="/assets/js/79.20df5526.js"><link rel="prefetch" href="/assets/js/8.5e2fa482.js"><link rel="prefetch" href="/assets/js/80.e09c57f4.js"><link rel="prefetch" href="/assets/js/9.de3c4ef1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5a2ff11451882559e225a140" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://juejin.im/user/5a2ff11451882559e225a140" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable open"><span>JavaScript</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/JavaScript/" class="sidebar-link">目录</a></li><li><a href="/articles/JavaScript/创建对象的几种方法及优缺点.html" class="sidebar-link">创建对象的几种方法及优缺点</a></li><li><a href="/articles/JavaScript/关于跨域.html" class="sidebar-link">关于跨域</a></li><li><a href="/articles/JavaScript/理解JS原型链.html" class="sidebar-link">理解JS原型链</a></li><li><a href="/articles/JavaScript/深浅拷贝.html" class="sidebar-link">深浅拷贝</a></li><li><a href="/articles/JavaScript/双向数据绑定的原理.html" class="sidebar-link">双向数据绑定的原理</a></li><li><a href="/articles/JavaScript/我对JavaScript中this的一些理解.html" class="sidebar-link">我对JavaScript中this的一些理解</a></li><li><a href="/articles/JavaScript/Array的push与unshift方法性能比较分析.html" class="sidebar-link">Array的push与unshift方法性能比较分析</a></li><li><a href="/articles/JavaScript/JavaScript的预编译过程分析.html" class="sidebar-link">JavaScript的预编译过程分析</a></li><li><a href="/articles/JavaScript/JavaScript对象原型链.html" class="sidebar-link">JavaScript对象原型链</a></li><li><a href="/articles/JavaScript/JavaScript中基本数据类型和引用数据类型的区别.html" class="sidebar-link">JavaScript中基本数据类型和引用数据类型的区别</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable"><span>小程序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable"><span>Node</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="起点中文网demo-移动端-做时遇到的bug"><a href="#起点中文网demo-移动端-做时遇到的bug" class="header-anchor">#</a> 起点中文网demo_移动端 做时遇到的bug</h2> <h3 id="一、移动端轮播"><a href="#一、移动端轮播" class="header-anchor">#</a> 一、移动端轮播</h3> <p>1.touchstart 手指触摸 == mousedown
+2.touchend 手指抬起 == mouseup
+3.touchmove 手指抬起 == mousmove
+touch事件  在 chrome的模拟器下，部分版本 通过on的方式来添加事件无效
+所以在移动端一般都使用如下方式
+addEventListener(&quot;事件名&quot;,函数,冒泡或捕获);</p> <div class="language- extra-class"><pre class="language-text"><code>document.addEventListener('touchstart',function(ev){
+    ev.preventDefault();
+});
+var box=document.getElementById(&quot;box&quot;);
+box.addEventListener('touchstart',function(){
+    this.innerHTML='手指按下了';
+});
+box.addEventListener('touchmove',function(){
+    this.innerHTML='手指移动了';
+});
+box.addEventListener('touchend',function(){
+    this.innerHTML='手指离开了';
+});
+</code></pre></div><p>参考<a href="http://www.qdfuns.com/notes/37602/5901a1994c6f69d213da2aef82aa1d8d.html" target="_blank" rel="noopener noreferrer">前端网<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+移动端事件demo http://ansonznl.coding.me/Mobile-demo/%E7%A7%BB%E5%8A%A8%E4%BA%8B%E4%BB%B601.html</p> <h3 id="二、滚动条"><a href="#二、滚动条" class="header-anchor">#</a> 二、滚动条</h3> <p><strong>scrollTop为滚动条在Y轴上的滚动距离。
+clientHeight为内容可视区域的高度。
+scrollHeight为内容可视区域的高度加上溢出（滚动）的距离。</strong>
+从这个三个属性的介绍就可以看出来，滚动条到底部的条件即为scrollTop + clientHeight == scrollHeight。
+废话不多少说，赶紧上代码（兼容不同的浏览器）。</p> <div class="language- extra-class"><pre class="language-text"><code>//滚动条在Y轴上的滚动距离
+function getScrollTop(){
+　　var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
+　　if(document.body){
+　　　　bodyScrollTop = document.body.scrollTop;
+　　}
+　　if(document.documentElement){
+　　　　documentScrollTop = document.documentElement.scrollTop;
+　　}
+　　scrollTop = (bodyScrollTop - documentScrollTop &gt; 0) ? bodyScrollTop : documentScrollTop;
+　　return scrollTop;
+}
+//文档的总高度
+function getScrollHeight(){
+　　var scrollHeight = 0, bodyScrollHeight = 0, documentScrollHeight = 0;
+　　if(document.body){
+　　　　bodyScrollHeight = document.body.scrollHeight;
+　　}
+　　if(document.documentElement){
+　　　　documentScrollHeight = document.documentElement.scrollHeight;
+　　}
+　　scrollHeight = (bodyScrollHeight - documentScrollHeight &gt; 0) ? bodyScrollHeight : documentScrollHeight;
+　　return scrollHeight;
+}
+//浏览器视口的高度
+function getWindowHeight(){
+　　var windowHeight = 0;
+　　if(document.compatMode == &quot;CSS1Compat&quot;){
+　　　　windowHeight = document.documentElement.clientHeight;
+　　}else{
+　　　　windowHeight = document.body.clientHeight;
+　　}
+　　return windowHeight;
+}
+window.onscroll = function(){
+　　if(getScrollTop() + getWindowHeight() == getScrollHeight()){
+　　　　alert(&quot;you are in the bottom!&quot;);
+　　}
+};
+</code></pre></div><h3 id="三、修改input-中placeholder字体颜色"><a href="#三、修改input-中placeholder字体颜色" class="header-anchor">#</a> 三、修改input 中placeholder字体颜色</h3> <p>以前都不知道能修改，百度一下才知道是可以的</p> <div class="language- extra-class"><pre class="language-text"><code> ::-webkit-input-placeholder { /* WebKit browsers */
+　　color:#999;
+　　}
+　　:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+　　color:#999;
+　　}
+　　::-moz-placeholder { /* Mozilla Firefox 19+ */
+　　color:#999;
+　　}
+　　:-ms-input-placeholder { /* Internet Explorer 10+ */
+　　color:#999;
+　　}
+</code></pre></div><h3 id="四、清除a、button的默认跳转"><a href="#四、清除a、button的默认跳转" class="header-anchor">#</a> 四、清除a、button的默认跳转</h3> <p>比如说登录时，账号和密码不填时不能点登录，节省js判断，或者有时候不想让a标签跳转可以用到</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;button disabled=&quot;disabled&quot; id=&quot;btn&quot;&gt;登录&lt;/button&gt;
+/* 添加disabled属性后不会提交数据 */
+&lt;a href=&quot;javascript:&quot; class=&quot;borlenone phb_nav&quot;&gt;风云榜&lt;/a&gt;
+/* 在a的href添加javascript:;属性后不会跳转 */
+</code></pre></div><p>做完了起点中文网的移动端后对移动网页的制作有加深一些，对于js的运用也熟练了许多，自己也封装了一个选项卡方法，，对于html、css的一些属性更了解了，
+总而言之收获恒很大。现在移动端浏览器兼容还是有点问题。
+加油，
+最后放上<a href="https://ansonznl.coding.me/QiDian/" target="_blank" rel="noopener noreferrer">起点中文网demo<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><strong>后续加：</strong>
+写大连罗森（移动端）的时候居然发现过了个年回来很多代码都生疏了，
+在写的过程中发现一些问题，在此记录下来以防在犯。</p> <ul><li>做的时候主要使用rem布局，rem用熟练了以后确实方便很多，做的时候也遇到过一些问题，在此记录一下。</li> <li>一个页面插入多个swiper
+写的首页的时候，首页需要加两个轮播图，并且结构上不一样，我就引入了一个swiper。
+问题：在写首页的时候遇到了一个问题，就是点击一个轮播图的按钮时候，另一个也跟着动，
+思考：我就想，这肯定不行啊，然后晚上回去就开始研究，发现它其实就是class一样，所以调用的function一样，从而导致的2个轮播一起轮播，
+解决方案：给第一个轮播的按钮重新命名一个新的class，并且调用同一个function，完美解决！</li> <li>img加宽高
+这个写完后台测试时才发现的问题，导致前期给后台大哥填了很多麻烦，还是给img标签加上高和宽比较好。这样的话，图片显示出来就会按照设定好的尺寸，不会出现意外情况。但如果没有设定，很有可能会出现图片上边有白条，或者没有按照想要的效果显示，网站更新是换图片会出现问题。我碰到的就是没有加宽高，造成了图片下沉，上面出现白条。
+网页中的img最好使用div包起来，或者把img的display属性设为block，可以消除img的默认边距
+记忆比较深刻的就是这么两个问题，
+最后放上演示地址（建议手机浏览）：http://zhangningle.gitee.io/m.luosen/</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.25688d1b.js" defer></script><script src="/assets/js/2.b2df5d16.js" defer></script><script src="/assets/js/60.a3111d51.js" defer></script>
+  </body>
+</html>
