@@ -8,14 +8,14 @@ tags: ["NodeJS"]
 默认你已经安装了[Node.js](https://nodejs.org/en/)
 Node当中内置了Http模块；
 可以使用
-```
+```js
 var http= require("http");
 ```
 引入http模块；
 ## Hello world
 用Node.js实现一个HTTP服务器程序非常简单。我们实现一个最简单的Web程序，
 它对于所有请求，都返回Hello world!，新建一个文件夹`apiDemo` 在里面新建一个`server.js`写入：
-```
+```js
 // 导入http模块:
 var http = require('http');
 // 创建http server，并传入回调函数:
@@ -35,7 +35,7 @@ server.listen(8080);
 console.log('Server is running at http://127.0.0.1:8080/');
 ```
 然后在当前目录命令提示符下(cmd等)运行， 输入：
-```
+```bash
 node server.js
 ```
 然后打开浏览器输入：`http://127.0.0.1:8080/` 就可以看到：
@@ -62,18 +62,18 @@ http.createServer(function(request, response){})
 
 我们是想当访问`http://127.0.0.1:8080/`的时候返回当前目录的index.html。
 也就是说当`request.url === '/'`是`true`时就可以确定当前请求的是根目录了，
-```
+```js
 var url = request.url;
 console.log(url);
 // '/'
 ```
 我们能创建一个服务，并且能使用`response.end('Hello world!');`返回“Hello world!”。如果想返回一个文件则需要用到Node.js的一个模块了——**fs 文件系统**。
 它是Node当中处理文件的模块，首先引入：
-```
+```js
 var fs= require('fs');
 ```
 可以使用`fs.readFile()`来读取文件
-```
+```js
 fs.readFile('./index.html', function(err, data)  {
   if (err) throw err;
   console.log(data);
@@ -83,7 +83,7 @@ fs.readFile('./index.html', function(err, data)  {
 回调函数 有两个参数 (err, data)，其中 data 是文件的内容，以二进制形式返回。
 
 然后我们就可以编写代码了，当访问根目录时，返回index.html文件
-```
+```js
 var http= require('http');
 var fs= require('fs');
 var server= http.createServer(function(request, response){
@@ -104,7 +104,7 @@ var server= http.createServer(function(request, response){
 server.listen(8080, '127.0.0.1');
 ```
 然后在当前目录下新建`index.html`，在这里我们可以写一个ajax请求，一会我们点击按钮来实现ajax请求一组数据：
-```
+```js
  <div id="box">看不到看不到</div>
     <button onclick="success()">我是按钮</button>
     <script>
@@ -126,7 +126,7 @@ server.listen(8080, '127.0.0.1');
 这段代码是点击按钮的时候 会向`/data`发起一个ajsx请求,
 ## 实现简单的API接口
 既然能访问根目录时可以返回html文件，那我们可以自己设定一个url，当请求这个url是我们就给它返回一组json数据。正常来讲这些数据应该是从数据库读取的，在这里只模拟一组json数据，在当前目录新建一个`data.json`：
-```
+```json
 {"name": "尼古拉丁 * 赵四"}
 ```
 所以当前的目录结构是：
@@ -134,7 +134,7 @@ server.listen(8080, '127.0.0.1');
 
 
 然后我们可以在server.js中判断一下，当请求的url是`/data`时，则返回data.json：
-```
+```js
 if(url === '/data'){
         fs.readFile('./data.json', function(err, data){
             if(!err){
@@ -150,6 +150,6 @@ if(url === '/data'){
 
 最后的实现是点击按钮出现**尼古拉丁 * 赵四**，    
 GItHub源码：[node-apiDemo](https://github.com/AnsonZnl/StudyNodeJS/tree/master/%E8%AF%BE%E7%A8%8B%E8%AF%BE%E4%BB%B6%E5%8F%8A%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81/apiDemo)    
-参考：    
-[廖雪峰-http详解](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345015296018cac40c198b543fead5c549865b9bd4a000)    
-[Node-fs](http://nodejs.cn/api/fs.html)
+## 参考    
+- [廖雪峰-http详解](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345015296018cac40c198b543fead5c549865b9bd4a000)    
+- [Node-fs](http://nodejs.cn/api/fs.html)

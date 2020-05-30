@@ -24,7 +24,7 @@ tags: ["NodeJS","MongoDB"]
 有时候用户删除操作的时候，需求是这样的，仅是隐藏这条数据，并不是真的从数据库中删除。
 这时候就用到假删除了，
 比如这个是张三发的两篇微博：
-```
+```js
 db.student.insert([
     {name:"张三",content:"今天心情好",isDel:0},
     {name:"张三",content:"今天心情一般",isDel:0},
@@ -35,7 +35,7 @@ db.student.insert([
 
 用户增加两条数据，但只保留后一条，删除前一条，这时候用到假删除 ，在添加数据时加上一个字段`isDel:0 `     
 所以当用户删除数据时候 执行的不是remove方法而是update方法
-```
+```js
 db.student.update({"_id" : ObjectId("5bd6a46f1eb7a22fa07cb382")},{
     $set:{
       isDel:1
@@ -46,7 +46,7 @@ db.student.update({"_id" : ObjectId("5bd6a46f1eb7a22fa07cb382")},{
 当`isDel:0`是表示用户没有删除 为1是表示用户已经删除
 
 所以在查询的时候要筛选name和isDel条件即可
-```
+```js
 db.student.find({name:"张三",isDel:0});
 ```
 查询到用户没有删除的数据:
@@ -56,7 +56,7 @@ db.student.find({name:"张三",isDel:0});
 然后就可以实现假删除了。
 ### 批量数据的操作和修改
 1. 向集合中插入10000个文档
-```
+```js
 var arr= [];
 for(var i=0;i<10000;i++){
    arr.push({counter:i});
@@ -75,7 +75,7 @@ db.demos.find();
 6. 查石demos集合中的第1字到20条数据
 `db.demos.find().limit(10);`
 7. 查春demos集合中的第2 1条到30条数据  分页功能   skip从多少条开始 limit每次查询多少条 
-```
+```js
 db.demos.find().skip(0).limit(10);//第一页 从0条开始 每查询10条
 db.demos.find().skip(10).limit(10);//第二页 从10条开始 每查询10条
 db.demos.find().skip(20).limit(10);//第三页 从20条开始 每查询10条
@@ -95,7 +95,7 @@ db.demos.find().skip(20).limit(10);//第三页 从20条开始 每查询10条
 
 ####  一对一 
 以内嵌文档的形式体现，
-```
+```js
 //一对一
 db.aAndb.insert([
  {name:"杨过",wife:{name:"小龙女",sex:"女"},sex:"男"},
@@ -107,7 +107,7 @@ db.aAndb.find();
 
 #### 一对多
 通过内嵌文档的形式实现或者通过集合的形式实现
-```
+```js
 //一对多  比如  微博 和 微博评论
 //添加微博
 db.weibo.insert([
@@ -118,7 +118,7 @@ db.weibo.insert([
 db.weibo.find();
 ```
 添加评论
-```
+```js
 db.comments.insert([
 {
 weibo_id: ObjectId("5bdd89e06a5e78f4cfc2b9c8"),
@@ -141,7 +141,7 @@ list:[
 db.comments.find();
 ```
 查询一对多
-```
+```js
 var weibo_id= db.weibo.findOne({"weibo" : "世界这么大，我想去看看"})._id;
 db.comments.find({weibo_id: weibo_id});
 ```
@@ -150,7 +150,7 @@ db.comments.find({weibo_id: weibo_id});
 #### 多对多的关系
 比如：学生和老师
 可以通过多文档关联，
-```
+```js
 //多对多  老师《------》学生
 
 //插入老师集合
@@ -229,7 +229,7 @@ db.teachers.find();
 sort() 可以用来指定文档的排序规则，sort() 内部需要传递一个对象来指定文档的排序规则 ，其中1表示升序 ，-1表示降序
 limit skip sort 的顺序可以任意改变 ，运行时会自动调整。
 不希望它默认按照id排序  希望它按照工资来排序
-```
+```js
 //按照工资升序排列
 
 db.section.find().sort({wages:1});
@@ -247,7 +247,7 @@ db.section.find().sort({wages: 1},{_id: -1});
 注意： `_id `如果不设置默认是1（显示） 可手动隐藏
 
 `db.section.find({}, {name: 1});`
-```
+```js
 //只显示name和wages字段
 `db.section.find({}, {name: 1, _id: 0, wages: 1});`
 ```

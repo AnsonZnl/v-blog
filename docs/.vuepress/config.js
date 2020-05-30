@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Anson\'s Blog',
   description: '种一棵树最好的时间在十年前，其次是现在。',
-  keywords: "前端开发，博客，前端博客，JavaScript、Vue、Node，前端，微信小程序，",
+  keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序，",
   head: [
     ['link', {
       rel: 'icon',
@@ -14,8 +14,16 @@ module.exports = {
         link: '/'
       },
       {
-        text: '文章',
+        text: '博文',
         link: '/articles/'
+      },
+      {
+        text: '笔记',
+        link: '/notes/'
+      },
+      {
+        text: '思考',
+        link: '/thinks/'
       },
       {
         text: '关于',
@@ -41,7 +49,7 @@ module.exports = {
               path: '/articles/JavaScript/'
             },
             {
-              title: '创建对象的几种方法及优缺点',
+              title: 'JS创建对象的几种方法及优缺点',
               path: '/articles/JavaScript/创建对象的几种方法及优缺点'
             },
             {
@@ -65,10 +73,6 @@ module.exports = {
               path: '/articles/JavaScript/我对JavaScript中this的一些理解'
             },
             {
-              title: 'Array的push与unshift方法性能比较分析',
-              path: '/articles/JavaScript/Array的push与unshift方法性能比较分析'
-            },
-            {
               title: 'JavaScript的预编译过程分析',
               path: '/articles/JavaScript/JavaScript的预编译过程分析'
             },
@@ -89,10 +93,6 @@ module.exports = {
           children: [{
               title: 'Vue目录',
               path: '/articles/Vue/'
-            },
-            {
-              title: 'Vue知识',
-              path: '/articles/Vue/Vue知识'
             },
             {
               title: 'Vue知识点总结',
@@ -121,40 +121,28 @@ module.exports = {
               path: '/articles/小程序/使用Promise封装小程序wx.request'
             },
             {
-              title: '微信小程序 动态加载swiper时不显示的问题（爬坑）',
-              path: '/articles/小程序/微信小程序 动态加载swiper时不显示的问题（爬坑）'
+              title: '微信小程序动态加载swiper时不显示的问题（爬坑）',
+              path: '/articles/小程序/微信小程序动态加载swiper时不显示的问题（爬坑）'
             },
             {
-              title: '微信小程序 授权登录弹框 组件',
-              path: '/articles/小程序/微信小程序 授权登录弹框 组件'
+              title: '微信小程序授权登录弹框 组件',
+              path: '/articles/小程序/微信小程序授权登录弹框 组件'
             },
             {
-              title: '微信小程序：解决gif图片只渲染一次的问题',
-              path: '/articles/小程序/微信小程序：解决gif图片只渲染一次的问题'
+              title: '解决gif图片只渲染一次的问题',
+              path: '/articles/小程序/解决gif图片只渲染一次的问题'
             },
             {
               title: '小程序-实现蒙版弹出窗',
               path: '/articles/小程序/小程序-实现蒙版弹出窗'
             },
             {
-              title: '小程序速查',
-              path: '/articles/小程序/小程序速查'
-            },
-            {
-              title: '小程序学习记录一',
-              path: '/articles/小程序/小程序学习记录一'
-            },
-            {
-              title: '小程序学习记录二',
-              path: '/articles/小程序/小程序学习记录二'
-            },
-            {
               title: '小程序之瀑布流布局',
               path: '/articles/小程序/小程序之瀑布流布局'
             },
             {
-              title: '小程序之iPhone x适配',
-              path: '/articles/小程序/小程序之iPhone x适配'
+              title: '小程序之iPhoneX适配',
+              path: '/articles/小程序/小程序之iPhoneX适配'
             },
             {
               title: '小程序中图片点击全屏-可滑动',
@@ -167,6 +155,10 @@ module.exports = {
             {
               title: '在小程序中自定义弹窗组件',
               path: '/articles/小程序/在小程序中自定义弹窗组件'
+            },
+            {
+              title: '在小程序中使用async&await',
+              path: '/articles/小程序/在小程序中使用async&await'
             }
           ]
         },
@@ -195,8 +187,8 @@ module.exports = {
               path: '/articles/Node/使用Express搭建一个简单的服务器'
             },
             {
-              title: '使用Node.js 搭建静态服务器',
-              path: '/articles/Node/使用Node.js 搭建静态服务器'
+              title: '使用Node.js搭建静态服务器',
+              path: '/articles/Node/使用Node.js搭建静态服务器'
             },
             {
               title: 'CommonJS模块化开发',

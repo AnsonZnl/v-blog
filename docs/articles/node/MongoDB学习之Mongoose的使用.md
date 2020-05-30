@@ -30,7 +30,7 @@ Mongoose本质是一个对象文档模型（ODM）库，
 3. 使用"mongoose"连接数据库：
 `var db =mongoose.connect("mongodb://user:pass@localhost:port/database");`
 4. 执行下面代码检查默认数据库test，是否可以正常连接成功?
-```
+```js
 var mongoose =require("mongoose");
 var db =mongoose.connect("mongodb://localhost/m_data");
 db.connection.on("error",function (error) {
@@ -53,7 +53,7 @@ db.connection.once('close', ()=>{
 3. **Schema**—— 一种以文件形式存储的数据库模型骨架，无法直接通往数据库端，也就是说它不具备对数据库的操作能力，仅仅只是**定义数据的类型**，可以说是数据属性模型(传统意义的表结构)，又或着是“集合”的模型骨架。
 **mongoose中任何任何事物都是从Schema开始的**。每一个Schema对应MongoDB中的一个集合(collection)。Schema中定义了集合中文档(document)的样式。
 #### 定义一个Schema（表/ 模式对象）
-```
+```js
 //新建Schema 定义规则/字段的规则
 let Schema= mongoose.Schema;
 //定义personSchema的字段（规则）需要new一下 有点像构造函数的样子
@@ -62,7 +62,7 @@ let personSchema= new Schema({
     sex: String,
     age: Number
 });
-````
+```
 **基本属性类型有**： 
 * String
 *  Number
@@ -77,11 +77,11 @@ let personSchema= new Schema({
 
 #### 创建model（集合）
 
-```
+```js
 let personModel= mongoose.model('person', personSchema);
 ```
   person：数据库中的集合名称,当我们对其添加数据时如果person已经存在，则会保存到其目录下，如果未存在，则会创建person集合，然后在保存数据。
-```
+```js
 //4. 插入文档
 personModel.create({
     name: '张宁乐',
@@ -101,7 +101,7 @@ mongoose查找数据的一些方法：
 https://mongoosejs.com/docs/api.html#model_Model.find
 
 #### 插入多条数据
-```
+```js
 personModel.create([
     {name:'张逗逗',age: 2,sex: '男'},
     {name:'牛嘻嘻',age: 2,sex: '女'}
@@ -116,7 +116,7 @@ personModel.create([
 
 #### 查询
 * Model.find() 
-```
+```js
 personModel.find({name: '张宁乐'}, (err, data)=>{
     if(!err){
         console.log(data)
@@ -127,7 +127,7 @@ personModel.find({name: '张宁乐'}, (err, data)=>{
 ```
 #### 查询所有 
 * Model.find({}, callback) 
-```
+```js
 personModel.find({}, (err, data)=>{
     if(!err){
         console.log(data)
@@ -137,7 +137,7 @@ personModel.find({}, (err, data)=>{
 })
 ```
 也可以选择查找数据的条件（0隐藏 1显示 id默认显示） 和MongoDB在命令行中的使用方法一样  
-```
+```js
 //查询时只显示name 
 personModel.find({}, {name: 1, _id: 0}, (err,data)=>{
     if(!err){
@@ -148,7 +148,7 @@ personModel.find({}, {name: 1, _id: 0}, (err,data)=>{
 })
 ```
 在`find() `中  `skip`（查询开始的位置）和`limit`（增加的条数）也可以使用  
-```
+```js
 personModel.find({}, {name: 1, _id: 0, age: 1}, {skip: 0, limit: 2}, (err, data)=>{
     //只显示name 和 age   从第1开始 每次查询2条 
     if(!err){
@@ -173,7 +173,7 @@ personModel.find({}, {name: 1, _id: 0, age: 1}, {skip: 0, limit: 2}, (err, data)
 * Model.updateOne()
 * Model.watch()
 
-```
+```js
 personModel.update({name: '张宁乐'}, {$set: {age: 20}}, (err, data)=>{
    if(!err){
        console.log('修改成功！')
@@ -191,7 +191,7 @@ personModel.update({name: '张宁乐'}, {$set: {age: 20}}, (err, data)=>{
 * Model.remove()
 * Model.deleteMany()
 * Model.deleteOne()
-```
+```js
 personModel.remove({name:'牛嘻嘻'}, (err)=>{
     if(!err){
         console.log('删除成功！')
@@ -203,7 +203,7 @@ personModel.remove({name:'牛嘻嘻'}, (err)=>{
 ```
 #### 统计文档条数 
 * Model.count() 
-```
+```js
 personModel.count({}, (err,count)=>{
     if(!err){
         console.log('查询条数成功！ 一共：' + count + '条');
@@ -217,7 +217,7 @@ personModel.count({}, (err,count)=>{
 ###  Entity
  Entity—— 由Model创建的实体，使用save方法保存数据，Model和Entity的操作都能影响数据库的操作，但Model比Entity更具操作性。
 使用Model创建Entity，如下示例:
-```
+```js
 let mongoose= require('mongoose');
 let db= mongoose.connection('mongodb://localhost/m_data');
 db.on('open', ()=>{

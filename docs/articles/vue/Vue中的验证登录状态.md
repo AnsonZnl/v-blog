@@ -35,7 +35,7 @@ tags: ["Vue.js"]
 }
 ```
 login.vue中写好登陆框：
-```
+```html
 <template>
 <div>
     <p>用户名：<input type='text' v-model="userName"></p>

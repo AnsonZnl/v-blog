@@ -8,7 +8,7 @@ tags: ["小程序"]
 现在尝试把wx.request简单的封装了一下，调用一个request方法，每次请求自动携带header头信息，这样就省事多了，包含了常见的get post put delete 四种请求方法，支持Promise方式调用。
 
 ## 封装代码
-```
+```js
 class request {
   constructor() {
     this._baseUrl = 'https://xxx.com/api';
@@ -77,7 +77,7 @@ export default request
 
 ## 使用方法
 在app.js中引入：
-```
+```js
 import request from './request.js'
 App({
   myRequest(){
@@ -86,7 +86,7 @@ App({
 })
 ```
 然后在要使用的页面里引入使用即可：
-```
+```js
 const app = getApp();//新建页面时 默认引入
 const ajax = app.myRequest();//初始化一个的request() 实例
 

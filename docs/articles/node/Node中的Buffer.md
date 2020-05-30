@@ -20,7 +20,7 @@ tags: ["NodeJS"]
 `size `:新建的buffer期望的长度
 `fill `用来预填充新建的Buffer的值 默认0
 `encoding `: 编码格式  默认：utf-8
-```
+```js
 /*
         十六进制：00- ff
         十进制 ：0- 255
@@ -54,7 +54,7 @@ console.log(buffer2);
 1. Buffer.form(str):将一个字符串转换成buffer
 2. Buffer.alloc(size):创建一个指定大小的buffer
 3. Buffer.alloUnsafe(size):创建一个指定大小的buffer，但是可能包含敏感数据。
-```
+```js
 // 历史方法
 // let buffer = new Buffer(10);//类似 Array(10) 创建十个空间
 // console.log(buffer)// <Buffer 00 00 00 00 00 00 00 00 00 00>

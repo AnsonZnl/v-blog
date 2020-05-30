@@ -6,11 +6,11 @@ tagline: 种一棵树最好的时间在十年前，此时是现在。
 actionText: Get Started →
 actionLink: /articles/
 features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-footer: MIT Licensed | Copyright © 2017-present Znl
+- title: 博文
+  details: 博文以JavaScript、Vue、小程序、Node等技术为主。
+- title: 笔记
+  details: 在学习过程中整理的笔记，既可以加深记忆又可以查漏补缺。
+- title: 思考
+  details: 经常会对一些事情发问，又或者脑子里猛然蹦出的一些想法。
+footer: MIT Licensed | Copyright © 2017-2020 Znl
 ---

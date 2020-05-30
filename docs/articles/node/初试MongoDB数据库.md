@@ -112,7 +112,7 @@ https://www.cnblogs.com/chenlq/p/6515876.html
 如：`db.student.find();`
 回车 就能查询student下的所有数据
 插入多条数据：
-```
+```js
 db.集合名.insert([
     {name:"张三",age:18,sex:"man"},
     {name:"张三",age:18,sex:"man"},
@@ -132,7 +132,7 @@ db.集合名.insert([
 ###  使用可视化工具
 可视化工具 查找功能：
 插入(insert)语句：
-```
+```js
 db.student(集合名字).insert([
 {id:1,name:"znl",age:18},
 {id:1,name:"znl",age:18},
@@ -161,7 +161,7 @@ db.student(集合名字).insert([
 
 ###  数据库更新命令
 更新原有的字段的数据：
-```
+```js
 db.student.update({"name":"张三"},{$set:{
       name:"刘五",
       age:45
@@ -172,7 +172,7 @@ db.student.update({"name":"张三"},{$set:{
 **$set ：有这个字段就修改 没有这个字段就新增**
 
 删除一个字段：
-```
+```js
 db.student.update({"name":"张三"}，{$unset:{
     age:1
 }});
@@ -180,7 +180,7 @@ db.student.update({"name":"张三"}，{$unset:{
 查询`name:张三`的一条数据 然后删除它的age字段
 
 修改多条：
-```
+```js
 db.student.updateMany({"sex":"man"},{$set:{
     aihao:"玩游戏"
 }});
@@ -189,7 +189,7 @@ db.student.updateMany({"sex":"man"},{$set:{
 **$set ：有则修改 无则新增**
 
 更新多条数据方法2：
-```
+```js
 db.student.update({name:"张三"},{$set:{
       name:"王五"
 }}, {

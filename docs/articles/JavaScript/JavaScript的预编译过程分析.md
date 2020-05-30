@@ -7,7 +7,6 @@ tags: ["JavaScript"]
 ## 一、JavaScript概念
 JavaScript ( JS ) 是一个单线程、解释型的编程语言。
 
-
 ## 二、JavaScript语言特点
 ### 2.1 单线程
 JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。
@@ -33,20 +32,20 @@ JavaScript语言的一大特点就是单线程，也就是说，同一个时间�
 4. 在函数体里面找函数声明，值赋予函数体。
 
 所以如果遇到下面这种情况，当函数声明和变量声明名称相同时：
-```
+```js
 console.log(a); 
 var a= 1;
 function a(){};
 ```
 编译后的代码其实是：
-```
+```js
 var a;
 function a(){};
 console.log(a);
 a= 1;
 ```
 所以最后输出的是：
-```
+```js
 function a() {}
 ```
 
@@ -58,7 +57,7 @@ function a() {}
 **预编译前奏**
 1. imply global 即任何变量，如果未经声明就赋值，则此变量就位全局变量所有(全局域就是window) 。
 2. 一切声明的全局变量，全是window的属性。
-```
+```js
 <script>
   var a=2; 
   console.log(window.a);//2
@@ -80,7 +79,7 @@ function a() {}
 3. 解释执行
 
 练习：
-```
+```js
 function a(a){
     console.log(a);
     a= 2;

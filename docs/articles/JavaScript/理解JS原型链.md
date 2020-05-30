@@ -8,7 +8,7 @@ tags: ["JavaScript"]
 写一篇文章记录一下最近学习的感悟。
 ### 字面量创建对象
 我们通常创建一个对象无非就两种方式：
-```
+```js
  1. var obj= new Object();//new 一个Object的实例
  2. var obj= {};//对象字面量
 ```
@@ -23,7 +23,7 @@ tags: ["JavaScript"]
 
 除此之外和普通函数一摸一样。
 我们使用构造函数`Person`来创建两个实例对象：
-```
+```js
 function Person(name){
     this.name = name;
     this.sayName= function (){ alert(this.name) }
@@ -68,7 +68,7 @@ Person.prototype === person1.__proto__; // true
 > 原型链就是 对象的`__proto__`所连接的链状结构
 
 为了方便我们理解原型链，举一个简单的例子：
-```
+```js
 function F(){
     this.a = 1;
     this.b = 2;
@@ -112,7 +112,7 @@ console.log(o.d); // undefined
 **怎么让所有的实例对象都是用一个`sayName`方法呢**。    
 现在我们可以使用原型对象来解决这个问题了。    
 我们把`sayName`方法放到实例的原型对象上面，也就是`Person.prototype`上面来供所有实例使用：
-```
+```js
 function Person(name){
     this.name = name;
  }
@@ -136,12 +136,12 @@ person1.sayName === person2.sayName;//true
 > 每个原型对象都有一个 constructor 属性指向 关联的构造函数。
 
 还是上面那个例子：
-```
+```js
 console.log(Person.prototype.constructor);//Person(){ fun }
 ```
 需要注意的一点是，实例对象上没有`constructor`属性。
 但是：
-```
+```js
 console.log(person1.constructor) ;//Person(){ fun }
 ```
 得出这个结果很简单:
@@ -151,7 +151,7 @@ console.log(person1.constructor) ;//Person(){ fun }
 刚才我们说了创建对象的两种方式：字面量创建对象和使用`new`操作符创建对象。    
 这两种方式创建出来的对象都会继承`Object.prototyoe`上的方法。
 比如，我们使用字面量新创建一个对象`o`:
-```
+```js
 var o = {value: 1};
 o.toString();//"[object Object]"
 //查找过程： o --> o.__proto__ 找到返回
@@ -162,7 +162,7 @@ o.__proto__ === Object.prototype;//true
 
 **null**    
 既然对象都会继承自`Object.prototype`上面的方法，那它自己的原型又是什么呢。答案是`null`
-```
+```js
 Object.prototype.__prototype__ === null;//true
 ```
 

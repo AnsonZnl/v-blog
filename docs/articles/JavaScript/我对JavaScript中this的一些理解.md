@@ -13,7 +13,7 @@ tags: ["JavaScript"]
 ## this 指向的四种情况
 这四种情况基本涵盖了JavaScript中常见的`this`指向问题
 ### 1. 全局的函数调用，this指向window
-```
+```js
 var a = 1;
 function fn() {
    console.log(this.a);
@@ -22,7 +22,7 @@ fn();  // 1
 ```
 这种 情况下的`this`其实就是`window`对象，这个很好理解。
 但是还有一种情况，就是匿名函数的`this`也会指向`window`。
-```
+```js
 var a= 'window';
 var obj={a: 'object'}
 obj.fn=function(){
@@ -36,7 +36,7 @@ obj.fn()
 匿名函数的执行环境具有全局性，因此它的`this`对象通常指向windows。    
 如果对此有疑惑，可以看知乎上的答案：[知乎 - 匿名函数的this指向为什么是window?](https://www.zhihu.com/question/21958425)
 ### 2. 作为对象方法的调用，this指向该对象
-```
+```js
 var a ='window'
 var obj={
   a: 'object',
@@ -49,7 +49,7 @@ obj.fn(); // object
 ```
 当函数作为某个对象的方法调用时，`this`就指这个函数所在的对象。
 ### 3. 作为构造函数调用，this指向实例
-```
+```js
 function fn() {
 　this.x = 1;
 }
@@ -59,7 +59,7 @@ console.log(obj.x) // 1
 构造函数中的`this`，在通过`new`之后会生成一个新对象，this就指这个新对象。    
 对`new`有疑问的话，可以看 [冴羽的博客 JavaScript深入之new的模拟实现 ](https://github.com/mqyqingfeng/Blog/issues/13)
 ### 4. 使用call/apply/bind调用, this指向第一个参数
-```
+```js
 var obj1={
   a: 'boj1'
 }
@@ -83,7 +83,7 @@ fnBind();// 'obj3'
 `call/ apply / bind `都有一个共同的特点，就是改变`this`的指向，使用这种方法可以把别人的方法拿过来用到自己身上。
 
 第一个参数为 `null` 的时候，视为指向 `window`.
-```
+```js
 var a='window'
 var obj={
   a: 'boj',
@@ -98,7 +98,7 @@ obj.fn.call(null);// 'window'
 
 ## 深入理解
 正因为比较难理解，所以`this`指向也是面试时最容易遇到的问题，比如下面这道我曾遇到的一个面试题：
-```
+```js
 var length = 10;
 function fn(){
   console.log(this.length);
@@ -117,6 +117,6 @@ obj.method(fn, 1);
 所以，只有对`JavaScript`中的各项知识点深入理解，才会对`this`的概念越加清晰。
 
 参考：    
-[阮一峰 - Javascript 的 this 用法](http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html)    
-[前端开发博客 - 深入理解JavaScript this](http://caibaojian.com/deep-in-javascript-this.html)
+- [阮一峰 - Javascript 的 this 用法](http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html)    
+- [前端开发博客 - 深入理解JavaScript this](http://caibaojian.com/deep-in-javascript-this.html)
 

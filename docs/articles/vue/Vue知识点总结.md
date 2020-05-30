@@ -1,12 +1,7 @@
 
----
-title: Vue.js 知识点总结
-date: 2018-09-17 14:04:54
-tags: ["Vue.js","JavaScript"]
----
-### 基础知识：
+## 基础知识：
 
-*   vue的生命周期： `beforeCreate/created`、`beforeMount/mounted`、`beforeUpdate/updated`、`beforeDestory/destoryed`
+* vue的生命周期： `beforeCreate/created`、`beforeMount/mounted`、`beforeUpdate/updated`、`beforeDestory/destoryed`
 *   vue常用指令： `v-for`、`v-bind`（缩写形式`:prop`）、`v-on`(缩写形式`@click=’sss'`)、`v-if/v-else/v-else-if`、`v-model`、`v-once`、`v-html`、`v-show`...
 *   vue自定义组件：`Vue.component(‘componentName',{ props:[‘p1’,’p2’], template: ‘<li>{{ p1 }}</li>' })`
 *   vue常用实例方法和属性: `data/$data`、`methods/$methods`、`$el`、`computed`(计算属性)、`$watch`、`$set`、`$event`、`$emit`...
@@ -48,7 +43,7 @@ tags: ["Vue.js","JavaScript"]
 *   动态组件`<component>`配合属性`is`来实现
 *   解析DOM模板时需要注意下可能会有不生效的情况，需要使用is来传递组件
 
-### Vue组件
+## Vue组件
 
 *   全局注册/局部注册
 *   局部注册组件在子组件中不可用
@@ -80,7 +75,7 @@ tags: ["Vue.js","JavaScript"]
 *   `$forceUpdate`来强制更新view
 *   组件包含大量静态内容时，可使用`v-once`来标记，缓存静态内容
 
-### 过渡 & 动画
+## 过渡 & 动画
 
 *   `transition`组件控制过渡动画，可以给任何元素和组件添加进入/离开过渡
 *   当插入或删除`transition`中的元素时，vue会做如下处理
@@ -126,7 +121,7 @@ tags: ["Vue.js","JavaScript"]
     *   内部需要唯一`key`
 *   列表排序过渡，使用的是`FLIP`动画，使用类名`v-move`来定义class
 
-### 可复用性 & 组合
+## 可复用性 & 组合
 
 *   `mixins`混入属性发生冲突时，以组件数据优先（一层属性深度浅合并）
 *   `mixins`混入方法发生冲突时，会将函数合并为一个数组，优先执行混入方法，其次执行组件方法
@@ -150,7 +145,7 @@ tags: ["Vue.js","JavaScript"]
     *   **oldVnode** 上一个`Vnode`，仅在`update`和`componentUpdated`中使用
 *   指令接受所有合法的JavaScript表达式
 
-### 渲染函数 & JSX
+## 渲染函数 & JSX
 
 *   `render`函数接受`createElement`方法作为参数
 *   `createElement`方法的作用是创建一个虚拟节点(VNode)
@@ -165,7 +160,7 @@ tags: ["Vue.js","JavaScript"]
 *   函数式组件要求你自己实现同名特性的替换与智能合并
 *   Vue的模板实际编译成了`render`方法实现的`VNode`，可以使用`Vue.compile()`方法来输出编译结果
 
-### 插件
+## 插件
 
 *   插件会为vue提供全局的功能，包括但不限于以下几种：
 
@@ -179,7 +174,7 @@ tags: ["Vue.js","JavaScript"]
 *   在CommonJS中，应该始终显式的调用`Vue.use`方法
 *   社区插件列表[awesome-vue](https://github.com/vuejs/awesome-vue#components--libraries)
 
-### 过滤器
+## 过滤器
 
 ```
 {{ msg | filter }}
@@ -190,7 +185,7 @@ tags: ["Vue.js","JavaScript"]
 *   过滤器函数总是接收表达式的值作为第一个参数，过滤器可以有多个，值依次向后传递
 *   过滤器可以接收额外的参数
 
-### 构建 & 部署
+## 构建 & 部署
 
 *   ```<script>```标签引入```[vue.min.js](https://vuejs.org/js/vue.min.js)```
 *   使用`vue-cli`
