@@ -1,9 +1,4 @@
----
-title: 使用NodeJS写一个简单的api接口
-date: 2018-12-15 11:55:55
-tags: ["NodeJS"]
----
-
+# 使用NodeJS写一个简单的api接口
 ## 引入Http模块
 默认你已经安装了[Node.js](https://nodejs.org/en/)
 Node当中内置了Http模块；

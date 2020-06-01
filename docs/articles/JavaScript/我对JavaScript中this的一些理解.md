@@ -1,9 +1,4 @@
----
-title: 我对JavaScript中this的一些理解
-date: 2019-2-21 18:34:03
-tags: ["JavaScript"]
----
-
+# 我对JavaScript中this的一些理解
 因为日常工作中经常使用到`this`，而且在JavaScript中`this`的指向问题也很容易让人混淆一部分知识。    
 这段时间翻阅了一些书籍也查阅了网上一些资料然后结合自己的经验，为了能让自己更好的理解`this`，进而总结一篇文章。
 ## this 是什么

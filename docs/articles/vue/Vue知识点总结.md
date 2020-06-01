@@ -1,5 +1,5 @@
-
-## 基础知识：
+## Vue知识总结
+## 基础知识
 
 * vue的生命周期： `beforeCreate/created`、`beforeMount/mounted`、`beforeUpdate/updated`、`beforeDestory/destoryed`
 *   vue常用指令： `v-for`、`v-bind`（缩写形式`:prop`）、`v-on`(缩写形式`@click=’sss'`)、`v-if/v-else/v-else-if`、`v-model`、`v-once`、`v-html`、`v-show`...

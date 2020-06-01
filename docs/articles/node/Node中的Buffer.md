@@ -6,7 +6,7 @@ tags: ["NodeJS"]
 ---
 
 
-###  Buffer介绍
+##  Buffer介绍
 **为什么要用Buffer？**
  1. 在Node/ES6 出现之前，前端工程师只需要进行一些简单的额字符串或者ODM操作就可以满足业务需求了，所有对二进制数据比较陌生。
  2. 在node出现之后，前端工程师面对的技术场景发送了变化，可以深入到网络传输、文件操作、图片处理等领域。而这些操作与二进制数据紧密相关。
@@ -14,7 +14,7 @@ tags: ["NodeJS"]
 
 
 
-###  新建Buffer 
+##  新建Buffer 
 
 `Buffer.alloc(size[, fil[,encoding]])`
 `size `:新建的buffer期望的长度
@@ -48,7 +48,7 @@ buffer2[30]= 1;//这点和数组不同 溢出隐藏
 console.log(buffer2);
 ```
 
-###  Buffer使用
+##  Buffer使用
 
 **使用新方法使用Buffer **
 1. Buffer.form(str):将一个字符串转换成buffer

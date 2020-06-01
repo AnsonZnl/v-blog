@@ -1,10 +1,4 @@
----
-title: Hexo常用命令
-date: 2017-12-5 19:0:03
-categories:
-tags: ["Hexo"]
-keywords:
----
+
 
 ## hexo常用技能
 

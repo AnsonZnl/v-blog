@@ -1,8 +1,4 @@
----
-title: 使用Promise封装小程序wx.request
-date: 2019-11-30 16:20:14
-tags: ["小程序"]
----
+# 使用Promise封装小程序wx.request
 因为业务需要，每个http请求都要加上一个请求头，所以每次都要写很多重复的代码。
 
 现在尝试把wx.request简单的封装了一下，调用一个request方法，每次请求自动携带header头信息，这样就省事多了，包含了常见的get post put delete 四种请求方法，支持Promise方式调用。

@@ -1,9 +1,5 @@
----
-title: JavaScript对象/原型链
-date: 2018-7-19 20:45:23
-tags: ['JavaScipt']
----
-### 对象的原型是什么？
+# JavaScript对象/原型链
+## 对象的原型是什么？
 Object是引用类型，包括：Object 、Array 、Function 、Data等。
 **JavaScript对每个创建的对象都会设置一个原型，指向它的原型对象。**
 
@@ -31,7 +27,7 @@ foo ----> Function.prototype ----> Object.prototype ----> null
 ```
 由于Function.prototype定义了apply()等方法，因此，所有函数都可以调用apply()方法。
 
-### 用构造函数创建对象
+## 用构造函数创建对象
 用函数来创建对象比直接用var = {...}创建对象要方面的多，它就是构造函数。
 构造函数的首字母都应该大写
 首先先创建一个构造函数：

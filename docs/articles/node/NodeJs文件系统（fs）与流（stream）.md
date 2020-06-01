@@ -1,8 +1,4 @@
----
-title: NodeJS文件系统（fs）与流（stream）
-date: 2018-11-08 14:04:55
-tags: ["NodeJS"]
----
+# NodeJS文件系统（fs）与流（stream）
 
 ## **文件系统（File System）：**
 

@@ -1,9 +1,5 @@
----
-title: MongoDB中常用语句
-date: 2018-11-17 22:23:20
-tags: ["NodeJS","MongoDB"]
----
-### MOngoDB  删除语句
+# MongoDB中常用语句
+## MOngoDB  删除语句
 **delete()删除**
 1. 删除一个集合
 `db.collection.deleteOne()`
@@ -20,7 +16,7 @@ tags: ["NodeJS","MongoDB"]
 `db.student.remove({});`
 
 
-### 数据库假删除
+## 数据库假删除
 有时候用户删除操作的时候，需求是这样的，仅是隐藏这条数据，并不是真的从数据库中删除。
 这时候就用到假删除了，
 比如这个是张三发的两篇微博：
@@ -54,7 +50,7 @@ db.student.find({name:"张三",isDel:0});
 ![121b7fc4d6f40af1de843359cdbf585.png](https://upload-images.jianshu.io/upload_images/7072486-a917d02348ba2b6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 然后就可以实现假删除了。
-### 批量数据的操作和修改
+## 批量数据的操作和修改
 1. 向集合中插入10000个文档
 ```js
 var arr= [];
@@ -83,7 +79,7 @@ db.demos.find().skip(20).limit(10);//第三页 从20条开始 每查询10条
 ```
 
 
-### 集合中文档关系
+## 集合中文档关系
 
 1. 一对一（noe to noe）: 
 比如：人和身份证   老公和老婆
@@ -93,7 +89,7 @@ db.demos.find().skip(20).limit(10);//第三页 从20条开始 每查询10条
 比如：老师和学生
 
 
-####  一对一 
+###  一对一 
 以内嵌文档的形式体现，
 ```js
 //一对一
@@ -105,7 +101,7 @@ db.aAndb.insert([
 db.aAndb.find();
 ```
 
-#### 一对多
+### 一对多
 通过内嵌文档的形式实现或者通过集合的形式实现
 ```js
 //一对多  比如  微博 和 微博评论
@@ -147,7 +143,7 @@ db.comments.find({weibo_id: weibo_id});
 ```
 
 
-#### 多对多的关系
+### 多对多的关系
 比如：学生和老师
 可以通过多文档关联，
 ```js
@@ -222,9 +218,9 @@ db.students.find();
 db.teachers.find();
 ```
 
-###  排序和索引
+##  排序和索引
 
-#### 排序：
+### 排序：
 查询文档时，默认是按照_id的值进行排序的（升序）
 sort() 可以用来指定文档的排序规则，sort() 内部需要传递一个对象来指定文档的排序规则 ，其中1表示升序 ，-1表示降序
 limit skip sort 的顺序可以任意改变 ，运行时会自动调整。
@@ -238,7 +234,7 @@ db.section.find().sort({wages:1});
 db.section.find().sort({wages: 1},{_id: -1});
 
 ```
-#### 索引：
+### 索引：
 展示字段中 部分内容
 或者是提取这个字段内的部分内容
 在查询时 ，可以在第二个参数来设置查询的结果投影

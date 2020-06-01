@@ -1,10 +1,5 @@
----
-title: 小程序之iPhone x适配
-date: 2019-8-27 15:21:55
-tags: ["微信小程序"]
----
+#  小程序之iPhone x适配
 
-[参考小程序iPhone X 视适配](https://www.imooc.com/article/details/id/33529)
 
 在开发小程序时，可能需要适配iPhone x 的时候，你会发现底部的横线会出现遮挡，这时候就要处理下：
 
@@ -49,3 +44,5 @@ onLoad: function(){
   <view class="{{isIphoneX ? 'width30' : 'width10'}}"></view>
 ```
 然后在对应的wxss里设置好对应的类名就ok 了，比较简单方便。
+
+参考：[小程序iPhone X 视适配](https://www.imooc.com/article/details/id/33529)

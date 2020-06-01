@@ -7,10 +7,10 @@ actionText: Get Started →
 actionLink: /articles/
 features:
 - title: 博文
-  details: 博文以JavaScript、Vue、小程序、Node等技术为主。
+  details: 博文以JavaScript、Vue、小程序、Node、其他非技术类文章。
 - title: 笔记
   details: 在学习过程中整理的笔记，既可以加深记忆又可以查漏补缺。
-- title: 思考
-  details: 经常会对一些事情发问，又或者脑子里猛然蹦出的一些想法。
-footer: MIT Licensed | Copyright © 2017-2020 Znl
+- title: 日学
+  details: 学习靠的是一点一滴的积累，每日学到的东西，都会一一记录。
+footer: MIT Licensed | Copyright © 2017-present ansonZnl
 ---

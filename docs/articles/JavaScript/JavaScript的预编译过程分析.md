@@ -1,8 +1,4 @@
----
-title: JavaScript的预编译过程分析
-date: 2018-12-11 16:05:55
-tags: ["JavaScript"]
----
+#  JavaScript的预编译过程分析
 
 ## 一、JavaScript概念
 JavaScript ( JS ) 是一个单线程、解释型的编程语言。

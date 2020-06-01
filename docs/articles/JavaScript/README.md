@@ -1,5 +1,5 @@
 
-# 目录
+# JavaScript
 > 记录一些 Vue 学习和开发过程中遇到的问题
 - [JS创建对象的几种方法及优缺点](/articles/JavaScript/创建对象的几种方法及优缺点)
 - [关于跨域](/articles/JavaScript/关于跨域)

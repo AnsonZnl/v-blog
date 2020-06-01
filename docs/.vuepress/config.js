@@ -9,29 +9,42 @@ module.exports = {
     }]
   ],
   themeConfig: {
+    lastUpdated: false,
     nav: [{
         text: 'Home',
         link: '/'
       },
       {
         text: '博文',
-        link: '/articles/'
+        link: '/articles/',
+        items: [{
+          text: 'JavaScript',
+          link: '/articles/JavaScript/'
+        },{
+          text: 'Vue',
+          link: '/articles/Vue/'
+        },{
+          text: '小程序',
+          link: '/articles/小程序/'
+        },{
+          text: 'Node',
+          link: '/articles/Node/'
+        },{
+          text: '其他',
+          link: '/articles/其他/'
+        }]
       },
       {
         text: '笔记',
         link: '/notes/'
       },
       {
-        text: '思考',
-        link: '/thinks/'
+        text: '日学',
+        link: '/day-study/'
       },
       {
         text: '关于',
         link: '/about/'
-      },
-      {
-        text: '掘金',
-        link: 'https://juejin.im/user/5a2ff11451882559e225a140'
       },
       {
         text: 'Github',
@@ -49,7 +62,7 @@ module.exports = {
               path: '/articles/JavaScript/'
             },
             {
-              title: 'JS创建对象的几种方法及优缺点',
+              title: '创建对象的几种方法及优缺点',
               path: '/articles/JavaScript/创建对象的几种方法及优缺点'
             },
             {
@@ -79,10 +92,6 @@ module.exports = {
             {
               title: 'JavaScript对象原型链',
               path: '/articles/JavaScript/JavaScript对象原型链'
-            },
-            {
-              title: 'JavaScript中基本数据类型和引用数据类型的区别',
-              path: '/articles/JavaScript/JavaScript中基本数据类型和引用数据类型的区别'
             }
           ]
         },
@@ -103,7 +112,7 @@ module.exports = {
               path: '/articles/Vue/Vue中的验证登录状态'
             }
           ]
-        }, 
+        },
         {
           title: '小程序',
           path: '/articles/小程序/',
@@ -125,8 +134,8 @@ module.exports = {
               path: '/articles/小程序/微信小程序动态加载swiper时不显示的问题（爬坑）'
             },
             {
-              title: '微信小程序授权登录弹框 组件',
-              path: '/articles/小程序/微信小程序授权登录弹框 组件'
+              title: '微信小程序授权登录弹框组件',
+              path: '/articles/小程序/微信小程序授权登录弹框组件'
             },
             {
               title: '解决gif图片只渲染一次的问题',
@@ -149,10 +158,6 @@ module.exports = {
               path: '/articles/小程序/小程序中图片点击全屏-可滑动'
             },
             {
-              title: '在小程序中调用API',
-              path: '/articles/小程序/在小程序中调用API'
-            },
-            {
               title: '在小程序中自定义弹窗组件',
               path: '/articles/小程序/在小程序中自定义弹窗组件'
             },
@@ -169,6 +174,10 @@ module.exports = {
           children: [{
               title: 'Node目录',
               path: '/articles/Node/'
+            },
+            {
+              title: '初试MongoDB数据库',
+              path: '/articles/Node/初试MongoDB数据库'
             },
             {
               title: 'NodeJS安装和使用',
@@ -203,6 +212,15 @@ module.exports = {
               path: '/articles/Node/MongoDB中常用语句'
             }
           ]
+        },
+        {
+          title: '其他',
+          path: '/articles/其他/',
+          collapsable: true,
+          children: [{
+            title: '王者人生',
+            path: '/articles/其他/王者人生'
+          }]
         }
       ],
       "/about/": [

@@ -1,10 +1,5 @@
-
----
-title: 初试MongoDB数据库
-date: 2018-11-15 14:04:55
-tags: ["NodeJS","MongoDB"]
----
-###  数据库基本概念
+# 初试MongoDB数据库
+##  数据库基本概念
 **数据库（Database）基本概念：**
 
 1. 数据库就是按照一定的数据结构来组织，储存和管理数据的仓库
@@ -19,7 +14,7 @@ tags: ["NodeJS","MongoDB"]
 ![b6dde1cf95ae2a9ec8e68c0bf1719a3.png](https://upload-images.jianshu.io/upload_images/7072486-d9cbd052415afbf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-###数据库分类
+##数据库分类
 1. ROBMS（关系型数据库）：
      - 比如MySql 、sql server Oracle 等
      - 特点 通过一张张表来建立关联
@@ -51,7 +46,7 @@ MongoDB的逻辑结构是一种层次结构，主要由：文档(document)、集
 
 **非关系型数据库主要适合小微型架构的使用**
 
-###  数据库MongoDB安装
+##  数据库MongoDB安装
 
 MongoDB（非关系型数据库）：
 1. 适合快速开发web应用而设计的数据库系统
@@ -81,7 +76,7 @@ sc.exe create MongoDB binPath= "\"F:\MongoDB\Server\3.2\bin\mongod.exe\" --servi
 https://www.cnblogs.com/wzlblog/p/6364045.html
 https://www.cnblogs.com/chenlq/p/6515876.html
 
-###  在命令行中使用MongoDB插入命令
+##  在命令行中使用MongoDB插入命令
 
 **MongoDB的组成：**
 - 数据库 数据库是一个仓库 在仓库里可以放集合
@@ -125,11 +120,11 @@ db.集合名.insert([
 
 查看更多更多操作：http://www.mongodb.org.cn/manual/
 
-### MongoDB 可视化工具 【NOSQL】
+## MongoDB 可视化工具 【NOSQL】
 然而一直使用命令行操作是很麻烦的事情，所以推荐使用NOSQL可视化工具
 安装可视化工具下载地址：https://www.mongodbmanager.com/download
 
-###  使用可视化工具
+##  使用可视化工具
 可视化工具 查找功能：
 插入(insert)语句：
 ```js
@@ -159,7 +154,7 @@ db.student(集合名字).insert([
 `db.student.find({name:"张三"}).length();`
 返回符合name:"张三"的条数
 
-###  数据库更新命令
+##  数据库更新命令
 更新原有的字段的数据：
 ```js
 db.student.update({"name":"张三"},{$set:{
