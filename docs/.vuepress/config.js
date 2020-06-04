@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Anson\'s Blog',
   description: '种一棵树最好的时间在十年前，其次是现在。',
-  keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序，",
+  keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序",
   head: [
     ['link', {
       rel: 'icon',
@@ -60,6 +60,10 @@ module.exports = {
           children: [{
               title: '目录',
               path: '/articles/JavaScript/'
+            },
+            {
+              title: '使用Documentfragment优化DOM操作',
+              path: '/articles/JavaScript/使用Documentfragment优化DOM操作'
             },
             {
               title: '创建对象的几种方法及优缺点',
@@ -200,10 +204,6 @@ module.exports = {
               path: '/articles/Node/使用Node.js搭建静态服务器'
             },
             {
-              title: 'CommonJS模块化开发',
-              path: '/articles/Node/CommonJS模块化开发'
-            },
-            {
               title: 'MongoDB学习之Mongoose的使用',
               path: '/articles/Node/MongoDB学习之Mongoose的使用'
             },
@@ -223,10 +223,8 @@ module.exports = {
           }]
         }
       ],
-      "/about/": [
-        ['', '关于我'],
-        ['2019', '2019年度总结'],
-        ['2018', '2018年度总结'],
+      "/day-study/": [
+        ['', '目录'],
       ]
     }
   }

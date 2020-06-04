@@ -162,23 +162,10 @@ router.beforeEach((to, from, next)=>{
     }
 ```
 写一个清除`sessionStorag`的方法。
-一个简单的保存登录状态的小Demo。
+一个简单的保存登录状态的小 Demo。
 
 
 ---
 
 参考：
-- [腾讯云社区-Vue+SessionStorage实现简单的登录](https://cloud.tencent.com/developer/article/1199255)
-- [SF-从前后端分别学习——注册/登录流程2](https://segmentfault.com/a/1190000016084468)
-- [Vue-router实现单页面应用在没有登录情况下，自动跳转到登录页面](https://segmentfault.com/a/1190000009086403)
-- [vue+axios新手实践实现登陆](https://segmentfault.com/a/1190000015201803)
-- [Vue实战(四)登录/注册页的实现](https://segmentfault.com/a/1190000015637039)
-- [vue页面控制权限,vuex刷新保存状态、登录状态保存](https://segmentfault.com/a/1190000016047911)
-- [vue页面控制权限,vuex刷新保存状态、登录状态保存](https://segmentfault.com/a/1190000016047911)
-- [(vue.js)前后端分离的单页应用如何来判断当前用户的登录状态？](http://www.codes51.com/itwd/4114969.html)
-- [Vue登录注册，并保持登录状态](https://segmentfault.com/a/1190000016040068)
-- [vue登录注册及token验证](https://www.cnblogs.com/hcxy/p/7993724.html)
-- [Vue项目中实现用户登录及token验证](https://www.cnblogs.com/web-record/p/9876916.html)
-
-
-vue-router守卫导航官方文档：[vue-router导航守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB)
+- [vue-router导航守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB)
