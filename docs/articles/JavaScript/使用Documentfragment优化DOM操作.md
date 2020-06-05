@@ -14,7 +14,7 @@
 </ul>
 ```
 ## 方法一
-你可能第一个箱单的方法，也是最简单的方式：
+你可能第一个想到的方法，也是最简单的方式：
 ```js
 var parent = document.getElementById("parent");
 for (var i = 0; i < 10000; i++) {
