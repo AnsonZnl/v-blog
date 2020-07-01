@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue中的验证登录状态 | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.66238061.js" as="script"><link rel="preload" href="/assets/js/2.a452e104.js" as="script"><link rel="preload" href="/assets/js/30.49429c6b.js" as="script"><link rel="prefetch" href="/assets/js/10.160e4833.js"><link rel="prefetch" href="/assets/js/11.ecbd6546.js"><link rel="prefetch" href="/assets/js/12.41218c53.js"><link rel="prefetch" href="/assets/js/13.23881e11.js"><link rel="prefetch" href="/assets/js/14.afec3958.js"><link rel="prefetch" href="/assets/js/15.affb9308.js"><link rel="prefetch" href="/assets/js/16.1f5107ef.js"><link rel="prefetch" href="/assets/js/17.4222490c.js"><link rel="prefetch" href="/assets/js/18.84c7118c.js"><link rel="prefetch" href="/assets/js/19.cc38dcb1.js"><link rel="prefetch" href="/assets/js/20.755d150a.js"><link rel="prefetch" href="/assets/js/21.ea79dfe5.js"><link rel="prefetch" href="/assets/js/22.fbd18b4c.js"><link rel="prefetch" href="/assets/js/23.04d5039f.js"><link rel="prefetch" href="/assets/js/24.2fedb829.js"><link rel="prefetch" href="/assets/js/25.d6059bb3.js"><link rel="prefetch" href="/assets/js/26.3c2cdeb6.js"><link rel="prefetch" href="/assets/js/27.abfab4b6.js"><link rel="prefetch" href="/assets/js/28.f5d0f5ec.js"><link rel="prefetch" href="/assets/js/29.647d4ba9.js"><link rel="prefetch" href="/assets/js/3.fa8eceb6.js"><link rel="prefetch" href="/assets/js/31.3c6f4a21.js"><link rel="prefetch" href="/assets/js/32.df24a2e9.js"><link rel="prefetch" href="/assets/js/33.0faf219c.js"><link rel="prefetch" href="/assets/js/34.6018c1e2.js"><link rel="prefetch" href="/assets/js/35.1f1d7dab.js"><link rel="prefetch" href="/assets/js/36.6e7011a4.js"><link rel="prefetch" href="/assets/js/37.26d45d3c.js"><link rel="prefetch" href="/assets/js/38.86d28042.js"><link rel="prefetch" href="/assets/js/39.bf13a6f7.js"><link rel="prefetch" href="/assets/js/4.9ccf21a1.js"><link rel="prefetch" href="/assets/js/40.299235e3.js"><link rel="prefetch" href="/assets/js/41.69f91647.js"><link rel="prefetch" href="/assets/js/42.838244d0.js"><link rel="prefetch" href="/assets/js/43.0c7f6778.js"><link rel="prefetch" href="/assets/js/44.cfc7a952.js"><link rel="prefetch" href="/assets/js/45.266d5f79.js"><link rel="prefetch" href="/assets/js/46.8f6a1036.js"><link rel="prefetch" href="/assets/js/47.617d8432.js"><link rel="prefetch" href="/assets/js/48.724aacf3.js"><link rel="prefetch" href="/assets/js/49.deece3bc.js"><link rel="prefetch" href="/assets/js/5.a6aa705b.js"><link rel="prefetch" href="/assets/js/50.c4a150e7.js"><link rel="prefetch" href="/assets/js/51.a9a5bcb1.js"><link rel="prefetch" href="/assets/js/6.959a977c.js"><link rel="prefetch" href="/assets/js/7.fe624e50.js"><link rel="prefetch" href="/assets/js/8.592574c8.js"><link rel="prefetch" href="/assets/js/9.e5d20637.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable"><span>JavaScript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable router-link-active open"><span>Vue</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/Vue/Vue知识点总结.html" class="sidebar-link">Vue知识点总结</a></li><li><a href="/articles/Vue/Vue中的验证登录状态.html" class="active sidebar-link">Vue中的验证登录状态</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/Vue/Vue中的验证登录状态.html#vue项目中实现用户登录及token验证" class="sidebar-link">Vue项目中实现用户登录及token验证</a></li><li class="sidebar-sub-header"><a href="/articles/Vue/Vue中的验证登录状态.html#使用easy-mock模拟用户数据" class="sidebar-link">使用easy-mock模拟用户数据</a></li><li class="sidebar-sub-header"><a href="/articles/Vue/Vue中的验证登录状态.html#配置路由" class="sidebar-link">配置路由</a></li><li class="sidebar-sub-header"><a href="/articles/Vue/Vue中的验证登录状态.html#导航卫士" class="sidebar-link">导航卫士</a></li><li class="sidebar-sub-header"><a href="/articles/Vue/Vue中的验证登录状态.html#用sessionstorage存储用户token" class="sidebar-link">用sessionStorage存储用户token</a></li><li class="sidebar-sub-header"><a href="/articles/Vue/Vue中的验证登录状态.html#注销" class="sidebar-link">注销</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable"><span>小程序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable"><span>Node</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue中的验证登录状态"><a href="#vue中的验证登录状态" class="header-anchor">#</a> Vue中的验证登录状态</h1> <h2 id="vue项目中实现用户登录及token验证"><a href="#vue项目中实现用户登录及token验证" class="header-anchor">#</a> Vue项目中实现用户登录及token验证</h2> <p>先说一下我的实现步骤：</p> <ol><li>使用<code>easy-mock</code>新建登录接口，模拟用户数据</li> <li>使用<code>axios</code>请求登录接口，匹配账号和密码</li> <li>账号密码验证后， 拿到<code>token</code>，将token存储到<code>sessionStorage</code>中，并跳转到首页</li> <li>前端每次跳转时，就使用导航守卫(vue-router.beforeEach)判断 <code>sessionStorage</code> 中有无 <code>token</code>，没有就跳转到登录页面，有则跳转到对应路由页面。</li> <li>注销后，就清除<code>sessionStorage</code>里的<code>token</code>信息并跳转到登录页面</li></ol> <h2 id="使用easy-mock模拟用户数据"><a href="#使用easy-mock模拟用户数据" class="header-anchor">#</a> 使用easy-mock模拟用户数据</h2> <p>我用的是<a href="https://easy-mock.com/" target="_blank" rel="noopener noreferrer">easy-mock<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>,新建了一个接口，用于模拟用户数据:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token string">&quot;error_code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      <span class="token string">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;usertitle&quot;</span><span class="token operator">:</span> <span class="token string">&quot;管理员&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;token&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@date(T)&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token string">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">'2'</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;usertitle&quot;</span><span class="token operator">:</span> <span class="token string">&quot;超级管理员&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;root&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;root&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;token&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@date(T)&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>login.vue中写好登陆框：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>用户名：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>text<span class="token punctuation">'</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>userName<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>密码：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>text<span class="token punctuation">'</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>passWord<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>login()<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>登录<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+ <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+          userName<span class="token operator">:</span><span class="token string">'root'</span><span class="token punctuation">,</span>
+          passWord<span class="token operator">:</span><span class="token string">'root'</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>然后下载axios：<code>npm install axios --save</code>,用来请求刚刚定义好的easy-mock接口：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">const</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'https://easy-mock.com/mock/5c7cd0f89d0184e94358d/museum/login'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+          <span class="token keyword">var</span> res <span class="token operator">=</span>response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>data<span class="token punctuation">,</span>
+              len <span class="token operator">=</span> res<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
+              userNameArr<span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              passWordArr<span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              ses<span class="token operator">=</span> window<span class="token punctuation">.</span>sessionStorage<span class="token punctuation">;</span> 
+          <span class="token comment">// 拿到所有的username</span>
+          <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            userNameArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            passWordArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>userNameArr<span class="token punctuation">,</span> passWordArr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>userNameArr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>userName<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'账号不存在！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">var</span> index <span class="token operator">=</span> userNameArr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>userName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>passWordArr<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span>passWord<span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token comment">// 把token放在sessionStorage中</span>
+              ses<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">,</span> res<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token keyword">this</span><span class="token punctuation">.</span>$parent<span class="token punctuation">.</span>$data<span class="token punctuation">.</span>userTitle <span class="token operator">=</span> res<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>usertitle<span class="token punctuation">;</span>
+              <span class="token comment">//验证成功进入首页</span>
+              <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">startHacking</span> <span class="token punctuation">(</span><span class="token string">'登录成功！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token comment">//跳转到首页</span>
+              <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/index'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token comment">// console.log(this.$router);</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+              <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'密码错误！'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'连接数据库失败！'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+</code></pre></div><p>这一步最重要的是当账号密码正确时，把请求回来的<code>token</code>放在<code>sessionStorage</code>中，</p> <h2 id="配置路由"><a href="#配置路由" class="header-anchor">#</a> 配置路由</h2> <p>然后配置路由新加一个meta属性：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token punctuation">{</span>
+      path<span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token string">'login'</span><span class="token punctuation">,</span>
+      component<span class="token operator">:</span> login<span class="token punctuation">,</span>
+      meta<span class="token operator">:</span><span class="token punctuation">{</span>
+        needLogin<span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      path<span class="token operator">:</span> <span class="token string">'/index'</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token string">'index'</span><span class="token punctuation">,</span>
+      component<span class="token operator">:</span> index<span class="token punctuation">,</span>
+      meta<span class="token operator">:</span><span class="token punctuation">{</span>
+        needLogin<span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>判断每次路由跳转的链接是否需要登录，</p> <h2 id="导航卫士"><a href="#导航卫士" class="header-anchor">#</a> 导航卫士</h2> <p>在<code>main.js</code>中配置一个全局前置钩子函数：<code>router.beforeEach（）</code>，他的作用就是在每次路由切换的时候调用
+这个钩子方法会接收三个参数：to、from、next。
+<code>to</code>：Route：即将要进入的目标的路由对象，
+<code>from</code>：Route：当前导航正要离开的路由，
+<code>next</code>：Function：个人理解这个方法就是函数结束后执行什么，先看官方解释
+1.<code>next()</code>：进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是confirmed（确认的），
+2.<code>next(false)</code>：中断当前的导航。如果浏览器的url改变了（可能是用户手动或浏览器后退按钮），那么url地址会重置到from路由对应的地址。
+3.<code>next('/')</code>或<code>next({path:'/'})</code>：跳转到一个不同的地址。当前导航被中断，进入一个新的导航。</p> <h2 id="用sessionstorage存储用户token"><a href="#用sessionstorage存储用户token" class="header-anchor">#</a> 用sessionStorage存储用户token</h2> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token comment">//路由守卫</span>
+router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token punctuation">,</span> next</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token comment">//路由中设置的needLogin字段就在to当中 </span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>sessionStorage<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>sessionStorage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// console.log(to.path) //每次跳转的路径</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//登录状态下 访问login.vue页面 会跳到index.vue</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">{</span>path<span class="token operator">:</span> <span class="token string">'/index'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token comment">// 如果没有session ,访问任何页面。都会进入到 登录页</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">'/'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 如果是登录页面的话，直接next() --&gt;解决注销后的循环执行bug</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token comment">// 否则 跳转到登录页面</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>这里用了<code>router.beforeEach</code> <a href="https://router.vuejs.org/zh/guide/advanced/" target="_blank" rel="noopener noreferrer">vue-router导航守卫<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+每次跳转时都会判断<code>sessionStorage</code>中是否有<code>token</code>值，如果有则能正常跳转，如果没有那么就返回登录页面。</p> <h2 id="注销"><a href="#注销" class="header-anchor">#</a> 注销</h2> <p>至此就完成了一个简单的登录状态了，浏览器关闭后<code>sessionStorage</code>会清空的，所以当用户关闭浏览器再打开是需要重新登录的</p> <p>当然也可以手动清除<code>sessionStorage</code>，清除动作可以做成注销登录，这个就简单了。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token function">loginOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 注销后 清除session信息 ，并返回登录页</span>
+    window<span class="token punctuation">.</span>sessionStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>common<span class="token punctuation">.</span><span class="token function">startHacking</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">'success'</span><span class="token punctuation">,</span> <span class="token string">'注销成功！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/index'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+</code></pre></div><p>写一个清除<code>sessionStorag</code>的方法。
+一个简单的保存登录状态的小 Demo。</p> <hr> <p>参考：</p> <ul><li><a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB" target="_blank" rel="noopener noreferrer">vue-router导航守卫<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/Vue/Vue知识点总结.html" class="prev">
+        Vue知识点总结
+      </a></span> <span class="next"><a href="/articles/小程序/清除小程序button的默认样式.html">
+        清除小程序button的默认样式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.66238061.js" defer></script><script src="/assets/js/2.a452e104.js" defer></script><script src="/assets/js/30.49429c6b.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NodeJS文件系统（fs）与流（stream） | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.66238061.js" as="script"><link rel="preload" href="/assets/js/2.a452e104.js" as="script"><link rel="preload" href="/assets/js/21.ea79dfe5.js" as="script"><link rel="prefetch" href="/assets/js/10.160e4833.js"><link rel="prefetch" href="/assets/js/11.ecbd6546.js"><link rel="prefetch" href="/assets/js/12.41218c53.js"><link rel="prefetch" href="/assets/js/13.23881e11.js"><link rel="prefetch" href="/assets/js/14.afec3958.js"><link rel="prefetch" href="/assets/js/15.affb9308.js"><link rel="prefetch" href="/assets/js/16.1f5107ef.js"><link rel="prefetch" href="/assets/js/17.4222490c.js"><link rel="prefetch" href="/assets/js/18.84c7118c.js"><link rel="prefetch" href="/assets/js/19.cc38dcb1.js"><link rel="prefetch" href="/assets/js/20.755d150a.js"><link rel="prefetch" href="/assets/js/22.fbd18b4c.js"><link rel="prefetch" href="/assets/js/23.04d5039f.js"><link rel="prefetch" href="/assets/js/24.2fedb829.js"><link rel="prefetch" href="/assets/js/25.d6059bb3.js"><link rel="prefetch" href="/assets/js/26.3c2cdeb6.js"><link rel="prefetch" href="/assets/js/27.abfab4b6.js"><link rel="prefetch" href="/assets/js/28.f5d0f5ec.js"><link rel="prefetch" href="/assets/js/29.647d4ba9.js"><link rel="prefetch" href="/assets/js/3.fa8eceb6.js"><link rel="prefetch" href="/assets/js/30.49429c6b.js"><link rel="prefetch" href="/assets/js/31.3c6f4a21.js"><link rel="prefetch" href="/assets/js/32.df24a2e9.js"><link rel="prefetch" href="/assets/js/33.0faf219c.js"><link rel="prefetch" href="/assets/js/34.6018c1e2.js"><link rel="prefetch" href="/assets/js/35.1f1d7dab.js"><link rel="prefetch" href="/assets/js/36.6e7011a4.js"><link rel="prefetch" href="/assets/js/37.26d45d3c.js"><link rel="prefetch" href="/assets/js/38.86d28042.js"><link rel="prefetch" href="/assets/js/39.bf13a6f7.js"><link rel="prefetch" href="/assets/js/4.9ccf21a1.js"><link rel="prefetch" href="/assets/js/40.299235e3.js"><link rel="prefetch" href="/assets/js/41.69f91647.js"><link rel="prefetch" href="/assets/js/42.838244d0.js"><link rel="prefetch" href="/assets/js/43.0c7f6778.js"><link rel="prefetch" href="/assets/js/44.cfc7a952.js"><link rel="prefetch" href="/assets/js/45.266d5f79.js"><link rel="prefetch" href="/assets/js/46.8f6a1036.js"><link rel="prefetch" href="/assets/js/47.617d8432.js"><link rel="prefetch" href="/assets/js/48.724aacf3.js"><link rel="prefetch" href="/assets/js/49.deece3bc.js"><link rel="prefetch" href="/assets/js/5.a6aa705b.js"><link rel="prefetch" href="/assets/js/50.c4a150e7.js"><link rel="prefetch" href="/assets/js/51.a9a5bcb1.js"><link rel="prefetch" href="/assets/js/6.959a977c.js"><link rel="prefetch" href="/assets/js/7.fe624e50.js"><link rel="prefetch" href="/assets/js/8.592574c8.js"><link rel="prefetch" href="/assets/js/9.e5d20637.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link router-link-active">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link router-link-active">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable"><span>JavaScript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable"><span>小程序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable router-link-active open"><span>Node</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/Node/初试MongoDB数据库.html" class="sidebar-link">初试MongoDB数据库</a></li><li><a href="/articles/Node/NodeJS安装和使用.html" class="sidebar-link">NodeJS安装和使用</a></li><li><a href="/articles/Node/NodeJs文件系统（fs）与流（stream）.html" class="active sidebar-link">NodeJs文件系统（fs）与流（stream）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/Node/NodeJs文件系统（fs）与流（stream）.html#文件系统（file-system）：" class="sidebar-link">文件系统（File System）：</a></li></ul></li><li><a href="/articles/Node/使用Node.js写一个简单的api接口.html" class="sidebar-link">使用Node.js写一个简单的api接口</a></li><li><a href="/articles/Node/使用Express搭建一个简单的服务器.html" class="sidebar-link">使用Express搭建一个简单的服务器</a></li><li><a href="/articles/Node/使用Node.js搭建静态服务器.html" class="sidebar-link">使用Node.js搭建静态服务器</a></li><li><a href="/articles/Node/MongoDB学习之Mongoose的使用.html" class="sidebar-link">MongoDB学习之Mongoose的使用</a></li><li><a href="/articles/Node/MongoDB中常用语句.html" class="sidebar-link">MongoDB中常用语句</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nodejs文件系统（fs）与流（stream）"><a href="#nodejs文件系统（fs）与流（stream）" class="header-anchor">#</a> NodeJS文件系统（fs）与流（stream）</h1> <h2 id="文件系统（file-system）："><a href="#文件系统（file-system）：" class="header-anchor">#</a> <strong>文件系统（File System）：</strong></h2> <ol><li>在Node中，文件系统的交互是非常重要的，服务器的本质就是将本地的文件发送给客户端，</li> <li>Node通过fs模块来和文件系统进行交互，该模块提供了一些标准的文件访问API类打开、读取、写入文件、以及与其交互。</li> <li>要是用fs模块，首先要从核心模块中加载； 使用 const fs= require('fs') ; 来引入</li></ol> <h3 id="fs使用特点："><a href="#fs使用特点：" class="header-anchor">#</a> fs使用特点：</h3> <ol><li>fs模块中的所有操作都有两种形式可供选择同步和异步，</li> <li>同步文件系统会阻塞程序的执行，也就是除非操作完毕，否则不会向下执行代码。</li> <li>异步文件系统不会阻塞程序的执行，而是在操作完成时，通过回调函数将结果返回。</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//1. 引入模块</span>
+<span class="token keyword">const</span> fs<span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;fs&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// console.log(fs)</span>
+
+<span class="token comment">//2. 打开文件</span>
+<span class="token comment">// fs.open 异步读取（通常用异步 需设置回调函数）  </span>
+<span class="token comment">// fs.openSync 同步读取（读取时会阻塞线程）</span>
+
+<span class="token keyword">let</span> hello <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">openSync</span><span class="token punctuation">(</span><span class="token string">&quot;hello.txt&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;w&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//                     不存在会自动新建</span>
+
+<span class="token comment">//3. 写入内容</span>
+fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span>hello<span class="token punctuation">,</span><span class="token string">'hello word!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//4. 保存并退出</span>
+fs<span class="token punctuation">.</span><span class="token function">closeSync</span><span class="token punctuation">(</span>hello<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B631" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="文件操作："><a href="#文件操作：" class="header-anchor">#</a> 文件操作：</h3> <ol><li>打开文件：
+<code>fs.open(path,flags[,mode],callback)</code>
+异步打开 异步都是回调 回调嵌套回调
+<code>fs.openSync(path,flags[,mode])</code>
+同步打开</li></ol> <p>文件标记（flags）： <a href="http://nodejs.cn/api/fs.html#fs_fs_open_path_flags_mode_callback" target="_blank" rel="noopener noreferrer">http://nodejs.cn/api/fs.html#fs_fs_open_path_flags_mode_callback<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>一、同步打开文件</p> <div class="language-js extra-class"><pre class="language-js"><code>    <span class="token comment">//1. 引入模块 </span>
+    <span class="token keyword">let</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//2.打开文件 同步</span>
+    <span class="token keyword">var</span> fd<span class="token operator">=</span>fs<span class="token punctuation">.</span><span class="token function">openSync</span><span class="token punctuation">(</span><span class="token string">'1.txt'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//3.写入内容</span>
+    fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span><span class="token string">&quot;hello world!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    <span class="token comment">//4. 保存并关闭</span>
+    fs<span class="token punctuation">.</span><span class="token function">closeSync</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>二、异步打开文件</p> <div class="language-js extra-class"><pre class="language-js"><code>   <span class="token comment">//1.引入模块</span>
+   <span class="token keyword">let</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token comment">//2. 打开文件</span>
+   fs<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'1.txt'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> fd</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+       <span class="token comment">//2.1判断是否出错</span>
+       <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+           <span class="token comment">//正确 2.2写入文件</span>
+           fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token string">&quot;今天天.....气真好！&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+                <span class="token comment">//2.2.1 写入成功</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'写入成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment">//2.3 关闭文件</span>
+                fs<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'文件以保存并关闭'</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                        <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+           <span class="token punctuation">}</span><span class="token punctuation">)</span>
+       <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+           <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B632" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="使用文件流写入"><a href="#使用文件流写入" class="header-anchor">#</a> 使用文件流写入</h3> <p>文件流写入： <a href="http://nodejs.cn/api/fs.html#fs_fs_createwritestream_path_options" target="_blank" rel="noopener noreferrer">http://nodejs.cn/api/fs.html#fs_fs_createwritestream_path_options<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//同步操作</span>
+<span class="token comment">//1. 引入模块</span>
+<span class="token keyword">let</span> fs<span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//2.建立通道</span>
+<span class="token keyword">let</span> ws <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span><span class="token string">'fsw.txt'</span><span class="token punctuation">)</span>
+
+<span class="token comment">//3.打开通道</span>
+ws<span class="token punctuation">.</span><span class="token function">once</span><span class="token punctuation">(</span><span class="token string">'open'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'通道已经打开'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+ws<span class="token punctuation">.</span><span class="token function">once</span><span class="token punctuation">(</span><span class="token string">'close'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'通道已经关闭'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">//4\. 写入内容</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'我爱你，'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'我爱你，'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'我爱你，'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B633" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="读写文件："><a href="#读写文件：" class="header-anchor">#</a> 读写文件：</h3> <p>文档地址：<a href="http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback" target="_blank" rel="noopener noreferrer">http://nodejs.cn/api/fs.html#fs_fs_readfile_path_options_callback<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+读取文档：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//1. 引入模块</span>
+<span class="token keyword">let</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//2. 读取文件</span>
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">'source/hello.txt'</span><span class="token punctuation">,</span><span class="token string">'utf8'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>data</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token comment">//判断是否成功</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//</span>
+        <span class="token comment">// console.log(data.toString());</span>
+        <span class="token comment">//data 默认读取的是二进制 使用toString() 方法转换成</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+读取图片：
+
+<span class="token comment">//3. 读取图片</span>
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">&quot;source/psb.jpg&quot;</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>data</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token comment">//判断是否成功</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//写入图片</span>
+        fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">'img.jpg'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'写入成功！'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><p><a href="https://github.com/AnsonZnl/StudyNodeJS/blob/master/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E6%97%B630-%E8%AF%BE%E6%97%B634%E7%AC%94%E8%AE%B0.md#%E8%AF%BE%E6%97%B634" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><strong>读取视频:</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//1. 引入模块</span>
+<span class="token keyword">let</span> fs<span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//2. 读取视频</span>
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">'source/cddbb.mp4'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 写入视频</span>
+        fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">'nmx.mp4'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'写入成功！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">//3. 流式文件的读入（批量文件处理）</span>
+<span class="token keyword">let</span> re<span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createReadStream</span><span class="token punctuation">(</span><span class="token string">'source/cddbb.mp4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//建立读取流</span>
+<span class="token keyword">let</span> ws<span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span><span class="token string">'新建的视频.mp4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//建立写入流</span>
+
+<span class="token comment">//4. 创建管道</span>
+re<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>ws<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//文件流传输</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'文件流传输完成'</span><span class="token punctuation">)</span>
+</code></pre></div><p>参考：<a href="https://www.jb51.net/article/133553.htm" target="_blank" rel="noopener noreferrer">详解NodeJS文件系统fs<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+我的GitHub总结的<a href="https://github.com/AnsonZnl/StudyNodeJS" target="_blank" rel="noopener noreferrer">NodeJS笔记<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/Node/NodeJS安装和使用.html" class="prev">
+        NodeJS安装和使用
+      </a></span> <span class="next"><a href="/articles/Node/使用Node.js写一个简单的api接口.html">
+        使用Node.js写一个简单的api接口
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.66238061.js" defer></script><script src="/assets/js/2.a452e104.js" defer></script><script src="/assets/js/21.ea79dfe5.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何在小程序中使用async/await | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.66238061.js" as="script"><link rel="preload" href="/assets/js/2.a452e104.js" as="script"><link rel="preload" href="/assets/js/34.6018c1e2.js" as="script"><link rel="prefetch" href="/assets/js/10.160e4833.js"><link rel="prefetch" href="/assets/js/11.ecbd6546.js"><link rel="prefetch" href="/assets/js/12.41218c53.js"><link rel="prefetch" href="/assets/js/13.23881e11.js"><link rel="prefetch" href="/assets/js/14.afec3958.js"><link rel="prefetch" href="/assets/js/15.affb9308.js"><link rel="prefetch" href="/assets/js/16.1f5107ef.js"><link rel="prefetch" href="/assets/js/17.4222490c.js"><link rel="prefetch" href="/assets/js/18.84c7118c.js"><link rel="prefetch" href="/assets/js/19.cc38dcb1.js"><link rel="prefetch" href="/assets/js/20.755d150a.js"><link rel="prefetch" href="/assets/js/21.ea79dfe5.js"><link rel="prefetch" href="/assets/js/22.fbd18b4c.js"><link rel="prefetch" href="/assets/js/23.04d5039f.js"><link rel="prefetch" href="/assets/js/24.2fedb829.js"><link rel="prefetch" href="/assets/js/25.d6059bb3.js"><link rel="prefetch" href="/assets/js/26.3c2cdeb6.js"><link rel="prefetch" href="/assets/js/27.abfab4b6.js"><link rel="prefetch" href="/assets/js/28.f5d0f5ec.js"><link rel="prefetch" href="/assets/js/29.647d4ba9.js"><link rel="prefetch" href="/assets/js/3.fa8eceb6.js"><link rel="prefetch" href="/assets/js/30.49429c6b.js"><link rel="prefetch" href="/assets/js/31.3c6f4a21.js"><link rel="prefetch" href="/assets/js/32.df24a2e9.js"><link rel="prefetch" href="/assets/js/33.0faf219c.js"><link rel="prefetch" href="/assets/js/35.1f1d7dab.js"><link rel="prefetch" href="/assets/js/36.6e7011a4.js"><link rel="prefetch" href="/assets/js/37.26d45d3c.js"><link rel="prefetch" href="/assets/js/38.86d28042.js"><link rel="prefetch" href="/assets/js/39.bf13a6f7.js"><link rel="prefetch" href="/assets/js/4.9ccf21a1.js"><link rel="prefetch" href="/assets/js/40.299235e3.js"><link rel="prefetch" href="/assets/js/41.69f91647.js"><link rel="prefetch" href="/assets/js/42.838244d0.js"><link rel="prefetch" href="/assets/js/43.0c7f6778.js"><link rel="prefetch" href="/assets/js/44.cfc7a952.js"><link rel="prefetch" href="/assets/js/45.266d5f79.js"><link rel="prefetch" href="/assets/js/46.8f6a1036.js"><link rel="prefetch" href="/assets/js/47.617d8432.js"><link rel="prefetch" href="/assets/js/48.724aacf3.js"><link rel="prefetch" href="/assets/js/49.deece3bc.js"><link rel="prefetch" href="/assets/js/5.a6aa705b.js"><link rel="prefetch" href="/assets/js/50.c4a150e7.js"><link rel="prefetch" href="/assets/js/51.a9a5bcb1.js"><link rel="prefetch" href="/assets/js/6.959a977c.js"><link rel="prefetch" href="/assets/js/7.fe624e50.js"><link rel="prefetch" href="/assets/js/8.592574c8.js"><link rel="prefetch" href="/assets/js/9.e5d20637.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable"><span>JavaScript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable open"><span>小程序</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/小程序/清除小程序button的默认样式.html" class="sidebar-link">清除小程序button的默认样式</a></li><li><a href="/articles/小程序/使用Promise封装小程序wx.request.html" class="sidebar-link">使用Promise封装小程序wx.request</a></li><li><a href="/articles/小程序/微信小程序动态加载swiper时不显示的问题（爬坑）.html" class="sidebar-link">微信小程序动态加载swiper时不显示的问题（爬坑）</a></li><li><a href="/articles/小程序/微信小程序授权登录弹框组件.html" class="sidebar-link">微信小程序授权登录弹框组件</a></li><li><a href="/articles/小程序/解决gif图片只渲染一次的问题.html" class="sidebar-link">解决gif图片只渲染一次的问题</a></li><li><a href="/articles/小程序/小程序-实现蒙版弹出窗.html" class="sidebar-link">小程序-实现蒙版弹出窗</a></li><li><a href="/articles/小程序/小程序之瀑布流布局.html" class="sidebar-link">小程序之瀑布流布局</a></li><li><a href="/articles/小程序/小程序之iPhoneX适配.html" class="sidebar-link">小程序之iPhoneX适配</a></li><li><a href="/articles/小程序/小程序中图片点击全屏-可滑动.html" class="sidebar-link">小程序中图片点击全屏-可滑动</a></li><li><a href="/articles/小程序/在小程序中自定义弹窗组件.html" class="sidebar-link">在小程序中自定义弹窗组件</a></li><li><a href="/articles/小程序/在小程序中使用async&amp;await.html" class="active sidebar-link">在小程序中使用async&amp;await</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中使用async&amp;await.html#为什么要使用async-await" class="sidebar-link">为什么要使用async/await</a></li><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中使用async&amp;await.html#一、使用callback" class="sidebar-link">一、使用Callback</a></li><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中使用async&amp;await.html#二、使用promise" class="sidebar-link">二、使用Promise</a></li><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中使用async&amp;await.html#三、使用async、await" class="sidebar-link">三、使用async、await</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable"><span>Node</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何在小程序中使用async-await"><a href="#如何在小程序中使用async-await" class="header-anchor">#</a> 如何在小程序中使用async/await</h1> <h2 id="为什么要使用async-await"><a href="#为什么要使用async-await" class="header-anchor">#</a> 为什么要使用async/await</h2> <p>假如两个异步，第一个获取列表，第二个获取列表里的第一个的详情。这时候应该怎么做？</p> <ol><li><p>在第一个请求之后里写第二个请求，这可能是你第一个想法，可是这个深度是5层、10层呢？代码将会变的无法维护，也就是我们俗称的回调地狱</p></li> <li><p>使用Promise，使用一直点then。但是如果出现错误，不容易捕捉到。</p></li> <li><p>最优雅的写法，async 和 await。</p></li></ol> <p>我们使用 <a href="https://cnodejs.org/api" target="_blank" rel="noopener noreferrer">CNode Api<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 练习，先获取首页文章列表，然后在获取第一个文章的详情。</p> <h2 id="一、使用callback"><a href="#一、使用callback" class="header-anchor">#</a> 一、使用Callback</h2> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ajax1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">ajax1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      url<span class="token operator">:</span> <span class="token string">'https://cnodejs.org/api/v1/topics'</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">success</span><span class="token operator">:</span><span class="token parameter">res</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span>
+        <span class="token keyword">let</span> firstId <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+        that<span class="token punctuation">.</span><span class="token function">ajax2</span><span class="token punctuation">(</span>firstId<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">ajax2</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://cnodejs.org/api/v1/topic/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      <span class="token function-variable function">success</span><span class="token operator">:</span><span class="token parameter">res</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="二、使用promise"><a href="#二、使用promise" class="header-anchor">#</a> 二、使用Promise</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ajax1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">id</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ajax2</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">ajax1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        url<span class="token operator">:</span> <span class="token string">'https://cnodejs.org/api/v1/topics'</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span>
+          <span class="token keyword">let</span> firstId <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span>firstId<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">fail</span><span class="token operator">:</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">ajax2</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://cnodejs.org/api/v1/topic/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">fail</span><span class="token operator">:</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>对比回调，使用Promise的链式调用就优雅很多了。</p> <h2 id="三、使用async、await"><a href="#三、使用async、await" class="header-anchor">#</a> 三、使用async、await</h2> <p>小程序增强编译：<a href="/articles/小程序/[https://developers.weixin.qq.com/miniprogram/dev/devtools/codecompile.html#增强编译](https://developers.weixin.qq.com/miniprogram/dev/devtools/codecompile.html#增强编译)">代码增强编译</a></p> <p>需要在微信开发者工具中勾选 <strong>增强编译</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+      <span class="token keyword">let</span> id <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ajax1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ajax2</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">ajax1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        url<span class="token operator">:</span> <span class="token string">'https://cnodejs.org/api/v1/topics'</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span>
+          <span class="token keyword">let</span> firstId <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span>firstId<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">fail</span><span class="token operator">:</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">ajax2</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://cnodejs.org/api/v1/topic/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">fail</span><span class="token operator">:</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>参考：<a href="https://www.jb51.net/article/185993.htm" target="_blank" rel="noopener noreferrer">微信小程序中使用 async/await的方法实例分析<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/小程序/在小程序中自定义弹窗组件.html" class="prev">
+        在小程序中自定义弹窗组件
+      </a></span> <span class="next"><a href="/articles/Node/初试MongoDB数据库.html">
+        初试MongoDB数据库
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.66238061.js" defer></script><script src="/assets/js/2.a452e104.js" defer></script><script src="/assets/js/34.6018c1e2.js" defer></script>
+  </body>
+</html>

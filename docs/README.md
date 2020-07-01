@@ -6,11 +6,11 @@ tagline: 种一棵树最好的时间在十年前，此时是现在。
 actionText: Get Started →
 actionLink: /articles/
 features:
-- title: 博文
-  details: 博文以JavaScript、Vue、小程序、Node、其他非技术类文章。
-- title: 笔记
+- title: 前端博文
+  details: 博文以JavaScript、Vue、小程序、Node等前端文章为主。
+- title: 计算机通识
+  details: 前端工程师，首先是一个软件工程师，计算机基础必不可少。
+- title: 学习笔记
   details: 在学习过程中整理的笔记，既可以加深记忆又可以查漏补缺。
-- title: 日学
-  details: 学习靠的是一点一滴的积累，每日学到的东西，都会一一记录。
-footer: MIT Licensed | Copyright © 2017-present ansonZnl
+footer: MIT Licensed | Copyright © 2018-present ansonZnl
 ---

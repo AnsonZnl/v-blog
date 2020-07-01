@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Anson\'s Blog',
   description: '种一棵树最好的时间在十年前，其次是现在。',
-  keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序",
+  keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序,张宁乐，张宁乐的博客",
   head: [
     ['link', {
       rel: 'icon',
@@ -15,7 +15,7 @@ module.exports = {
         link: '/'
       },
       {
-        text: '博文',
+        text: '前端博文',
         link: '/articles/',
         items: [{
           text: 'JavaScript',
@@ -29,18 +29,19 @@ module.exports = {
         },{
           text: 'Node',
           link: '/articles/Node/'
-        },{
-          text: '其他',
-          link: '/articles/其他/'
         }]
       },
       {
-        text: '笔记',
-        link: '/notes/'
+        text: '计算机通识',
+        link: '/computer-base/'
       },
       {
-        text: '日学',
-        link: '/day-study/'
+        text: '学习笔记',
+        link: '/learning-notes/'
+      },
+      {
+        text: '生活杂文',
+        link: '/life-essay/'
       },
       {
         text: '关于',
@@ -52,15 +53,39 @@ module.exports = {
       },
     ],
     sidebar: {
+      "/life-essay/": [
+        {
+          title: '王者人生',
+          path: '/life-essay/王者人生'
+        },{
+          title: '博客迁移',
+          path: '/life-essay/把博客从Hexo迁移至VuePress'
+        },{
+          title: '如何正确的使用你的时间',
+          path: '/life-essay/如何正确的使用你的时间'
+        }
+      ],
+      "/learning-notes/": [
+        {
+          title: 'TypeScript',
+          path: '/learning-notes/TypeScript笔记'
+        }
+      ],
+      "/computer-base/": [
+        {
+          title: '数据结构',
+          path: '/computer-base/数据结构'
+        },
+        {
+          title: '算法',
+          path: '/computer-base/算法'
+        }
+      ],
       "/articles/": [{
           title: 'JavaScript',
           path: '/articles/JavaScript/',
           collapsable: true,
-          sidebarDepth: 2,
-          children: [{
-              title: '目录',
-              path: '/articles/JavaScript/'
-            },
+          children: [
             {
               title: '使用Documentfragment优化DOM操作',
               path: '/articles/JavaScript/使用Documentfragment优化DOM操作'
@@ -82,10 +107,6 @@ module.exports = {
               path: '/articles/JavaScript/深浅拷贝'
             },
             {
-              title: '双向数据绑定的原理',
-              path: '/articles/JavaScript/双向数据绑定的原理'
-            },
-            {
               title: '我对JavaScript中this的一些理解',
               path: '/articles/JavaScript/我对JavaScript中this的一些理解'
             },
@@ -103,10 +124,7 @@ module.exports = {
           title: 'Vue',
           path: '/articles/Vue/',
           collapsable: true,
-          children: [{
-              title: 'Vue目录',
-              path: '/articles/Vue/'
-            },
+          children: [
             {
               title: 'Vue知识点总结',
               path: '/articles/Vue/Vue知识点总结'
@@ -121,10 +139,7 @@ module.exports = {
           title: '小程序',
           path: '/articles/小程序/',
           collapsable: true,
-          children: [{
-              title: '目录',
-              path: '/articles/小程序/'
-            },
+          children: [
             {
               title: '清除小程序button的默认样式',
               path: '/articles/小程序/清除小程序button的默认样式'
@@ -175,10 +190,7 @@ module.exports = {
           title: 'Node',
           path: '/articles/Node/',
           collapsable: true,
-          children: [{
-              title: 'Node目录',
-              path: '/articles/Node/'
-            },
+          children: [
             {
               title: '初试MongoDB数据库',
               path: '/articles/Node/初试MongoDB数据库'
@@ -212,19 +224,7 @@ module.exports = {
               path: '/articles/Node/MongoDB中常用语句'
             }
           ]
-        },
-        {
-          title: '其他',
-          path: '/articles/其他/',
-          collapsable: true,
-          children: [{
-            title: '王者人生',
-            path: '/articles/其他/王者人生'
-          }]
         }
-      ],
-      "/day-study/": [
-        ['', '目录'],
       ]
     }
   }

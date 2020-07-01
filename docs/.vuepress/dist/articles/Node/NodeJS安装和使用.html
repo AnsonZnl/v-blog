@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NodeJS安装和使用 | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.66238061.js" as="script"><link rel="preload" href="/assets/js/2.a452e104.js" as="script"><link rel="preload" href="/assets/js/20.755d150a.js" as="script"><link rel="prefetch" href="/assets/js/10.160e4833.js"><link rel="prefetch" href="/assets/js/11.ecbd6546.js"><link rel="prefetch" href="/assets/js/12.41218c53.js"><link rel="prefetch" href="/assets/js/13.23881e11.js"><link rel="prefetch" href="/assets/js/14.afec3958.js"><link rel="prefetch" href="/assets/js/15.affb9308.js"><link rel="prefetch" href="/assets/js/16.1f5107ef.js"><link rel="prefetch" href="/assets/js/17.4222490c.js"><link rel="prefetch" href="/assets/js/18.84c7118c.js"><link rel="prefetch" href="/assets/js/19.cc38dcb1.js"><link rel="prefetch" href="/assets/js/21.ea79dfe5.js"><link rel="prefetch" href="/assets/js/22.fbd18b4c.js"><link rel="prefetch" href="/assets/js/23.04d5039f.js"><link rel="prefetch" href="/assets/js/24.2fedb829.js"><link rel="prefetch" href="/assets/js/25.d6059bb3.js"><link rel="prefetch" href="/assets/js/26.3c2cdeb6.js"><link rel="prefetch" href="/assets/js/27.abfab4b6.js"><link rel="prefetch" href="/assets/js/28.f5d0f5ec.js"><link rel="prefetch" href="/assets/js/29.647d4ba9.js"><link rel="prefetch" href="/assets/js/3.fa8eceb6.js"><link rel="prefetch" href="/assets/js/30.49429c6b.js"><link rel="prefetch" href="/assets/js/31.3c6f4a21.js"><link rel="prefetch" href="/assets/js/32.df24a2e9.js"><link rel="prefetch" href="/assets/js/33.0faf219c.js"><link rel="prefetch" href="/assets/js/34.6018c1e2.js"><link rel="prefetch" href="/assets/js/35.1f1d7dab.js"><link rel="prefetch" href="/assets/js/36.6e7011a4.js"><link rel="prefetch" href="/assets/js/37.26d45d3c.js"><link rel="prefetch" href="/assets/js/38.86d28042.js"><link rel="prefetch" href="/assets/js/39.bf13a6f7.js"><link rel="prefetch" href="/assets/js/4.9ccf21a1.js"><link rel="prefetch" href="/assets/js/40.299235e3.js"><link rel="prefetch" href="/assets/js/41.69f91647.js"><link rel="prefetch" href="/assets/js/42.838244d0.js"><link rel="prefetch" href="/assets/js/43.0c7f6778.js"><link rel="prefetch" href="/assets/js/44.cfc7a952.js"><link rel="prefetch" href="/assets/js/45.266d5f79.js"><link rel="prefetch" href="/assets/js/46.8f6a1036.js"><link rel="prefetch" href="/assets/js/47.617d8432.js"><link rel="prefetch" href="/assets/js/48.724aacf3.js"><link rel="prefetch" href="/assets/js/49.deece3bc.js"><link rel="prefetch" href="/assets/js/5.a6aa705b.js"><link rel="prefetch" href="/assets/js/50.c4a150e7.js"><link rel="prefetch" href="/assets/js/51.a9a5bcb1.js"><link rel="prefetch" href="/assets/js/6.959a977c.js"><link rel="prefetch" href="/assets/js/7.fe624e50.js"><link rel="prefetch" href="/assets/js/8.592574c8.js"><link rel="prefetch" href="/assets/js/9.e5d20637.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link router-link-active">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link router-link-active">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable"><span>JavaScript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable"><span>小程序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable router-link-active open"><span>Node</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/Node/初试MongoDB数据库.html" class="sidebar-link">初试MongoDB数据库</a></li><li><a href="/articles/Node/NodeJS安装和使用.html" class="active sidebar-link">NodeJS安装和使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/Node/NodeJS安装和使用.html#了解node" class="sidebar-link">了解Node</a></li><li class="sidebar-sub-header"><a href="/articles/Node/NodeJS安装和使用.html#windows命令" class="sidebar-link">Windows命令</a></li><li class="sidebar-sub-header"><a href="/articles/Node/NodeJS安装和使用.html#mac命令" class="sidebar-link">Mac命令</a></li><li class="sidebar-sub-header"><a href="/articles/Node/NodeJS安装和使用.html#进程和线程：" class="sidebar-link">进程和线程：</a></li><li class="sidebar-sub-header"><a href="/articles/Node/NodeJS安装和使用.html#安装node-js" class="sidebar-link">安装node.js</a></li><li class="sidebar-sub-header"><a href="/articles/Node/NodeJS安装和使用.html#让node-js跑起来" class="sidebar-link">让node.js跑起来</a></li><li class="sidebar-sub-header"><a href="/articles/Node/NodeJS安装和使用.html#node-js-的模块发开发" class="sidebar-link">Node.js 的模块发开发</a></li></ul></li><li><a href="/articles/Node/NodeJs文件系统（fs）与流（stream）.html" class="sidebar-link">NodeJs文件系统（fs）与流（stream）</a></li><li><a href="/articles/Node/使用Node.js写一个简单的api接口.html" class="sidebar-link">使用Node.js写一个简单的api接口</a></li><li><a href="/articles/Node/使用Express搭建一个简单的服务器.html" class="sidebar-link">使用Express搭建一个简单的服务器</a></li><li><a href="/articles/Node/使用Node.js搭建静态服务器.html" class="sidebar-link">使用Node.js搭建静态服务器</a></li><li><a href="/articles/Node/MongoDB学习之Mongoose的使用.html" class="sidebar-link">MongoDB学习之Mongoose的使用</a></li><li><a href="/articles/Node/MongoDB中常用语句.html" class="sidebar-link">MongoDB中常用语句</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nodejs安装和使用"><a href="#nodejs安装和使用" class="header-anchor">#</a> NodeJS安装和使用</h1> <h2 id="了解node"><a href="#了解node" class="header-anchor">#</a> 了解Node</h2> <p>NodeJS :主要应用于开发服务器，做数据API ,设计路由，和前端的主要区别在于，前端主要负责效果和交互、
+node.js是追求性能极致的产物，主要的三个特点是：
+<strong>单线程、Non-blocking I/O、Event Driven</strong>
+Nodejs和其他后端语言的不同：</p> <ol><li>采用单线程， 所以</li> <li>需要非阻塞I/O，所以</li> <li>需要事件驱动。
+极大地提高了CPU的利用率：</li> <li>node没有自己的语法，使用V8引擎，用的是js，V8引擎解析js，效率非常高。并且V8中很多东西都是异步的，，Node就是站在巨人的肩膀上，把V8中的一些功能一直到服务器上</li> <li>没有web容器 就是安装配置完成之后，也么有一个根目录。（使用路由）</li> <li>模块：在Node.js中，以模块为单位划分所有的功能，并且提供了一个完成的模块加载机制，我们可以将应用程序划分为各个不同的部分。</li></ol> <h2 id="windows命令"><a href="#windows命令" class="header-anchor">#</a> <strong>Windows命令</strong></h2> <p>常用命令：
+<code>dir</code> 列出当下目录下面的所有文件
+<code>cd</code> 进入指定的目录
+<code>md</code> 创建文件夹
+<code>rd</code> 删除文件夹
+<code>cd..</code> 返回上级目录
+<img src="https://upload-images.jianshu.io/upload_images/7072486-01dca1d0f6a9557b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="81539743638_.pic.jpg"></p> <h2 id="mac命令"><a href="#mac命令" class="header-anchor">#</a> <strong>Mac命令</strong></h2> <p><code>cd ~</code>进入我们的家目录
+<code>ls</code> 列出当下目录下面的所有文件
+<code>cd 目录名</code> 进入指定的目录
+<code>touch 文件名.html</code>创建一后缀是html的文件或者一次<code>touch a.txt b.html</code>一次创建多个文件
+<code>mkdir 文件夹名</code> 新建一个文件夹或者一次<code>mkdir a b c</code>新建三个文件夹
+<code>rm 文件/文件夹</code>删除文件/文件夹
+<code>less index.html</code>查看文本文件内容
+<code>pwd</code>看看自己在哪个目录下
+<code>man</code> 查看某个命令的详情
+cd.. 返回上级目录</p> <p><strong>小技巧</strong>
+用 Tab 键自动补齐命令
+比如想到 /System 目录中去，输入 cd /Sy 然后按一下Tab 键，命令就会自动补齐成 cd /System
+操作带名字中带有空格的文件和目录
+空格在命令中写成 空格， 比如要进入 My Documents，命令为 cd My Documents</p> <h2 id="进程和线程："><a href="#进程和线程：" class="header-anchor">#</a> 进程和线程：</h2> <p>1.进程
+系统进行资源分配和调度的基本单位 操作系统的基础，我们写的代码都是放在进程里的 相当于工厂的车间
+如：任务管理器
+2.线程
+九三级的最小计量单位 负责执行进程中的程序，相当于车间里的操作工人，
+单线程：
+js是单线程，时间片分割
+多线程：
+根据任务决定开起几条线程（耗内存）
+Node服务器：
+单线程，但很健壮，后台拥有一个I/O线程池进行调度。分布式服务器部署。<img src="https://upload-images.jianshu.io/upload_images/7072486-9f4180b756ad90eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="91539744120_.pic.jpg"></p> <h2 id="安装node-js"><a href="#安装node-js" class="header-anchor">#</a> 安装node.js</h2> <p><img src="https://upload-images.jianshu.io/upload_images/7072486-80d875076390ef25.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="101539744899_.pic.jpg"></p> <p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener noreferrer">node.js 下载<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+有些可能需要配置<strong>全局环境变量</strong> <img src="https://upload-images.jianshu.io/upload_images/7072486-43497297131cb4b6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="121539745565_.pic.jpg"></p> <p>node -v
+查看版本号</p> <p>node 进入node环境，在这个环境中可以执行JavaScript语句</p> <h2 id="让node-js跑起来"><a href="#让node-js跑起来" class="header-anchor">#</a> 让node.js跑起来</h2> <p>跑起来 node.js
+1.node 命令行下写js代码
+2.新建.js文件 &gt; cd 到指定目录 &gt; node index.js
+<img src="https://upload-images.jianshu.io/upload_images/7072486-65fcfa08be5b8942.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="131539747126_.pic.jpg"></p> <p>建议使用最新的编辑器 有代码提示</p> <h2 id="node-js-的模块发开发"><a href="#node-js-的模块发开发" class="header-anchor">#</a> Node.js 的模块发开发</h2> <p>Node 需要模块化开发：
+问题： js缺乏模块化的开发
+解决：后来出现了commonJs （内部） 和npm（外部 包管理系统）它提供了模块的复用和引用,</p> <p>CommonJs的出现 主要是为了弥补JavaScript没有模块化开发标准的缺陷，</p> <p>CommonJS对模块化的定义：</p> <ol><li>模块引用 require（“路径”）
+2.模块定义
+3.模块表识
+<img src="https://upload-images.jianshu.io/upload_images/7072486-7fc679453ac23729.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="141539756072_.pic.jpg"></li></ol> <p>总结：
+1.从文件的角度看，每个js文件就是一个模块，从结构看，多个js文件之间可以相互require，共同实现一个功能，整体上也是一个模块。
+2.在Node.js中，一个模块中的定义的变量、函数等。都只能在这个文件内部有效；当需要从此文件外部引用这些变量、函数时，必须使用exports进行暴露，然后使用require引用。</p> <p>A：我需要引用你  &gt;&gt; require B
+B:  那好 &gt;&gt; 我暴露</p> <p>13课至17课笔记
+视频地址：https://study.163.com/course/courseMain.htm?courseId=1005269026</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/Node/初试MongoDB数据库.html" class="prev">
+        初试MongoDB数据库
+      </a></span> <span class="next"><a href="/articles/Node/NodeJs文件系统（fs）与流（stream）.html">
+        NodeJs文件系统（fs）与流（stream）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.66238061.js" defer></script><script src="/assets/js/2.a452e104.js" defer></script><script src="/assets/js/20.755d150a.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>在小程序中调用API在小程序中自定义弹窗组件 | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.66238061.js" as="script"><link rel="preload" href="/assets/js/2.a452e104.js" as="script"><link rel="preload" href="/assets/js/35.1f1d7dab.js" as="script"><link rel="prefetch" href="/assets/js/10.160e4833.js"><link rel="prefetch" href="/assets/js/11.ecbd6546.js"><link rel="prefetch" href="/assets/js/12.41218c53.js"><link rel="prefetch" href="/assets/js/13.23881e11.js"><link rel="prefetch" href="/assets/js/14.afec3958.js"><link rel="prefetch" href="/assets/js/15.affb9308.js"><link rel="prefetch" href="/assets/js/16.1f5107ef.js"><link rel="prefetch" href="/assets/js/17.4222490c.js"><link rel="prefetch" href="/assets/js/18.84c7118c.js"><link rel="prefetch" href="/assets/js/19.cc38dcb1.js"><link rel="prefetch" href="/assets/js/20.755d150a.js"><link rel="prefetch" href="/assets/js/21.ea79dfe5.js"><link rel="prefetch" href="/assets/js/22.fbd18b4c.js"><link rel="prefetch" href="/assets/js/23.04d5039f.js"><link rel="prefetch" href="/assets/js/24.2fedb829.js"><link rel="prefetch" href="/assets/js/25.d6059bb3.js"><link rel="prefetch" href="/assets/js/26.3c2cdeb6.js"><link rel="prefetch" href="/assets/js/27.abfab4b6.js"><link rel="prefetch" href="/assets/js/28.f5d0f5ec.js"><link rel="prefetch" href="/assets/js/29.647d4ba9.js"><link rel="prefetch" href="/assets/js/3.fa8eceb6.js"><link rel="prefetch" href="/assets/js/30.49429c6b.js"><link rel="prefetch" href="/assets/js/31.3c6f4a21.js"><link rel="prefetch" href="/assets/js/32.df24a2e9.js"><link rel="prefetch" href="/assets/js/33.0faf219c.js"><link rel="prefetch" href="/assets/js/34.6018c1e2.js"><link rel="prefetch" href="/assets/js/36.6e7011a4.js"><link rel="prefetch" href="/assets/js/37.26d45d3c.js"><link rel="prefetch" href="/assets/js/38.86d28042.js"><link rel="prefetch" href="/assets/js/39.bf13a6f7.js"><link rel="prefetch" href="/assets/js/4.9ccf21a1.js"><link rel="prefetch" href="/assets/js/40.299235e3.js"><link rel="prefetch" href="/assets/js/41.69f91647.js"><link rel="prefetch" href="/assets/js/42.838244d0.js"><link rel="prefetch" href="/assets/js/43.0c7f6778.js"><link rel="prefetch" href="/assets/js/44.cfc7a952.js"><link rel="prefetch" href="/assets/js/45.266d5f79.js"><link rel="prefetch" href="/assets/js/46.8f6a1036.js"><link rel="prefetch" href="/assets/js/47.617d8432.js"><link rel="prefetch" href="/assets/js/48.724aacf3.js"><link rel="prefetch" href="/assets/js/49.deece3bc.js"><link rel="prefetch" href="/assets/js/5.a6aa705b.js"><link rel="prefetch" href="/assets/js/50.c4a150e7.js"><link rel="prefetch" href="/assets/js/51.a9a5bcb1.js"><link rel="prefetch" href="/assets/js/6.959a977c.js"><link rel="prefetch" href="/assets/js/7.fe624e50.js"><link rel="prefetch" href="/assets/js/8.592574c8.js"><link rel="prefetch" href="/assets/js/9.e5d20637.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable"><span>JavaScript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable open"><span>小程序</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/小程序/清除小程序button的默认样式.html" class="sidebar-link">清除小程序button的默认样式</a></li><li><a href="/articles/小程序/使用Promise封装小程序wx.request.html" class="sidebar-link">使用Promise封装小程序wx.request</a></li><li><a href="/articles/小程序/微信小程序动态加载swiper时不显示的问题（爬坑）.html" class="sidebar-link">微信小程序动态加载swiper时不显示的问题（爬坑）</a></li><li><a href="/articles/小程序/微信小程序授权登录弹框组件.html" class="sidebar-link">微信小程序授权登录弹框组件</a></li><li><a href="/articles/小程序/解决gif图片只渲染一次的问题.html" class="sidebar-link">解决gif图片只渲染一次的问题</a></li><li><a href="/articles/小程序/小程序-实现蒙版弹出窗.html" class="sidebar-link">小程序-实现蒙版弹出窗</a></li><li><a href="/articles/小程序/小程序之瀑布流布局.html" class="sidebar-link">小程序之瀑布流布局</a></li><li><a href="/articles/小程序/小程序之iPhoneX适配.html" class="sidebar-link">小程序之iPhoneX适配</a></li><li><a href="/articles/小程序/小程序中图片点击全屏-可滑动.html" class="sidebar-link">小程序中图片点击全屏-可滑动</a></li><li><a href="/articles/小程序/在小程序中自定义弹窗组件.html" class="active sidebar-link">在小程序中自定义弹窗组件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中自定义弹窗组件.html#创建组件" class="sidebar-link">创建组件</a></li><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中自定义弹窗组件.html#如何使用组件" class="sidebar-link">如何使用组件</a></li><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中自定义弹窗组件.html#父组件传值给子组件" class="sidebar-link">父组件传值给子组件</a></li><li class="sidebar-sub-header"><a href="/articles/小程序/在小程序中自定义弹窗组件.html#子组件改变父组件的值" class="sidebar-link">子组件改变父组件的值</a></li></ul></li><li><a href="/articles/小程序/在小程序中使用async&amp;await.html" class="sidebar-link">在小程序中使用async&amp;await</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable"><span>Node</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="在小程序中调用api在小程序中自定义弹窗组件"><a href="#在小程序中调用api在小程序中自定义弹窗组件" class="header-anchor">#</a> 在小程序中调用API在小程序中自定义弹窗组件</h1> <p>因为业务需要在小程序里加上很多的弹窗，就想写一个组件来实现；</p> <h2 id="创建组件"><a href="#创建组件" class="header-anchor">#</a> 创建组件</h2> <ol><li>新建文件夹<code>component</code>专门放组件，</li> <li>新建popup页面，在popup.json中设置：</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    <span class="token string">&quot;component&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>表明它是一个组件，我们称之为“子组件”
+3. 注意：在组件wxss中不应使用ID选择器、属性选择器和标签名选择器。（只使用class）</p> <h2 id="如何使用组件"><a href="#如何使用组件" class="header-anchor">#</a> 如何使用组件</h2> <p>便于区分，引用子组件的页面我们称之为“父组件，”
+在父组件的json里先引用子组件：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  <span class="token string">&quot;usingComponents&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;component-tag-name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;path/to/the/custom/component&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="父组件传值给子组件"><a href="#父组件传值给子组件" class="header-anchor">#</a> 父组件传值给子组件</h2> <p>因为这个自定义的弹窗组件会应用于很多不同的页面，所以显示的弹窗标题也是不同的，这就是需要父组件给子组件自定义标题，也就是子组件的标题应该从父组件中接受到的。
+子组件里：
+wxml</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>page<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">&gt;</span></span>{{popupTitle}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>js</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  properties<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 这里定义了innerText属性，属性值可以在组件使用时指定</span>
+    popupTitle<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">//弹窗标题</span>
+      type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+      value<span class="token operator">:</span> <span class="token string">'默认值'</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>父组件里：
+wxml</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>popup</span> <span class="token attr-name">popup-title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{{pagetitle}}<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre></div><p>js</p> <div class="language-js extra-class"><pre class="language-js"><code>  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    pagetitle<span class="token operator">:</span> <span class="token string">'我是页面标题'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>. 在子组件中自定义值是以小驼峰的形式书写的，但是在父组件传的时候要以“-”连接。</p> <h2 id="子组件改变父组件的值"><a href="#子组件改变父组件的值" class="header-anchor">#</a> 子组件改变父组件的值</h2> <p>这个组件的显示和隐藏都是在父组件决定的，但是因为我这是一个全屏的弹窗，覆盖了整个屏幕，所以想要关闭弹框只能想办法在子组件的点击事件上想办法。
+基本逻辑是这样的：
+操作流程：打开页面- 点击弹框（弹出子组件）- 点击关闭（点击子组件关闭弹窗）
+数据流程：打开页面-点击弹框（传入弹窗标题、点赞成功结果、其他参数）-点击关闭（在父组件上自定义组件，然后子组件关闭按钮监听onTap事件，点击子组件关闭按钮时，会通知父组件去改变状态）</p> <p>逻辑：</p> <ol><li>在子组件中给要触发的元素加  bindtap = 'onTap'</li> <li>然后通过在method中设置onTap函数</li> <li>在onTap中的triggerEvent中设置要触发父组件事件的函数名称</li> <li>父组件接收到字组件的消息，然后触发事件</li></ol> <p>具体参考：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/events.html" target="_blank" rel="noopener noreferrer">小程序-组件通信<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>子组件：
+wxml</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>hide-btn<span class="token punctuation">&quot;</span></span> <span class="token attr-name">bindtap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>onTap<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>×<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>js</p> <div class="language-js extra-class"><pre class="language-js"><code>  methods<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">//放自定义的方法</span>
+    <span class="token function-variable function">onTap</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> myEventDetail <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// detail对象，提供给事件监听函数</span>
+      <span class="token keyword">var</span> myEventOption <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// 触发事件的选项</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">子组件：'向父组件发送通知，我要关闭弹窗'</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">triggerEvent</span><span class="token punctuation">(</span><span class="token string">'hidepopop'</span><span class="token punctuation">,</span> myEventDetail<span class="token punctuation">,</span> myEventOption<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p>父组件
+wxml</p> <div class="language-html extra-class"><pre class="language-html"><code>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>popup</span> 
+<span class="token attr-name">bindhidepopop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>hidePopop<span class="token punctuation">&quot;</span></span> 
+<span class="token attr-name">is-show-popup</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{{isShowPopup}}<span class="token punctuation">&quot;</span></span> 
+<span class="token attr-name">popup-title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{{popupTitle}}<span class="token punctuation">&quot;</span></span> 
+<span class="token attr-name">popup-content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{{popupContent}}<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><p>js</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token function-variable function">hidePopop</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>detail<span class="token punctuation">)</span> <span class="token comment">// 自定义组件触发事件时提供的detail对象</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'父组件：我接受到了子组件的关闭弹窗的通知！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      isShowPopup<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><ul><li><p>参考 <a href="%5Bhttps://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/%5D(https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/)">小程序-自定义组件</a></p></li> <li><p>代码地址：<a href="https://github.com/AnsonZnl/wx-component-popup" target="_blank" rel="noopener noreferrer">https://github.com/AnsonZnl/wx-component-popup<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/小程序/小程序中图片点击全屏-可滑动.html" class="prev">
+        小程序中图片点击全屏-可滑动
+      </a></span> <span class="next"><a href="/articles/小程序/在小程序中使用async&amp;await.html">
+        在小程序中使用async&amp;await
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.66238061.js" defer></script><script src="/assets/js/2.a452e104.js" defer></script><script src="/assets/js/35.1f1d7dab.js" defer></script>
+  </body>
+</html>

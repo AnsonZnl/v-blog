@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>初试MongoDB数据库 | Anson&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo.ico">
+    <meta name="description" content="种一棵树最好的时间在十年前，其次是现在。">
+    <link rel="preload" href="/assets/css/0.styles.8467c532.css" as="style"><link rel="preload" href="/assets/js/app.66238061.js" as="script"><link rel="preload" href="/assets/js/2.a452e104.js" as="script"><link rel="preload" href="/assets/js/27.abfab4b6.js" as="script"><link rel="prefetch" href="/assets/js/10.160e4833.js"><link rel="prefetch" href="/assets/js/11.ecbd6546.js"><link rel="prefetch" href="/assets/js/12.41218c53.js"><link rel="prefetch" href="/assets/js/13.23881e11.js"><link rel="prefetch" href="/assets/js/14.afec3958.js"><link rel="prefetch" href="/assets/js/15.affb9308.js"><link rel="prefetch" href="/assets/js/16.1f5107ef.js"><link rel="prefetch" href="/assets/js/17.4222490c.js"><link rel="prefetch" href="/assets/js/18.84c7118c.js"><link rel="prefetch" href="/assets/js/19.cc38dcb1.js"><link rel="prefetch" href="/assets/js/20.755d150a.js"><link rel="prefetch" href="/assets/js/21.ea79dfe5.js"><link rel="prefetch" href="/assets/js/22.fbd18b4c.js"><link rel="prefetch" href="/assets/js/23.04d5039f.js"><link rel="prefetch" href="/assets/js/24.2fedb829.js"><link rel="prefetch" href="/assets/js/25.d6059bb3.js"><link rel="prefetch" href="/assets/js/26.3c2cdeb6.js"><link rel="prefetch" href="/assets/js/28.f5d0f5ec.js"><link rel="prefetch" href="/assets/js/29.647d4ba9.js"><link rel="prefetch" href="/assets/js/3.fa8eceb6.js"><link rel="prefetch" href="/assets/js/30.49429c6b.js"><link rel="prefetch" href="/assets/js/31.3c6f4a21.js"><link rel="prefetch" href="/assets/js/32.df24a2e9.js"><link rel="prefetch" href="/assets/js/33.0faf219c.js"><link rel="prefetch" href="/assets/js/34.6018c1e2.js"><link rel="prefetch" href="/assets/js/35.1f1d7dab.js"><link rel="prefetch" href="/assets/js/36.6e7011a4.js"><link rel="prefetch" href="/assets/js/37.26d45d3c.js"><link rel="prefetch" href="/assets/js/38.86d28042.js"><link rel="prefetch" href="/assets/js/39.bf13a6f7.js"><link rel="prefetch" href="/assets/js/4.9ccf21a1.js"><link rel="prefetch" href="/assets/js/40.299235e3.js"><link rel="prefetch" href="/assets/js/41.69f91647.js"><link rel="prefetch" href="/assets/js/42.838244d0.js"><link rel="prefetch" href="/assets/js/43.0c7f6778.js"><link rel="prefetch" href="/assets/js/44.cfc7a952.js"><link rel="prefetch" href="/assets/js/45.266d5f79.js"><link rel="prefetch" href="/assets/js/46.8f6a1036.js"><link rel="prefetch" href="/assets/js/47.617d8432.js"><link rel="prefetch" href="/assets/js/48.724aacf3.js"><link rel="prefetch" href="/assets/js/49.deece3bc.js"><link rel="prefetch" href="/assets/js/5.a6aa705b.js"><link rel="prefetch" href="/assets/js/50.c4a150e7.js"><link rel="prefetch" href="/assets/js/51.a9a5bcb1.js"><link rel="prefetch" href="/assets/js/6.959a977c.js"><link rel="prefetch" href="/assets/js/7.fe624e50.js"><link rel="prefetch" href="/assets/js/8.592574c8.js"><link rel="prefetch" href="/assets/js/9.e5d20637.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8467c532.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Anson's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link router-link-active">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端博文" class="dropdown-title"><span class="title">前端博文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/articles/JavaScript/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/articles/小程序/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/articles/Node/" class="nav-link router-link-active">
+  Node
+</a></li></ul></div></div><div class="nav-item"><a href="/computer-base/" class="nav-link">
+  计算机通识
+</a></div><div class="nav-item"><a href="/learning-notes/" class="nav-link">
+  学习笔记
+</a></div><div class="nav-item"><a href="/life-essay/" class="nav-link">
+  生活杂文
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/AnsonZnl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/articles/JavaScript/" class="sidebar-heading clickable"><span>JavaScript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Vue/" class="sidebar-heading clickable"><span>Vue</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/小程序/" class="sidebar-heading clickable"><span>小程序</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/articles/Node/" class="sidebar-heading clickable router-link-active open"><span>Node</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/articles/Node/初试MongoDB数据库.html" class="active sidebar-link">初试MongoDB数据库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/articles/Node/初试MongoDB数据库.html#数据库基本概念" class="sidebar-link">数据库基本概念</a></li><li class="sidebar-sub-header"><a href="/articles/Node/初试MongoDB数据库.html#数据库mongodb安装" class="sidebar-link">数据库MongoDB安装</a></li><li class="sidebar-sub-header"><a href="/articles/Node/初试MongoDB数据库.html#在命令行中使用mongodb插入命令" class="sidebar-link">在命令行中使用MongoDB插入命令</a></li><li class="sidebar-sub-header"><a href="/articles/Node/初试MongoDB数据库.html#mongodb-可视化工具-【nosql】" class="sidebar-link">MongoDB 可视化工具 【NOSQL】</a></li><li class="sidebar-sub-header"><a href="/articles/Node/初试MongoDB数据库.html#使用可视化工具" class="sidebar-link">使用可视化工具</a></li><li class="sidebar-sub-header"><a href="/articles/Node/初试MongoDB数据库.html#数据库更新命令" class="sidebar-link">数据库更新命令</a></li></ul></li><li><a href="/articles/Node/NodeJS安装和使用.html" class="sidebar-link">NodeJS安装和使用</a></li><li><a href="/articles/Node/NodeJs文件系统（fs）与流（stream）.html" class="sidebar-link">NodeJs文件系统（fs）与流（stream）</a></li><li><a href="/articles/Node/使用Node.js写一个简单的api接口.html" class="sidebar-link">使用Node.js写一个简单的api接口</a></li><li><a href="/articles/Node/使用Express搭建一个简单的服务器.html" class="sidebar-link">使用Express搭建一个简单的服务器</a></li><li><a href="/articles/Node/使用Node.js搭建静态服务器.html" class="sidebar-link">使用Node.js搭建静态服务器</a></li><li><a href="/articles/Node/MongoDB学习之Mongoose的使用.html" class="sidebar-link">MongoDB学习之Mongoose的使用</a></li><li><a href="/articles/Node/MongoDB中常用语句.html" class="sidebar-link">MongoDB中常用语句</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="初试mongodb数据库"><a href="#初试mongodb数据库" class="header-anchor">#</a> 初试MongoDB数据库</h1> <h2 id="数据库基本概念"><a href="#数据库基本概念" class="header-anchor">#</a> 数据库基本概念</h2> <p><strong>数据库（Database）基本概念：</strong></p> <ol><li>数据库就是按照一定的数据结构来组织，储存和管理数据的仓库</li> <li>我们写的程序都是在内存中运行的，一旦程序运行结束或者计算机断点，程序运行中的数据就会全部丢失；所以我们就需要将一些程序的数据持久化到键盘之中，以确保数据的安全性。</li> <li>数据库则是大批量数据持久化的普遍选择，1.文件 2. 数据库</li></ol> <p><strong>为什么都采用数据库来储存数据:</strong></p> <ul><li>数据库是有结构的</li> <li>数据库可以提供各种接口，让数据处理（增删改查）快捷方便</li> <li>各种语言（PHP jsp .net..）提供了完善的接口</li></ul> <p><img src="https://upload-images.jianshu.io/upload_images/7072486-d9cbd052415afbf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="b6dde1cf95ae2a9ec8e68c0bf1719a3.png"></p> <p>##数据库分类</p> <ol><li>ROBMS（关系型数据库）：
+<ul><li>比如MySql 、sql server Oracle 等</li> <li>特点 通过一张张表来建立关联</li> <li>基本都使用SQL语言来管理数据库，</li></ul></li> <li>Nosql (非关系型数据库)：
+<ul><li>没有行 、列的概念 用json类储存数据</li> <li>集合相当于“表”，文档相当于“行”</li> <li>标准化和非标准化的摩擦。</li> <li>标准化限制创新，非标准话不能统一</li></ul></li></ol> <p><strong>特征</strong>：
+使用键值（Key Value）储存数据；
+MongoDB的逻辑结构是一种层次结构，主要由：文档(document)、集合(collection)、数据库(database)这三部分组成的。</p> <ul><li>文档(document)：由键/值对构成，像{a:1}；{s:”abc”}等，它是MongoDB核心单元，MongoDB的文档（document），相当于关系数据库中的一行记录。</li> <li>集合（Collection）：多个文档组成一个集合（collection），相当于关系数据库的表。</li> <li>数据库（database）：多个集合（collection），逻辑上组织在一起，就是数据库（database）。
+一个MongoDB实例支持多个数据库（database）。</li></ul> <p><strong>关系型数据库和非关系型数据库区别：</strong>
+关系型数据库比较结构化，操作不是很灵活，菲关系型数据库操作灵活，但不适合大型数据存储，比较适合微架构，两者是相辅相成的关系
+<img src="https://upload-images.jianshu.io/upload_images/7072486-db349e8b6512241e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8bc32dd95a923344fdc2710d2fcbeab.png"></p> <p><strong>非关系型数据库使用方面：</strong></p> <ol><li>数据模型比较简单</li> <li>需要灵活性更强的后台系统</li> <li>对数据库性能要求比较高</li> <li>不需要高度的数据一致性</li></ol> <p><strong>非关系型数据库主要适合小微型架构的使用</strong></p> <h2 id="数据库mongodb安装"><a href="#数据库mongodb安装" class="header-anchor">#</a> 数据库MongoDB安装</h2> <p>MongoDB（非关系型数据库）：</p> <ol><li>适合快速开发web应用而设计的数据库系统</li> <li>设计目标是极简、灵活、经常在web应用栈的业务层被运用</li> <li>它的数据模型是面向文档的，类似于json的结构</li> <li>所以这个数据库中是各种各样的json, 并以键值形式对存储</li></ol> <p>安装：
+下载:https://www.mongodb.com/
+偶数是稳定版，奇数是开发版
+最好下载64位的系统版本的</p> <p><strong>配置环境变量:</strong></p> <ol><li>新建---&gt;安装到bin路径复制到环境变量</li> <li>创建data-&gt;db文件夹</li> <li>打开命令行输入mongod启动DB服务器</li> <li>指定端口号和路径 mongod --dbpath d:\data\db</li> <li>将MongDB设置为系统服务，data\log
+创建配置文件在bin下穿件文件mongod.cfg
+执行一段命令：</li></ol> <div class="language- extra-class"><pre class="language-text"><code>sc.exe create MongoDB binPath= &quot;\&quot;F:\MongoDB\Server\3.2\bin\mongod.exe\&quot; --service --config= \&quot;F:\MongoDB\Server\3.2\mongod.cfg\&quot;&quot; DisplayName= &quot;MongoDB&quot; start= &quot;auto&quot;
+</code></pre></div><p>主要是让MongoDB一直运行在内存中
+参考资料：
+https://www.cnblogs.com/wzlblog/p/6364045.html
+https://www.cnblogs.com/chenlq/p/6515876.html</p> <h2 id="在命令行中使用mongodb插入命令"><a href="#在命令行中使用mongodb插入命令" class="header-anchor">#</a> 在命令行中使用MongoDB插入命令</h2> <p><strong>MongoDB的组成：</strong></p> <ul><li>数据库 数据库是一个仓库 在仓库里可以放集合</li> <li>集合： 集合类似数组 在集合里可以放文档</li> <li>文档：文档是数据库中最小的单位 我们储存和操作的内容都是文档。</li></ul> <p><strong>基本指令：</strong> <code>show dbs</code>  显示当前所有的数据库
+<code>use</code> 数据库名  进入到指定数据库
+<code>db</code> 显示当前所在的数据库
+<code>show collections</code> 显示数据库中的所有集合</p> <p>使用管理员打开 cmd
+输入 <code>mongo</code>进入MongoDB的环境
+进入MongoDB的环境才能执行MongoDB的命令
+然后使用命令行进行CRUD(增删改查)：
+<code>db.&lt;collection&gt;.insert(doc)</code></p> <p><strong>举例子：</strong>
+想school数据库中的学生集合student中插入一个新的学生对象
+增加一条数据：
+<code>db.student.insert({id:&quot;001&quot;,name:&quot;znl&quot;,age:18,sex:“男”})</code>
+在当前的集合（school）中新建一条数据</p> <p>查询一条数据：
+<code>db.&lt;collection&gt;.find();</code></p> <p>如：<code>db.student.find();</code>
+回车 就能查询student下的所有数据
+插入多条数据：</p> <div class="language-js extra-class"><pre class="language-js"><code>db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span>age<span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">,</span>sex<span class="token operator">:</span><span class="token string">&quot;man&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span>age<span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">,</span>sex<span class="token operator">:</span><span class="token string">&quot;man&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span>age<span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">,</span>sex<span class="token operator">:</span><span class="token string">&quot;man&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>id<span class="token operator">:</span><span class="token number">18</span>，name<span class="token operator">:</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span>age<span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">,</span>sex<span class="token operator">:</span><span class="token string">&quot;man&quot;</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><blockquote><p>插入多条数据时把多条语句放在一个数组里
+插入可随便插入 不必拘泥于字段是否相同 当插入的字段不存在时会自动创建该字段</p></blockquote> <p>查看更多更多操作：http://www.mongodb.org.cn/manual/</p> <h2 id="mongodb-可视化工具-【nosql】"><a href="#mongodb-可视化工具-【nosql】" class="header-anchor">#</a> MongoDB 可视化工具 【NOSQL】</h2> <p>然而一直使用命令行操作是很麻烦的事情，所以推荐使用NOSQL可视化工具
+安装可视化工具下载地址：https://www.mongodbmanager.com/download</p> <h2 id="使用可视化工具"><a href="#使用可视化工具" class="header-anchor">#</a> 使用可视化工具</h2> <p>可视化工具 查找功能：
+插入(insert)语句：</p> <div class="language-js extra-class"><pre class="language-js"><code>db<span class="token punctuation">.</span><span class="token function">student</span><span class="token punctuation">(</span>集合名字<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+<span class="token punctuation">{</span>id<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>name<span class="token operator">:</span><span class="token string">&quot;znl&quot;</span><span class="token punctuation">,</span>age<span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">{</span>id<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>name<span class="token operator">:</span><span class="token string">&quot;znl&quot;</span><span class="token punctuation">,</span>age<span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>查询语句：
+<code>db.student(集合name).find();</code></p> <p>设定条件查询：
+<code>db.student.find({ &quot;_id&quot; : ObjectId(&quot;5bd01c825f0d528d36a2c06f&quot;)});</code>
+查询id对应的数据
+<code>db.student.find({age:18,name:&quot;张三&quot;});</code>
+查询所有的age是18并且name是张三的人
+<code>db.student.findOne({age:18,name:&quot;张三&quot;});</code>
+查询单条符合条件的数据</p> <p>操作符-查询有多少条数据：
+<code>db.student.find().count();</code>
+或
+<code>db.student.find().length();</code>
+返回数据总条数</p> <p>查询符合条件数据的条数：
+<code>db.student.find({name:&quot;张三&quot;}).length();</code>
+返回符合name:&quot;张三&quot;的条数</p> <h2 id="数据库更新命令"><a href="#数据库更新命令" class="header-anchor">#</a> 数据库更新命令</h2> <p>更新原有的字段的数据：</p> <div class="language-js extra-class"><pre class="language-js"><code>db<span class="token punctuation">.</span>student<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;name&quot;</span><span class="token operator">:</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>$<span class="token keyword">set</span><span class="token operator">:</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span><span class="token string">&quot;刘五&quot;</span><span class="token punctuation">,</span>
+      age<span class="token operator">:</span><span class="token number">45</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>把匹配到的<code>name:&quot;张三&quot;</code>的数据都更新成 <code>name:&quot;刘五&quot;, age:45</code>
+也可以新增没有的字段 直接写入就可以
+<strong>$set ：有这个字段就修改 没有这个字段就新增</strong></p> <p>删除一个字段：</p> <div class="language-js extra-class"><pre class="language-js"><code>db<span class="token punctuation">.</span>student<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;name&quot;</span><span class="token operator">:</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">}</span>，<span class="token punctuation">{</span>$unset<span class="token operator">:</span><span class="token punctuation">{</span>
+    age<span class="token operator">:</span><span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>查询<code>name:张三</code>的一条数据 然后删除它的age字段</p> <p>修改多条：</p> <div class="language-js extra-class"><pre class="language-js"><code>db<span class="token punctuation">.</span>student<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;sex&quot;</span><span class="token operator">:</span><span class="token string">&quot;man&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>$<span class="token keyword">set</span><span class="token operator">:</span><span class="token punctuation">{</span>
+    aihao<span class="token operator">:</span><span class="token string">&quot;玩游戏&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>把符合<code>sex:man</code>的语句都新增（修改）一条<code>aihao:&quot;玩游戏&quot;</code> <strong>$set ：有则修改 无则新增</strong></p> <p>更新多条数据方法2：</p> <div class="language-js extra-class"><pre class="language-js"><code>db<span class="token punctuation">.</span>student<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>name<span class="token operator">:</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>$<span class="token keyword">set</span><span class="token operator">:</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span><span class="token string">&quot;王五&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+     multi<span class="token operator">:</span><span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>参考文档：https://docs.mongodb.com/manual/tutorial/query-documents/</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/articles/小程序/在小程序中使用async&amp;await.html" class="prev">
+        在小程序中使用async&amp;await
+      </a></span> <span class="next"><a href="/articles/Node/NodeJS安装和使用.html">
+        NodeJS安装和使用
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.66238061.js" defer></script><script src="/assets/js/2.a452e104.js" defer></script><script src="/assets/js/27.abfab4b6.js" defer></script>
+  </body>
+</html>
