@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Anson\'s Blog',
   description: '种一棵树最好的时间在十年前，其次是现在。',
-  keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序,张宁乐，张宁乐的博客",
+  keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序,张宁乐，张宁乐的博客，WEB前端技术博客",
   head: [
     ['link', {
       rel: 'icon',

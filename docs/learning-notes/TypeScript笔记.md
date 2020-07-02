@@ -16,6 +16,8 @@ tsc xx.ts # 生成 xx.js 文件
 
 太麻烦？线上直接上手 [TypeScript Play]( https://www.typescriptlang.org/play/ )
 
+配合阮老师的 [ES6 入门教程]( https://es6.ruanyifeng.com/#README ) 一起食用效果更佳！
+
 ## 基础类型
 
 - Number
@@ -110,9 +112,7 @@ tsc xx.ts # 生成 xx.js 文件
   };
   ```
 
-变量声明：
-
-变量使用`let`，常量使用`const`
+变量声明：变量使用`let`，常量使用`const`
 
 联合属性：
 
@@ -132,12 +132,14 @@ interface Person {
   name: string,
   readonly age: number,
   girlFirend?: string,
+  say: (words: string) => string
   [propName: string]: any
 }
 ```
 
 - 可选属性加 `?`
-- 只读属性加 `onlyread`
+- 只读属性加 `readonly`
+- 函数`(value: type) => returType`
 - 会有额外的属性 `[propName: string]: any`
 
 ### 使用
@@ -172,25 +174,172 @@ class Greeter {
 let greeter = new Greeter("world");
 ```
 
-### 修饰符
+### 继承
 
-- `public`：属性默认的都是公共的
-- `private`： 不能在声明它的类的外部访问 (不可以继承)
-- `protected`：受保护的(可以继承)
+和 ES6 基本一致
+
+```ts
+
+class Animal {
+    move(distanceInMeters = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
+class Dog extends Animal {
+    constructor(name) {
+        super();
+        this.name = name;
+    }
+    bark() {
+        console.log('Woof! Woof!');
+    }
+}
+const dog = new Dog('dog');
+dog.bark();
+dog.move(10);
+dog.bark();
+
+```
+
+### 抽象类
+
+- 在 `class`前加` abstract  ` 关键字，表示这是一个抽象类
+- 抽象类不能直接实例化，通常我们使用子类继承它，然后实例化子类
+
+### 访问限定符
+
+- `public`：成员默认的都是公共的，可以被外部访问（可以继承）
+- `private`： 只能类的内部访问 (不可以继承)
+- `protected`：只能被类的内部和类的子类访问，受保护的(可以继承)
+
+### 属性修饰符
+
 - `readonly`： 只读属性必须在声明时或构造函数里被初始化。
 - `static`：静态属性，只能类调用的属性
 
+### 类与接口
+
+接口（interface）可以用于对【对象的形状（Shape）】进行描述，当然也可以使用`interface` 描述 `class`
+
+- 接口声明使用
+``` ts
+interface interfaceName { ... }
+```
+- 类使用某个接口
+``` ts
+class className implements InterfaceName{ ... }
+```
+
+- 案例
+
+```ts
+interface Person { 
+    name: string
+}
+class Tom implements Person {
+    public name: string;
+    constructor(name: string) {
+        this.name = name
+    }
+    say() {
+        console.log(`my name is ${this.name}`)
+    }
+}
+let tom = new Tom('Tom');
+tom.say(); //my name is Tom
+```
+
+
+
+
+
 ## 函数
 
+### 函数的定义
+
 ```typescript
-function add(x: number, y: number， z?: string): number {
+function add(x: number, y: number=10, z?: number, ...rest: number[]): number {
+    return [x, y, z, ...rest].reduce((a: number, b: number)=>a + b)
+}
+let result = add(1, 2, 3, 5, 6, 7)
+console.log(result); // 24
+```
+
+上面函数接受参数` x`、`y` 和一个可选参数 `z`，和一个`number`类型的集合，返回一个 `number` 类型的值。
+
+- `x: number` ：定义参数类型
+- `y = 10`：定义参数默认值
+- `z?: string`：定义可选参数
+- `...rest: number[]`： 接受剩余参数
+
+
+
+### 函数表达式
+
+```ts
+let mySum: (x: number, y: number) => number = function (x: number, y: number): number {
     return x + y;
+};
+let result = mySum(1, 2)
+console.log(result); //3
+```
+
+不要把 TS 的箭头和 ES6 的箭头函数混淆。
+
+上面代码可以`=`号为分界点来理解
+
+- `=`左部分：定义了一个`mySum`变量，它表示一个函数，接受`number`类型的 x 、y，最后返回值也是`number`
+- `=`右部分：一个函数，接受 `number` 类型的 `x` 和 `y` ，返回值是`number`类型
+
+上面的代码也可以写成箭头函数的形式：
+
+```ts{1}
+let mySum: (x: number, y: number) => number = (x: number, y: number): number => {
+    return x + y;
+};
+let result = mySum(1, 2)
+console.log(result); //3
+```
+
+
+
+### 重载
+
+>  重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。 
+
+ 比如，我们需要实现一个函数 `reverse`，输入数字 `123` 的时候，输出反转的数字 `321`，输入字符串 `'hello'` 的时候，输出反转的字符串 `'olleh'`。 
+
+ 利用联合类型，我们可以这么实现： 
+
+```ts
+function reverse(x: number | string): number | string {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
 }
 ```
 
-上面函数接受参数` x`、`y` 和一个可选参数 `z`，返回一个 `number` 类型的值。
+**然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串。** 
 
+ 这时，我们可以使用重载定义多个 `reverse` 的函数类型： 
 
+```ts
+function reverse(x: number): number;
+function reverse(x: string): string;
+function reverse(x: number | string): number | string {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+```
+
+上例中，我们重复定义了多次函数 `reverse`，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。
+
+注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
 
 ## tsconfig.json
 
