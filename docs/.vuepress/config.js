@@ -9,7 +9,7 @@ module.exports = {
     }]
   ],
   themeConfig: {
-    lastUpdated: false,
+    lastUpdated: '上次更新',
     nav: [{
         text: 'Home',
         link: '/'
@@ -42,6 +42,15 @@ module.exports = {
       {
         text: '生活杂文',
         link: '/life-essay/'
+      },
+      {
+        text: '友情链接',
+        items: [
+          {
+            text: "JustSong's Blog",
+            link: 'https://iamazing.cn'
+          },
+        ]
       },
       {
         text: '关于',
@@ -79,6 +88,10 @@ module.exports = {
         {
           title: '算法',
           path: '/computer-base/算法'
+        },
+        {
+          title: '网络协议',
+          path: '/computer-base/网络协议'
         }
       ],
       "/articles/": [{
