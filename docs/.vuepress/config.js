@@ -9,6 +9,8 @@ module.exports = {
     }]
   ],
   themeConfig: {
+    sidebarDepth: 2,
+    smoothScroll: true,
     lastUpdated: '上次更新',
     nav: [{
         text: 'Home',
