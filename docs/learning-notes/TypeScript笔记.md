@@ -341,6 +341,67 @@ function reverse(x: number | string): number | string {
 
 注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
 
+
+
+## 类型断言
+> 类型断言（Type Assertion）可以用来手动指定一个值的类型。
+
+### 什么是断言
+有些情况下 TS 并不能正确或者准确得推断类型，这个时候可能产生不必要的警告或者报错。
+当你比 TS 的更清楚某些值的类型时：
+``` ts
+let Cat = {}
+Cat.name = 'Kiti'; // Error Property 'name' does not exist on type '{}'
+Cat.age = 6; // Error Property 'name' does not exist on type '{}'
+```
+当你知道这个 `Cat` 对象有 `name` 和 `age` 时，但是 TS 编译就是不通过， 怎么办？
+这个时候就需要用到 **类型断言**
+我们可以这写
+``` ts
+interface ICat {
+    name: string,
+    age: number
+}
+let Cat = {} as ICat
+Cat.name = 'Kiti';
+Cat.age = 6;
+```
+
+### 断言类型两种写法
+**尖括号**
+``` ts
+let someValue: any = "this is a string";
+let strLength: number = (<string>someValue).length; // 临时把 someValue 断言为一个string 类型的值
+```
+**as**
+``` ts
+let someValue: any = "this is a string";
+let strLength: number = (someValue as string).length;//  临时把 someValue 断言为一个string 类型的值
+
+```
+
+### 将任何一个类型断言成 any
+但有的时候，我们非常确定这段代码不会出错，比如下面这个例子：
+``` ts
+window.foo = 'foo'; // index.ts:1:8 - error TS2339: Property 'foo' does not exist on type 'Window & typeof globalThis'.
+```
+当我们向 `window` 添加一个 `foo` 时，会报错示我们 `window` 上不存在 `foo` 属性。
+
+此时我们可以使用 as any 临时将 `window` 断言为 `any` 类型：
+``` ts
+(window as any).foo = 'foo'
+```
+临时将 `window` 断言为一个 `any` 类型，因为 `any` 可以添加任何的属性。
+虽然这种方法可以解决诸如此类的问题，但是也可能会养成滥用 `any` 的习惯，所以慎用！
+
+### 类型断言的限制
+-  联合类型可以被断言为其中一个类型
+-  父类可以被断言为子类
+-  任何类型都可以被断言为 `any`
+-  `any` 可以被断言为任何类型
+-  要使得 A 能够被断言为 B，只需要 A 兼容 B 或 B 兼容 A 即可
+
+
 ## tsconfig.json
 
 ```json
