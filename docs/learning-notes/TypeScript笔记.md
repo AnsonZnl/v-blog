@@ -402,6 +402,42 @@ window.foo = 'foo'; // index.ts:1:8 - error TS2339: Property 'foo' does not exis
 -  要使得 A 能够被断言为 B，只需要 A 兼容 B 或 B 兼容 A 即可
 
 
+## 泛型
+
+> 泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。
+
+### 类型断言 VS 泛型
+
+举个例子：
+``` ts
+function getCacheData(key: string): any {
+    return (window as any).cache[key];
+}
+
+interface Cat {
+    name: string;
+    run(): void;
+}
+
+const tom = getCacheData('tom') as Cat;
+tom.run();
+```
+还可以使用另外一种方法来解决这个问题
+``` ts
+function getCacheData<T>(key: string): T {
+    return (window as any).cache[key];
+}
+
+interface Cat {
+    name: string;
+    run(): void;
+}
+
+const tom = getCacheData<Cat>('tom');
+tom.run();
+```
+通过给 `getCacheData` 函数添加了一个泛型 `<T>`，我们可以更加规范的实现对 `getCacheData` 返回值的约束，这也同时去除掉了代码中的 `any`，是最优的一个解决方案。
+
 ## tsconfig.json
 
 ```json
