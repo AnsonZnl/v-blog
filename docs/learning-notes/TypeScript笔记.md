@@ -302,7 +302,6 @@ console.log(result); //3
 ```
 
 
-
 ### 重载
 
 >  重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。 
@@ -437,6 +436,145 @@ const tom = getCacheData<Cat>('tom');
 tom.run();
 ```
 通过给 `getCacheData` 函数添加了一个泛型 `<T>`，我们可以更加规范的实现对 `getCacheData` 返回值的约束，这也同时去除掉了代码中的 `any`，是最优的一个解决方案。
+
+### 使用
+``` ts
+function identity <T>(value: T) : T {
+  return value;
+}
+
+console.log(identity<Number>(1)) // 1
+```
+其中`<T>`就是传递的类型参数，用于特性函数调用的类型，
+
+![](https://user-gold-cdn.xitu.io/2020/6/10/1729b3d9774a21ac?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+类型也可以传递多个,使用`<T, U>`
+``` ts
+function identity <T, U>(value: T, message: U) : T {
+  console.log(message);
+  return value;
+}
+console.log(identity<Number, string>(68, "Semlinker"));
+```
+![](https://user-gold-cdn.xitu.io/2020/6/10/1729b3dbccc38ea7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+当然，现在的编译器足够聪明，调用的时候可以不传递类型，编译器可以自己识别的
+
+传递类型时，这个类型在函数中使用时的方法/属性，必须是存在的，或者继承自某个接口。
+
+比如不能使用number类型的数据获取length，但是 array 却可以。
+
+### 泛型带来的便利
+``` ts
+function identity<T>(value: T): T{
+  retrun value.toString()
+}
+cosole.log(identity<number>(42))// 42
+cosole.log(identity("Hello！")) // Hello!
+cosole.log(identity<number>([1,2,3]))// 1,2,3
+```
+![](https://user-gold-cdn.xitu.io/2020/6/10/1729b3d9773f34ad?imageslim)
+
+
+### 泛型接口
+可以为泛型提供一个用于约束参数/属性的类型的接口
+
+``` ts
+
+interface Identities<V, M> {
+  value: V,
+  message: M
+}
+
+function identity<T, U> (value:T,message: U): Identities<T, U>{
+  console.log(value + ": " + typeof (value));
+  console.log(message + ": " + typeof (message));
+  let identities: Identities<T, U> = {
+    value,
+    message
+  };
+  return identities;
+}
+console.log(identity(68, 'Semlinker'))
+
+/*
+* output
+* 68: number
+* Semlinker: string
+* {value: 68, message: "Semlinker"}
+*/
+
+```
+
+### 泛型类
+在类里使用泛型，只需要在类的后面，使用`<T, ...>`的语法定义任意多个类型变量，具体如下。
+``` ts
+interface GenericInterface<U> {
+  value: U
+  getIdentity: () => U
+}
+
+class IdentityClass<T> implements GenericInterface<T> {
+  value: T
+  constructor(value: T) {
+    this.value = value
+  }
+  getIdentity(): T {
+    return this.value
+  }
+
+}
+
+const myNumberClass = new IdentityClass<Number>(68);
+console.log(myNumberClass.getIdentity()); // 68
+
+const myStringClass = new IdentityClass<string>("Semlinker!");
+console.log(myStringClass.getIdentity()); // Semlinker!
+
+```
+接下来我们以实例化 myNumberClass 为例，来分析一下其调用过程：
+
+- 在实例化 `IdentityClass` 对象时，我们传入 Number 类型和构造函数参数值 68；
+- 之后在 `IdentityClass` 类中，类型变量 T 的值变成 Number 类型；
+- `IdentityClass` 类实现了 `GenericInterface<T>`，而此时 T 表示 `Number` 类型，因此等价于该类实现了 `GenericInterface<Number>` 接口；
+- 而对于 `GenericInterface <U>` 接口来说，类型变量 U 也变成了 `Number`。这里我有意使用不同的变量名，以表明类型值沿链向上传播，且与变量名无关。
+
+
+
+### 泛型约束
+**确保属性存在**
+
+当我们在函数中获取length属性，在类型为number时，是没有length的，所以会报错。
+``` ts
+function identity<T>(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+identity<number>(1); //error
+identity<number>([1,2,3]); //success
+
+```
+
+解决：使用接口约束属性
+
+``` ts
+interface Length {
+  length: number;
+}
+
+function identity<T extends Length>(arg: T): T {
+  console.log(arg.length); // 可以获取length属性
+  return arg;
+}
+
+```
+
+**检查对象上的键是否存在**
+先认识 keyof 操作符
+
+### 泛型参考文章
+- [掘金-一文读懂 TypeScript 泛型及应用（ 7.8K字）](https://juejin.im/post/5ee00fca51882536846781ee)
 
 ## tsconfig.json
 
