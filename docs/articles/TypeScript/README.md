@@ -1,4 +1,3 @@
-[toc]
 # TypeScript
 
 ## TypeScript 是什么
@@ -545,7 +544,7 @@ console.log(myStringClass.getIdentity()); // Semlinker!
 ### 泛型约束
 **确保属性存在**
 
-当我们在函数中获取length属性，在类型为number时，是没有length的，所以会报错。
+当我们在函数中获取`length`属性，在类型为`number`时，是没有`length`的，所以会报错。
 ``` ts
 function identity<T>(arg: T): T {
   console.log(arg.length);
@@ -638,11 +637,11 @@ function identity<T extends Length>(arg: T): T {
 
 
 
-
 ## 参考文档
-
+- [TypeScript 官方文档](https://www.typescriptlang.org/zh/)
 - [TypeScript Doc（官方文档&英文版）](https://www.typescriptlang.org/docs/home.html)
 - [TypeScript Handbook（中文版）]( https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/tsconfig.json.html )
 - [Typescript 入门教程](https://ts.xcatliu.com/basics/type-of-function)
+- [深入理解TypeScript](https://jkchao.github.io/typescript-book-chinese/)
 - [1.2W字 | 了不起的 TypeScript 入门教程](https://juejin.im/post/5edd8ad8f265da76fc45362c)
 

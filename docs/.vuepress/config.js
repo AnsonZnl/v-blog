@@ -17,43 +17,42 @@ module.exports = {
         link: '/'
       },
       {
-        text: '前端博文',
+        text: '前端',
         link: '/articles/',
-        items: [{
-          text: 'JavaScript',
-          link: '/articles/JavaScript/'
-        },{
-          text: 'Vue',
-          link: '/articles/Vue/'
-        },{
-          text: '小程序',
-          link: '/articles/小程序/'
-        },{
-          text: 'Node',
-          link: '/articles/Node/'
-        }]
+        // items: [{
+        //   text: 'JavaScript',
+        //   link: '/articles/JavaScript/'
+        // },{
+        //   text: 'Vue',
+        //   link: '/articles/Vue/'
+        // },{
+        //   text: '小程序',
+        //   link: '/articles/小程序/'
+        // },{
+        //   text: 'Node',
+        //   link: '/articles/Node/'
+        // },{
+        //   text: 'TypeScript',
+        //   link: '/articles/TypeScript笔记.md'
+        // }]
       },
       {
-        text: '计算机通识',
+        text: '计算机基础',
         link: '/computer-base/'
-      },
-      {
-        text: '学习笔记',
-        link: '/learning-notes/'
       },
       {
         text: '生活杂文',
         link: '/life-essay/'
       },
-      {
-        text: '友情链接',
-        items: [
-          {
-            text: "JustSong's Blog",
-            link: 'https://iamazing.cn'
-          },
-        ]
-      },
+      // {
+      //   text: '友情链接',
+      //   items: [
+      //     {
+      //       text: "JustSong's Blog",
+      //       link: 'https://iamazing.cn'
+      //     },
+      //   ]
+      // },
       {
         text: '关于',
         link: '/about/'
@@ -64,22 +63,21 @@ module.exports = {
       },
     ],
     sidebar: {
-      "/life-essay/": [
-        {
-          title: '王者人生',
-          path: '/life-essay/王者人生'
-        },{
+      "/life-essay/": [{
           title: '博客迁移',
           path: '/life-essay/把博客从Hexo迁移至VuePress'
         },{
+          title: 'Chrome常用插件',
+          path: '/life-essay/Chrome常用插件'
+        },{
+          title: 'VSCode常用插件',
+          path: '/life-essay/VSCode常用插件'
+        },{
           title: '如何正确的使用你的时间',
           path: '/life-essay/如何正确的使用你的时间'
-        }
-      ],
-      "/learning-notes/": [
-        {
-          title: 'TypeScript',
-          path: '/learning-notes/TypeScript笔记'
+        },{
+          title: '如何不靠运气变富有',
+          path: '/life-essay/如何不靠运气变富有'
         }
       ],
       "/computer-base/": [
@@ -94,6 +92,14 @@ module.exports = {
         {
           title: '网络协议',
           path: '/computer-base/网络协议'
+        },
+        {
+          title: '设计模式',
+          path: '/computer-base/设计模式'
+        },
+        {
+          title: 'Git',
+          path: '/computer-base/Git'
         }
       ],
       "/articles/": [{
@@ -118,8 +124,8 @@ module.exports = {
               path: '/articles/JavaScript/理解JS原型链'
             },
             {
-              title: '深浅拷贝',
-              path: '/articles/JavaScript/深浅拷贝'
+              title: 'JS浅拷贝与深拷贝',
+              path: '/articles/JavaScript/JS浅拷贝与深拷贝'
             },
             {
               title: '我对JavaScript中this的一些理解',
@@ -134,6 +140,16 @@ module.exports = {
               path: '/articles/JavaScript/JavaScript对象原型链'
             }
           ]
+        },
+        {
+          title: 'TypeScript',
+          path: '/articles/TypeScript/',
+          collapsable: true
+        },
+        {
+          title: 'CSS',
+          path: '/articles/CSS/',
+          collapsable: true
         },
         {
           title: 'Vue',
@@ -155,10 +171,6 @@ module.exports = {
           path: '/articles/小程序/',
           collapsable: true,
           children: [
-            {
-              title: '清除小程序button的默认样式',
-              path: '/articles/小程序/清除小程序button的默认样式'
-            },
             {
               title: '使用Promise封装小程序wx.request',
               path: '/articles/小程序/使用Promise封装小程序wx.request'
@@ -198,6 +210,10 @@ module.exports = {
             {
               title: '在小程序中使用async&await',
               path: '/articles/小程序/在小程序中使用async&await'
+            },
+            {
+              title: '小程序中使用Less（最优方式）',
+              path: '/articles/小程序/小程序中使用Less（最优方式）'
             }
           ]
         },
