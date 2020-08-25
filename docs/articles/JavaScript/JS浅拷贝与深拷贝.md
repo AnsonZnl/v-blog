@@ -52,7 +52,7 @@ console.log(obj1);//{ value: 'a' }
 ### 扩展运算符
 使用 ES6 的扩展运算符也可以达到浅拷贝的效果
 ```js
-let arr1 = [1,2,3];
+let arr1 = [1,2,3]
 let arr2 = [...arr1]
 console.log(arr1 === arr2); //false
 ```

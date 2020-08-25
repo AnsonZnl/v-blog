@@ -1,5 +1,9 @@
 # Git
 
+![Git 常用命令](./img/computer-base/git命令速查.png)
+
+[Pro Git 中文版阅读（第二版）](https://www.progit.cn/)
+
 ## Git常用命令
 - `git status` 查看状态
 - `git add` 添加变动至暂存区
