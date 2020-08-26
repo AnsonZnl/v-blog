@@ -214,6 +214,10 @@ module.exports = {
             {
               title: '小程序中使用Less（最优方式）',
               path: '/articles/小程序/小程序中使用Less（最优方式）'
+            },
+            {
+              title: '小程序生成海报图片并保存',
+              path: '/articles/小程序/小程序生成海报图片并保存'
             }
           ]
         },

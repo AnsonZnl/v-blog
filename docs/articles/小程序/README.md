@@ -13,3 +13,4 @@
 - [在小程序中调用API](]/articles/小程序/在小程序中调用API.html)
 - [在小程序中自定义弹窗组件](/articles/小程序/在小程序中自定义弹窗组件.html)
 - [在小程序中使用async&await](/articles/小程序/在小程序中使用async&await.html)
+- [小程序生成海报图片并保存](/articles/小程序/小程序生成海报图片并保存.md)
