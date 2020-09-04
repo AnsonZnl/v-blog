@@ -164,7 +164,6 @@ router.beforeEach((to, from, next)=>{
 写一个清除`sessionStorag`的方法。
 一个简单的保存登录状态的小 Demo。
 
-
 ---
 
 参考：
