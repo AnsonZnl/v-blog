@@ -108,10 +108,6 @@ module.exports = {
           collapsable: true,
           children: [
             {
-              title: '使用Documentfragment优化DOM操作',
-              path: '/articles/JavaScript/使用Documentfragment优化DOM操作'
-            },
-            {
               title: '创建对象的几种方法及优缺点',
               path: '/articles/JavaScript/创建对象的几种方法及优缺点'
             },
@@ -258,6 +254,21 @@ module.exports = {
               title: 'MongoDB中常用语句',
               path: '/articles/Node/MongoDB中常用语句'
             }
+          ]
+        },
+        {
+          title: '前端性能优化',
+          path: '/articles/Performance/',
+          collapsable: true,
+          children: [
+            {
+              title: '事件的防抖和节流',
+              path: '/articles/Performance/事件的防抖和节流'
+            },
+            {
+              title: '使用Documentfragment优化DOM操作',
+              path: '/articles/Performance/使用Documentfragment优化DOM操作'
+            },
           ]
         }
       ]
