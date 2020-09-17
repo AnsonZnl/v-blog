@@ -64,24 +64,22 @@ module.exports = {
     ],
     sidebar: {
       "/life-essay/": [{
-          title: '博客迁移',
-          path: '/life-essay/把博客从Hexo迁移至VuePress'
-        },{
-          title: 'Chrome常用插件',
-          path: '/life-essay/Chrome常用插件'
-        },{
-          title: 'VSCode常用插件',
-          path: '/life-essay/VSCode常用插件'
-        },{
-          title: '如何正确的使用你的时间',
-          path: '/life-essay/如何正确的使用你的时间'
-        },{
-          title: '如何不靠运气变富有',
-          path: '/life-essay/如何不靠运气变富有'
-        }
-      ],
-      "/computer-base/": [
-        {
+        title: '博客迁移',
+        path: '/life-essay/把博客从Hexo迁移至VuePress'
+      }, {
+        title: 'Chrome常用插件',
+        path: '/life-essay/Chrome常用插件'
+      }, {
+        title: 'VSCode常用插件',
+        path: '/life-essay/VSCode常用插件'
+      }, {
+        title: '如何正确的使用你的时间',
+        path: '/life-essay/如何正确的使用你的时间'
+      }, {
+        title: '如何不靠运气变富有',
+        path: '/life-essay/如何不靠运气变富有'
+      }],
+      "/computer-base/": [{
           title: '数据结构',
           path: '/computer-base/数据结构'
         },
@@ -106,8 +104,7 @@ module.exports = {
           title: 'JavaScript',
           path: '/articles/JavaScript/',
           collapsable: true,
-          children: [
-            {
+          children: [{
               title: '创建对象的几种方法及优缺点',
               path: '/articles/JavaScript/创建对象的几种方法及优缺点'
             },
@@ -151,8 +148,7 @@ module.exports = {
           title: 'Vue',
           path: '/articles/Vue/',
           collapsable: true,
-          children: [
-            {
+          children: [{
               title: 'Vue知识点总结',
               path: '/articles/Vue/Vue知识点总结'
             },
@@ -166,8 +162,7 @@ module.exports = {
           title: '小程序',
           path: '/articles/小程序/',
           collapsable: true,
-          children: [
-            {
+          children: [{
               title: '使用Promise封装小程序wx.request',
               path: '/articles/小程序/使用Promise封装小程序wx.request'
             },
@@ -221,8 +216,7 @@ module.exports = {
           title: 'Node',
           path: '/articles/Node/',
           collapsable: true,
-          children: [
-            {
+          children: [{
               title: '初试MongoDB数据库',
               path: '/articles/Node/初试MongoDB数据库'
             },
@@ -260,7 +254,10 @@ module.exports = {
           title: '前端性能优化',
           path: '/articles/Performance/',
           collapsable: true,
-          children: [
+          children: [{
+              title: 'JS事件循环之宏任务和微任务',
+              path: '/articles/Performance/JS事件循环之宏任务和微任务'
+            },
             {
               title: '事件的防抖和节流',
               path: '/articles/Performance/事件的防抖和节流'
@@ -268,7 +265,10 @@ module.exports = {
             {
               title: '使用Documentfragment优化DOM操作',
               path: '/articles/Performance/使用Documentfragment优化DOM操作'
-            },
+            },{
+              title: '实现图片懒加载',
+              path: '/articles/Performance/实现图片懒加载'
+            }
           ]
         }
       ]
