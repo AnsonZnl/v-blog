@@ -1,5 +1,21 @@
 # CSS 布局
 
+## 盒模型
+### 组成
+盒模型主要包含四部分：
+- margin
+- border
+- padding
+- content
+
+### 两种盒模型
+- W3C 标准盒模型：context = width
+- IE 盒模型：border + padding = width
+
+### 切换盒模型
+- box-sizing: content-box; # W3C 盒模型
+- box-sizing: border-box;  # IE 盒模型
+
 ## 什么是 BFC？如何形成的？特点是什么？有哪些应用场景？
 
 ### 什么是 BFC
@@ -11,7 +27,7 @@
 
 ### 如何形成的
 
-- 根元素（<body>）
+- 根元素（`<body>`）
 - 浮动元素（float 的值不为 none）
 - 绝对定位元素（元素的 position 为 absolute 或 fixed）
 - 行内块元素（元素的 display 是 inline-block）

@@ -7,3 +7,4 @@
 - [小程序](/articles/小程序/)
 - [Node](/articles/Node/)
 - [CSS](/articles/CSS/)
+- [前端性能优化总结](/articles/Performance/)

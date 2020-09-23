@@ -100,29 +100,7 @@ module.exports = {
           path: '/computer-base/Git'
         }
       ],
-      "/articles/": [
-        {
-          title: '前端性能优化',
-          path: '/articles/Performance/',
-          collapsable: true,
-          children: [{
-              title: 'JS事件循环之宏任务和微任务',
-              path: '/articles/Performance/JS事件循环之宏任务和微任务'
-            },
-            {
-              title: '事件的防抖和节流',
-              path: '/articles/Performance/事件的防抖和节流'
-            },
-            {
-              title: '使用Documentfragment优化DOM操作',
-              path: '/articles/Performance/使用Documentfragment优化DOM操作'
-            }, {
-              title: '实现图片懒加载',
-              path: '/articles/Performance/实现图片懒加载'
-            }
-          ]
-        },
-        {
+      "/articles/": [{
           title: 'JavaScript',
           path: '/articles/JavaScript/',
           collapsable: true,
@@ -269,6 +247,26 @@ module.exports = {
             {
               title: 'MongoDB中常用语句',
               path: '/articles/Node/MongoDB中常用语句'
+            }
+          ]
+        }, {
+          title: '前端性能优化',
+          path: '/articles/Performance/',
+          collapsable: true,
+          children: [{
+              title: 'JS事件循环之宏任务和微任务',
+              path: '/articles/Performance/JS事件循环之宏任务和微任务'
+            },
+            {
+              title: '事件的防抖和节流',
+              path: '/articles/Performance/事件的防抖和节流'
+            },
+            {
+              title: '使用Documentfragment优化DOM操作',
+              path: '/articles/Performance/使用Documentfragment优化DOM操作'
+            }, {
+              title: '首屏优化之懒加载',
+              path: '/articles/Performance/首屏优化之懒加载'
             }
           ]
         },
