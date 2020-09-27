@@ -1,0 +1,88 @@
+# 本地储存之 Cookie、webStorage、indexedDB
+
+我们先来通过表格学习下这几种存储方式的区别
+| 特性 | Cookie | localStorage | sessionStorage | indexedDB |
+| ---- | ---- | ---- | ---- | ---- |
+| 数据声明周期 | 一般由服务器生成，可以设置过期时间 | 除非被清理，否在一直存在 | 页面关闭就清理 | 除非被清理，否在一直存在 |
+| 数据储存大小 | 4k | 5M左右 | 5M左右 | 理论无限 |
+| 与服务端通信 | 请求时会携带在 Http 的 header 中，对于请求性能稍有影响 | 不参与 | 不参与 | 不参与 |
+
+<!-- | 用途 | 权限验证等 -->
+
+## Cookie
+
+主要用于存储一下用户相关的信息，如登录、权限、token 等，但是不宜过大，因为每次 http 请求都会带上，所以会稍微影响性能。
+对于 cookie 来说，还需要注意一些安全性。
+
+| 属性 | 作用 |
+| value | 如何用于保护用户登录态，应该将值加密 |
+| http-only | 不能通过 JS 访问 Cookie，减少 XSS 攻击 |
+| secure | 只能在协议为 HTTPS 的请求中携带 |
+| same-site | 规定浏览器不能再跨域请求中携带 Cookie，减少 CSRF 攻击 |
+
+Cookie 的本职工作并非是本地存储，而是“维持状态”。
+因为 HTTP 是一种无状态的协议，也就是说，客户端请求一次，服务端就响应一次，中间没有留下任何信息。
+就像一个经常和你聊天的朋友，天南地北的都什么都聊，可每次你都不知道你们上一次聊得是什么，以及他叫什么名字。
+那怎么办才能让他知道我是我呢？
+这时候就需要 Cookie 了，Cookie 说白了就是一个存储在浏览器里的一个小小的文本文件，它附着在 HTTP 请求上，在浏览器和服务器之间“飞来飞去”。
+它可以携带用户信息，当服务器检查 Cookie 的时候，便可以获取到客户端的状态，也就可以证明我是谁了。
+Cookie 是以键值对的形式存储的。
+
+### 优点
+
+- 后端设置
+- 解决鉴权问题
+
+### 缺点
+
+- 只有 4m，太小
+- 过量的 Cookie 会带来巨大的性能浪费
+- 不能跨域
+
+## Web Storage
+
+### localStorage
+
+- 本地永久储存，除非手动清除，否在一直存在
+- 大小：5M左右
+- 用于储存稳定的资源：如 CSS、js、小图等。
+
+### sessionStorage
+
+- 页面回话存储，关闭页面自动清除。
+- 大小：5M左右
+- 用于临时的数据：如 token、个人信息、权限、购物车信息等
+
+### 使用
+
+- 存储数据：setItem()    
+  `localStorage.setItem('user_name', 'xiuyan')`
+- 读取数据： getItem()    
+  `localStorage.getItem('user_name')`
+- 删除某一键名对应的数据： removeItem()    
+  `localStorage.removeItem('user_name')`
+- 清空数据记录：clear()    
+  `localStorage.clear()`
+
+## indexedDB
+
+IndexedDB 是一个运行在浏览器上的非关系型数据库。既然是数据库了，那就不是 5M、10M 这样小打小闹级别了。
+
+理论上来说，IndexedDB 是没有存储上限的（一般来说不会小于 250M）。它不仅可以存储字符串，还可以存储二进制数据。
+
+本人用的也不是很多，具体用法可以参考：[浏览器数据库 IndexedDB 入门教程](http://www.ruanyifeng.com/blog/2018/07/indexeddb.html)
+
+## PWA
+PWA（Progressive web apps，渐进式 Web 应用）运用现代的 Web API 以及传统的渐进式增强策略来创建跨平台 Web 应用程序。
+
+这些应用无处不在、功能丰富，使其具有与原生应用相同的用户体验优势。 这组文档和指南告诉您有关 PWA 的所有信息。
+
+其实我的理解，就是在浏览器或者其他客户端应用缓存一个webapp，一次使用，就将代码都缓存到本地，再次打开无需重复加载。
+
+是不是觉得很熟悉，这不就是微信小程序吗？
+
+其实现在的微信小程序、快应用都算是一种 PWA 的实现。
+
+比如：vuePress 就支持转PWA应用
+
+参考：[MDN-PWA](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
