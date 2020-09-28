@@ -264,9 +264,22 @@ module.exports = {
             {
               title: '使用Documentfragment优化DOM操作',
               path: '/articles/Performance/使用Documentfragment优化DOM操作'
-            }, {
+            },
+            {
               title: '首屏优化之懒加载',
               path: '/articles/Performance/首屏优化之懒加载'
+            },
+            {
+              title: '本地储存之Cookie、webStorage、indexedDB',
+              path: '/articles/Performance/本地储存之Cookie、webStorage、indexedDB'
+            },
+            {
+              title: 'DOM优化之重绘和回流',
+              path: '/articles/Performance/DOM优化之重绘和回流'
+            },
+            {
+              title: 'HTTP之缓存机制解析',
+              path: '/articles/Performance/HTTP之缓存机制解析'
             }
           ]
         },
