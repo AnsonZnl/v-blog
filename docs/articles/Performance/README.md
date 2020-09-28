@@ -68,8 +68,8 @@
 ## 目录
 
 - [本地储存之Cookie、webStorage、indexedDB](/articles/Performance/本地储存之Cookie、webStorage、indexedDB.html)
-- [HTTP 缓存机制解析]
-- [DOM 优化之重绘和回流]
+- [HTTP之缓存机制解析](/articles/Performance/HTTP之缓存机制解析.html)
+- [DOM优化之重绘和回流](/articles/Performance/DOM优化之重绘和回流.html)
 - [使用 Documentfragment 优化 DOM 操作](/articles/Performance/使用Documentfragment优化DOM操作.html)
 - [事件的防抖和节流](/articles/Performance/事件的防抖和节流.html)
 - [JS 事件循环之宏任务和微任务](/articles/Performance/JS事件循环之宏任务和微任务)
