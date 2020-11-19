@@ -1,20 +1,25 @@
 # CSS 布局
 
 ## 盒模型
+
 ### 组成
+
 盒模型主要包含四部分：
+
 - margin
 - border
 - padding
 - content
 
 ### 两种盒模型
+
 - W3C 标准盒模型：context = width
 - IE 盒模型：border + padding = width
 
 ### 切换盒模型
+
 - box-sizing: content-box; # W3C 盒模型
-- box-sizing: border-box;  # IE 盒模型
+- box-sizing: border-box; # IE 盒模型
 
 ## 什么是 BFC？如何形成的？特点是什么？有哪些应用场景？
 
@@ -56,24 +61,33 @@
 
 - 不和浮动元素重叠
 
-在一个BFC中使用两个BFC可以做两列布局时使用
+在一个 BFC 中使用两个 BFC 可以做两列布局时使用
 
-## 水平居中布局
+## 居中布局
 
-## 空间居中布局
+### 水平居中
 
-- Grid 布局
+- 行内元素：`text-align:center;`
+- 块级元素：`margin:0 auto;`
+- 绝对定位和移动：`absolute + transform`
+- 绝对定位和负边距：`absolute + margin`
+- flex: `flex + justify-content:center;`
 
-```css
-.container {
-  display: grid;
-  place-items: center;
-}
-```
+### 垂直居中
+
+- 子元素为单行文本：`line-height:height;`
+- 绝对定位： `absolute + transform`
+- flex: `flex + align-item:center;`
+- table：`display:table-cell;vertical-align:middle;`
+- 利用 position 和 top 和负的 margin
+
+### 水平垂直居中(空间居中)
+
+- grid：`display: grid; place-items: center;`
 
 ## 文字超出显示省略号
 
-- 单行
+### 单行
 
 ```html
 <style>
@@ -94,7 +108,7 @@ p{
 
 ```
 
-- 多行
+### 多行
 
 ```html
 <style>
@@ -115,3 +129,7 @@ p {
 </body>
 
 ```
+
+## Flex 布局
+
+## Grid 布局

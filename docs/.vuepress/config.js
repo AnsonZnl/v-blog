@@ -163,6 +163,9 @@ module.exports = {
           path: '/articles/小程序/',
           collapsable: true,
           children: [{
+              title: '微信支付',
+              path: '/articles/小程序/微信支付'
+            }, {
               title: '使用Promise封装小程序wx.request',
               path: '/articles/小程序/使用Promise封装小程序wx.request'
             },
