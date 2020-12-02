@@ -252,7 +252,8 @@ module.exports = {
               path: '/articles/Node/MongoDB中常用语句'
             }
           ]
-        }, {
+        },
+        {
           title: '前端性能优化',
           path: '/articles/Performance/',
           collapsable: true,
@@ -283,6 +284,9 @@ module.exports = {
             {
               title: 'HTTP之缓存机制解析',
               path: '/articles/Performance/HTTP之缓存机制解析'
+            }, {
+              title: '微信小程序性能优化',
+              path: '/articles/Performance/微信小程序性能优化'
             }
           ]
         },

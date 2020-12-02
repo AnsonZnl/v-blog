@@ -17,6 +17,7 @@
 - [事件的防抖和节流](/articles/Performance/事件的防抖和节流.html)
 - [JS 事件循环之宏任务和微任务](/articles/Performance/JS事件循环之宏任务和微任务.html)
 - [首屏优化之懒加载](/articles/Performance/首屏优化之懒加载.html)
+- [微信小程序性能优化](/articles/Performance/微信小程序性能优化.html)
 
 ## 从输入 URL 到页面显示，中间发生了什么？
 
