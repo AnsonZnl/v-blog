@@ -290,6 +290,18 @@ module.exports = {
             }
           ]
         },
+        {
+          title: '正则表达式',
+          path: '/articles/Regex/',
+          collapsable: true,
+          children: []
+        }, {
+          title: '源码系列',
+          path: '/articles/SourceCode/',
+          collapsable: true,
+          children: []
+        }
+
       ]
     }
   }
