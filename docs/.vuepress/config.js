@@ -27,7 +27,7 @@ module.exports = {
         //   link: '/articles/Vue/'
         // },{
         //   text: '小程序',
-        //   link: '/articles/小程序/'
+        //   link: '/articles/WeApp/'
         // },{
         //   text: 'Node',
         //   link: '/articles/Node/'
@@ -159,59 +159,59 @@ module.exports = {
           ]
         },
         {
-          title: '小程序',
-          path: '/articles/小程序/',
+          title: '微信小程序',
+          path: '/articles/WeApp/',
           collapsable: true,
           children: [{
               title: '微信支付',
-              path: '/articles/小程序/微信支付'
+              path: '/articles/WeApp/微信支付'
             }, {
               title: '使用Promise封装小程序wx.request',
-              path: '/articles/小程序/使用Promise封装小程序wx.request'
+              path: '/articles/WeApp/使用Promise封装小程序wx.request'
             },
             {
               title: '微信小程序动态加载swiper时不显示的问题（爬坑）',
-              path: '/articles/小程序/微信小程序动态加载swiper时不显示的问题（爬坑）'
+              path: '/articles/WeApp/微信小程序动态加载swiper时不显示的问题（爬坑）'
             },
             {
               title: '微信小程序授权登录弹框组件',
-              path: '/articles/小程序/微信小程序授权登录弹框组件'
+              path: '/articles/WeApp/微信小程序授权登录弹框组件'
             },
             {
               title: '解决gif图片只渲染一次的问题',
-              path: '/articles/小程序/解决gif图片只渲染一次的问题'
+              path: '/articles/WeApp/解决gif图片只渲染一次的问题'
             },
             {
               title: '小程序-实现蒙版弹出窗',
-              path: '/articles/小程序/小程序-实现蒙版弹出窗'
+              path: '/articles/WeApp/小程序-实现蒙版弹出窗'
             },
             {
               title: '小程序之瀑布流布局',
-              path: '/articles/小程序/小程序之瀑布流布局'
+              path: '/articles/WeApp/小程序之瀑布流布局'
             },
             {
               title: '小程序之iPhoneX适配',
-              path: '/articles/小程序/小程序之iPhoneX适配'
+              path: '/articles/WeApp/小程序之iPhoneX适配'
             },
             {
               title: '小程序中图片点击全屏-可滑动',
-              path: '/articles/小程序/小程序中图片点击全屏-可滑动'
+              path: '/articles/WeApp/小程序中图片点击全屏-可滑动'
             },
             {
               title: '在小程序中自定义弹窗组件',
-              path: '/articles/小程序/在小程序中自定义弹窗组件'
+              path: '/articles/WeApp/在小程序中自定义弹窗组件'
             },
             {
               title: '在小程序中使用async&await',
-              path: '/articles/小程序/在小程序中使用async&await'
+              path: '/articles/WeApp/在小程序中使用async&await'
             },
             {
               title: '小程序中使用Less（最优方式）',
-              path: '/articles/小程序/小程序中使用Less（最优方式）'
+              path: '/articles/WeApp/小程序中使用Less（最优方式）'
             },
             {
               title: '小程序生成海报图片并保存',
-              path: '/articles/小程序/小程序生成海报图片并保存'
+              path: '/articles/WeApp/小程序生成海报图片并保存'
             }
           ]
         },
@@ -291,16 +291,17 @@ module.exports = {
           ]
         },
         {
-          title: '正则表达式',
-          path: '/articles/Regex/',
-          collapsable: true,
-          children: []
-        }, {
           title: '源码系列',
           path: '/articles/SourceCode/',
           collapsable: true,
           children: []
-        }
+        },
+        {
+          title: '正则表达式',
+          path: '/articles/RegExp/',
+          collapsable: true,
+          children: []
+        },
 
       ]
     }
