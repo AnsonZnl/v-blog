@@ -8,6 +8,7 @@ module.exports = {
       href: '/img/logo.ico'
     }]
   ],
+  erviceWorker: true, // 是否支持PWA
   themeConfig: {
     sidebarDepth: 2,
     smoothScroll: true,

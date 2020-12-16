@@ -9,11 +9,14 @@ npm run build
 # 进入生成的文件夹
 cd docs/.vuepress/dist
 
-git init
-git add -A
-git commit -m 'deploy'
+# 如果是发布到自定义域名
+echo 'www.zhangningle.top' > CNAME
 
-# 如果发布到 https://<USERNAME>.github.io  填写你刚刚创建的仓库地址
+# git init 非首页 无需init
+git add -A
+git commit -m 'deploy 2'
+
+# 如果发布到 https://<USERNAME>.github.io 
 git push -f https://github.com/AnsonZnl/ansonznl.github.io.git master
 
 cd -
