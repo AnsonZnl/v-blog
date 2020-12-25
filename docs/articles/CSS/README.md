@@ -63,6 +63,8 @@
 
 在一个 BFC 中使用两个 BFC 可以做两列布局时使用
 
+
+
 ## 居中布局
 
 ### 水平居中
@@ -250,3 +252,20 @@ flex 属性是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 0 
 align-self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 align-items 属性。默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。
 
 ## Grid 布局
+
+## CSS 画形状
+**HTML**
+``` html
+<div class="shape"></div>
+```
+**CSS**
+- 三角形
+``` css
+.shape{
+    display: inline-block;
+    border-top: solid transparent 100px;
+    border-right: solid transparent 100px;
+    border-bottom: solid gray 100px;
+    border-left: solid transparent 100px;
+}
+```
