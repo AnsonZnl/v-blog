@@ -16,4 +16,4 @@
 - [小程序之瀑布流布局](/articles/小程序/小程序之瀑布流布局.html)
 - [小程序之 iPhoneX 适配](/articles/小程序/小程序之iPhoneX适配.html)
 - [小程序中图片点击全屏-可滑动](/articles/小程序/小程序中图片点击全屏-可滑动.html)
-- [在小程序中调用 API](]/articles/小程序/在小程序中调用API.html)
+- [在小程序中调用 API](/articles/小程序/在小程序中调用API.html)
