@@ -168,8 +168,8 @@ module.exports = {
               path: '/articles/WeApp/从前端的角度来梳理微信支付（小程序、H5、JSAPI）的流程'
             },
             {
-              title: '微信小程序授权之最佳实践',
-              path: '/articles/WeApp/微信小程序授权之最佳实践'
+              title: '微信小程序用户授权之最佳实践',
+              path: '/articles/WeApp/微信小程序用户授权之最佳实践'
             },
             {
               title: '使用Promise封装小程序wx.request',
