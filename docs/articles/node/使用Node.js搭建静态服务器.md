@@ -93,7 +93,7 @@ console.log('Server is running at http://127.0.0.1:8080/');
 </body>
 ```
 然后请求`http://127.0.0.1:8080/index.html`就会打印出：
-![101544689152_.pic.jpg](https://upload-images.jianshu.io/upload_images/7072486-5c918eec1e59e4ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![nodejs-1](https://gitee.com/zhangningle/imgs/raw/master/blog/Node/nodejs-1.png)
 
 当然他只能发起请求，想要请求到并且正确返回还需要设置文件的ContentType属性。
 我们可以使用`path.extname`获取请求文件的后缀：

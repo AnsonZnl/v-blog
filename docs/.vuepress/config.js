@@ -8,6 +8,7 @@ module.exports = {
       href: '/img/logo.ico'
     }]
   ],
+  base: '/',
   erviceWorker: true, // 是否支持PWA
   themeConfig: {
     sidebarDepth: 2,
@@ -313,3 +314,4 @@ module.exports = {
     }
   }
 }
+// window.imgBase = 'https://gitee.com/zhangningle/imgs/raw/master/'
