@@ -1,15 +1,20 @@
-# Vue中的验证登录状态
-## Vue项目中实现用户登录及token验证
-先说一下我的实现步骤： 
+# Vue 中的验证登录状态
+
+## Vue 项目中实现用户登录及 token 验证
+
+先说一下我的实现步骤：
+
 1. 使用`easy-mock`新建登录接口，模拟用户数据
 2. 使用`axios`请求登录接口，匹配账号和密码
-3. 账号密码验证后， 拿到`token`，将token存储到`sessionStorage`中，并跳转到首页
-4. 前端每次跳转时，就使用导航守卫(vue-router.beforeEach)判断 `sessionStorage` 中有无 `token `，没有就跳转到登录页面，有则跳转到对应路由页面。
-5.  注销后，就清除`sessionStorage`里的`token`信息并跳转到登录页面
+3. 账号密码验证后， 拿到`token`，将 token 存储到`sessionStorage`中，并跳转到首页
+4. 前端每次跳转时，就使用导航守卫(vue-router.beforeEach)判断 `sessionStorage` 中有无 `token`，没有就跳转到登录页面，有则跳转到对应路由页面。
+5. 注销后，就清除`sessionStorage`里的`token`信息并跳转到登录页面
 
-## 使用easy-mock模拟用户数据
+## 使用 easy-mock 模拟用户数据
+
 我用的是[easy-mock](https://easy-mock.com/),新建了一个接口，用于模拟用户数据:
-```javascript
+
+```js
 {
   "error_code": 0,
   "data": [{
@@ -29,27 +34,31 @@
   ]
 }
 ```
-login.vue中写好登陆框：
+
+login.vue 中写好登陆框：
+
 ```html
 <template>
-<div>
-    <p>用户名：<input type='text' v-model="userName"></p>
-    <p>密码：<input type='text' v-model="passWord"></p>
+  <div>
+    <p>用户名：<input type="text" v-model="userName" /></p>
+    <p>密码：<input type="text" v-model="passWord" /></p>
     <button @click="login()">登录</button>
-</div>
+  </div>
 </template>
 <script>
- export default {
+  export default {
     data() {
-        return {
-          userName:'root',
-          passWord:'root'
-        }
-    }
-}
+      return {
+        userName: "root",
+        passWord: "root",
+      };
+    },
+  };
 </script>
 ```
-然后下载axios：`npm install axios --save`,用来请求刚刚定义好的easy-mock接口：
+
+然后下载 axios：`npm install axios --save`,用来请求刚刚定义好的 easy-mock 接口：
+
 ```javascript
  login(){
         const self = this;
@@ -58,7 +67,7 @@ login.vue中写好登陆框：
               len = res.length,
               userNameArr= [],
               passWordArr= [],
-              ses= window.sessionStorage; 
+              ses= window.sessionStorage;
           // 拿到所有的username
           for(var i=0; i<len; i++){
             userNameArr.push(res[i].username);
@@ -87,9 +96,13 @@ login.vue中写好登陆框：
         })
       }
 ```
+
 这一步最重要的是当账号密码正确时，把请求回来的`token`放在`sessionStorage`中，
+
 ## 配置路由
-然后配置路由新加一个meta属性：
+
+然后配置路由新加一个 meta 属性：
+
 ```javascript
     {
       path: '/',
@@ -112,20 +125,19 @@ login.vue中写好登陆框：
 判断每次路由跳转的链接是否需要登录，
 
 ## 导航卫士
+
 在`main.js`中配置一个全局前置钩子函数：`router.beforeEach（）`，他的作用就是在每次路由切换的时候调用
 这个钩子方法会接收三个参数：to、from、next。
 `to`：Route：即将要进入的目标的路由对象，
 `from`：Route：当前导航正要离开的路由，
-`next`：Function：个人理解这个方法就是函数结束后执行什么，先看官方解释
-1.`next()`：进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是confirmed（确认的），
-2.`next(false)`：中断当前的导航。如果浏览器的url改变了（可能是用户手动或浏览器后退按钮），那么url地址会重置到from路由对应的地址。
-3.`next('/')`或`next({path:'/'})`：跳转到一个不同的地址。当前导航被中断，进入一个新的导航。
+`next`：Function：个人理解这个方法就是函数结束后执行什么，先看官方解释 1.`next()`：进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed（确认的）， 2.`next(false)`：中断当前的导航。如果浏览器的 url 改变了（可能是用户手动或浏览器后退按钮），那么 url 地址会重置到 from 路由对应的地址。 3.`next('/')`或`next({path:'/'})`：跳转到一个不同的地址。当前导航被中断，进入一个新的导航。
 
-## 用sessionStorage存储用户token
-``` JavaScript
+## 用 sessionStorage 存储用户 token
+
+```JavaScript
 //路由守卫
 router.beforeEach((to, from, next)=>{
-    //路由中设置的needLogin字段就在to当中 
+    //路由中设置的needLogin字段就在to当中
     if(window.sessionStorage.data){
       console.log(window.sessionStorage);
       // console.log(to.path) //每次跳转的路径
@@ -145,7 +157,8 @@ router.beforeEach((to, from, next)=>{
     }
 })
 ```
-这里用了`router.beforeEach` [vue-router导航守卫](https://router.vuejs.org/zh/guide/advanced/)
+
+这里用了`router.beforeEach` [vue-router 导航守卫](https://router.vuejs.org/zh/guide/advanced/)
 每次跳转时都会判断`sessionStorage`中是否有`token`值，如果有则能正常跳转，如果没有那么就返回登录页面。
 
 ## 注销
@@ -153,18 +166,21 @@ router.beforeEach((to, from, next)=>{
 至此就完成了一个简单的登录状态了，浏览器关闭后`sessionStorage`会清空的，所以当用户关闭浏览器再打开是需要重新登录的
 
 当然也可以手动清除`sessionStorage`，清除动作可以做成注销登录，这个就简单了。
-```javascript
+
+``` js
     loginOut(){
     // 注销后 清除session信息 ，并返回登录页
     window.sessionStorage.removeItem('data');
     this.common.startHacking(this, 'success', '注销成功！');
-    this.$router.push('/index'); 
+    this.$router.push('/index');
     }
 ```
+
 写一个清除`sessionStorag`的方法。
 一个简单的保存登录状态的小 Demo。
 
 ---
 
-参考：
-- [vue-router导航守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB)
+## 参考：
+
+- [vue-router 导航守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB)
