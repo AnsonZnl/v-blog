@@ -157,7 +157,13 @@ module.exports = {
             {
               title: 'Vue中的验证登录状态',
               path: '/articles/Vue/Vue中的验证登录状态'
-            }
+            }, {
+              title: 'Vue的双向绑定原理',
+              path: '/articles/Vue/Vue的双向绑定原理'
+            }, {
+              title: 'Vue中8种组件通信方式',
+              path: '/articles/Vue/Vue中8种组件通信方式'
+            },
           ]
         },
         {
