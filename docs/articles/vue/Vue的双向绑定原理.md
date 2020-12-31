@@ -1,8 +1,10 @@
 ## Vue2.x
 
-vue.js 2.x 是采用数据劫持结合发布者-订阅者模式的方式，通过 Object.defineProperty()来劫持各个属性的 setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。
+Vue.js 2.x 是采用数据劫持结合发布者-订阅者模式的方式，通过**Object.defineProperty()**方法来劫持各个属性的 setter、getter，在数据变动时发布消息给订阅者，触发相应的监听回调。
 
-当把一个普通 Javascript 对象传给 Vue 实例来作为它的 data 选项时，Vue 将遍历它的属性，用 Object.defineProperty 都加上 setter 和 getter 这样的话，给这个对象的某个值赋值，就会触发 setter，那么就能监听到了数据变化 compile 解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，更新视图 Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁，主要做的事情是:
+当把一个普通 Javascript 对象传给 Vue 实例来作为它的 data 选项时，Vue 将遍历它的属性，用 Object.defineProperty 都加上 setter 和 getter 。
+
+这样的话，给这个对象的某个值赋值，就会触发 setter，那么就能监听到了数据变化 compile 解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，更新视图 Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁，主要做的事情是:
 
 1.在自身实例化时往属性订阅器(dep)里面添加自己
 
@@ -61,3 +63,19 @@ vue.js 2.x 是采用数据劫持结合发布者-订阅者模式的方式，通�
 ```
 
 ## Vue3
+
+## Proxy 相比于 defineProperty 的优势
+
+Object.defineProperty() 的问题主要有三个：
+
+- 不能监听数组的变化
+- 必须遍历对象的每个属性
+- 必须深层遍历嵌套的对象
+
+Proxy 在 ES2015 规范中被正式加入，它有以下几个特点：
+
+- 针对对象：针对整个对象，而不是对象的某个属性，所以也就不需要对 keys 进行遍历。这解决了上述 Object.defineProperty() 第二个问题
+- 支持数组：Proxy 不需要对数组的方法进行重载，省去了众多 hack，减少代码量等于减少了维护成本，而且标准的就是最好的。
+
+除了上述两点之外，Proxy 还拥有以下优势： Proxy 的第二个参数可以有 13 种拦截方法，这比起 Object.defineProperty() 要更加丰富 Proxy 作为新标准受到浏览器厂商的重点关注和性能优化，相比之下 Object.defineProperty() 是一个已有的老方法。 
+
