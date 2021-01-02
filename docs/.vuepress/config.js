@@ -69,17 +69,14 @@ module.exports = {
         title: '博客迁移',
         path: '/life-essay/把博客从Hexo迁移至VuePress'
       }, {
+        title: '2020年总结与2021年计划',
+        path: '/life-essay/2020年总结与2021年计划'
+      }, {
         title: 'Chrome常用插件',
         path: '/life-essay/Chrome常用插件'
       }, {
         title: 'VSCode常用插件',
         path: '/life-essay/VSCode常用插件'
-      }, {
-        title: '如何正确的使用你的时间',
-        path: '/life-essay/如何正确的使用你的时间'
-      }, {
-        title: '如何不靠运气变富有',
-        path: '/life-essay/如何不靠运气变富有'
       }],
       "/computer-base/": [{
           title: '数据结构',
