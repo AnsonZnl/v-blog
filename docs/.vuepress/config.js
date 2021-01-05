@@ -104,6 +104,9 @@ module.exports = {
           path: '/articles/JavaScript/',
           collapsable: true,
           children: [{
+              title: '为什么要用setTimeout模拟setInterval？',
+              path: '/articles/JavaScript/为什么要用setTimeout模拟setInterval？'
+            }, {
               title: '创建对象的几种方法及优缺点',
               path: '/articles/JavaScript/创建对象的几种方法及优缺点'
             },
