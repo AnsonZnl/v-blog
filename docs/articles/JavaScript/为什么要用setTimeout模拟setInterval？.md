@@ -93,7 +93,7 @@ setInterval(function, N)
 //即：每隔N秒把function事件推到消息队列中
 ```
 
-![setinterval-1.png](https://i.loli.net/2021/01/05/jXIJfmEl14svMLg.png)
+![setinterval-1.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/730a96f90311403980e1e42c2d5d21c6~tplv-k3u1fbpfcp-zoom-1.image)
 
 上图可见，setInterval 每隔 100ms 往队列中添加一个事件；100ms 后，添加 T1 定时器代码至队列中，主线程中还有任务在执行，所以等待，some event 执行结束后执行 T1 定时器代码；又过了 100ms，T2 定时器被添加到队列中，主线程还在执行 T1 代码，所以等待；又过了 100ms，理论上又要往队列里推一个定时器代码，**但由于此时 T2 还在队列中，所以 T3 不会被添加（T3 被跳过）**，结果就是此时被跳过；这里我们可以看到，T1 定时器执行结束后马上执行了 T2 代码，所以并没有达到定时器的效果。
 
@@ -126,24 +126,14 @@ for (var i = 0; i < 5; i++) {
 
 当然为什么输出不是 1 到 5，这个涉及到作用域的问题了，这里就不解释了。
 
-那如果换成 setInterval 呢？
-
-```js
-for (var i = 0; i < 5; i++) {
-  setInterval(function() {
-    console.log(i);
-  }, 1000);
-}
-```
-
-**输出什么？**  
-答案是：每 1 秒输出一个 5。  
-**为什么输出一个 5？**  
-是因为 setInterval 只在第 for 循环时被添加了，后面的并没有添加，也就是之前说的，setInterval 在每次把任务 push 到任务队列前，都要进行一下判断(看上次的任务是否仍在队列中，如果有则不添加，没有则添加)。
-
 ## setTimeout 模拟 setInterval
 
-综上所述，在某些情况下，setInterval 并不是很准确的。为了解决这些弊端，可以使用 settTimeout() 代替。具体实现如下：
+综上所述，在某些情况下，setInterval 缺点是很明显的，为了解决这些弊端，可以使用 settTimeout() 代替。
+
+- 在前一个定时器执行完前，不会向队列插入新的定时器（解决缺点一）
+- 保证定时器间隔（解决缺点二）
+
+具体实现如下：
 
 1.写一个 interval 方法
 
