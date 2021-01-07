@@ -45,4 +45,4 @@ onLoad: function(){
 ```
 然后在对应的wxss里设置好对应的类名就ok 了，比较简单方便。
 
-参考：[小程序iPhone X 视适配](https://www.imooc.com/article/details/id/33529)
+参考：[小程序iPhone X 适配](https://www.imooc.com/article/details/id/33529)
