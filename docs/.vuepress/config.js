@@ -285,16 +285,12 @@ module.exports = {
               path: '/articles/Performance/首屏优化之懒加载'
             },
             {
-              title: '本地储存之Cookie、webStorage、indexedDB',
-              path: '/articles/Performance/本地储存之Cookie、webStorage、indexedDB'
+              title: '浏览器缓存机制',
+              path: '/articles/Performance/浏览器缓存机制'
             },
             {
               title: 'DOM优化之重绘和回流',
               path: '/articles/Performance/DOM优化之重绘和回流'
-            },
-            {
-              title: 'HTTP之缓存机制解析',
-              path: '/articles/Performance/HTTP之缓存机制解析'
             }, {
               title: '微信小程序性能优化',
               path: '/articles/Performance/微信小程序性能优化'

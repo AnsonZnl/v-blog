@@ -6,12 +6,11 @@
 
 本人知识所限，只能在前端的角度，从网络、缓存、浏览器渲染、编码的角度来总结一些优化经验。
 
-![](https://user-gold-cdn.xitu.io/2018/10/23/1669f5358f63c0f8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![performance_mind.jpg](https://i.loli.net/2021/01/08/DKOCMTspWhntL2r.png)
 
 ## 目录
 
-- [本地储存之 Cookie、webStorage、indexedDB](/articles/Performance/本地储存之Cookie、webStorage、indexedDB.html)
-- [HTTP 之缓存机制解析](/articles/Performance/HTTP之缓存机制解析.html)
+- [浏览器缓存机制](/articles/Performance/浏览器缓存机制.html)
 - [DOM 优化之重绘和回流](/articles/Performance/DOM优化之重绘和回流.html)
 - [使用 Documentfragment 优化 DOM 操作](/articles/Performance/使用Documentfragment优化DOM操作.html)
 - [事件的防抖和节流](/articles/Performance/事件的防抖和节流.html)
@@ -20,6 +19,8 @@
 - [微信小程序性能优化](/articles/Performance/微信小程序性能优化.html)
 
 ## 从输入 URL 到页面显示，中间发生了什么？
+
+完整过程可参考：[从 URL 输入到页面展现到底发生什么？](https://juejin.cn/post/6844903784229896199#heading-0)
 
 在展开性能优化的话题之前，我想先抛出一个老生常谈的面试问题：
 
