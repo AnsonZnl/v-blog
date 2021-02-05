@@ -20,23 +20,7 @@ module.exports = {
       },
       {
         text: '前端',
-        link: '/articles/',
-        // items: [{
-        //   text: 'JavaScript',
-        //   link: '/articles/JavaScript/'
-        // },{
-        //   text: 'Vue',
-        //   link: '/articles/Vue/'
-        // },{
-        //   text: '小程序',
-        //   link: '/articles/WeApp/'
-        // },{
-        //   text: 'Node',
-        //   link: '/articles/Node/'
-        // },{
-        //   text: 'TypeScript',
-        //   link: '/articles/TypeScript笔记.md'
-        // }]
+        link: '/articles/'
       },
       {
         text: '计算机基础',
@@ -46,15 +30,6 @@ module.exports = {
         text: '生活杂文',
         link: '/life-essay/'
       },
-      // {
-      //   text: '友情链接',
-      //   items: [
-      //     {
-      //       text: "JustSong's Blog",
-      //       link: 'https://iamazing.cn'
-      //     },
-      //   ]
-      // },
       {
         text: '关于',
         link: '/about/'
