@@ -309,6 +309,9 @@ class MyVue {
 
 <iframe width="100%" height="400" src="//jsrun.net/Y4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
+总结一下流程，回头在哪看一遍这个图，是不是清楚很多了。
+![vue2.x流程图2.png](https://i.loli.net/2021/01/18/jhRLamF5kO2vQs7.png)
+
 ## 参考
 
 - [Vue.js 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/v2/reactive/)

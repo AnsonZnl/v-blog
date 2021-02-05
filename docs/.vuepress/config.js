@@ -72,6 +72,9 @@ module.exports = {
         title: '2020年总结与2021年计划',
         path: '/life-essay/2020年总结与2021年计划'
       }, {
+        title: '学习目标',
+        path: '/life-essay/学习目标'
+      }, {
         title: 'Chrome常用插件',
         path: '/life-essay/Chrome常用插件'
       }, {
