@@ -150,6 +150,9 @@ module.exports = {
           path: '/articles/WeApp/',
           collapsable: true,
           children: [{
+              title: '公众号网页开发经验总结',
+              path: '/articles/WeApp/公众号网页开发经验总结'
+            },{
               title: '从前端的角度来梳理微信支付（小程序、H5、JSAPI）的流程',
               path: '/articles/WeApp/从前端的角度来梳理微信支付（小程序、H5、JSAPI）的流程'
             },
