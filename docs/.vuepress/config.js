@@ -65,6 +65,18 @@ module.exports = {
           path: '/computer-base/算法'
         },
         {
+          title: 'LeetCode',
+          path: '/computer-base/LeetCode/两数之和',
+          collapsable: true,
+          children: [{
+            title: '两数之和',
+            path: '/computer-base/LeetCode/两数之和'
+          }, {
+            title: '有效的括号',
+            path: '/computer-base/有效的括号'
+          }]
+        },
+        {
           title: '网络协议',
           path: '/computer-base/网络协议'
         },
@@ -152,7 +164,7 @@ module.exports = {
           children: [{
               title: '公众号网页开发经验总结',
               path: '/articles/WeApp/公众号网页开发经验总结'
-            },{
+            }, {
               title: '从前端的角度来梳理微信支付（小程序、H5、JSAPI）的流程',
               path: '/articles/WeApp/从前端的角度来梳理微信支付（小程序、H5、JSAPI）的流程'
             },
