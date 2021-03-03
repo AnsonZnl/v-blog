@@ -73,7 +73,7 @@ module.exports = {
             path: '/computer-base/LeetCode/两数之和'
           }, {
             title: '有效的括号',
-            path: '/computer-base/有效的括号'
+            path: '/computer-base/LeetCode/有效的括号'
           }]
         },
         {
