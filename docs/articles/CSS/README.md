@@ -63,8 +63,6 @@
 
 在一个 BFC 中使用两个 BFC 可以做两列布局时使用
 
-
-
 ## 居中布局
 
 ### 水平居中
@@ -144,6 +142,8 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型�
 
 - 水平的主轴
 - 垂直的交叉轴
+
+推荐：[Flex 可视化编程](http://bigerfe.com/yflex)
 
 ### 容器的属性
 
@@ -254,18 +254,23 @@ align-self 属性允许单个项目有与其他项目不一样的对齐方式，
 ## Grid 布局
 
 ## CSS 画形状
+
 **HTML**
-``` html
+
+```html
 <div class="shape"></div>
 ```
+
 **CSS**
+
 - 三角形
-``` css
-.shape{
-    display: inline-block;
-    border-top: solid transparent 100px;
-    border-right: solid transparent 100px;
-    border-bottom: solid gray 100px;
-    border-left: solid transparent 100px;
+
+```css
+.shape {
+  display: inline-block;
+  border-top: solid transparent 100px;
+  border-right: solid transparent 100px;
+  border-bottom: solid gray 100px;
+  border-left: solid transparent 100px;
 }
 ```

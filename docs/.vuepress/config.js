@@ -74,6 +74,9 @@ module.exports = {
           }, {
             title: '有效的括号',
             path: '/computer-base/LeetCode/有效的括号'
+          }, {
+            title: '合并两个有序链表',
+            path: '/computer-base/LeetCode/合并两个有序链表'
           }]
         },
         {
