@@ -77,6 +77,9 @@ module.exports = {
           }, {
             title: '合并两个有序链表',
             path: '/computer-base/LeetCode/合并两个有序链表'
+          }, { 
+            title: '最大子序和',
+            path: '/computer-base/LeetCode/最大子序和'
           }]
         },
         {
@@ -93,6 +96,10 @@ module.exports = {
         }
       ],
       "/articles/": [{
+          title: 'CSS',
+          path: '/articles/CSS/',
+          collapsable: true
+        }, {
           title: 'JavaScript',
           path: '/articles/JavaScript/',
           collapsable: true,
@@ -132,11 +139,6 @@ module.exports = {
         {
           title: 'TypeScript',
           path: '/articles/TypeScript/',
-          collapsable: true
-        },
-        {
-          title: 'CSS',
-          path: '/articles/CSS/',
           collapsable: true
         },
         {
@@ -295,6 +297,11 @@ module.exports = {
               path: '/articles/Performance/微信小程序性能优化'
             }
           ]
+        },
+        {
+          title: '安全',
+          path: '/articles/Security/',
+          collapsable: true
         },
         {
           title: '源码系列',

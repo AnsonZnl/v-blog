@@ -8,6 +8,7 @@
 - [微信小程序](/articles/WeApp/)
 - [Node](/articles/Node/)
 - [CSS](/articles/CSS/)
+- [安全](/articles/Security/)
 - [前端性能优化总结](/articles/Performance/)
 - [正则表达式](/articles/Regex/)
 - [源码系列](/articles/SourceCode/)
