@@ -165,8 +165,11 @@ module.exports = {
         {
           title: '微信小程序',
           path: '/articles/WeApp/',
-          collapsable: true,
+          collapsable: true, 
           children: [{
+              title: '小程序开发相关总结',
+              path: '/articles/WeApp/小程序开发相关总结'
+            }, {
               title: '公众号网页开发经验总结',
               path: '/articles/WeApp/公众号网页开发经验总结'
             }, {
