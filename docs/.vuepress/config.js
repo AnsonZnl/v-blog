@@ -77,7 +77,7 @@ module.exports = {
           }, {
             title: '合并两个有序链表',
             path: '/computer-base/LeetCode/合并两个有序链表'
-          }, { 
+          }, {
             title: '最大子序和',
             path: '/computer-base/LeetCode/最大子序和'
           }]
@@ -146,6 +146,9 @@ module.exports = {
           path: '/articles/Vue/',
           collapsable: true,
           children: [{
+            title: 'Vue-Router原理解析',
+            path: '/articles/Vue/Vue-Router原理解析'
+          }, {
             title: 'Vue知识点总结',
             path: '/articles/Vue/Vue知识点总结'
           }, {
@@ -165,7 +168,7 @@ module.exports = {
         {
           title: '微信小程序',
           path: '/articles/WeApp/',
-          collapsable: true, 
+          collapsable: true,
           children: [{
               title: '小程序开发相关总结',
               path: '/articles/WeApp/小程序开发相关总结'
