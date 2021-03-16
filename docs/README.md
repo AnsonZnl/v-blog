@@ -16,6 +16,7 @@ footer: MIT Licensed | Copyright © 2018-present ansonZnl
 ---
 
 ## 最新文章
+- 2021 年 3 月 16 日 - [小程序性能优化和异常监控](/articles/WeApp/小程序性能优化和异常监控)
 - 2021 年 3 月 14 日 - [Vue-Router原理解析](/articles/Vue/Vue-Router原理解析)
 - 2021 年 3 月 10 日 - [小程序开发相关总结](/articles/WeApp/小程序开发相关总结)
 - 2021 年 3 月 5 日 - [LeetCode-最大子序和](./computer-base/LeetCode/最大子序和)
