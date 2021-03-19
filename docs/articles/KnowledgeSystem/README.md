@@ -1,9 +1,14 @@
-# 前端知识图谱
+# 前端知识体系
+
 ## 计算机基础
 
 * 网络协议
     * http
         * http1.0/1.1/1.2/http的差异
+        * https和http的区别
+        * 缓存
+          * 强缓存
+          * 协商缓存
     * TCP
       * TCP三次握手
     * UDP
@@ -12,10 +17,15 @@
         * websocket原理
 * 算法（leetCode）
     * 排序
+    * 分治
+    * 递归
+    * 双指针
+    * 动态规划
     * ...
 * 数据结构
     * 栈
     * 队列
+    * 链表
     * 二叉树
     * 散列表
     * ...
@@ -25,41 +35,46 @@
   * HTML5新标签
   * 语义化
 * CSS
-  * 盒模型
+  * 盒模型（w3c和IE）
   * CSS3新特性
   * less/sess
-
-* JS
-    * DOM/BOM
-    * 闭包形成的原因和优缺点
-    * this指向
-    * Promise/async/await
-    * EventLoop
+* JavaScript
+    * ECMAScript核心语法
+    * DOM/BOM相关API
     * 继承/原型链/作用域
-    * ES6/ES7/TS等新语法
+    * 各种情况下的this指向
+    * 闭包形成的原因和优缺点
+    * EventLoop
+    * ES6/ES7等新语法
+    * Promise/async/await
+    * TypeScript/Flow等
 * Vue
+    * 生命周期
     * Vue原理（响应式/vNode/Diff）
     * Vuex原理
     * Vue-router原理
     * 组件化开发
-* 小程序（跨端）
+* 小程序
     * 最佳实践
     * 组件化开发
+    * 跨端
+      * Taro
+      * uni-app
 * Node
-    * 基础函数库（fs、http、path..）
-    * npm库
+    * 基础库（fs、http、path..）
+    * npm 库
     * Webpack
         * loader
-        * plgoin
+        * plugins
     * Express
     * Koa
+      * 中间件
     * PM2
 * 浏览器
     * 从输入url到页面显示发生了什么？
     * 浏览器渲染原理
-    * webWork工作机制
-    * 缓存（cookie/localStorage/sessionStorage）
-    * DOM的事件机制（冒泡/捕捉）
+    * 浏览器缓存（cookie/localStorage/sessionStorage）
+    * 事件机制（冒泡/捕捉）
     * DOM的重绘/回流
 * Web安全
   * XSS

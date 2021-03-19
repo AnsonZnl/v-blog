@@ -47,9 +47,6 @@ module.exports = {
         title: '2020年总结与2021年计划',
         path: '/life-essay/2020年总结与2021年计划'
       }, {
-        title: '前端知识图谱',
-        path: '/life-essay/前端知识图谱'
-      }, {
         title: 'Chrome常用插件',
         path: '/life-essay/Chrome常用插件'
       }, {
@@ -96,6 +93,10 @@ module.exports = {
         }
       ],
       "/articles/": [{
+          title: '前端知识体系',
+          path: '/articles/KnowledgeSystem/',
+          collapsable: true
+        }, {
           title: 'CSS',
           path: '/articles/CSS/',
           collapsable: true
@@ -170,9 +171,9 @@ module.exports = {
           path: '/articles/WeApp/',
           collapsable: true,
           children: [{
-                title: '小程序性能优化和异常监控',
-                path: '/articles/WeApp/小程序性能优化和异常监控'
-              }, {
+              title: '小程序性能优化和异常监控',
+              path: '/articles/WeApp/小程序性能优化和异常监控'
+            }, {
               title: '小程序开发相关总结',
               path: '/articles/WeApp/小程序开发相关总结'
             }, {
