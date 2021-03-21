@@ -43,6 +43,12 @@
 - 命令`git tag -d <tagname>`可以删除一个本地标签；
 - 命令`git push origin :refs/tags/<tagname>`可以删除一个远程标签。
 
+## SSH
+
+最近的 http 链接总是出问题，还是 ssh 比较稳。
+
+- [Github 生成 SSH 秘钥（详细教程）](https://blog.csdn.net/qq_35495339/article/details/92847819)
+
 ## user
 
 切换帐号其实很简单，
