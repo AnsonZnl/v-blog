@@ -78,6 +78,23 @@
 
 - `push` 之前先 `pull` 代码
 
+## 注意
+
+- `push` 之前先 `pull` 代码
+
+## 问题
+
+### git config proxy
+
+前一段时间因为墙很厚，github 的代码老是拉取失败，后来就设置了下代理，然后这两天在使用的时候就老报错。
+
+```报错提示
+1. fatal: unable to access 'http://xxx': OpenSSL SSL_read: Connection was reset, errno 10054
+2. fatal: unable to access 'http://xxx': Received HTTP code 400 from proxy after CONNECT
+3. fatal: unable to access 'http://xxx': Failed to connect to github.com port 443: Timed out
+4. fatal: unable to access 'http://xxx': Received HTTP code 400 from proxy after CONNECT
+```
+
 ## GitHub
 
 - [github 上 fork 原项目，如何将本地仓库代码更新到最新版本？](https://blog.csdn.net/u014028063/article/details/81559573)
