@@ -77,6 +77,9 @@ module.exports = {
           }, {
             title: '最大子序和',
             path: '/computer-base/LeetCode/最大子序和'
+          }, {
+            title: '回文数',
+            path: '/computer-base/LeetCode/回文数'
           }]
         },
         {
