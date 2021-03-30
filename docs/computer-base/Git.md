@@ -78,10 +78,6 @@
 
 - `push` 之前先 `pull` 代码
 
-## 注意
-
-- `push` 之前先 `pull` 代码
-
 ## 问题
 
 ### git config proxy

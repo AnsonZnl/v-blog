@@ -19,7 +19,7 @@ module.exports = {
         link: '/'
       },
       {
-        text: '前端',
+        text: '前端知识',
         link: '/articles/'
       },
       {
