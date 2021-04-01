@@ -150,24 +150,29 @@ module.exports = {
           path: '/articles/Vue/',
           collapsable: true,
           children: [{
-            title: 'Vue-Router原理解析',
-            path: '/articles/Vue/Vue-Router原理解析'
-          }, {
-            title: 'Vue知识点总结',
-            path: '/articles/Vue/Vue知识点总结'
-          }, {
-            title: 'Vue中的验证登录状态',
-            path: '/articles/Vue/Vue中的验证登录状态'
-          }, {
-            title: 'Vue3对比Vue2有哪些变化',
-            path: '/articles/Vue/Vue3对比Vue2有哪些变化'
-          }, {
-            title: 'Vue2.x的双向绑定原理及实现',
-            path: '/articles/Vue/Vue2.x的双向绑定原理及实现'
-          }, {
-            title: 'Vue中8种组件通信方式',
-            path: '/articles/Vue/Vue中8种组件通信方式'
-          }, ]
+              title: 'Vuex原理解析',
+              path: '/docs/articles/Vue/Vuex原理解析'
+            },
+            {
+              title: 'Vue-Router原理解析',
+              path: '/articles/Vue/Vue-Router原理解析'
+            }, {
+              title: 'Vue知识点总结',
+              path: '/articles/Vue/Vue知识点总结'
+            }, {
+              title: 'Vue中的验证登录状态',
+              path: '/articles/Vue/Vue中的验证登录状态'
+            }, {
+              title: 'Vue3对比Vue2有哪些变化',
+              path: '/articles/Vue/Vue3对比Vue2有哪些变化'
+            }, {
+              title: 'Vue2.x的双向绑定原理及实现',
+              path: '/articles/Vue/Vue2.x的双向绑定原理及实现'
+            }, {
+              title: 'Vue中8种组件通信方式',
+              path: '/articles/Vue/Vue中8种组件通信方式'
+            },
+          ]
         },
         {
           title: '微信小程序',
