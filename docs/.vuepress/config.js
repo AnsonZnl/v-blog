@@ -151,7 +151,7 @@ module.exports = {
           collapsable: true,
           children: [{
               title: 'Vuex原理解析',
-              path: '/docs/articles/Vue/Vuex原理解析'
+              path: '/articles/Vue/Vuex原理解析'
             },
             {
               title: 'Vue-Router原理解析',
