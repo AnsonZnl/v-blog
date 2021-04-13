@@ -9,15 +9,16 @@ features:
   - title: 前端博文
     details: 博文以JavaScript、Vue、小程序、Node等前端文章为主。
   - title: 计算机通识
-    details: 前端工程师，首先是一个软件工程师，计算机基础必不可少。
+    details: 前端工程师，首先是一个软件工程师，计算机基础知识必不可少。
   - title: 生活杂文
     details: 随手记录一些生活、学习、工作感悟，偶尔引用一些好文章。
-footer: MIT Licensed | Copyright © 2018-present ansonZnl
+footer: MIT Licensed | Copyright © 2018-present AnsonZnl
 ---
 
 ## 最新文章
 
-- 2021 年 4 月 02 日 - [设计模式](/computer-base/设计模式.md)
+- 2021 年 4 月 13 日 - [LeetCode-爬楼梯](./computer-base/LeetCode/爬楼梯)
+- 2021 年 4 月 08 日 - [设计模式](/computer-base/设计模式.md)
 - 2021 年 3 月 28 日 - [Vuex 原理解析](/articles/Vue/Vuex原理解析.md)
 - 2021 年 3 月 23 日 - [LeetCode 回文数](/computer-base/LeetCode/回文数)
 - 2021 年 3 月 19 日 - [前端知识体系](/articles/KnowledgeSystem/)
