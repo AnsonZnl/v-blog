@@ -80,6 +80,9 @@ module.exports = {
           }, {
             title: '回文数',
             path: '/computer-base/LeetCode/回文数'
+          }, {
+            title: '爬楼梯',
+            path: '/computer-base/LeetCode/爬楼梯'
           }]
         },
         {
