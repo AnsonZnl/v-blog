@@ -126,25 +126,32 @@
 
 ### 性能分析
 
-浏览器：Performance、Lighthouse、onerror
+- 浏览器
 
-小程序：audit、wx.onError、体验评分、小程序助手[性能分析]板块、和 wx.getPerformance
+  - Performance
+  - Lighthouse
+  - window.onerror
+
+- 小程序
+  - audit
+  - wx.onError
+  - 体验评分、小程序助手[性能分析]板块
+  - wx.getPerformance
 
 ### 性能优化
 
-#### 首屏加载
+- 首屏加载
 
-- DSN 部署
-- SSR
+  - DSN 部署
+  - SSR
 
-#### 白屏率
+- 白屏率
 
-- 骨架屏
+  - 骨架屏
 
-#### 服务可用性
-
-- 懒加载
-- DNS 预加载
+- 服务可用性
+  - 懒加载
+  - DNS 预加载
 
 ### Web 安全
 
