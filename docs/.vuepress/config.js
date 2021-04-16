@@ -83,6 +83,9 @@ module.exports = {
           }, {
             title: '爬楼梯',
             path: '/computer-base/LeetCode/爬楼梯'
+          }, {
+            title: '合并两个有序数组',
+            path: '/computer-base/LeetCode/合并两个有序数组'
           }]
         },
         {
