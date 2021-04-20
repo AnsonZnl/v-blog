@@ -66,6 +66,9 @@ module.exports = {
           path: '/computer-base/LeetCode/两数之和',
           collapsable: true,
           children: [{
+            title: '对称二叉树',
+            path: '/computer-base/LeetCode/对称二叉树'
+          }, {
             title: '两数之和',
             path: '/computer-base/LeetCode/两数之和'
           }, {
