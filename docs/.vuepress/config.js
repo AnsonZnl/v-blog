@@ -66,9 +66,6 @@ module.exports = {
           path: '/computer-base/LeetCode/两数之和',
           collapsable: true,
           children: [{
-            title: '对称二叉树',
-            path: '/computer-base/LeetCode/对称二叉树'
-          }, {
             title: '两数之和',
             path: '/computer-base/LeetCode/两数之和'
           }, {
@@ -89,7 +86,13 @@ module.exports = {
           }, {
             title: '合并两个有序数组',
             path: '/computer-base/LeetCode/合并两个有序数组'
-          }]
+          }, {
+            title: '对称二叉树',
+            path: '/computer-base/LeetCode/对称二叉树'
+          }, {
+            title: '二叉树的最大深度',
+            path: '/computer-base/LeetCode/二叉树的最大深度'
+          }, ]
         },
         {
           title: '网络协议',
