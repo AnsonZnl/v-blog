@@ -92,6 +92,9 @@ module.exports = {
           }, {
             title: '二叉树的最大深度',
             path: '/computer-base/LeetCode/二叉树的最大深度'
+          }, {
+            title: '翻转二叉树',
+            path: '/computer-base/LeetCode/翻转二叉树'
           }, ]
         },
         {
