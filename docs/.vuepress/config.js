@@ -95,6 +95,9 @@ module.exports = {
           }, {
             title: '翻转二叉树',
             path: '/computer-base/LeetCode/翻转二叉树'
+          }, {
+            title: '合并二叉树',
+            path: '/computer-base/LeetCode/合并二叉树'
           }, ]
         },
         {
