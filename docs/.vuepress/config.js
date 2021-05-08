@@ -40,14 +40,13 @@ module.exports = {
       },
       {
         text: '社区链接',
-        ariaLabel: 'Language Menu',
         items: [{
             text: '掘金',
             link: 'https://juejin.cn/user/4037062426631288'
           },
           {
             text: 'SegmentFault',
-            link: 'https://segmentfault.com/'
+            link: 'https://segmentfault.com/u/ansonznl'
           }
         ]
       }
