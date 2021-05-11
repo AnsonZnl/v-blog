@@ -130,6 +130,14 @@ module.exports = {
           path: '/articles/KnowledgeSystem/',
           collapsable: true
         }, {
+          title: '前端技术分享',
+          path: '/articles/Share/',
+          collapsable: true,
+          children: [{
+            title: '前端技术分享第一期',
+            path: '/articles/Share/前端技术分享第一期'
+          }]
+        }, {
           title: 'CSS',
           path: '/articles/CSS/',
           collapsable: true
