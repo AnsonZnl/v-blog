@@ -146,6 +146,9 @@ module.exports = {
           path: '/articles/JavaScript/',
           collapsable: true,
           children: [{
+              title: 'JS中常见的模块',
+              path: '/articles/JavaScript/JS中常见的模块'
+            }, {
               title: '一次搞懂-JS事件循环之宏任务和微任务',
               path: '/articles/JavaScript/一次搞懂-JS事件循环之宏任务和微任务'
             }, {
