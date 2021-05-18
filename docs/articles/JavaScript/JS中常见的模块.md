@@ -1,3 +1,5 @@
+![JavaScript-模块 _1_.png](https://i.loli.net/2021/05/14/UaXMWf3zJjpvASg.png)
+
 ## 模块化的意义
 
 将代码拆分成独立的块，然后再把这些块使用模块模式连接起来实现不同的功能。
@@ -8,7 +10,7 @@
 
 这个基本的思想是所有的 JavaScript 模块系统的基础。
 
-文中代码：https://github.com/ansonznl/
+文中代码案例地址：[https://github.com/AnsonZnl/JS-Modules-Sample](https://github.com/AnsonZnl/JS-Modules-Sample)
 
 ### 模块化的好处
 
