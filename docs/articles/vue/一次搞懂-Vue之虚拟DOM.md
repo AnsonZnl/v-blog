@@ -223,6 +223,11 @@ renderDom(el, document.getElementById("root"));
 
 ### 结语
 
+Vue 编译也分两个版本
+
+- 一个是运行时+编译器，比如使用 vue-cli，是通过 webpack 的 vue-loader 将模板编译成真实 DOM 的
+- 一个是运行时，比如直接使用 CDN 将整个 Vue 代码引入到项目当中，则使用 render 方法编译的。
+
 Vue.js 使用的 Virtual DOM 参考的是开源库 [github-snabbdom](https://github.com/snabbdom/snabbdom) 有兴趣的可以看一下他的源码。
 
 ## 参考
