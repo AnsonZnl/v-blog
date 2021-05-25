@@ -196,7 +196,7 @@ module.exports = {
           children: [{
               title: '一次搞懂-Vue之虚拟DOM',
               path: '/articles/Vue/一次搞懂-Vue之虚拟DOM'
-            }, , {
+            }, {
               title: 'Vuex原理解析',
               path: '/articles/Vue/Vuex原理解析'
             },
