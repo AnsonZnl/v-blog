@@ -134,8 +134,8 @@ module.exports = {
           path: '/articles/Share/',
           collapsable: true,
           children: [{
-            title: '前端技术分享第一期',
-            path: '/articles/Share/前端技术分享第一期'
+            title: 'JavaScript专题之This和定时器',
+            path: '/articles/Share/JavaScript专题之This和定时器'
           }]
         }, {
           title: 'CSS',
