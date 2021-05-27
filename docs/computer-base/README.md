@@ -6,5 +6,4 @@
 - [LeetCode](./LeetCode/两数之和.html)
 - [网络协议](./网络协议.html)
 - [设计模式](./设计模式.html)
-- [安全](./LeetCode/两数之和.md)
 - [Git](./Git.html)

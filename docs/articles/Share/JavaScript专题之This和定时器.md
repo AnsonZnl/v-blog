@@ -1,5 +1,7 @@
 # JavaScript 专题之 This 和定时器
 
+![前端技术分享（2021-05-10） _1_.png](https://i.loli.net/2021/05/13/DTfjoEXvCBcO6ZK.png)
+
 分享时长：45 分钟分享+15 分钟提问
 
 分享两个在 JS 中非常重要、但又经常遇到问题的两个点。

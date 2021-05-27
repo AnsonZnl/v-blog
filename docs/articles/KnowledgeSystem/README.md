@@ -96,7 +96,7 @@
   - Taro
   - uni-app
 
-### 公众号网页开发
+### 公众号网页开发（H5）
 
 - code、access_token、openid、unionid 的获取方式
 - 授权跳转流程
