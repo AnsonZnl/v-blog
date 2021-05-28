@@ -134,6 +134,9 @@ module.exports = {
           path: '/articles/Share/',
           collapsable: true,
           children: [{
+            title: "JavaScript专题之异步编程",
+            path: "/articles/Share/JavaScript专题之异步编程"
+          }, {
             title: 'JavaScript专题之This和定时器',
             path: '/articles/Share/JavaScript专题之This和定时器'
           }]
@@ -222,7 +225,7 @@ module.exports = {
           ]
         },
         {
-          title: '微信小程序',
+          title: '微信小程序/H5',
           path: '/articles/WeApp/',
           collapsable: true,
           children: [{

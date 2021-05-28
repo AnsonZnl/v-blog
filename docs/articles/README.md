@@ -8,7 +8,7 @@
 - [JavaScript](/articles/JavaScript/)
 - [TypeScript](/articles/TypeScript/TypeScript笔记.md)
 - [Vue](/articles/Vue/)
-- [微信小程序](/articles/WeApp/)
+- [微信小程序/H5](/articles/WeApp/)
 - [Node](/articles/Node/)
 - [前端性能优化总结](/articles/Performance/)
 - [安全](/articles/Security/)
