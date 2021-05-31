@@ -261,3 +261,4 @@ console.log("script end");
 - [【JS】深入理解事件循环,这一篇就够了!(必看)](https://zhuanlan.zhihu.com/p/87684858)
 - [Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/?utm_source=html5weekly)
 - [浏览器的线程有哪些](https://www.cnblogs.com/hustxychen/p/9412656.html)
+- [一道面试题，聊聊异步](https://www.jianshu.com/p/7d5a44baf375)

@@ -238,3 +238,4 @@ Vue.js 使用的 Virtual DOM 参考的是开源库 [github-snabbdom](https://git
 - [Vue2.x-vnode 源码](https://github1s.com/vuejs/vue/blob/HEAD/src/core/vdom/vnode.js)
 - [Vue.js 技术揭秘之 Vdom](https://ustbhuangyi.github.io/vue-analysis/v2/data-driven/virtual-dom.html)
 - [Github-snabbdom](https://github.com/snabbdom/snabbdom)
+- [Vue3 的Diff](https://blog.csdn.net/dongcehao/article/details/107428437)
