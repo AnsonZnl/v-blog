@@ -52,3 +52,23 @@
 - [CommonJS模块化开发](/docs/articles/Node/CommonJS模块化开发.html)
 - [MongoDB学习之Mongoose的使用](/docs/articles/Node/MongoDB学习之Mongoose的使用.html)
 - [MongoDB中常用语句](/docs/articles/Node/MongoDB中常用语句.html)
+
+### 微信小程序
+
+- [小程序性能优化和异常监控](/docs/articles/WeApp/小程序性能优化和异常监控.html)
+- [小程序开发相关总结](/docs/articles/WeApp/小程序开发相关总结.html)
+- [从前端的角度来梳理微信支付（小程序、H5、JSAPI）的流程](/docs/articles/WeApp/从前端的角度来梳理微信支付（小程序、H5、JSAPI）的流程.html)
+- [微信小程序用户授权之最佳实践](/docs/articles/WeApp/微信小程序用户授权之最佳实践.html)
+- [在小程序中自定义弹窗组件](/docs/articles/WeApp/在小程序中自定义弹窗组件.html)
+- [在小程序中使用 async&await](/docs/articles/WeApp/在小程序中使用async&await.html)
+- [小程序生成海报图片并保存](/docs/articles/WeApp/小程序生成海报图片并保存.html)
+- [清除小程序 button 的默认样式](/docs/articles/WeApp/清除小程序button的默认样式.html)
+- [使用 Promise 封装小程序 wx.request](/docs/articles/WeApp/使用Promise封装小程序wx.request.html)
+- [微信小程序动态加载 swiper 时不显示的问题（爬坑）](/docs/articles/WeApp/微信小程序动态加载swiper时不显示的问题（爬坑）.html)
+- [微信小程序授权登录弹框组件](/docs/articles/WeApp/微信小程序授权登录弹框组件.html)
+- [解决 gif 图片只渲染一次的问题](/docs/articles/WeApp/解决gif图片只渲染一次的问题.html)
+- [小程序-实现蒙版弹出窗](/docs/articles/WeApp/小程序-实现蒙版弹出窗.html)
+- [小程序之瀑布流布局](/docs/articles/WeApp/小程序之瀑布流布局.html)
+- [小程序之 iPhoneX 适配](/docs/articles/WeApp/小程序之iPhoneX适配.html)
+- [小程序中图片点击全屏-可滑动](/docs/articles/WeApp/小程序中图片点击全屏-可滑动.html)
+- [在小程序中调用 API](/docs/articles/WeApp/在小程序中调用API.html)
