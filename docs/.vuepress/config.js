@@ -134,6 +134,9 @@ module.exports = {
           path: '/articles/Share/',
           collapsable: true,
           children: [{
+            title: "Vue专题之Vue进阶",
+            path: '/articles/Share/Vue专题之Vue进阶'
+          }, {
             title: "Vue专题之Vue基础",
             path: '/articles/Share/Vue专题之Vue基础'
           }, {
