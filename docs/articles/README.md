@@ -6,7 +6,7 @@
 - [前端技术分享](/articles/Share/)
 - [CSS](/articles/CSS/)
 - [JavaScript](/articles/JavaScript/)
-- [TypeScript](/articles/TypeScript/TypeScript笔记.md)
+- [TypeScript](/articles/TypeScript/TypeScript)
 - [Vue](/articles/Vue/)
 - [微信小程序/H5](/articles/WeApp/)
 - [Node](/articles/Node/)
