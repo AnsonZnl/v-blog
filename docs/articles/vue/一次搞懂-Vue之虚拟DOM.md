@@ -7,6 +7,7 @@
 尤大推荐，Vue.js 在用。
 ![learnvDom.png](https://i.loli.net/2021/05/21/YmWge4I37CBz5Ji.png)
 
+
 ### 什么是虚拟 DOM
 
 > 就是用 JS 去按照 DOM 结构来实现的树形结构对象，你也可以叫做 DOM 对象
@@ -230,12 +231,18 @@ Vue 编译也分两个版本
 
 Vue.js 使用的 Virtual DOM 参考的是开源库 [github-snabbdom](https://github.com/snabbdom/snabbdom) 有兴趣的可以看一下他的源码。
 
+感谢[Matt-Esch/virtual-dom](https://github.com/Matt-Esch/virtual-dom)项目，带来的帮助。
+
+完整代码地址：https://github.com/AnsonZnl/virtual-dom-study
+
 ## 参考
 
+- [让虚拟 DOM 不在成为你的绊脚石](https://juejin.cn/post/6844903806132568072)
 - [深入剖析：Vue 核心之虚拟 DOM](https://juejin.cn/post/6844903895467032589)
 - [我们真的需要虚拟 DOM 吗？](https://juejin.cn/post/6844903850520870926)
 - [Vue 核心之虚拟 DOM](https://www.jianshu.com/p/af0b398602bc)
 - [Vue2.x-vnode 源码](https://github1s.com/vuejs/vue/blob/HEAD/src/core/vdom/vnode.js)
 - [Vue.js 技术揭秘之 Vdom](https://ustbhuangyi.github.io/vue-analysis/v2/data-driven/virtual-dom.html)
 - [Github-snabbdom](https://github.com/snabbdom/snabbdom)
-- [Vue3 的Diff](https://blog.csdn.net/dongcehao/article/details/107428437)
+- [Vue3 的 Diff](https://blog.csdn.net/dongcehao/article/details/107428437)
+
