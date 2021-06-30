@@ -20,6 +20,7 @@ JS 执行过程中会产生两种任务，分别是：同步任务和异步任�
 
 ![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/52bec546cf0748f9b89f5ca537d77baa~tplv-k3u1fbpfcp-zoom-1.image)
 
+<!--
 ## 理解微任务和宏任务的执行执行过程
 
 ```js
@@ -245,4 +246,4 @@ console.log("script end");
 - [Segmentfault-译文：JS 事件循环机制（event loop）之宏任务、微任务](https://segmentfault.com/a/1190000014940904)
 - [这一次，彻底弄懂 JavaScript 执行机制](https://mp.weixin.qq.com/s?__biz=MzA4Nzg0MDM5Nw==&mid=2247486568&idx=1&sn=91f3fde0aa78c134a16c4b0054ebc058&chksm=90320f8aa745869c19f2b0beb1fc886e160eacf0cc14b719c653ff456a0bb467c6e44e5c09c1&mpshare=1&scene=1&srcid=0910nzUOwvfbNR5EuDA5jkIs&sharer_sharetime=1599700920750&sharer_shareid=68eb5b2b3e4592fb6bbcbd3555f71d06&key=6664ac14267ba668dd7a9b3568fb19fc1a9d077d8bf208be893b1f93a7ed6f92a9a65754ef98a7eceafae90d0c9cee233bdfb783029046af129e7ea6bca7c67c7b7784173f389412ef9eec2dc302f904bcde9474621957b8673b576ff5096afcfe087afe60ab7b10a6e88f3898b8c9d47bfd7fa2de7bc3e80a353ab2011c0b1a&ascene=1&uin=MjY5MTk2ODkxOQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=A1QngDpbd7oBvzKd78v7Ikk%3D&pass_ticket=CyghTbXdqVMYt3zerRhF2HxsE7Eo4g3TxIWpRfYzWvvAtCpvyt6Ex0D4718Fhi%2FR&wx_header=0)
 - [面试一定会问到的-js 事件循环](https://mp.weixin.qq.com/s?__biz=MzA4ODUzNTE2Nw==&mid=2451049376&idx=1&sn=2ab8d83f92b710bd6bf5da0c64cf3e21&chksm=87c412b0b0b39ba6d0ab06f0b26b1ced5cb35dd7c44bb4309aa05bafc0b4e354ed41997eff7f&mpshare=1&scene=1&srcid=09103ic17JhVKBc8J44uJvZB&sharer_sharetime=1599699680888&sharer_shareid=68eb5b2b3e4592fb6bbcbd3555f71d06&key=82003248020682faeafe66402d47658ff652fa14a8cbd6e827e9cd96549ae65bb893329ffeac5b794e0819eec65acc440d922288d5f72a3b3875cc3cd8eaeae9862d98cfcc056321f4acf4a3130b42bedb166d95d5e136673958adeadf0e6870638e90bdc968428e0151acc9aa91f31c7b482b8a6215cae8edf475f408faf435&ascene=1&uin=MjY5MTk2ODkxOQ%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=A2iEX7bxzZv29Cbl2TuTJFw%3D&pass_ticket=CyghTbXdqVMYt3zerRhF2HxsE7Eo4g3TxIWpRfYzWvvAtCpvyt6Ex0D4718Fhi%2FR&wx_header=0)
-- [掘金-动图学习 EventLoop](https://juejin.cn/post/6969028296893792286)
+- [掘金-动图学习 EventLoop](https://juejin.cn/post/6969028296893792286) -->
