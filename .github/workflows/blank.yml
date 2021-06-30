@@ -17,10 +17,10 @@ jobs:
           persist-credentials: false
 
       - name: install
-        run: yarn install 
+        run: yarn install
 
       - name: Build
-        run:  yarn build
+        run: yarn build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
@@ -28,4 +28,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           REPOSITORY_NAME: ansonznl/ansonznl.github.io
           BRANCH: master
-          FOLDER: public
+          FOLDER: docs/.vuepress/dist
