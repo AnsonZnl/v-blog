@@ -234,10 +234,12 @@ module.exports = {
           title: '微信小程序/H5',
           path: '/articles/WeApp/',
           collapsable: true,
-          children: [{
-              title: '小程序性能优化和异常监控',
-              path: '/articles/WeApp/小程序性能优化和异常监控'
-            }, {
+          children: [
+            //   {
+            //     title: '小程序性能优化和异常监控',
+            //     path: '/articles/WeApp/小程序性能优化和异常监控'
+            // },
+            {
               title: '小程序开发相关总结',
               path: '/articles/WeApp/小程序开发相关总结'
             }, {
