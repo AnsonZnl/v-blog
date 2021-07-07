@@ -1,7 +1,7 @@
 # Vue
 
 > 记录一些 Vue 源码解析和开发过程中遇到的问题
-
+- [虚拟DOM之Diff算法](/docs/articles/Vue/虚拟DOM之Diff算法.md)
 - [一次搞懂-Vue 之虚拟 DOM](/articles/JavaScript/一次搞懂-Vue之虚拟DOM)
 - [Vue-Router 原理解析](/articles/Vue/Vue-Router原理解析)
 - [Vue 知识点总结](/articles/Vue/Vue知识点总结.html)

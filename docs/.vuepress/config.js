@@ -203,6 +203,9 @@ module.exports = {
           path: '/articles/Vue/',
           collapsable: true,
           children: [{
+              title: '虚拟DOM之Diff算法',
+              path: '/articles/Vue/虚拟DOM之Diff算法'
+            }, {
               title: '一次搞懂-Vue之虚拟DOM',
               path: '/articles/Vue/一次搞懂-Vue之虚拟DOM'
             }, {
@@ -234,11 +237,10 @@ module.exports = {
           title: '微信小程序/H5',
           path: '/articles/WeApp/',
           collapsable: true,
-          children: [
-            {
+          children: [{
               title: '小程序性能优化和异常监控',
               path: '/articles/WeApp/小程序性能优化和异常监控'
-          },
+            },
             {
               title: '小程序开发相关总结',
               path: '/articles/WeApp/小程序开发相关总结'
