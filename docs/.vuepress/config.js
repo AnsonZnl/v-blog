@@ -227,9 +227,6 @@ module.exports = {
             }, {
               title: 'Vue2.x的双向绑定原理及实现',
               path: '/articles/Vue/Vue2.x的双向绑定原理及实现'
-            }, {
-              title: 'Vue中8种组件通信方式',
-              path: '/articles/Vue/Vue中8种组件通信方式'
             },
           ]
         },
