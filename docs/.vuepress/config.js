@@ -203,6 +203,9 @@ module.exports = {
           path: '/articles/Vue/',
           collapsable: true,
           children: [{
+              title: "Vue常见问题解析",
+              path: '/articles/Vue/Vue常见问题解析'
+            }, {
               title: '虚拟DOM之Diff算法',
               path: '/articles/Vue/虚拟DOM之Diff算法'
             }, {
