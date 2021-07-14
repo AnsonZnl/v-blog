@@ -106,6 +106,7 @@ activated:进入缓存组件，进入a的嵌套子组件(如果有的话)。
 
 在最新的 Vue3.0 中，基于 Proxy 的响应式已经可以支持数组的所有方法了。
 但是如果是改变*对象的动态新增属性*和*数组中直接使用索引修改值、直接修改长度*不可以被监测到，但是任然可以使用`Vue.set()`方法解决
+
 - [vue3-深入响应式原理](https://v3.cn.vuejs.org/guide/reactivity.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%8D%E5%BA%94%E6%80%A7)
 - [Vue-侦听变化注意事项](https://cn.vuejs.org/v2/guide/reactivity.html#%E6%A3%80%E6%B5%8B%E5%8F%98%E5%8C%96%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
 - [Vue-数组监测更新](https://cn.vuejs.org/v2/guide/list.html#%E6%95%B0%E7%BB%84%E6%9B%B4%E6%96%B0%E6%A3%80%E6%B5%8B)
@@ -115,3 +116,41 @@ activated:进入缓存组件，进入a的嵌套子组件(如果有的话)。
 - `computed` 是计算属性，依赖其他属性计算值，并且 `computed` 的值有缓存，只有当计算值变化才会返回内容。
 - `watch` 监听到值的变化就会执行回调，在回调中可以进行一些逻辑操作。
 - 所以一般来说需要依赖别的属性来动态获得值的时候可以使用 `computed`，对于监听到值的变化需要做一些复杂业务逻辑的情况可以使用 `watch`。
+
+## v-for 中 key 的作用？
+
+- key 的作用主要是为了更搞笑的更新虚拟 DOM
+- vue 在 patch 过程中**判断两个节点是否是相同节点时，key 是一个必要条件**，在 patch 国过程中，key 的存在能提高更新的效率。
+- 在实际使用中，应该避免将 index 设为 key
+- 从源码中可以知道，vue 判断两个节点是否是相同节点，主要判断两者的 key 和元素的类型等，引入如果不设置 key,则会认为这个是相同的节点，从而去做更新操作，造成 DOM 更新，浏览器回流。
+
+源码中找答案：src\core\vdom\patch.js - sameVnode()
+
+```js
+function sameVnode(a, b) {
+  return (
+    a.key === b.key &&
+    a.asyncFactory === b.asyncFactory &&
+    ((a.tag === b.tag &&
+      a.isComment === b.isComment &&
+      isDef(a.data) === isDef(b.data) &&
+      sameInputType(a, b)) ||
+      (isTrue(a.isAsyncPlaceholder) && isUndef(b.asyncFactory.error)))
+  );
+}
+```
+
+## 说说 Diff 算法
+
+> Vue 是基于虚拟 DOM 做更新的，而 Diff 又是其核心部分。
+
+- diff 算法是虚拟 DOM 的产物，Vue 中对应的函数是 patch。核心实现来自于[snabbdom](github.com/snabbdom)；通过新旧 DOM 做对比（即 patch）,将变化的地方转换为真是的 DOM 操作。
+- 在 Vue1.x 中是没有 patch，因为界面中每个依赖都有专门的 watcher 负责更新，这样项目规模变大就会变成性能瓶颈，vue2 中为了降低 watcher 粒度，每个组件只有一个 watcher，但需要更新的时候，怎么才能找到发生变化的地方呢？这就需要 patch 了。
+- 组件中数据发生变化时，对应的 watcher 会通过更新并执行其更新函数，它会执行渲染函数获取全新虚拟 DOM：newVnode，此时 patch 对比上次渲染结果和新的渲染结果得出最优的差异，从而进行渲染。
+- patch 过程遵循深度优先、同层比较的策略：
+  - 两个节点之间的比较时
+    - 如果他们拥有子节点，会先比较子节点
+    - 比较两组子节点时候，会假设头尾节点尽可能相同先做尝试（因为多数的变更不会从头尾开始，也算是一个节约性能的优化方式）
+    - 没有找到相同节点后，开始按照通用方式遍历查找
+    - 查找结束再按情况处理剩下的节点
+  - 借助 key 通常可以非常精确的找到相同节点，因此整个 patch 过程很高效。
