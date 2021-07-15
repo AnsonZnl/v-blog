@@ -110,6 +110,9 @@ module.exports = {
           }, {
             title: '合并二叉树',
             path: '/computer-base/LeetCode/合并二叉树'
+          }, {
+            title: '反转链表',
+            path: '/computer-base/LeetCode/反转链表'
           }, ]
         },
         {
