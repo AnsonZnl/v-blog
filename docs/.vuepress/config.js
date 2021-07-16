@@ -206,6 +206,9 @@ module.exports = {
           path: '/articles/Vue/',
           collapsable: true,
           children: [{
+              title: "nextTick原理",
+              path: '/articles/Vue/nextTick原理解析'
+            }, {
               title: "Vue常见问题解析",
               path: '/articles/Vue/Vue常见问题解析'
             }, {
