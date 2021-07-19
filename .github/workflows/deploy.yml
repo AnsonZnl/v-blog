@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: npm ci # 相当于npm install
-      - run: npm run docs:build
+      - run: npm install # 相当于npm install
+      - run: npm run build
       - run: echo 'www.zhangningle.top' > CNAME
 
       #发布到AnsonZnl.github.io/master
