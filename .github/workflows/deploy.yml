@@ -10,8 +10,4 @@ jobs:
       - name: vuepress-deploy
         uses: jenkey2011/vuepress-deploy@master
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          TARGET_REPO: AnsonZnl/AnsonZnl.github.io
-          TARGET_BRANCH: master
-          BUILD_SCRIPT: yarn && yarn deploy
-          BUILD_DIR: docs/.vuepress/dist/
+          BUILD_SCRIPT: yarn && npm run deploy
