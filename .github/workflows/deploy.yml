@@ -10,19 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: npm install # 相当于npm install
+      - run: npm install
       - run: npm run build
       - run: echo 'www.zhangningle.top' > CNAME
-
       #发布到AnsonZnl.github.io/master
-   - name: vuepress-deploy
-        uses: jenkey2011/vuepress-deploy@master
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          TARGET_REPO: AnsonZnl/AnsonZnl.github.io
-          TARGET_BRANCH: master
-          #BUILD_SCRIPT: yarn && yarn deploy
-          BUILD_DIR: docs/.vuepress/dist/
+      - name: vuepress-deploy
+            uses: jenkey2011/vuepress-deploy@master
+            env:
+              ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+              TARGET_REPO: AnsonZnl/AnsonZnl.github.io
+              TARGET_BRANCH: master
+              BUILD_DIR: docs/.vuepress/dist/
 
     # #发布到MyBlog/gh-pages 查看https://AnsonZnl.github.io/MyBlog/，需要修改base配置为MyBlog，修改图片路径
     # - name: Deploy MyBlog/gh-pages
