@@ -15,15 +15,14 @@ jobs:
       - run: echo 'www.zhangningle.top' > CNAME
 
       #发布到AnsonZnl.github.io/master
-      - name: Deploy AnsonZnl.github.io/master
-        uses: peaceiris/actions-gh-pages@v2
+   - name: vuepress-deploy
+        uses: jenkey2011/vuepress-deploy@master
         env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN  }}
-          EXTERNAL_REPOSITORY: AnsonZnl/AnsonZnl.github.io #可以新建一个AnsonZnl.github.io仓库发布到master
-          PUBLISH_BRANCH: master
-          PUBLISH_DIR: docs/.vuepress/dist
-        with:
-          emptyCommits: false
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          TARGET_REPO: AnsonZnl/AnsonZnl.github.io
+          TARGET_BRANCH: master
+          #BUILD_SCRIPT: yarn && yarn deploy
+          BUILD_DIR: docs/.vuepress/dist/
 
     # #发布到MyBlog/gh-pages 查看https://AnsonZnl.github.io/MyBlog/，需要修改base配置为MyBlog，修改图片路径
     # - name: Deploy MyBlog/gh-pages
