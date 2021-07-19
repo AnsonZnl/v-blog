@@ -1,20 +1,36 @@
-name: 'github actions build and deploy gh-pages'
-on: 
+name: github pages
+
+on:
   push:
     branches:
-      - master  // 基于 master 分支，如果你的分支不是这个，请切换
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest   // 使用 ubuntu 服务器
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.1   
-        with: 
-          persist-credentials: false
-      - name: install and build
-        run: |        // 这里执行 安装 打包
-          npm install
-          git config --global user.email "1160030724@qq.com"
-          git config --global user.name "AnsonZnl"
-          npm run deploy
+      - master
 
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm ci # 相当于npm install
+      - run: npm run docs:build
+      - run: echo 'www.zhangningle.top' > CNAME
+
+      #发布到AnsonZnl.github.io/master
+      - name: Deploy AnsonZnl.github.io/master
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          EXTERNAL_REPOSITORY: AnsonZnl/AnsonZnl.github.io #可以新建一个AnsonZnl.github.io仓库发布到master
+          PUBLISH_BRANCH: master
+          PUBLISH_DIR: docs/.vuepress/dist
+        with:
+          emptyCommits: false
+
+    # #发布到MyBlog/gh-pages 查看https://AnsonZnl.github.io/MyBlog/，需要修改base配置为MyBlog，修改图片路径
+    # - name: Deploy MyBlog/gh-pages
+    #   uses: peaceiris/actions-gh-pages@v2
+    #   env:
+    #     ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+    #     PUBLISH_BRANCH: gh-pages #也可以在本项目MyBlog新建gh-pages分支，名字一定要是gh-pages这样github page设置才能识别到这个分支，其他名字识别不到。https://help.github.com/cn/github/working-with-github-pages/creating-a-github-pages-site#creating-your-site
+    #     PUBLISH_DIR: docs/.vuepress/dist
+    #   with:
+    #       emptyCommits: false
