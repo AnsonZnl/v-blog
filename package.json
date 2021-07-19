@@ -1,7 +1,6 @@
 {
   "scripts": {
     "dev": "vuepress dev docs",
-    "cm": "echo 'www.zhangningle.top' > CNAME",
     "build": "vuepress build docs",
     "deploy": "bash deploy.sh"
   },
