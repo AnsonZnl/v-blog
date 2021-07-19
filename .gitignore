@@ -3,3 +3,4 @@
 /docs/.vuepress/dist
 *.arr
 *.zip
+*.temp

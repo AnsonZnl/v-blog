@@ -5,6 +5,6 @@
     "deploy": "bash deploy.sh"
   },
   "devDependencies": {
-    "vuepress": "^1.8.2"
+    "vuepress": "^2.0.0-beta.22"
   }
 }
