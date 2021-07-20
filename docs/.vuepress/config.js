@@ -204,6 +204,9 @@ module.exports = {
           link: '/articles/Vue/',
           collapsable: true,
           children: [{
+              text: "模板编译原理解析",
+              link: '/articles/Vue/模板编译原理解析解析.md'
+            }, {
               text: "nextTick原理",
               link: '/articles/Vue/nextTick原理解析.md'
             }, {

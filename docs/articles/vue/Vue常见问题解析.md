@@ -74,6 +74,8 @@
   - Vuex
   - \$root
 
+参考:[Vue 8 中传参方式](http://www.inode.club/webframe/vue/messageWays.html)
+
 ## 父子路由、组件加载顺序
 
 由生命周期钩子函数可知，子组件是在父组件 `mounted` 之后才开始挂载的，所以顺序是：
@@ -117,7 +119,9 @@ activated:进入缓存组件，进入a的嵌套子组件(如果有的话)。
 ```
 
 ## \$nextTick 原理
-参考：[nextTick原理](./nextTick原理解析)
+
+参考：[nextTick 原理](./nextTick原理解析)
+
 ## 数组响应式问题和\$set 原理
 
 熟读文档可以得出，除数组侦听的那几个方法外，其他的方式进行修改是不具有相应式的（如 this.arr[10]=xx）
@@ -228,8 +232,8 @@ function sameVnode(a, b) {
   <script>
   export default {
     computed: {
-      activeUsers: function() {
-        return this.users.filter(function(user) {
+      activeUsers: function () {
+        return this.users.filter(function (user) {
           return user.isActive;
         });
       },
