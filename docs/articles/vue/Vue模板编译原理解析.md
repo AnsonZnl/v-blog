@@ -229,15 +229,21 @@ with (obj) {
 
 具体的参考:[Vue 技术揭秘-codeGen](https://ustbhuangyi.github.io/vue-analysis/v2/compile/codegen.html#generate)
 
+## 总结
+
+从`.vue`文件是怎么编译为`.js`文件问题引出，到分析 Vue 模板的三个部分：解析器（parser）,优化器（optimalzer）和代码生成器（code generator）。
+
+- 解析器：将`模板字符串`转换成`element ASTs`
+- 优化器：将`ASTs` 打上标记，区分静态节点和静态根节点
+- 代码生成器：将`ASTs`生成 `render` 函数代码
+- 渲染：最后 `render` 函数即可渲染出真实的 DOM
+
+![](https://i.loli.net/2021/07/20/wQ18raW7I3JytKu.png)
 
 ## 参考
 
 - [Vue 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/v2/prepare/build.html#%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B)
-
-- [Vue loader](https://vue-loader.vuejs.org/zh/guide/#vue-cli) - [Vue
-  模板编译原理](https://juejin.cn/post/6863241580753616903) - [vue 底层-template
-  模板编译](https://blog.csdn.net/wang729506596/article/details/90947583)
-
-```
-
-```
+- [Vue loader](https://vue-loader.vuejs.org/zh/guide/#vue-cli)
+- [Vue 模板编译原理](https://juejin.cn/post/6863241580753616903)
+- [vue 底层-template 模板编译](https://blog.csdn.net/wang729506596/article/details/90947583)
+- [Vue 模板解析](https://juejin.cn/post/6844903576343412743)
