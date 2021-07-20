@@ -12,4 +12,4 @@
 - [Vue 中的验证登录状态](/articles/Vue/Vue中的验证登录状态.html)
 - [Vue3 对比 Vue2 有哪些变化](/articles/Vue/Vue3对比Vue2有哪些变化.html)
 - [Vue2.x 的双向绑定原理及实现](/articles/Vue/Vue2.x的双向绑定原理及实现.html)
-- [Vuex 原理解析](/articles/Vue/Vuex原理解析.html)
+- [Vuex原理解析](/articles/Vue/Vuex原理解析.html)

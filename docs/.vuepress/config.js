@@ -11,6 +11,7 @@ module.exports = {
   base: '/',
   erviceWorker: true, // 是否支持PWA
   themeConfig: {
+    sidebarDepth: 1,
     lastUpdatedText: '上次更新',
     navbar: [{
         text: 'Home',
@@ -74,7 +75,7 @@ module.exports = {
         {
           text: 'LeetCode',
           link: '/computer-base/LeetCode/两数之和.md',
-          collapsable: true,
+          collapsable: false,
           children: [{
             text: '两数之和',
             link: '/computer-base/LeetCode/两数之和.md'
@@ -129,11 +130,11 @@ module.exports = {
       "/articles/": [{
           text: '前端知识体系',
           link: '/articles/KnowledgeSystem/',
-          collapsable: true
+          collapsable: false
         }, {
           text: '前端技术分享',
           link: '/articles/Share/',
-          collapsable: true,
+          collapsable: false,
           children: [{
             text: "Vue专题之Vue进阶",
             link: '/articles/Share/Vue专题之Vue进阶.md'
@@ -150,11 +151,11 @@ module.exports = {
         }, {
           text: 'CSS',
           link: '/articles/CSS/',
-          collapsable: true
+          collapsable: false
         }, {
           text: 'JavaScript',
           link: '/articles/JavaScript/',
-          collapsable: true,
+          collapsable: false,
           children: [{
               text: 'JS中常见的模块',
               link: '/articles/JavaScript/JS中常见的模块.md'
@@ -197,15 +198,15 @@ module.exports = {
         {
           text: 'TypeScript',
           link: '/articles/TypeScript/',
-          collapsable: true
+          collapsable: false
         },
         {
           text: 'Vue',
           link: '/articles/Vue/',
-          collapsable: true,
+          collapsable: false,
           children: [{
               text: "Vue模板编译原理解析",
-              link: '/articles/Vue/Vue模板编译原理解析解析.md'
+              link: '/articles/Vue/Vue模板编译原理解析.md'
             }, {
               text: "nextTick原理",
               link: '/articles/Vue/nextTick原理解析.md'
@@ -243,7 +244,7 @@ module.exports = {
         {
           text: '微信小程序/H5',
           link: '/articles/WeApp/',
-          collapsable: true,
+          collapsable: false,
           children: [{
               text: '小程序性能优化和异常监控',
               link: '/articles/WeApp/小程序性能优化和异常监控.md'
@@ -315,7 +316,7 @@ module.exports = {
         {
           text: 'Node',
           link: '/articles/Node/',
-          collapsable: true,
+          collapsable: false,
           children: [{
               text: '初试MongoDB数据库',
               link: '/articles/Node/初试MongoDB数据库.md'
@@ -353,7 +354,7 @@ module.exports = {
         {
           text: '前端性能优化',
           link: '/articles/Performance/',
-          collapsable: true,
+          collapsable: false,
           children: [{
               text: 'JS事件循环之宏任务和微任务',
               link: '/articles/Performance/JS事件循环之宏任务和微任务.md'
@@ -386,18 +387,18 @@ module.exports = {
         {
           text: '安全',
           link: '/articles/Security/',
-          collapsable: true
+          collapsable: false
         },
         {
           text: '源码系列',
           link: '/articles/SourceCode/',
-          collapsable: true,
+          collapsable: false,
           children: []
         },
         {
           text: '正则表达式',
           link: '/articles/RegExp/',
-          collapsable: true,
+          collapsable: false,
           children: []
         },
 
