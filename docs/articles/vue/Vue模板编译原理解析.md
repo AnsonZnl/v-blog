@@ -236,7 +236,8 @@ with (obj) {
 - 解析器：将`模板字符串`转换成`element ASTs`
 - 优化器：将`ASTs` 打上标记，区分静态节点和静态根节点
 - 代码生成器：将`ASTs`生成 `render` 函数代码
-- 渲染：最后 `render` 函数即可渲染出真实的 DOM
+- 渲染：最后 `render` 会使用`createElement`可返回一个 VNode
+- VNode：在经过 `patch` 过程后生成真实的 DOM
 
 ![](https://i.loli.net/2021/07/20/wQ18raW7I3JytKu.png)
 

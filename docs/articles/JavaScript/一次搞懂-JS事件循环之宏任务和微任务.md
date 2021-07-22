@@ -1,3 +1,9 @@
+---
+sidebarDepth： 3
+---
+
+# 一次搞懂 EventLoop
+
 众所周知，JS 是一门单线程语言，可是浏览器又能很好的处理异步请求，那么到底是为什么呢？
 
 JS 的执行环境一般是浏览器和 Node.js，两者稍有不同，这里只讨论浏览器环境下的情况。
@@ -20,20 +26,34 @@ JS 执行过程中会产生两种任务，分别是：同步任务和异步任�
 
 ![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/52bec546cf0748f9b89f5ca537d77baa~tplv-k3u1fbpfcp-zoom-1.image)
 
+使用一段代码来演示整个过程：
+
+```js
+for (macroTask of macroTaskQueue) {
+  // 1. Handle current MACRO-TASK
+  handleMacroTask();
+
+  // 2. Handle all MICRO-TASK
+  for (microTask of microTaskQueue) {
+    handleMicroTask(microTask);
+  }
+}
+```
+
 ## 理解微任务和宏任务的执行执行过程
 
 ```js
 console.log("script start");
 
-setTimeout(function() {
+setTimeout(function () {
   console.log("setTimeout");
 }, 0);
 
 Promise.resolve()
-  .then(function() {
+  .then(function () {
     console.log("promise1");
   })
-  .then(function() {
+  .then(function () {
     console.log("promise2");
   });
 
@@ -61,7 +81,7 @@ console.log("script end");
 ```js
 console.log("script start");
 
-setTimeout(function() {
+setTimeout(function () {
   console.log("timeout1");
 }, 10);
 
@@ -69,7 +89,7 @@ new Promise((resolve) => {
   console.log("promise1");
   resolve();
   setTimeout(() => console.log("timeout2"), 10);
-}).then(function() {
+}).then(function () {
   console.log("then1");
 });
 
@@ -146,10 +166,10 @@ async1();
 setTimeout(() => {
   console.log("timeout");
 }, 0);
-new Promise(function(resolve) {
+new Promise(function (resolve) {
   console.log("promise1");
   resolve();
-}).then(function() {
+}).then(function () {
   console.log("promise2");
 });
 console.log("script end");
