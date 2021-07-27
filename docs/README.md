@@ -17,6 +17,8 @@ footer: MIT Licensed | Copyright © 2018-2021 AnsonZnl
 ---
 
 ## 最新文章
+
+- 2021 年 7 月 27 日 - [只出现一次的数字](/computer-base/LeetCode/只出现一次的数字.md)
 - 2021 年 7 月 20 日 - [Vue 模板编译原理解析](/articles/Vue/Vue模板编译原理解析.md)
 - 2021 年 7 月 16 日 - [LeetCode-反转链表](/computer-base/LeetCode/反转链表.md)
 - 2021 年 7 月 15 日 - [nextTick 原理解析](/articles/Vue/nextTick原理解析.md)

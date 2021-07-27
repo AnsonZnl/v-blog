@@ -97,6 +97,9 @@ module.exports = {
           link: '/computer-base/LeetCode/两数之和.md',
 
           children: [{
+            text: '只出现一次的数字',
+            link: '/computer-base/LeetCode/只出现一次的数字'
+          }, {
             text: '两数之和',
             sidebarDepth: 4,
             link: '/computer-base/LeetCode/两数之和.md'
