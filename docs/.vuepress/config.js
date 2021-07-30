@@ -11,6 +11,7 @@ module.exports = {
   base: '/',
   erviceWorker: true, // 是否支持PWA
   themeConfig: {
+    // sidebarDepth: 3,
     lastUpdatedText: '上次更新',
     navbar: [{
         text: 'Home',
