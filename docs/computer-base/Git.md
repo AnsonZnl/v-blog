@@ -62,6 +62,10 @@
 - `git config --global user.name "Your_username"`
 - `git config --global user.email "Your_email"`
 
+查看是否配置成功
+
+- `git config --list`
+
 ## 问题场景
 
 - 技术主管让你去再某个 git 分支上新建一个分支去做你的项目，那么如何在原远程分支的基础上新建自己的分支呢？
