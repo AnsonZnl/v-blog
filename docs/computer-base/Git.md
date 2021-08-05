@@ -95,6 +95,35 @@
 4. fatal: unable to access 'http://xxx': Received HTTP code 400 from proxy after CONNECT
 ```
 
+## commit message 规范
+
+提交格式：
+
+```
+<type>(<scope>): <subject>
+```
+
+- type（必须）：用于说明commit的类别，可以使用以下标示
+  - feat：新功能（feature）
+  - fix：修复bug
+  - docs：文档（documentation）
+  - style： 格式（不影响代码运行的变动）
+  - refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+  - test：增加测试
+  - chore：构建过程或辅助工具的变动
+- scope（选填）：描述影响范围
+  - 数据层
+  - 控制层
+  - 视图层
+- subject（必填）：本次变动的简短描述
+  - 五十字以内
+  - 使用第一人称
+  - 以动词开头
+
+参考：[58-知识分享社区](https://ishare.58corp.com/articleDetail?id=37307)
+
+
+
 ## GitHub
 
 - [github 上 fork 原项目，如何将本地仓库代码更新到最新版本？](https://blog.csdn.net/u014028063/article/details/81559573)
