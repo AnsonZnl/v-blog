@@ -33,6 +33,12 @@
   - `git clone -b dev2 http://git-test.etledu.com/ETLBOAO/BIM1xTrain.git`
   - `git clone -b` 指定从分支下载 dev2 指定从哪个分支下载 http git 链接
 
+## 代码储存
+- `git stash` 将代码存储在储存区
+
+参考：[Git Stash使用方法](https://www.cnblogs.com/zndxall/archive/2018/09/04/9586088.html)
+
+
 ## 标签
 
 - 命令`git tag <tagname>`用于新建一个标签，默认为 HEAD，也可以指定一个 commit id；
