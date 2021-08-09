@@ -1,5 +1,7 @@
 # Git
 
+关于Git学习的书籍[Git Pro](https://www.progit.cn/)
+
 ![Git 常用命令](/img/computer-base/git命令速查.png)
 
 ## Git 常用命令
