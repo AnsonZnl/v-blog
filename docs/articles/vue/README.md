@@ -2,6 +2,7 @@
 
 > 记录一些 Vue 源码解析和开发过程中遇到的问题
 
+- [深入理解Vue的指令系统](/docs/articles/vue/深入理解Vue的指令系统.md)
 - [Vue 模板编译原理](/articles/Vue/Vue模板编译原理解析.html)
 - [nextTick 原理](/articles/Vue/nextTick原理.html)
 - [Vue 常见问题解析](/articles/Vue/Vue常见问题解析.html)
