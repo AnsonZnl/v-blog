@@ -64,6 +64,9 @@ module.exports = {
           },
           {
             link: '/life-essay/VSCode常用插件.md'
+          },
+          {
+            link: './VSCode常用快捷键.md'
           }
         ]
       }],
