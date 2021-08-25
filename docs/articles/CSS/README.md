@@ -84,6 +84,7 @@
 ### 水平垂直居中(空间居中)
 
 - grid：`display: grid; place-items: center;`
+- flex: `display: flex; margin: auto;(子元素)`
 
 ## 文字超出显示省略号
 

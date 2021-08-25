@@ -2,6 +2,7 @@
 
 ![keyboard-shortcuts-macos](https://i.loli.net/2021/08/23/qZlYjGDbQOvmzS9.png)
 
+
 ![keyboard-shortcuts-windows](https://i.loli.net/2021/08/23/gZbR9mSpOC2zF5L.png)
 
 
