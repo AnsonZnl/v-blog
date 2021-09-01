@@ -63,6 +63,14 @@
 
 在一个 BFC 中使用两个 BFC 可以做两列布局时使用
 
+
+## 常见布局
+
+### 圣杯
+
+### 双飞翼
+
+
 ## 居中布局
 
 ### 水平居中
@@ -85,6 +93,7 @@
 
 - grid：`display: grid; place-items: center;`
 - flex: `display: flex; margin: auto;(子元素)`
+
 
 ## 文字超出显示省略号
 
@@ -254,9 +263,14 @@ align-self 属性允许单个项目有与其他项目不一样的对齐方式，
 
 ## rem 布局原理
 
-通过计算 html 的 font-size 来得到一个具体的比例值，参考：[rem 布局远离解析](https://zhuanlan.zhihu.com/p/30413803)
+rem是相对长度单位，可以做到一样的取值，在不同尺寸的屏幕上的大小按比例缩放。
+**rem的定义：**rem（font size of the root element）是相对于根元素（即html元素）font-size计算值的倍数。
+例如html标签设置font-size:16px，同时div设置width:1.2rem。那么这个div的宽度就是1.2rem=16px*1.2=19.2px。
+因此这种方法的适配原理是：根据不同屏幕的宽度，以相同的比例动态修改html的font-size适配，并将px替换成rem，它可以很好的根据根元素的字体大小来进行变化，从而达到各种屏幕基本一直的效果体验。
 
-
+参考：
+1. [rem 布局原理解析](https://zhuanlan.zhihu.com/p/30413803)
+2. [移动端适配方案-REM](https://blog.csdn.net/weixin_38840741/article/details/81364559)
 ## Grid 布局
 
 ## CSS 画形状
@@ -280,3 +294,24 @@ align-self 属性允许单个项目有与其他项目不一样的对齐方式，
   border-left: solid transparent 100px;
 }
 ```
+
+## 伪类
+什么是伪类？
+> 伪类是选择器的一种，它用于选择处于特定状态的元素，比如当它们是这一类型的第一个元素时，或者是当鼠标指针悬浮在元素上面的时候。它们表现得会像是你向你的文档的某个部分应用了一个类一样，帮你在你的标记文本中减少多余的类，让你的代码更灵活、更易于维护。
+
+伪类就是开头为冒号的关键字：
+```
+:pseudo-class-name
+```
+## 伪元素
+必填一个`content`，默认是行内元素
+使用方法：
+``` html
+p::after{
+  content: '<';
+  color: red;
+}
+```
+常用伪元素一览
+- after（最后一个子元素）
+- before（第一个子元素）
