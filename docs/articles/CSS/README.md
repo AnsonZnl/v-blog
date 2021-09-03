@@ -303,15 +303,26 @@ rem是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 ```
 :pseudo-class-name
 ```
+
+### 用户行为类
+- :hover
+- :focus
+
+### 元素选择类
+- :last-child
+- 
+
+
+- [什么是伪类](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%AA%E7%B1%BB%EF%BC%9F)
+
 ## 伪元素
-必填一个`content`，默认是行内元素
-使用方法：
-``` html
-p::after{
-  content: '<';
-  color: red;
-}
+伪元素以类似方式表现，不过表现得是像你往标记文本中加入全新的HTML元素一样，而不是向现有的元素上应用类。伪元素开头为双冒号::。
 ```
+::pseudo-element-name
+```
+
 常用伪元素一览
 - after（最后一个子元素）
 - before（第一个子元素）
+
+- [什么是伪元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#%E4%BC%AA%E5%85%83%E7%B4%A0%E6%98%AF%E5%95%A5%EF%BC%9F)
