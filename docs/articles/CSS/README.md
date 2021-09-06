@@ -310,7 +310,7 @@ rem是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 
 ### 元素选择类
 - :last-child
-- 
+- :first-child
 
 
 - [什么是伪类](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%AA%E7%B1%BB%EF%BC%9F)
