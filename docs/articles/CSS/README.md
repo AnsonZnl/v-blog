@@ -271,8 +271,11 @@ rem是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 参考：
 1. [rem 布局原理解析](https://zhuanlan.zhihu.com/p/30413803)
 2. [移动端适配方案-REM](https://blog.csdn.net/weixin_38840741/article/details/81364559)
-## Grid 布局
 
+## Grid 布局
+### 参考
+- [MDN-Grid布局](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid)
+- [阮一峰-CSS Grid 网格布局教程](https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
 ## CSS 画形状
 
 **HTML**
