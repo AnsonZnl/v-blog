@@ -75,6 +75,10 @@
 - Promise/async/await
 - TypeScript/Flow 等
 
+
+### React
+- 基本语法
+
 ### Vue
 
 - 生命周期每个函数调用前后都发生了什么
@@ -82,24 +86,35 @@
 - Vue 原理（响应式/vNode/Diff）
 - Vuex 原理
 - Vue-router 原理
-- 组件化开发
+- 组件库
+  - ElementUI
+  - iView
+  - Vant
+  - Ant Design
 
 ### 小程序
 
-- 授权流程
+- 用户授权流程
+- 微信支付流程
+- 项目上线流程
+  - 本地环境
+  - 测试环境
+  - 线上环境
 - 云开发
   - 云函数
   - 云储存
   - 云数据库
 - 组件化开发
-- 跨端
+- 客户端兼容（安卓、iOS、平板、电脑）
+- 跨端开发
   - Taro
   - uni-app
 
 ### 公众号网页开发（H5）
 
 - code、access_token、openid、unionid 的获取方式
-- 授权跳转流程
+- 用户授权流程
+- 微信支付流程
 - js-wx-sdk 的应用
 - 无法使用本地 Storage，只能使用 cookie
 

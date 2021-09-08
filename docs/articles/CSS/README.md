@@ -263,9 +263,12 @@ align-self 属性允许单个项目有与其他项目不一样的对齐方式，
 
 ## rem 布局原理
 
-rem是相对长度单位，可以做到一样的取值，在不同尺寸的屏幕上的大小按比例缩放。
-**rem的定义：**rem（font size of the root element）是相对于根元素（即html元素）font-size计算值的倍数。
-例如html标签设置font-size:16px，同时div设置width:1.2rem。那么这个div的宽度就是1.2rem=16px*1.2=19.2px。
+rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏幕上的大小按比例缩放。
+
+**rem的定义：** rem（font size of the root element）是相对于根元素（即html元素）font-size计算值的倍数。
+
+例如html标签设置`font-size:16px`，同时div设置`width:1.2rem`。那么这个div的宽度就是`1.2rem=16px*1.2=19.2px`。
+
 因此这种方法的适配原理是：根据不同屏幕的宽度，以相同的比例动态修改html的font-size适配，并将px替换成rem，它可以很好的根据根元素的字体大小来进行变化，从而达到各种屏幕基本一直的效果体验。
 
 参考：

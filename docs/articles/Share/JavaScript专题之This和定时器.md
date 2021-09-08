@@ -277,7 +277,8 @@ setInterval(() => {
 - 不`clear`的话会一直保存在内存中，造成内存泄漏。
 - 使用场景：保存学时、人脸识别、考试倒计时等
 - 多个页面栈共享定时器
-  ![](https://uploader.shimo.im/f/hkgXTlysFxJeiJ4Z.png)
+
+![weapp-time.png](https://i.loli.net/2021/09/08/cHs5ndrIvbA2akM.png)
 
 ### 解决方法
 
