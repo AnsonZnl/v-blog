@@ -77,7 +77,8 @@
 
 
 ### React
-- 基本语法
+- JSX
+- 
 
 ### Vue
 
@@ -131,6 +132,11 @@
   - 中间件的原理
 - PM2
 
+### 工程化
+  - Webpack
+  - Vite
+  - Rollup
+
 ### 浏览器
 
 - 从输入 url 到页面显示发生了什么？
@@ -138,6 +144,16 @@
 - 浏览器缓存（cookie/localStorage/sessionStorage）
 - 事件机制（冒泡/捕捉）
 - DOM 的重绘/回流
+- 事件循环（EventLoop）
+- web work
+- WPA
+- 内核
+  - JS引擎
+  - 渲染引擎
+- 跨域
+  - 产生原因
+  - 解决办法
+- 
 
 ### 性能分析
 
@@ -145,7 +161,6 @@
 
   - Performance
   - Lighthouse
-  - window.onerror
 
 - 小程序
   - audit
@@ -168,7 +183,11 @@
   - 懒加载
   - DNS 预加载
 
-### Web 安全
+### 异常错误上报
+- Sentry
+- 基于自带的错误监控
+  - window.onerror
+### 前端安全
 
 - XSS
 - CFRS

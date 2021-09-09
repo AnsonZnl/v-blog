@@ -1,6 +1,7 @@
 ./package-lock.json
 /node_modules
 /docs/.vuepress/dist
+/docs/.vuepress/.cache
 *.arr
 *.zip
 *.temp
