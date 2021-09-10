@@ -11,7 +11,7 @@ module.exports = {
   base: '/',
   erviceWorker: true, // 是否支持PWA
   themeConfig: {
-    // sidebarDepth: 3,
+    sidebarDepth: 3,
     lastUpdatedText: '上次更新',
     navbar: [{
         text: 'Home',
@@ -54,18 +54,23 @@ module.exports = {
       "/life-essay/": [{
         text: '生活杂文',
         children: [{
+            text: '把博客从Hexo迁移至VuePress',
             link: '/life-essay/把博客从Hexo迁移至VuePress.md'
           },
           {
+            text: '2020年总结与2021年计划',
             link: '/life-essay/2020年总结与2021年计划.md'
           },
           {
+            text: 'Chrome常用插件',
             link: '/life-essay/Chrome常用插件.md'
           },
           {
+            text: 'VSCode常用插件',
             link: '/life-essay/VSCode常用插件.md'
           },
           {
+            text: 'VScode常用快捷键',
             link: './VSCode常用快捷键.md'
           }
         ]
