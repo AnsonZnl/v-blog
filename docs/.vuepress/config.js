@@ -125,6 +125,9 @@ module.exports = {
           }, {
             text: '反转链表',
             link: '/computer-base/LeetCode/反转链表.md'
+          }, {
+            text: '字符串相加',
+            link: '/computer-base/LeetCode/字符串相加.md'
           }, ]
         },
         {
