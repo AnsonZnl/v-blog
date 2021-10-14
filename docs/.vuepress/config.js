@@ -171,6 +171,9 @@ module.exports = {
           link: '/articles/JavaScript/',
 
           children: [{
+              text: 'Proxy和Reflect',
+                link: '/articles/JavaScript/Proxy和Reflect.md'
+              }, {
               text: 'JS中常见的模块',
               link: '/articles/JavaScript/JS中常见的模块.md'
             }, {
