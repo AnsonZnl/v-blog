@@ -56,6 +56,8 @@ Reflect.has(obj,'a')
 
 将Reflect当作Object的工具类来用，Proxy和Reflect就成了Object的中间件了。
 
+该Reflect API旨在补充 Proxy。对于任何 Proxy 钩子，都有一个带有相同参数的 Reflect 调用。我们应该使用它们将调用转发给目标对象。
+
 示例：
 ``` js
 var obj = new Proxy({}, {
@@ -103,6 +105,10 @@ proxy.set('test', 1);
 alert(proxy.get('test')); // 1 (works!)
 ```
 
+## 总结
+
+- Proxy就是对象的包装了一层代理
+- Reflet就是对象的内部方法的工具类
 
 ## 参考
 - [阮一峰ES6入门-Proxy](https://es6.ruanyifeng.com/#docs/proxy)
