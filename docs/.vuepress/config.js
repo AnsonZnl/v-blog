@@ -164,6 +164,9 @@ module.exports = {
             link: '/articles/Share/JavaScript专题之This和定时器.md'
           }]
         }, {
+          text: 'HTML',
+          link: '/articles/HTML/',
+        }, {
           text: 'CSS',
           link: '/articles/CSS/',
         }, {

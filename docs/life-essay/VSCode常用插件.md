@@ -2,6 +2,7 @@
 
 > 整理了一些自己经常使用的 VScode 扩展
 
+- **掘金** —— 在VScode中刷掘金
 
 - **Chinese (Simplified) Language Pack for Visual Studio Code**  ——  VScode简体中文
 
