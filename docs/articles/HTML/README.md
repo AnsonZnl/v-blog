@@ -10,3 +10,12 @@
 ## 参考
 - [MDN-Web Components](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components)
 - [javascript-info](https://zh.javascript.info/webcomponents-intro)
+
+## Canvas
+
+可以使用Javascript和HTML绘制图表、只做图片或者制作简单的动画。
+
+
+
+### 参考
+- [MDN-Canvas](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API)
