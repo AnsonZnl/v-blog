@@ -7,7 +7,9 @@
 ## 目录
 
 ## 最新文章
-
+- 2021 年 10 月 21 日 - [Web Components](/articles/HTML)
+- 2021 年 10 月 13 日 - [Proxy和Reflect](/articles/JavaScript/Proxy和Reflect)
+- 2021 年 9 月 13 日 - [LeetCode-字符串相加](/life-essay/字符串相加.md)
 - 2021 年 8 月 23 日 - [VSCode 常用快捷键](/docs/life-essay/VSCode常用快捷键.md)
 - 2021 年 8 月 13 日 - [深入理解Vue的指令系统](/docs/articles/vue/深入理解Vue的指令系统.md)
 - 2021 年 7 月 27 日 - [只出现一次的数字](/docs/computer-base/LeetCode/只出现一次的数字.md)
