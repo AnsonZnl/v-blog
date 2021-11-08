@@ -485,7 +485,7 @@ ReactDOM.render(<Clock />, document.getElementById('app'), function () {
 ### 生命周期
 和Vue一样，在不同阶段触发不同的钩子，但是生命周期仅在 Class 组件中存在。
 
-![](https://upload-images.jianshu.io/upload_images/16775500-8d325f8093591c76.jpg?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
+![react-life-cileclr.png](https://i.loli.net/2021/11/06/aP6kgryX5w2c4nM.png)
 
 参考：[React-生命周期](https://www.jianshu.com/p/b331d0e4b398)
 
