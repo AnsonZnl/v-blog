@@ -118,7 +118,7 @@ ReactDOM.render(React.createElement(APP, null), document.getElementById("root"))
 ## 事件处理
 
 - 事件命名采用小驼峰式（onClick）
-- 使用JSX语法时应该传入一个函数（箭头函数，确保this正确），而不是一个字符串
+- 使用JSX语法时应该传入一个函数（箭头函数或者确保this正确的函数），而不是一个字符串
   
 ```js
 // 创建是秃头
@@ -545,5 +545,4 @@ useEffect(()=>{
 
 
 ### useRef
-
 
