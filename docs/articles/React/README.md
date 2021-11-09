@@ -144,14 +144,6 @@ ReactDOM.render(<MessageBox />, document.getElementById('app'), function () {
 ```
 
 
-
-**this指向**
-
-- 在constructor里`this.funName = this.funName.bind(this)`
-- 直接使用箭头函数`funName = ()=>{// some code}`
-
-
-
 ## 条件处理
 
 - 通过if-else去判断
@@ -490,38 +482,7 @@ ReactDOM.render(<Clock />, document.getElementById('app'), function () {
 });
 ```
 
-
-
-### 异步更新的state
-
-有时可能在更新状态的时候想知道上一个状态是什么。 但是状态更新是异步的，这意味着 React 可能会把多个 `setState()` 集中在一起批量更新。 所以计算下一个值时 `this.state` 或者 `this.props` 不能作为当前值。 所以最好不要写如下的代码：
-
-```jsx
-this.setState({
-  counter: this.state.counter + this.props.increment
-});
-```
-
-正确的做法是，给 `setState` 传入一个函数，这个函数可以访问 state 和 props。 给 `setState` 传入函数可以保证 state 和 props 是正确的值。 代码可以重写为这样：
-
-```jsx
-this.setState((state, props) => ({
-  counter: state.counter + props.increment
-}));
-```
-
-如果只需要 `state`，那么用下面没有 `props` 的格式也是可以的：
-
-```jsx
-this.setState(state => ({
-  counter: state.counter + 1
-}));
-```
-
-注意一定要把 object 放在括号里，否则 JavaScript 会认为这只是代码片段。
-
 ### 生命周期
-
 和Vue一样，在不同阶段触发不同的钩子，但是生命周期仅在 Class 组件中存在。
 
 ![react-life-cileclr.png](https://i.loli.net/2021/11/06/aP6kgryX5w2c4nM.png)
@@ -584,4 +545,5 @@ useEffect(()=>{
 
 
 ### useRef
+
 
