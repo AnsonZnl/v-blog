@@ -475,6 +475,116 @@ function List(props){
 - 没有组件实例
 - 没有生命周期
 - 没有state和setState，只有props
+- 不要更改props
+
+## Props
+
+- 设置默认的props
+
+  ``` js
+  class Greeting extends React.Component {
+    render() {
+      return (
+        <h1>Hello, {this.props.name}</h1>
+      );
+    }
+  }
+  
+  // 指定 props 的默认值：
+  Greeting.defaultProps = {
+    name: 'Stranger'
+  };
+  
+  // 渲染出 "Hello, Stranger"：
+  ReactDOM.render(
+    <Greeting />,
+    document.getElementById('example')
+  );
+  ```
+
+  
+
+- 如何校验props
+
+  ```js
+  import PropTypes from 'prop-types'
+  
+  function HelloWorldComponent({ name }) {
+    return (
+      <div>Hello, {name}</div>
+    )
+  }
+  
+  HelloWorldComponent.propTypes = {
+    name: PropTypes.string
+  }
+  
+  export default HelloWorldComponent
+  ```
+
+  
+
+- 传入一个回调函数（子组件修改父组件的值）
+
+  ``` js
+  
+  class MyApp extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        inputValue: ''
+      }
+      this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event) {
+      this.setState({
+        inputValue: event.target.value
+      });
+    }
+    render() {
+      return (
+         <div>
+          { /* 修改这行下面的代码 */ }
+            <GetInput input={this.state.inputValue} handleChange={this.handleChange}/>
+            <RenderInput input={this.state.inputValue} />
+          { /* 修改这行上面的代码 */ }
+         </div>
+      );
+    }
+  };
+  
+  class GetInput extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        <div>
+          <h3>Get Input:{this.props.input}</h3>
+          <input
+            value={this.props.input}
+            onChange={this.props.handleChange}/>
+        </div>
+      );
+    }
+  };
+  
+  class RenderInput extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        <div>
+          <h3>Input Render:{this.props.input}</h3>
+          <p>{this.props.input}</p>
+        </div>
+      );
+    }
+  };
+  ```
+
+  
 
 ## State和生命周期
 
