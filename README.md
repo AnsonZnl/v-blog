@@ -7,6 +7,7 @@
 ## 目录
 
 ## 最新文章
+- 2021 年 11 月 10 日 - [React](/articles/React)
 - 2021 年 10 月 21 日 - [Web Components](/articles/HTML)
 - 2021 年 10 月 13 日 - [Proxy和Reflect](/articles/JavaScript/Proxy和Reflect)
 - 2021 年 9 月 13 日 - [LeetCode-字符串相加](/life-essay/字符串相加.md)
