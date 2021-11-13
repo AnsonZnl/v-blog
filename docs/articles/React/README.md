@@ -115,6 +115,34 @@ ReactDOM.render(React.createElement(APP, null), document.getElementById("root"))
  - React.createElement是JSX的语法糖，会把JSX语法转换为虚拟DOM
  - React.render会将虚拟DOM转化为真实的DOM，并挂在指定的元素上
 
+## 样式处理
+
+### style处理
+
+- 接收一个对象作为样式的集合
+- 将-链接改为小驼峰（如：font-size=>fontSize）
+- 非数字的加引号改为字符串（如：red=>"red"）
+
+``` js
+class Colorful extends React.Component {
+  style = {
+    fontSize:"72px",
+    color:'red'
+  }
+  render() {
+    return (
+      <div style={this.style}>Big Red</div>
+    );
+  }
+};
+```
+
+
+
+### Class处理
+
+- class要改为className
+- 
 
 ## 事件处理
 
@@ -157,7 +185,6 @@ function Demo(props)  {
     }else{
         return <h1></h1>
     }
-    
 }
 
 ReactDOM.render(<Demo isShow={true}/>, document.getElementById('app'));
@@ -628,6 +655,18 @@ ReactDOM.render(<Clock />, document.getElementById('app'), function () {
 
 ### 生命周期
 和Vue一样，在不同阶段触发不同的钩子，但是生命周期仅在 Class 组件中存在。
+
+- `componentWillMount` 组件挂载之前 （render方法调用前执行）
+
+- `componentDidMount` 组件挂载之后（render方法调后执行，通常在这里发送http请求、添加事件等）
+
+- `shouldComponentUpdate` 组件更新之前
+
+  优化渲染：默认情况下，当props和state发生变化时，组件会进行重新渲染以及更新自己的子组件。但是如果收到新的值和上一次的值相同时，也会出发更新操作。这时可以通过`shouldComponentUpdate(nextProps, nextState)`对比老的props和state，返回`true`则继续更新，`false`则停止更新。
+
+- `componentDidUpdate` 组件更新之后
+
+- `componentWillUnmount` 组件卸载时（卸载事件、清楚定时器等）
 
 ![react-life-cileclr.png](https://i.loli.net/2021/11/06/aP6kgryX5w2c4nM.png)
 
