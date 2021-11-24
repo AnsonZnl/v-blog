@@ -678,6 +678,9 @@ ReactDOM.render(<Clock />, document.getElementById('app'), function () {
 React V16.8新增的特性。
 
 提供了如何在不使用 Class 组件的情况下使用 state 特性
+
+参考文章：[React Hook丨用好这9个钩子，所向披靡](https://juejin.cn/post/6895966927500345351)
+
 ### useState
 
 替代之前的this.setState，每次都有通过前面的setValue方法去设置值
@@ -725,7 +728,48 @@ useEffect(()=>{
 
 ### useContext
 
+提供一种在组件之间共享此类值的方式，而不必显式的通过props去传递
+
+```js
+const obj = {
+  value: 1
+};
+const obj2 = {
+  value: 2
+};
+
+const ObjContext = React.createContext(obj);
+const Obj2Context = React.createContext(obj2);
+
+const App = () => {
+  return (
+    <ObjContext.Provider value={obj}>
+      <Obj2Context.Provider value={obj2}>
+        <ChildComp />
+      </Obj2Context.Provider>
+    </ObjContext.Provider>
+  );
+};
+// 子级
+const ChildComp = () => {
+  return <ChildChildComp />;
+};
+// 孙级或更多级
+const ChildChildComp = () => {
+  const obj = useContext(ObjContext);
+  const obj2 = useContext(Obj2Context);
+  return (
+    <>
+      <div>{obj.value}</div>
+      <div>{obj2.value}</div>
+    </>
+  );
+};
+```
+
 
 
 ### useRef
+
+
 
