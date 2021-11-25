@@ -771,5 +771,23 @@ const ChildChildComp = () => {
 
 ### useRef
 
+我们用它来访问DOM，从而操作DOM，如点击按钮聚焦文本框：
+
+```js
+const Index = () => {
+  const inputEl = useRef(null);
+  const handleFocus = () => {
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={handleFocus}>Focus</button>
+    </>
+  );
+};
+
+```
+
 
 
