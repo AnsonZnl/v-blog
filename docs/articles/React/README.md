@@ -789,5 +789,29 @@ const Index = () => {
 
 ```
 
+注意：返回的 ref 对象在组件的整个生命周期内保持不变。 它类似于一个 class 的实例属性，我们利用了它这一点。 动手滑到上面再看上面看那个有 useRef 的例子。
+
+刚刚举例的是访问DOM，那如果我们要访问的是一个组件，操作组件里的具体DOM呢？我们就需要用到 React.forwardRef 这个高阶组件，来转发ref，如：
+
+```js
+const Index = () => {
+  const inputEl = useRef(null);
+  const handleFocus = () => {
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <Child ref={inputEl} />
+      <button onClick={handleFocus}>Focus</button>
+    </>
+  );
+};
+
+const Child = forwardRef((props, ref) => {
+  return <input ref={ref} />;
+});
+
+```
+
 
 
