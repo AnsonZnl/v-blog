@@ -129,10 +129,10 @@
 - Webpack
   - loader
   - plugins
-- Express
-- Koa
+- Express/Koa
   - 中间件的原理
-- PM2
+- 进程管理PM2
+- 多版本管理 n/nvm
 
 ### 工程化
   - Webpack
