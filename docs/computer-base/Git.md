@@ -35,6 +35,14 @@
   - `git clone -b dev2 http://git-test.etledu.com/ETLBOAO/BIM1xTrain.git`
   - `git clone -b` 指定从分支下载 dev2 指定从哪个分支下载 http git 链接
 
+## 合并分支
+比如将dev合并到master分支
+- 先在dev分支上拉取master分支，保证是最新的代码(`git pull origin master`)
+- 然后切换到master分支(`git checkout master`)
+- 然后合并（`git merge dev`）
+
+参考：[分支合并，一看就懂](https://www.jianshu.com/p/26d050497abb)
+
 ## 代码储存
 - `git stash` 将代码存储在储存区
 
