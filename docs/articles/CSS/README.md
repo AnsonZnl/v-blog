@@ -315,8 +315,11 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 - :focus
 
 ### 元素选择类
-- :last-child
-- :first-child
+- :last-child——选择最后一个元素
+- :first-child——选择第一个元素
+- :not(some-element)——反向选择其他元素
+- :nth-child(an+b)——选择所筛选的元素
+- 
 
 
 - [什么是伪类](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%AA%E7%B1%BB%EF%BC%9F)
