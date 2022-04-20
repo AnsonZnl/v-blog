@@ -335,3 +335,19 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 - before（第一个子元素）
 
 - [什么是伪元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#%E4%BC%AA%E5%85%83%E7%B4%A0%E6%98%AF%E5%95%A5%EF%BC%9F)
+
+## 最佳实践
+
+H5强制横屏
+
+``` css
+@media screen and (orientation: portrait) {
+    #app {
+        transform-origin: 0 0;
+        transform: rotateZ(90deg) translateY(-100%);
+        width: 100vh!important;
+        height: 100vw!important;
+    }
+}
+```
+
