@@ -338,7 +338,7 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 
 ## 最佳实践
 
-H5强制横屏
+- **H5强制横屏**
 
 ``` css
 @media screen and (orientation: portrait) {
@@ -350,4 +350,8 @@ H5强制横屏
     }
 }
 ```
+
+- **样式隔离**
+使用 [css-modules](https://github.com/css-modules/css-modules) 为每个 class 生成随机的哈希值，以做到样式的隔离。
+参考： [CSS Modules 用法教程](http://www.ruanyifeng.com/blog/2016/06/css_modules.html)
 
