@@ -34,16 +34,15 @@ demo源码
 
 ### demo源码
 
-```js
+``` js
 const Koa = require('koa')
 const fs = require('fs')
 const app = new Koa()
 
-/**
- * 用Promise封装异步读取文件方法
- * @param  {string} page html文件名称
- * @return {promise}      
- */
+// 用Promise封装异步读取文件方法
+// @param  {string} page html文件名称
+// @return {promise}      
+
 function render( page ) {
   return new Promise(( resolve, reject ) => {
     let viewUrl = `./view/${page}`
@@ -103,4 +102,3 @@ node -harmony index.js
 
 #### 运行效果如下
 访问[http://localhost:3000/index](http://localhost:3000/index)
-![route-result-01](./../images/route-result-01.png)
