@@ -56,7 +56,7 @@ node index.js
 - 可以在控制台的cookie列表中中看到写在页面上的cookie
 - 在控制台的console中使用document.cookie可以打印出在页面的所有cookie（需要是httpOnly设置false才能显示）
 
-![cookie-result-01](./../images/cookie-result-01.png)
+![cookie-result-01.png](https://s2.loli.net/2022/06/18/jDM7ki51dLeF4Hc.png)
 
 
 # koa2实现session
@@ -148,14 +148,13 @@ node index.js
 
 #### 访问连接设置session
 [http://localhost:3000/set](http://localhost:3000/set)
-![session-result-01](./../images/session-result-01.png)
+![session-result-01.png](https://s2.loli.net/2022/06/18/HCWcUeikJONY387.png)
 
 #### 查看数据库session是否存储
-![session-result-01](./../images/session-result-03.png)
+![session-result-03.png](https://s2.loli.net/2022/06/18/lysX8VKS36L19WF.png)
 
 #### 查看cookie中是否种下了sessionId
-[http://localhost:3000](http://localhost:3000)
-![session-result-01](./../images/session-result-02.png)
+[http://localhost:3000](http://localhost:3000)![session-result-02.png](https://s2.loli.net/2022/06/18/fWGwdV1j3pJmqUT.png)
 
 
 

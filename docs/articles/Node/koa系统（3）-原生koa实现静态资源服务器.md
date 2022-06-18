@@ -259,14 +259,13 @@ node index.js
 #### 效果
 
 ##### 访问[http://localhost:3000](http://localhost:3000)
-![static-server-result](./../images/static-server-result-01.png)
+![static-server-result-01.png](https://s2.loli.net/2022/06/18/O7NgoCqFHj2mpnZ.png)
 
 ##### 访问[http://localhost:3000/index.html](http://localhost:3000/index.html)
-![static-server-result](./../images/static-server-result-02.png)
+![static-server-result-02.png](https://s2.loli.net/2022/06/18/fP3Jy91a6NRAUQC.png)
 
 ##### 访问[http://localhost:3000/js/index.js](http://localhost:3000/js/index.js)
-![static-server-result](./../images/static-server-result-03.png)
-
+![static-server-result-03.png](https://s2.loli.net/2022/06/18/k6aJlh9BFKsMzG7.png)
 
 
 
