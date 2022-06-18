@@ -65,6 +65,10 @@ module.exports = {
                         link: "/life-essay/2020年总结与2021年计划.md",
                     },
                     {
+                        text: "2021年总结与2022年计划",
+                        link: "/life-essay/2021年总结与2022年计划.md",
+                    },
+                    {
                         text: "Chrome常用插件",
                         link: "/life-essay/Chrome常用插件.md",
                     },
@@ -419,6 +423,18 @@ module.exports = {
                         {
                             text: "koa系列（1）-中间件开发和使用",
                             link: "/articles/Node/koa系列（1）-中间件开发和使用.md",
+                        },
+                        {
+                            text: "koa系列（2）-koa2路由实现",
+                            link: "/articles/Node/koa系列（2）-koa2路由实现.md",
+                        },
+                        {
+                            text: "koa系统（3）-原生koa实现静态资源服务器",
+                            link: "/articles/Node/koa系统（3）-原生koa实现静态资源服务器.md",
+                        },
+                        {
+                            text: "koa系列（4）-koa实现cookie和session",
+                            link: "/articles/Node/koa系列（4）-koa实现cookie和session.md",
                         },
                     ],
                 },
