@@ -1,10 +1,10 @@
 {
-  "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
-  },
-  "devDependencies": {
-    "vuepress": "^2.0.0-beta.26"
-  }
+    "scripts": {
+        "dev": "vuepress dev docs",
+        "build": "vuepress build docs",
+        "deploy": "bash deploy.sh"
+    },
+    "devDependencies": {
+        "vuepress": "^2.0.0-beta.48"
+    }
 }
