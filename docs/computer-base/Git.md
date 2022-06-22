@@ -94,6 +94,9 @@
 - `git branch --set-upstream-to=origin/newbranch newbranch` -- 本地分支和远程分支建立追踪
   到此为止，就完成了需求
 
+## 只记得用户名和密码的情况下使用
+![git-without.png](https://s2.loli.net/2022/06/22/CBgZWP5nLXGAaMH.png)
+
 ## 注意
 
 - `push` 之前先 `pull` 代码
