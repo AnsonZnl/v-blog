@@ -435,6 +435,10 @@ module.exports = {
                         {
                             text: "koa系列（4）-koa实现cookie和session",
                             link: "/articles/Node/koa系列（4）-koa实现cookie和session.md",
+                        },    
+                        {
+                            text: "koa系列（5）-上传文件",
+                            link: "/articles/Node/koa系列（5）-上传文件.md",
                         },
                     ],
                 },
