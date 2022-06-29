@@ -440,6 +440,10 @@ module.exports = {
                             text: "koa系列（5）-上传文件",
                             link: "/articles/Node/koa系列（5）-上传文件.md",
                         },
+                        {
+                            text: "Node.js原生http模块",
+                            link: "/articles/Node/Node.js原生http模块.md",
+                        },
                     ],
                 },
                 {
