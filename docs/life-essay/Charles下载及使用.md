@@ -21,3 +21,6 @@ HTTP请求代理，可以理解为浏览器的F12 里面的NetWork模块。
 
 ## 使用
 参考[Charles 功能介绍和使用教程](https://juejin.cn/post/6844903665304600589)
+
+## 注意
+- [解决Mac使用Charles后关闭，无法上网问题](https://blog.csdn.net/weixin_48935491/article/details/122012702)
