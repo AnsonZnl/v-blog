@@ -13,7 +13,7 @@
 
 ## 作用
 HTTP请求代理，可以理解为浏览器的F12 里面的NetWork模块。
-
+在实际工作中，比如开发APP、RN开发时需要抓包，看HTTP请求，就可以使用Charles！
 ## 下载
 [官方下载地址](https://www.charlesproxy.com/)
 [自带账号版下载地址](https://lemon.qq.com/lab/app/Charles.html)
