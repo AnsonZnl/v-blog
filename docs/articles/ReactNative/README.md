@@ -75,4 +75,10 @@ export default App;
 
 
 ## 布局
-最好使用flex+百分比布局。
+
+最好使用flex+百分比布局，否则可能存在兼容问题。
+
+React Native 中的 Flexbox 的工作原理和 web 上的 CSS 基本一致，当然也存在少许差异。    
+- 首先是默认值不同：flexDirection的默认值为column（而不是row）
+- alignContent默认值为 flex-start（而不是 stretch）
+- flexShrink 默认值为0 （而不是1）, 而flex只能指定一个数字值。
