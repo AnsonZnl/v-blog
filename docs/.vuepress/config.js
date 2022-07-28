@@ -510,7 +510,8 @@ module.exports = {
                 },
                 {
                     text: "阅读列表",
-                    link: "/articles/readList/",
+                    link: "/articles/ReadList/",
+                    children: [],
                 },
             ],
         },
