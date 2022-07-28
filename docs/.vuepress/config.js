@@ -257,6 +257,10 @@ module.exports = {
                     link: "/articles/React/",
                 },
                 {
+                    text: "React Native",
+                    link: "/articles/ReactNative/",
+                },
+                {
                     text: "Vue",
                     link: "/articles/Vue/",
 
@@ -503,6 +507,10 @@ module.exports = {
                     link: "/articles/RegExp/",
 
                     children: [],
+                },
+                {
+                    text: "阅读列表",
+                    link: "/articles/readList/",
                 },
             ],
         },
