@@ -40,6 +40,7 @@ app.listen(9001,()=>{
 ```
 
 3. 在koa文件中新建lib文件,在lib文件中新建application.js context.js request.js response.js
+
 ![image.png](https://s2.loli.net/2022/08/04/8B2zmxqHdPphuiE.png)
 
 ## 分析并实现request.js文件
@@ -47,6 +48,25 @@ app.listen(9001,()=>{
 Koa源码中request.js文件做了很多请求相关的参数处理,通过get/set的访问方式对属性进行了包装,使用户获取属性更加方便
 
 ``` js
+//节选自：https://github.com/koajs/koa/blob/master/lib/request.js
+/**
+* Get request URL.
+* @return {String}
+* @api public
+*/
+
+get url () {
+  return this.req.url
+},
+
+/**
+* Set request URL.
+* @api public
+*/
+
+set url (val) {
+  this.req.url = val
+},
 
 ```
 
