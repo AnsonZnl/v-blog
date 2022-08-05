@@ -1,6 +1,7 @@
 
 - Koa源码地址：[https://github.com/koajs/koa](https://github.com/koajs/koa)
 - [Koa 中文文档](https://koa.bootcss.com/)
+- [Koa 官方英文文档](https://github.com/koajs/koa/tree/master/docs)
 
 ## 前言
 > Koa是继Express后新的Node框架,由Express原班人马开发,相比Express更加简洁,源码只有2000多行,结合最新的ECMA语法,这使得Koa更小 更具有表现力 更健壮,因为每个中间件的执行结果都是Promise,结合Async Await抛弃复杂的传统回调形式。并且错误结果处理起来也更加方便
