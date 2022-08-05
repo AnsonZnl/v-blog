@@ -1,5 +1,6 @@
 
-Koa源码地址：[https://github.com/koajs/koa](https://github.com/koajs/koa)
+- Koa源码地址：[https://github.com/koajs/koa](https://github.com/koajs/koa)
+- [Koa 中文文档](https://koa.bootcss.com/)
 
 ## 前言
 > Koa是继Express后新的Node框架,由Express原班人马开发,相比Express更加简洁,源码只有2000多行,结合最新的ECMA语法,这使得Koa更小 更具有表现力 更健壮,因为每个中间件的执行结果都是Promise,结合Async Await抛弃复杂的传统回调形式。并且错误结果处理起来也更加方便
@@ -69,4 +70,60 @@ set url (val) {
 },
 
 ```
+
+- 实现自己的request.js
+
+内部的this指向ctx.request, 所以ctx.request上面必须有req对象,该对象指向原生的request对象
+
+``` js
+const url = require('url');
+module.exports = {
+  get query() {
+    const { query } = url.parse(this.req.url);
+    return query;
+  },
+  get path() {
+    const { pathname } = url.parse(this.req.url);
+    return pathname;
+  },
+};
+```
+
+## 实现context.js
+
+- context除了提供自身方法和属性外,还对其他属性进行了委托 ``(将请求相关的属性委托到ctx.requset上,将响应相关的属性和方法代理到ctx.response)``.  
+- 用户访问ctx.body其实访问的是ctx.request.body``(后续创建上下文对象ctx时,会将request挂载到ctx身上)``.  
+- delegate的原理就是 ``__defineGetter__``,``__defineSetter__``属性,可以访问对象属性时,将属性委托到其他对象身上
+
+``` js
+const delegate = require('delegates');
+const proto = (module.exports = {
+  // 给context自身添加属性和方法
+  toJSON() {
+    return {};
+  },
+});
+
+// 当直接访问ctx.xx时 委托到ctx.response.xx身上
+delegate(proto, 'response')
+  .access('body')
+  .access('status');
+
+// 当直接访问ctx.xx时 委托到ctx.request.xx身上
+delegate(proto, 'request')
+  .access('query')
+  .access('path')
+  .access('url');
+
+```
+
+[delegates](https://github.com/tj/node-delegates)是一个对象访问代理的JS库。
+
+[__defineGetter__](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineGetter__)方法可以将一个函数绑定在当前对象的指定属性上，当那个属性被读取时，就调用这个绑定的方法。（其实可以使用Object.defineProperty、对象的get/set、proxy代替）
+
+1. delegate内部也是通过__defineGetter__, __defineSetter__两种方法实现的属性委托
+2. 上面的context实现方式, 也可以通过下面__defineGetter__, __defineSetter__直接实现
+
+
+![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
