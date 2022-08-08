@@ -125,6 +125,35 @@ delegate(proto, 'request')
 1. delegate内部也是通过__defineGetter__, __defineSetter__两种方法实现的属性委托
 2. 上面的context实现方式, 也可以通过下面__defineGetter__, __defineSetter__直接实现
 
+``` js
+const proto = (module.exports = {
+  // 给context自身添加属性和方法
+  toJSON() {
+    return {};
+  },
+});
+function defineGetters(taregt, key) {
+  proto.__defineGetter__(key, function() {
+    return this[taregt][key];
+  });
+}
+defineGetters('request', 'query');
+defineGetters('request', 'path');
+defineGetters('request', 'url');
+defineGetters('response', 'body');
+defineGetters('response', 'status');
+
+function defineSetters(target, key) {
+  proto.__defineSetter__(key, function(value) {
+    this[target][key] = value;
+  });
+}
+defineSetters('response', 'body');
+defineSetters('response', 'status');
+```
+
+## 分析并实现response.js
+
 
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
