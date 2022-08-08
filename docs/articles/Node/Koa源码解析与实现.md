@@ -154,6 +154,46 @@ defineSetters('response', 'status');
 
 ## 分析并实现response.js
 
+将cxt.header代理到this.res.header上。
+
+``` js
+// https://github.com/koajs/koa/blob/master/lib/response.js
+/**
+   * Return response header.
+   *
+   * @return {Object}
+   * @api public
+   */
+
+  get header () {
+    const { res } = this
+    return typeof res.getHeaders === 'function'
+      ? res.getHeaders()
+      : res._headers || {} // Node < 7.7
+  },
+
+  /**
+   * Return response header, alias as response.header
+   *
+   * @return {Object}
+   * @api public
+   */
+
+  get headers () {
+    return this.header
+  },
+
+  /**
+   * Get response status code.
+   *
+   * @return {Number}
+   * @api public
+   */
+
+  get status () {
+    return this.res.statusCode
+  },
+```
 
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
