@@ -195,5 +195,8 @@ defineSetters('response', 'status');
   },
 ```
 
+- response内部通过get set 提供了很多响应相关的属性和方法
+- 简单实现自己的response.js
+
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
