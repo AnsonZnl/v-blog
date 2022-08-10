@@ -198,5 +198,34 @@ defineSetters('response', 'status');
 - response内部通过get set 提供了很多响应相关的属性和方法
 - 简单实现自己的response.js
 
+``` js
+const response = {
+  _body: undefined,
+  get body() {
+    return this._body;
+  },
+  set body(value) {
+    this._body = value;
+  },
+  get status() {
+    return this.res.statusCode;
+  },
+  set status(code) {
+    this.res.statusCode = code;
+  },
+};
+module.exports = response;
+```
+
+## 剖析application源码并实现它
+
+### (1）构造函数
+
+- 继承Events函数,可以直接订阅或发布事件
+- 通过Object.create()分别创建context,request,response对象,目的是为了基于原型链创建一个新对象,避免全局中多个程序造成对象引用污染
+- 创建中报错间件的集合middleware
+
+
+
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
