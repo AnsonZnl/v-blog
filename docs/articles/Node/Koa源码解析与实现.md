@@ -225,6 +225,20 @@ module.exports = response;
 - 通过Object.create()分别创建context,request,response对象,目的是为了基于原型链创建一个新对象,避免全局中多个程序造成对象引用污染
 - 创建中报错间件的集合middleware
 
+``` js
+module.exports = class Application extends EventEmitter {
+  constructor() {
+    super();
+    // 创建全新的context request response对象
+    this.context = Object.create(context);
+    this.request = Object.create(request);
+    this.response = Object.create(response);
+    // 保存中间件的数组
+    this.middleware = [];
+  }
+}
+```
+
 
 
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
