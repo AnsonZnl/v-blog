@@ -239,7 +239,15 @@ module.exports = class Application extends EventEmitter {
 }
 ```
 
-
+## (2）use()
+1. 验证并添加中间件
+``` js
+use(fn) {
+    if (typeof fn !== 'function') throw new TypeError('middleware must be a function!');
+    // 将注册的中间件添加到数组中管理
+    this.middleware.push(fn);
+ }
+```
 
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
