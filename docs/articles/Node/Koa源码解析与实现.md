@@ -249,5 +249,16 @@ use(fn) {
  }
 ```
 
+## (3）listen()
+
+通过http创建server,通过this.callback完成回调
+
+``` js
+listen(...args) {
+  const server = http.createServer(this.callback());
+  return server.listen(...args);
+}
+```
+
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
