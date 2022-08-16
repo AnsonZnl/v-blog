@@ -260,5 +260,24 @@ listen(...args) {
 }
 ```
 
+## (4）callback()
+
+1. 通过调用compose包装中间件,返回一个可执行的函数,调用该函数则开始执行中间件
+2. 创建请求相关的处理函数,内部创建全局上下文对象ctx,将ctx和中间件的调用函数交给this.handleRequest函数处理
+  
+``` js
+callback() {
+  // fn函数内部将执行注册的中间件
+  const fn = this.compose();
+  // 处理request请求
+  const handleRequest = (req, res) => {
+    // 创建上下文对象ctx
+    const ctx = this.createContext(req, res);
+    this.handleRequest(ctx, fn);
+  };
+  return handleRequest;
+}
+```
+
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
