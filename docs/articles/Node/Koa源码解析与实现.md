@@ -279,5 +279,12 @@ callback() {
 }
 ```
 
+## (5）compose()
+
+1、默认直接执行第一个中间件
+2、没有中间件或中间件执行完毕直接返回成功的结果
+3、记录上一个中间件的索引index,防止一个中间件内多次调用next()
+4、递归调用dispatch(),中间件的第一个参数是ctx对象,第二个参数next为 dispatch(i+1)
+
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
