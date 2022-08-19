@@ -288,3 +288,36 @@ callback() {
 
 ![image.png](https://s2.loli.net/2022/08/05/ZlzrVMJmIiLCfkx.png)
 
+
+``` js
+compose() {
+  // 每个中间价必须是个方法
+  for (const fn of this.middleware) {
+    if (typeof fn !== 'function')
+      throw new TypeError('Middleware must be composed of functions!');
+  }
+  // 开始执行中间件
+  return ctx => {
+    // 上一个中间件的索引
+    let index = -1;
+    const dispatch = i => {
+      // 防止中间内多次调用next函数
+      if (i <= index) return Promise.reject(new Error('next() called multiple times'));
+      index = i;
+      // 没有中间件 或执行完最后一个中间件 直接返回成功
+      if (this.middleware.length === i) return Promise.resolve();
+      let fn = this.middleware[i];
+      try {
+        // next 函数内部调用了dispatch,并且直接执行下一个中间件
+        let next = () => dispatch.bind(null, i + 1);
+        return Promise.resolve(fn(ctx, next()));
+      } catch (err) {
+        return Promise.reject(err);
+      }
+    };
+    // 默认直接执行第一个中间件
+    return dispatch(0);
+  };
+}
+```
+
