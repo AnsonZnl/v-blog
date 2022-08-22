@@ -156,6 +156,29 @@
  * revert：回滚某个更早之前的提交
  
 
+## Git将master最新代码拉取到当前开发分支
+
+> 假设你正在开发一个新功能，还没开发完成。但是团队成员A最近开发了B功能，这个功能最近上线后合并到master了，此时你要拉取master最新代码到你的分支中。
+
+1. 切换到master主分支上
+`git checkout master`
+
+2. 将master更新的代码拉取到本地
+`git pull`
+
+3. 再切换到自己的分支假设为： add_order上
+`git checkout add_order`
+
+4. 合并master到自己的分支add_order上
+`git merge master`
+
+5、提交合并后的代码
+`git add .`
+`git commit -m "merge master"`
+
+6、提交到远程仓库
+`git push origin add_order`
+
 
 ## GitHub
 
