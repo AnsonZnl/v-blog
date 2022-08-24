@@ -321,3 +321,11 @@ compose() {
 }
 ```
 
+## (6）createContext()
+
+每一个请求都需要有一个全新的上下文对象,通过Object.create创建    
+
+将request,response对象挂载到上下对象ctx身上,方便通过__defineGetter__和__defineSetter__进行属性委托
+
+
+
