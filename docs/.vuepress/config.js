@@ -191,6 +191,10 @@ module.exports = {
                     ],
                 },
                 {
+                    text: "浏览器",
+                    link: "/articles/Browser/",
+                },
+                {
                     text: "HTML",
                     link: "/articles/HTML/",
                 },

@@ -1,11 +1,12 @@
 # 浏览器
-> 以谷歌最新版为准
+> 调试结果Google Chrome浏览器为准
+
 ## Web API
 
 ### Broadcast Channel API
 > Broadcast Channel API 可以实现同 源 下浏览器不同窗口，Tab 页，frame 或者 iframe 下的 浏览器上下文 (通常是同一个网站下不同的页面) 之间的简单通讯。
 
-MDN 文档： https://developer.mozilla.org/zh-CN/docs/Web/API/Broadcast_Channel_API
+MDN 文档链接： https://developer.mozilla.org/zh-CN/docs/Web/API/Broadcast_Channel_API
 
 可以简单实现两个页面直接的通信.
 页面一：
