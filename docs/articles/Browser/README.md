@@ -1,12 +1,13 @@
 # 浏览器
+
 > 调试结果Google Chrome浏览器为准
 
 ## Web API
 
 **参考：**
-1. web-api-examples: https://web-api-examples.github.io/
-2. MDN-Web APIs: https://developer.mozilla.org/en-US/docs/Web/API
-
+1. [web-api-examples](https://web-api-examples.github.io/)
+2. [MDN-Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
+3. [12 Rarely Used JavaScript Web APIs that Will Boost Your Website to THE MOON](https://dev.to/eludadev/12-rarely-used-javascript-web-apis-that-will-take-your-website-to-the-next-level-4lf1#making-your-website-a-fullscreen-experience)
 
 ### Broadcast Channel API
 > Broadcast Channel API 可以实现同 源 下浏览器不同窗口，Tab 页，frame 或者 iframe 下的 浏览器上下文 (通常是同一个网站下不同的页面) 之间的简单通讯。
@@ -62,3 +63,7 @@ function toggle() {
     document.exitFullscreen()
 }
 ```
+
+
+
+## Audio 
