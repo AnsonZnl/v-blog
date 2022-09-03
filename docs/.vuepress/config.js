@@ -193,6 +193,10 @@ module.exports = {
                 {
                     text: "浏览器",
                     link: "/articles/Browser/",
+                    children: [{
+                        text: "编写属于自己的音乐播放器",
+                        link: "/articles/Browser/编写属于自己的音乐播放器.md",
+                    }]
                 },
                 {
                     text: "HTML",
@@ -205,7 +209,6 @@ module.exports = {
                 {
                     text: "JavaScript",
                     link: "/articles/JavaScript/",
-
                     children: [{
                             text: "Proxy和Reflect",
                             link: "/articles/JavaScript/Proxy和Reflect.md",
