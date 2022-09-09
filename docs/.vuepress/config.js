@@ -398,7 +398,6 @@ module.exports = {
                 {
                     text: "Node",
                     link: "/articles/Node/",
-
                     children: [{
                             text: "初试MongoDB数据库",
                             link: "/articles/Node/初试MongoDB数据库.md",
@@ -468,6 +467,10 @@ module.exports = {
                             link: '/articles/Node/Koa源码解析与实现.md'
                         }
                     ],
+                },
+                {
+                    text: "前端工程化",
+                    link: "/articles/Engineering/"
                 },
                 {
                     text: "前端性能优化",
