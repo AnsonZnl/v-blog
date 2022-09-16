@@ -327,5 +327,17 @@ compose() {
 
 将request,response对象挂载到上下对象ctx身上,方便通过__defineGetter__和__defineSetter__进行属性委托
 
-
+``` js
+createContext(req, res) {
+  // 基于原型链创建新的ctx request response(避免不同的请求污染)
+  const ctx = Object.create(this.context);
+  const request = Object.create(this.request);
+  const response = Object.create(this.response);
+  ctx.request = request; // 上下文对象中保存包装后的request对象
+  ctx.request.req = ctx.req = req; // 将原生的request对象分别挂载到 ctx.request 和 ctx上
+  ctx.response = response; // 上下文对象中保存包装后的response对象
+  ctx.response.res = ctx.res = res; // 将原生的response对象分别挂载到 ctx.response 和 ctx上
+  return ctx;
+}
+```
 
