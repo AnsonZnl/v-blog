@@ -340,4 +340,33 @@ createContext(req, res) {
   return ctx;
 }
 ```
+## (7）handleRequest()
+
+1. 创建默认的状态码
+2. 执行全部中间件
+``` js
+handleRequest(ctx, fn) {
+  // 默认的状态码
+  ctx.res.statusCode = 404;
+  // 不同情况的响应处理
+  const handleResponse = () => this.respond(ctx)
+  // 执行中间件 全部中间件成功执行完毕 执行respond响应结果
+  fn(ctx)
+    .then(handleResponse)
+    .catch(err => {
+      this.emit('error', err);
+    });
+}
+```
+## (8）respond()
+``` js
+respond(ctx) {
+  // [1] 这里上下文对象的body其实是代理的response对象中的body
+  // [2] ctx.body ==== ctx.response.body
+  // [3] Koa源码中使用delegate函数完成代理 (__defineGetter__ , __defineSetter__)
+  const body = ctx.body || 'Not Define';
+  return ctx.res.end(body);
+}
+```
+
 
