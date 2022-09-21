@@ -726,6 +726,24 @@ useEffect(()=>{
 ```
 具体参考：[React函数式组件值之useEffect()](https://www.cnblogs.com/guanghe/p/14178482.html)
 
+### useCallback
+ 
+``` js
+const memoizedCallback = useCallback(() => {
+    doSomething(a, b);
+  }, [a, b]);
+ 
+   useEffect(() => {
+    fun();
+  });
+```
+
+只有当a或b改变的时候，函数memoizedCallback才执行。
+
+把内联回调函数及依赖项数组作为参数传入 useCallback，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用引用相等性去避免非必要渲染（例如 shouldComponentUpdate）的子组件时，它将非常有用。
+`useCallback(fn, deps) 相当于 useMemo(() => fn, deps)`
+
+
 ### useContext
 
 提供一种在组件之间共享此类值的方式，而不必显式的通过props去传递
