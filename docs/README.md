@@ -8,7 +8,7 @@ actions:
     link: /articles/
 features:
   - title: 前端博文
-    details: 博文以JavaScript、Vue、小程序、Node等技术文章为主。
+    details: 博文以JavaScript、Vue、React、小程序、Node等技术文章为主。
   - title: 计算机通识
     details: 前端工程师，首先是一个软件工程师，计算机基础知识必不可少。
   - title: 生活杂文
