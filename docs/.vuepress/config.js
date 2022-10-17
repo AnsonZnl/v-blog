@@ -172,21 +172,22 @@ module.exports = {
                     text: "前端技术分享",
                     link: "/articles/Share/",
 
-                    children: [{
-                            text: "Vue专题之Vue进阶",
-                            link: "/articles/Share/Vue专题之Vue进阶.md",
-                        },
+                    children: [
                         {
-                            text: "Vue专题之Vue基础",
-                            link: "/articles/Share/Vue专题之Vue基础.md",
+                            text: "JavaScript专题之This和定时器",
+                            link: "/articles/Share/JavaScript专题之This和定时器.md",
                         },
                         {
                             text: "JavaScript专题之异步编程",
                             link: "/articles/Share/JavaScript专题之异步编程.md",
                         },
                         {
-                            text: "JavaScript专题之This和定时器",
-                            link: "/articles/Share/JavaScript专题之This和定时器.md",
+                            text: "Vue专题之Vue基础",
+                            link: "/articles/Share/Vue专题之Vue基础.md",
+                        },
+                        {
+                            text: "Vue专题之Vue进阶",
+                            link: "/articles/Share/Vue专题之Vue进阶.md",
                         },
                     ],
                 },
