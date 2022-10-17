@@ -1,7 +1,7 @@
 module.exports = {
     title: "九旬的博客",
     description: "种一棵树最好的时间在十年前，其次是现在。",
-    keywords: "前端开发，个人博客，JavaScript、Vue、Node，微信小程序,张宁乐，张宁乐的博客，九旬，WEB前端技术博客",
+    keywords: "前端开发，个人博客，JavaScript、Vue、React、ReactNative、Node，微信小程序,张宁乐，张宁乐的博客，九旬，九旬的博客，WEB前端技术博客，技术，博客",
     head: [
         [
             "link",
