@@ -13,7 +13,7 @@ features:
     details: 前端工程师，首先是一个软件工程师，计算机基础知识必不可少。
   - title: 生活杂文
     details: 随手记录一些生活、学习、工作感悟，偶尔引用一些好文章。
-footer: MIT Licensed | Copyright © 2018-2021 AnsonZnl
+footer: MIT Licensed | Copyright © 2018-2022 AnsonZnl
 ---
 
 ## 最新文章
