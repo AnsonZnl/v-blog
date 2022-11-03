@@ -58,9 +58,11 @@
 ### CSS
 
 - 盒模型（w3c 和 IE）
-- flex 布局
+- flex 布局、grid布局
+- transition
+- animation
 - CSS3 新特性
-- less/sess
+- less/Sass等预编译语言
 
 ### JavaScript
 
@@ -86,6 +88,7 @@
 - Flex 布局
 - 原生组件的应用
 - 原生支持的API
+- IOS和安卓的兼容
 
 ### Vue
 
