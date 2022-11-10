@@ -14,6 +14,34 @@
 而 reconciler 则会自顶向下的递归mount/update，无法中断（持续占用主线程，可能会造成卡顿白屏），这样主线程上的布局、动画等周期性任务以及交互响应就无法立即得到处理，影响体验
 渲染过程中没有优先级可言。
 
+## 实现简版
+``` js
+import React from "react";
+import ReactDOM from "react-dom";
+let lastState;
+function useState(initialState) {
+  lastState = lastState || initialState;
+  function setState(newState) {
+    lastState = newState;
+    render();
+  }
+  return [lastState, setState];
+}
+function Counter() {
+  let [state, setState] = useState(0);
+  return (
+    <>
+      <p>{state}</p>
+      <button onClick={() => setState(state + 1)}>+</button>
+    </>
+  );
+}
+function render() {
+  ReactDOM.render(<Counter />, document.getElementById("root"));
+}
+render();
+```
+
 ## 参考
 - [从源码剖析useState的执行过程](https://juejin.cn/post/6844903833764642830)
 - [react技术分享----useState的原理及自定义useState的实现](https://blog.csdn.net/m0_46694056/article/details/122600029)
