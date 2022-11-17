@@ -1,4 +1,4 @@
-## 前端调试
+## 文章收藏
 - [前端工程师应该掌握的抓包神器工具—Charles，会了真香](https://juejin.cn/post/7121496066591031310#heading-0)
 - [新手向：前端程序员必学基本技能——调试JS代码](https://juejin.cn/post/7030584939020042254)
 - [如何成为一名技术文档工程师](https://mp.weixin.qq.com/s/eb68IHtKTehd2uWVW-NBUQ)
@@ -6,3 +6,5 @@
 - [从零到一实现企业级微前端框架，保姆级教学](https://juejin.cn/post/7004661323124441102#heading-1)
 - [深入讲解VsCode各场景高级调试与使用技巧](https://juejin.cn/post/7071146744339234846)
 - [一文教你搞定所有前端鉴权与后端鉴权方案，让你不再迷惘](https://juejin.cn/post/7129298214959710244)
+- [Cache your CORS, for performance & profit](https://httptoolkit.com/blog/cache-your-cors/)
+- [A development process startup founders should use to ship features weirdly fast](https://growing-products.paralect.com/a-development-process-startup-founders-should-use-to-ship-features-weirdly-fast)
