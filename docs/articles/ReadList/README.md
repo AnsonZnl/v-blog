@@ -4,3 +4,5 @@
 - [如何成为一名技术文档工程师](https://mp.weixin.qq.com/s/eb68IHtKTehd2uWVW-NBUQ)
 - [微前端的前世今生](https://juejin.cn/post/7163481140165246983#heading-24)
 - [从零到一实现企业级微前端框架，保姆级教学](https://juejin.cn/post/7004661323124441102#heading-1)
+- [深入讲解VsCode各场景高级调试与使用技巧](https://juejin.cn/post/7071146744339234846)
+- [一文教你搞定所有前端鉴权与后端鉴权方案，让你不再迷惘](https://juejin.cn/post/7129298214959710244)
