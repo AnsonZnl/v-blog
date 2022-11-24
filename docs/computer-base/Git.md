@@ -16,6 +16,7 @@
 - `git checkout -- xx.js` 把工作区的修改全部撤回
 - `git diff HEAD -- xx.js` 查看当前的变动
 - `git pull` 推送代码
+- `git commit -n -m 'xxx'` 忽略husky检测
 
 ## 分支
 
