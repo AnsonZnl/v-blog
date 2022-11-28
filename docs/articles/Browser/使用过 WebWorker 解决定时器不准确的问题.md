@@ -7,23 +7,40 @@ web worker 可以为我们提供一个线程去执行我们额外的功能（当
 worker 代码
 
 ```js
-const cntWorker = () => {
+const WorkerCode = () => {
     const _self = self;
-    const timer = 10 * 60 * 1000;
-    // const timer = 10 * 1000
     setInterval(() => {
         _self.postMessage({ time: +new Date() });
     }, 10 * 60 * 1000);
 };
-//
 // 把脚本代码转为string
-let code = cntWorker.toString();
+let code = WorkerCode.toString();
+// 将代码块取出
 code = code.substring(code.indexOf("{") + 1, code.lastIndexOf("}"));
-
+// 转为二进制Blob文件
 const blob = new Blob([code], { type: "application/javascript" });
+// 生成临时地址
 const worker_script = URL.createObjectURL(blob);
 
 export default worker_script;
+```
+
+主线程代码
+
+```js
+import intervalWorker from "./intervalWorker";
+// 新建worker
+const workerInstance = new Worker(intervalWorker);
+
+workerInstance.onmessage = () => {
+    // 在 worker通知后执行函数
+    fetchList();
+};
+
+onBeforeUnmount(() => {
+    // 在组件卸载后关闭
+    workerInstance.terminate();
+});
 ```
 
 ## 参考

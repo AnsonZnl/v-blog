@@ -724,6 +724,24 @@ useEffect(()=>{
 }, [count])
 // 仅在 count 更新时，触发一次。
 ```
+
+
+如果需要设置清除 effect 可以 return 一个清除函数，这个函数将在组件卸载时执行（类似componentWillUnmount生命周期）
+
+``` js
+function FunctionComponents(props) {
+  useEffect(() => {
+    // 在每次更新的时候都运行Effice
+    State.subscribeStatus(props.id, handleStatusChange);
+    return () => {
+      // 在组件卸载的时候执行清除操作
+      State.unsubscribeStatus(props.id, handleStatusChange);
+    };
+  });
+
+```
+
+
 具体参考：[React函数式组件值之useEffect()](https://www.cnblogs.com/guanghe/p/14178482.html)
 
 ### useCallback
