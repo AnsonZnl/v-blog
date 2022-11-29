@@ -45,6 +45,5 @@ onBeforeUnmount(() => {
 
 ## 参考
 
--[阮一峰-Web Worker 使用教程](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)
-
--   [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+-   [阮一峰-Web Worker 使用教程](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)
+-   [Using_web_workers - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
