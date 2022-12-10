@@ -6,3 +6,4 @@
 - [JavaScript 专题之异步编程](/articles/Share/JavaScript专题之异步编程.md)
 - [Vue 专题之 Vue 基础](/articles/Share/Vue专题之Vue基础.md)
 - [Vue 专题之 Vue 进阶](/articles/Share/Vue专题之Vue进阶.md)
+- [大屏定时截图上传需求复盘](/articles/Share/大屏定时截图上传需求复盘.md)
