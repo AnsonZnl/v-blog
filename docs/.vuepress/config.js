@@ -201,7 +201,14 @@ module.exports = {
         children: [{
           text: "编写属于自己的音乐播放器",
           link: "/articles/Browser/编写属于自己的音乐播放器.md",
+        }, {
+          text: "浏览器截屏方案分析",
+          link: "/articles/Browser/浏览器截屏方案分析.md",
+        }, {
+          text: "前端图片压缩方案",
+          link: "/articles/Browser/前端图片压缩方案.md",
         }]
+        //浏览器截屏方案分析
       },
       {
         text: "HTML",
