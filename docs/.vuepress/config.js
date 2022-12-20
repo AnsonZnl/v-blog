@@ -12,7 +12,7 @@ module.exports = {
     ],
   ],
   base: "/",
-  erviceWorker: true, // 是否支持PWA 
+  erviceWorker: true, 
   themeConfig: {
     sidebarDepth: 3,
     lastUpdatedText: "上次更新",
@@ -69,6 +69,10 @@ module.exports = {
           link: "/life-essay/2021年总结与2022年计划.md",
         },
         {
+          text: "2022年总结与2023年计划",
+          link: "/life-essay/2022年总结与2023年计划.md",
+        },
+        {
           text: "Chrome常用插件",
           link: "/life-essay/Chrome常用插件.md",
         },
@@ -79,6 +83,10 @@ module.exports = {
         {
           text: "VScode常用快捷键",
           link: "./VSCode常用快捷键.md",
+        },
+        {
+          text: "如何提高自己的英文阅读水平",
+          link: "./如何提高自己的英文阅读水平.md",
         },
         ],
       },],
