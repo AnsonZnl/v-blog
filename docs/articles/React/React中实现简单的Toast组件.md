@@ -38,6 +38,7 @@ Toast组件 :success,info,fail,warning几种形式，可以自定义
 
 import * as React from 'react'
 import './index.scss'
+import './iconfont.less'
 import * as ReactDOM from 'react-dom'
 import {Fragment} from "react"
 let timer: any = null
@@ -146,4 +147,37 @@ pointer-events: none;  使该元素能够点击穿透，不挡住下面的元素
     transform: rotateZ(360deg);
   }
 }
+```
+
+iconfont.less 的 iconfont引入
+``` less
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('./iconfont.ttf?t=1671589144239') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 26px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-reload:before {
+  content: "\e895";
+}
+
+.icon-close-circle-fill:before {
+  content: "\e6d4";
+}
+
+.icon-check-circle-fill:before {
+  content: "\e6d5";
+}
+
+.icon-warning-circle-fill:before {
+  content: "\e6d7";
+}
+
 ```
