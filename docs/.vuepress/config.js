@@ -282,6 +282,16 @@ module.exports = {
       {
         text: "React",
         link: "/articles/React/",
+        children:[
+          {
+            text: 'React中实现简单的Toast组件',
+            link: '/articles/React//React中实现简单的Toast组件'
+          },
+          {
+            text: 'useState的原理及实现',
+            link: '/articles/React//useState的原理及实现'
+          }
+        ]
       },
       {
         text: "React Native",
@@ -290,7 +300,6 @@ module.exports = {
       {
         text: "Vue",
         link: "/articles/Vue/",
-
         children: [{
           text: "深入理解Vue的指令系统",
           link: "/articles/Vue/深入理解Vue的指令系统.md",
