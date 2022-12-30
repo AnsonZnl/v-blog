@@ -88,6 +88,10 @@ module.exports = {
           text: "如何提高自己的英文阅读水平",
           link: "./如何提高自己的英文阅读水平.md",
         },
+        {
+          text: "大屏定时截图上传需求复盘",
+          link: "./大屏定时截图上传需求复盘.md",
+        },
         ],
       },],
       "/computer-base/": [{
@@ -272,6 +276,10 @@ module.exports = {
         {
           text: "JavaScript对象原型链",
           link: "/articles/JavaScript/JavaScript对象原型链.md",
+        },
+        {
+          text: "前端文件下载的正确打开方式",
+          link: "/articles/JavaScript/前端文件下载的正确打开方式.md",
         },
         ],
       },
