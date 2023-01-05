@@ -14,3 +14,5 @@
 - [创建对象的几种方法及优缺点](/articles/JavaScript/创建对象的几种方法及优缺点)
 - [JS中常见的模块](/articles/JavaScript/JS中常见的模块)
 - [一次搞懂-JS事件循环之宏任务和微任务](/articles/JavaScript/一次搞懂-JS事件循环之宏任务和微任务)
+- [前端文件下载的正确打开方式](/articles/JavaScript/前端文件下载的正确打开方式)
+
