@@ -8,7 +8,7 @@
 - [HTML](/articles/HTML/)
 - [CSS](/articles/CSS/)
 - [JavaScript](/articles/JavaScript/)
-- [TypeScript](/articles/TypeScript/TypeScript)
+- [TypeScript](/articles/TypeScript/)
 - [Vue](/articles/Vue/)
 - [React](/articles/React/)
 - [ReactNative](/articles/ReactNative/)
