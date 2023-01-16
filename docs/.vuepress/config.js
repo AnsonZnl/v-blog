@@ -12,7 +12,7 @@ module.exports = {
     ],
   ],
   base: "/",
-  erviceWorker: true, 
+  erviceWorker: true,
   themeConfig: {
     sidebarDepth: 3,
     lastUpdatedText: "上次更新",
@@ -219,8 +219,11 @@ module.exports = {
         }, {
           text: "前端图片压缩方案",
           link: "/articles/Browser/前端图片压缩方案.md",
+        }, {
+          text: "使用过WebWorker解决定时器不准确的问",
+          link: "/articles/Browser/使用过WebWorker解决定时器不准确的问.md",
         }]
-        //浏览器截屏方案分析
+        //
       },
       {
         text: "HTML",
@@ -290,7 +293,7 @@ module.exports = {
       {
         text: "React",
         link: "/articles/React/",
-        children:[
+        children: [
           {
             text: 'React中实现简单的Toast组件',
             link: '/articles/React/React中实现简单的Toast组件'
@@ -507,7 +510,13 @@ module.exports = {
       },
       {
         text: "前端工程化",
-        link: "/articles/Engineering/"
+        link: "/articles/Engineering/",
+        children: [
+          {
+            text: '构建工具',
+            link: "/articles/Engineering/构建工具.md"
+          }
+        ]
       },
       {
         text: "前端性能优化",
