@@ -356,7 +356,7 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 
 ## 最佳实践
 
--   **H5 强制横屏**
+- **H5 强制横屏（1）**
 
 ```css
 @media screen and (orientation: portrait) {
@@ -367,6 +367,41 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
         height: 100vw !important;
     }
 }
+```
+
+- **H5 强制横屏（2）**
+```css
+@media screen and (orientation: portrait) {
+  html{
+      width : 100vmin;
+      height : 100vmax;
+  }
+  body{
+      width : 100vmin;
+      height : 100vmax;
+  }
+  #content{
+      width : 100vmax;
+      height : 100vmin;
+      transform-origin: top left;
+      transform: rotate(90deg) translate(0,-100vmin);
+  }
+}
+@media screen and (orientation: landscape) {
+  html{
+      width : 100vmax;
+      height : 100vmin;
+  }
+  body{
+      width : 100vmax;
+      height : 100vmin;
+  }
+  #content{
+      width : 100vmax;
+      height : 100vmin;
+  }
+}
+
 ```
 
 -   **样式隔离**
