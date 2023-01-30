@@ -270,6 +270,13 @@ Grid 即网格布局，一种新的 CSS 布局，是目前唯一一种二维布�
 
 **网格线**：划分网格的线，称为"网格线"（grid line）。水平网格线划分出行，垂直网格线划分出列。正常情况下，n 行有 n + 1 根水平网格线，m 列有 m + 1 根垂直网格线，比如三行就有四根水平网格线。
 
+
+### 参考
+
+-   [最强大的 CSS 布局 —— Grid 布局](https://juejin.cn/post/6854573220306255880)
+-   [MDN-Grid 布局](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid)
+-   [阮一峰-CSS Grid 网格布局教程](https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
+
 ## rem 布局原理
 
 rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏幕上的大小按比例缩放。
@@ -284,11 +291,6 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 
 1. [rem 布局原理解析](https://zhuanlan.zhihu.com/p/30413803)
 2. [移动端适配方案-REM](https://blog.csdn.net/weixin_38840741/article/details/81364559)
-
-### 参考
-
--   [MDN-Grid 布局](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid)
--   [阮一峰-CSS Grid 网格布局教程](https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
 
 ## CSS 画形状
 
@@ -356,7 +358,7 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 
 ## 最佳实践
 
-- **H5 强制横屏（1）**
+-   **H5 强制横屏（1）**
 
 ```css
 @media screen and (orientation: portrait) {
@@ -369,39 +371,39 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 }
 ```
 
-- **H5 强制横屏（2）**
+-   **H5 强制横屏（2）**
+
 ```css
 @media screen and (orientation: portrait) {
-  html{
-      width : 100vmin;
-      height : 100vmax;
-  }
-  body{
-      width : 100vmin;
-      height : 100vmax;
-  }
-  #content{
-      width : 100vmax;
-      height : 100vmin;
-      transform-origin: top left;
-      transform: rotate(90deg) translate(0,-100vmin);
-  }
+    html {
+        width: 100vmin;
+        height: 100vmax;
+    }
+    body {
+        width: 100vmin;
+        height: 100vmax;
+    }
+    #content {
+        width: 100vmax;
+        height: 100vmin;
+        transform-origin: top left;
+        transform: rotate(90deg) translate(0, -100vmin);
+    }
 }
 @media screen and (orientation: landscape) {
-  html{
-      width : 100vmax;
-      height : 100vmin;
-  }
-  body{
-      width : 100vmax;
-      height : 100vmin;
-  }
-  #content{
-      width : 100vmax;
-      height : 100vmin;
-  }
+    html {
+        width: 100vmax;
+        height: 100vmin;
+    }
+    body {
+        width: 100vmax;
+        height: 100vmin;
+    }
+    #content {
+        width: 100vmax;
+        height: 100vmin;
+    }
 }
-
 ```
 
 -   **样式隔离**
