@@ -88,10 +88,6 @@ module.exports = {
           text: "如何提高自己的英文阅读水平",
           link: "./如何提高自己的英文阅读水平.md",
         },
-        {
-          text: "大屏定时截图上传需求复盘",
-          link: "./大屏定时截图上传需求复盘.md",
-        },
         ],
       },],
       "/computer-base/": [{
@@ -107,6 +103,7 @@ module.exports = {
         link: "/computer-base/LeetCode/两数之和.md",
 
         children: [{
+          text: "只出现一次的数字",
           link: "/computer-base/LeetCode/只出现一次的数字",
         },
         {

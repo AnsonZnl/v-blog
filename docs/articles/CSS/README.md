@@ -270,8 +270,7 @@ Grid 即网格布局，一种新的 CSS 布局，是目前唯一一种二维布�
 
 **网格线**：划分网格的线，称为"网格线"（grid line）。水平网格线划分出行，垂直网格线划分出列。正常情况下，n 行有 n + 1 根水平网格线，m 列有 m + 1 根垂直网格线，比如三行就有四根水平网格线。
 
-
-### 参考
+**参考**
 
 -   [最强大的 CSS 布局 —— Grid 布局](https://juejin.cn/post/6854573220306255880)
 -   [MDN-Grid 布局](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid)
