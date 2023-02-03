@@ -12,3 +12,5 @@
 - [如何正确的时候你的时间](https://github.com/KieSun/Dream/issues/4)
 - [如何不靠运气变富有](https://github.com/AnsonZnl/how-to-get-rich-without-getting-lucky)
 - [如何提高自己的英文阅读水平](./如何提高自己的英文阅读水平.md)
+- [学会如何工作和学习技术一样重要](./学会如何工作和学习技术一样重要.md)
+
