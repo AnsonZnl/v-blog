@@ -291,6 +291,69 @@ rem 是相对长度单位，可以做到一样的取值，在不同尺寸的屏�
 1. [rem 布局原理解析](https://zhuanlan.zhihu.com/p/30413803)
 2. [移动端适配方案-REM](https://blog.csdn.net/weixin_38840741/article/details/81364559)
 
+## 大屏适配方案（Scale）
+
+Vue3版本：
+``` vue
+<template>
+  <div class="screen-adapter">
+    <div class="content-wrap" :style="style">
+      <slot />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { debounce } from 'lodash';
+import { onMounted, onBeforeUnmount, ref } from 'vue';
+const style = ref({
+  width: `1920px`,
+  height: `1080px`,
+  transform: 'scale(1) translate(-50%, -50%)', // 默认不缩放，垂直水平居中
+});
+
+onMounted(() => {
+  setScale();
+  window.addEventListener(
+    'resize',
+    debounce(() => setScale(), 100),
+  );
+});
+
+const getScale = () => {
+  const w = window.innerWidth / 1980;
+  const h = window.innerHeight / 1080;
+  return w < h ? w : h;
+};
+// 设置缩放比例
+const setScale = () => {
+  style.value.transform = `scale(${getScale()}) translate(-50%, -50%)`;
+};
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', this.onresize);
+});
+</script>
+
+<style lang="less">
+.screen-adapter {
+  width: 100vw;
+  min-height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+
+  .content-wrap {
+    transform-origin: 0 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: solid 2px red;
+  }
+}
+</style>
+
+```
+引入该组件即可使用scale布局，灵感来自于：[大屏可视化屏幕适配的几种方法](https://zhuanlan.zhihu.com/p/443254464)、[数据大屏最简单自适应方案，无需适配rem单位](https://juejin.cn/post/7148733509744459790)
+
 ## CSS 画形状
 
 **HTML**
