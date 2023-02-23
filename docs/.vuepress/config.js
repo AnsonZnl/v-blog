@@ -514,8 +514,8 @@ module.exports = {
         link: "/articles/Engineering/",
         children: [
           {
-            text: '构建工具',
-            link: "/articles/Engineering/构建工具.md"
+            text: '常用构建工具(Webpack、Vite、Rollup)详解.md',
+            link: "/articles/Engineering/常用构建工具(Webpack、Vite、Rollup)详解.md"
           }
         ]
       },

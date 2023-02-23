@@ -1,18 +1,18 @@
 构建工具就是指能自动对代码执行检验、转换、压缩等功能的工具。从目前市场上流行的构建工具来看，常见的功能有：
 
-代码转换，例如将 ts 文件转换为 js 文件。
-代码打包，将有关联的代码打包在一起。
-代码压缩、文件压缩、gzip 压缩等。
-热加载，修改代码后自动刷新页面。
-代码检验，检查代码格式是否符合规范。 ...
+- 代码转换，例如将 ts 文件转换为 js 文件。
+- 代码打包，将有关联的代码打包在一起。
+- 代码压缩、文件压缩、gzip 压缩等。
+- 热加载，修改代码后自动刷新页面。
+- 代码检验，检查代码格式是否符合规范。 ...
 
 在开发中使用构建工具，能够大大的提升了开发效率。
 
 由于前端构建工具比较多，所以本章选取了其中的三个 [Webpack](https://webpack.docschina.org/concepts/)、[Rollup](https://www.rollupjs.com/)、[Vite](https://github.com/vitejs/vite) 来进行讲解。
 
-## webpack
+## Webpack
 
-webpack 是目前最火的构建工具，它具有非常多的实用功能：
+Webpack 是目前最火的构建工具，它具有非常多的实用功能：
 
 热加载：开发环境下修改代码，页面实时刷新。
 按需加载：每次打开页面时，只加载当前页面所需要的资源。在切换到其他页面时，再加载对应的资源。
@@ -20,6 +20,8 @@ webpack 是目前最火的构建工具，它具有非常多的实用功能：
 [tree-shaking](https://webpack.docschina.org/guides/tree-shaking/)：打包过程中自动剔除没有使用的代码。
 可以通过 loader 和 plugin 处理各种各样的资源依赖。
 下面让我们简单的了解一下 [Webpack](https://www.webpackjs.com/) 的 loader[]、 plugin[]和自定义模块加载系统。
+
+## Rollup
 
 ## Vite
 
