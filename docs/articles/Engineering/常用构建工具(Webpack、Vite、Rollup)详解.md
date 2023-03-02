@@ -21,9 +21,49 @@ Webpack 是目前最火的构建工具，它具有非常多的实用功能：
 -   按需加载：每次打开页面时，只加载当前页面所需要的资源。在切换到其他页面时，再加载对应的资源。
 -   代码打包：打包、压缩、分割代码等等。
 -   [tree-shaking](https://webpack.docschina.org/guides/tree-shaking/)：打包过程中自动剔除没有使用的代码。
+-   可以通过 loader 和 plugin 处理各种各样的资源依赖。
 
-可以通过 loader 和 plugin 处理各种各样的资源依赖。
-下面让我们简单的了解一下 [Webpack](https://www.webpackjs.com/) 的 loader[]、 plugin[]和自定义模块加载系统。
+下面让我们简单的了解一下 [Webpack](https://www.webpackjs.com/) 的 loader[https://webpack.docschina.org/concepts/loaders/]、 plugin[https://webpack.docschina.org/concepts/plugins/]和自定义模块加载系统。
+
+### loader
+
+loader 用于对模块的代码转换，如将 Typescript 转为 Javascript、将 less、sass 转为 css、将.vue、.tsx 等文件转为 js、css 等。
+
+**loader 特性**
+
+-   loader 支持链式调用。链中的每个 loader 会将转换应用在已处理过的资源上。一组链式的 loader 将按照相反的顺序执行。链中的第一个 loader 将其结果（也就是应用过转换后的资源）传递给下一个 loader，依此类推。最后，链中的最后一个 loader，返回 webpack 所期望的 JavaScript。
+-   loader 可以是同步的，也可以是异步的。
+-   loader 运行在 Node.js 中，并且能够执行任何操作。
+-   loader 可以通过 `options` 对象配置（仍然支持使用 `query` 参数来设置选项，但是这种方式已被废弃）。
+-   除了常见的通过 `package.json` 的 `main` 来将一个 npm 模块导出为 loader，还可以在 module.rules 中使用 `loader` 字段直接引用一个模块。
+-   插件(plugin)可以为 loader 带来更多特性。
+-   loader 能够产生额外的任意文件。
+
+可以通过 loader 的预处理函数，为 JavaScript 生态系统提供更多能力。用户现在可以更加灵活地引入细粒度逻辑，例如：压缩、打包、语言转译（或编译）和 [更多其他特性](https://webpack.docschina.org/loaders)。
+
+**plugin**
+[plugin](https://webpack.docschina.org/plugins/) 目的在于解决 loader 无法实现的其他事，
+
+常用的 plugin 有：
+
+-   `define-plugin`：定义环境变量 (Webpack4 之后指定 mode 会自动配置)
+-   `ignore-plugin`：忽略部分文件
+-   `html-webpack-plugin`：简化 HTML 文件创建 (依赖于 html-loader)
+-   `web-webpack-plugin`：可方便地为单页应用输出 HTML，比 html-webpack-plugin 好用
+-   `uglifyjs-webpack-plugin`：不支持 ES6 压缩 (Webpack4 以前)
+-   `terser-webpack-plugin`: 支持压缩 ES6 (Webpack4)
+-   `webpack-parallel-uglify-plugin`: 多进程执行代码压缩，提升构建速度
+-   `mini-css-extract-plugin`: 分离样式文件，CSS 提取为独立文件，支持按需加载 (替代 extract-text-webpack-plugin)
+-   `serviceworker-webpack-plugin`：为网页应用增加离线缓存功能
+-   `clean-webpack-plugin`: 目录清理
+-   `ModuleConcatenationPlugin`: 开启 Scope Hoisting
+-   `speed-measure-webpack-plugin`: 可以看到每个 Loader 和 Plugin 执行耗时 (整个打包耗时、每个 Plugin 和 Loader 耗时)
+-   `webpack-bundle-analyzer`: 可视化 Webpack 输出文件的体积 (业务组件、依赖第三方模块)
+
+
+
+
+参考：https://juejin.cn/post/6844904094281236487
 
 ## Rollup
 
