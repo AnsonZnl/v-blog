@@ -15,7 +15,7 @@
 
 ## Webpack
 
-Webpack 是目前最火的构建工具，它具有非常多的实用功能：
+[Webpack](https://webpack.docschina.org/) 是目前最火的构建工具，它具有非常多的实用功能：
 
 -   热加载：开发环境下修改代码，页面实时刷新。
 -   按需加载：每次打开页面时，只加载当前页面所需要的资源。在切换到其他页面时，再加载对应的资源。
@@ -60,10 +60,77 @@ loader 用于对模块的代码转换，如将 Typescript 转为 Javascript、�
 -   `speed-measure-webpack-plugin`: 可以看到每个 Loader 和 Plugin 执行耗时 (整个打包耗时、每个 Plugin 和 Loader 耗时)
 -   `webpack-bundle-analyzer`: 可视化 Webpack 输出文件的体积 (业务组件、依赖第三方模块)
 
+**Loader 和 Plugin 的区别**
 
+`Loader` 模块导出一个运行在 Node 上的 JavaScript 函数。该函数对接受的内容进行转换，返回转换后的结果。因为 webpack 只认识 JS，所以 loader 相当于它的翻译官，对资源做转译的预处理工作。 -可以尝试[编写一个 laoder](https://webpack.docschina.org/contribute/writing-a-loader/)以理解它是如何运行的。
 
+`Loader` 在 module.rules 中配置，作为模块的解析规则，类型为数组。每一项都是一个 Object，内部包含了 test(类型文件)、loader、options (参数)等属性。
 
-参考：https://juejin.cn/post/6844904094281236487
+```js
+module.exports = {
+    module: {
+        rules: [
+            { test: /\.css$/, loader: "css-loader" },
+            { test: /\.ts$/, loader: "ts-loader" },
+        ],
+    },
+};
+```
+
+`Plugin`是一个基于事件流的插件，它是一个具有 apply 方法的 JavaScript 对象。apply 方法会被 webpack compiler 调用，并且在整个编译生命周期都可以访问 compiler 对象。
+
+`ConsoleLogOnBuildWebpackPlugin.js`
+
+```js
+const pluginName = "ConsoleLogOnBuildWebpackPlugin";
+
+class ConsoleLogOnBuildWebpackPlugin {
+    apply(compiler) {
+        const { webpack } = compiler
+        compiler.hooks.run.tap(pluginName, (compilation) => {
+            console.log("webpack 构建正在启动！");
+        });
+    }
+}
+
+module.exports = ConsoleLogOnBuildWebpackPlugin;
+```
+
+`Plugin` 在 plugins 中单独配置，类型为数组，每一项是一个 Plugin 的实例，参数都通过构造函数传入。
+有兴趣的可以[编写一个 Plugin](https://webpack.docschina.org/contribute/writing-a-plugin/#creating-a-plugin)
+
+`webpack.config.js`
+
+```js
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack"); // 访问内置的插件
+const path = require("path");
+
+module.exports = {
+    entry: "./path/to/my/entry/file.js",
+    output: {
+        filename: "my-first-webpack.bundle.js",
+        path: path.resolve(__dirname, "dist"),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                loader: "babel-loader",
+            },
+        ],
+    },
+    plugins: [
+        new webpack.ProgressPlugin(),
+        new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    ],
+};
+```
+
+### 参考：
+
+-   [「吐血整理」再来一打 Webpack 面试题](https://juejin.cn/post/6844904094281236487)
+-   [前端构建工具进化历程](https://mp.weixin.qq.com/s/o8B8HAczZtIZM8V_HHwNqg)
 
 ## Rollup
 
