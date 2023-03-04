@@ -1,6 +1,6 @@
 ## 目录
 
-- [常用构建工具(Webpack、Vite、Rollup)详解.md](./常用构建工具(Webpack、Vite、Rollup)详解.md)
+- [常用构建工具(Webpack、Vite、Rollup)详解](./常用构建工具(Webpack、Vite、Rollup)详解.md)
 - Vite核心原理解析
 
 ## 前端工程化
