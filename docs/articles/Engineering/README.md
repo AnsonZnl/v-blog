@@ -26,6 +26,7 @@
   - 性能优化
 - 部署上线
   - docker、k8、pm2
+  - CI/CD(Jenkins、github action、Vercel)
   - 报警、日志、监控
   - 网络代理
 

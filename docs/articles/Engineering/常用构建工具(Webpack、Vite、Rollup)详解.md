@@ -70,8 +70,8 @@ loader 用于对模块的代码转换，如将 Typescript 转为 Javascript、�
 module.exports = {
     module: {
         rules: [
-            { test: /\.css$/, loader: "css-loader" },
-            { test: /\.ts$/, loader: "ts-loader" },
+            {test: /\.css$/, loader: "css-loader"},
+            {test: /\.ts$/, loader: "ts-loader"},
         ],
     },
 };
@@ -86,7 +86,7 @@ const pluginName = "ConsoleLogOnBuildWebpackPlugin";
 
 class ConsoleLogOnBuildWebpackPlugin {
     apply(compiler) {
-        const { webpack } = compiler
+        const {webpack} = compiler;
         compiler.hooks.run.tap(pluginName, (compilation) => {
             console.log("webpack 构建正在启动！");
         });
@@ -122,12 +122,10 @@ module.exports = {
     },
     plugins: [
         new webpack.ProgressPlugin(),
-        new HtmlWebpackPlugin({ template: "./src/index.html" }),
+        new HtmlWebpackPlugin({template: "./src/index.html"}),
     ],
 };
 ```
-
-
 
 ### 参考：
 
@@ -162,7 +160,7 @@ module.exports = {
 **Rollup 优势:**
 
 -   输出结果更加扁平(执行效率更高)
--   自动移除未引用的代码
+-   自动移除未引用的代码(Tree Shaking)
 -   打包结果依然完全可读(和手写代码一致)
 
 **Rollup 缺点:**
@@ -178,9 +176,9 @@ module.exports = {
 
 ## Vite
 
-优势：ESModule 开发阶段按需编译，速度很快
+Vite 相比于 Webpack 而言，没有打包的过程，而是直接启动了一个开发服务器 devServer。Vite 劫持浏览器的 HTTP 请求，在后端进行相应的处理将项目中使用的文件通过简单的分解与整合，然后再返回给浏览器(整个过程没有对文件进行打包编译)。所以编译速度很快。
 
-开发阶段使用 ESM，生产阶段使用[Rollup](https://www.rollupjs.com/)
+开发阶段使用浏览器支持的 ESM 去加载，生产阶段使用[Rollup](https://www.rollupjs.com/)打包。
 
 **首次加载流程：**
 
@@ -194,3 +192,9 @@ module.exports = {
 1. 在编辑器修改了一个 xx.vue 文件，vite 服务监听到当前文件的变动
 2. webSocket 会讲变动的文件和变动的时间戳推送给浏览器
 3. 浏览器拿到这变动的文件和变动的时间吹去请求，然后执行首次加载的 3 和 4，在相应一个编译之后的 js 文件。
+
+![vite 热更新流程.png](https://s2.loli.net/2023/03/07/AMJOBaXDTKG6csV.png)
+
+### 参考
+
+-   [深入理解 Vite 核心原理](https://juejin.cn/post/7064853960636989454#heading-6)
