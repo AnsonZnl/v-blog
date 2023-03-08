@@ -178,7 +178,12 @@ module.exports = {
 
 Vite 相比于 Webpack 而言，没有打包的过程，而是直接启动了一个开发服务器 devServer。Vite 劫持浏览器的 HTTP 请求，在后端进行相应的处理将项目中使用的文件通过简单的分解与整合，然后再返回给浏览器(整个过程没有对文件进行打包编译)。所以编译速度很快。
 
-开发阶段使用浏览器支持的 ESM 去加载，生产阶段使用[Rollup](https://www.rollupjs.com/)打包。
+Vite 底层使用 Esbuild 实现对.`ts、jsx、.`js 代码文件的转化，所以先看下什么是 es-build。
+Esbuild 是一个 JavaScript`` Bundler 打包和压缩工具，它提供了与 Webpack、Rollup 等工具相似的资源打包能力。可以将 JavaScript 和 TypeScript 代码打包分发在网页上运行。但其打包速度却是其他工具的 10 ～ 100 倍。
+
+生产阶段使用[Rollup](https://www.rollupjs.com/)打包。
+
+Vite 其核心原理是利用浏览器现在已经支持 ES6 的 import,碰见 import 就会发送一个 HTTP 请求去加载文件，Vite 启动一个 koa 服务器拦截这些请求，并在后端进行相应的处理将项目中使用的文件通过简单的分解与整合，然后再以 ESM 格式返回返回给浏览器。Vite 整个过程中没有对文件进行打包编译，做到了真正的按需加载，所以其运行速度比原始的 webpack 开发编译速度快出许多！
 
 **首次加载流程：**
 
@@ -195,6 +200,32 @@ Vite 相比于 Webpack 而言，没有打包的过程，而是直接启动了一
 
 ![vite 热更新流程.png](https://s2.loli.net/2023/03/07/AMJOBaXDTKG6csV.png)
 
+### 总结
+
+最后总结下`Vite`相关的优缺点：
+
+-   优点：
+
+    -   快速的冷启动: 采用`No Bundle`和`esbuild`预构建，速度远快于`Webpack`
+    -   高效的热更新：基于`ESM`实现，同时利用`HTTP`头来加速整个页面的重新加载，增加缓存策略
+    -   真正的按需加载: 基于浏览器`ESM`的支持，实现真正的按需加载
+
+-   缺点
+
+    -   生态：目前`Vite`的生态不如`Webapck`，不过我觉得生态也只是时间上的问题。
+    -   生产环境由于`esbuild`对`css`和代码分割不友好使用`Rollup`进行打包
+
+`Vite.js`虽然才在构建打包场景兴起，但在很多场景下基本都会优于现有的解决方案。如果有生态、想要丰富的`loader`、`plugins`的要求可以考虑成熟的`Webpack`。在其余情况下，`Vite.js`不失为一个打包构建工具的好选择。
+
 ### 参考
 
 -   [深入理解 Vite 核心原理](https://juejin.cn/post/7064853960636989454#heading-6)
+-   [Vite 介绍及实现原理<超详细、纯干货！>](https://zhuanlan.zhihu.com/p/424842555)
+-   [深入浅出 vite（核心原理 + 手撕 mini-vite）](https://juejin.cn/post/7026285200766140453)
+
+## 总结
+
+-   webpack：大而全，但是对于大型项目开发过于笨重。
+-   rollup：适合作用于类库开发
+-   Vite: 快、小，但是浏览器支持不足，面向未来的工具。
+![image.png](https://s2.loli.net/2023/03/07/QoDAifO1aGdKhyI.png)
