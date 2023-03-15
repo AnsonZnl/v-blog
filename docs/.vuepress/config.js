@@ -514,11 +514,11 @@ module.exports = {
         link: "/articles/Engineering/",
         children: [
           {
-            text: "Win10 安装Docker以及Jenkins(超级详细篇)",
-            link: "/articles/Engineering/Win10 安装Docker以及Jenkins(超级详细篇).md"
+            text: "Win10安装Docker以及Jenkins(超级详细篇)",
+            link: "/articles/Engineering/Win10安装Docker以及Jenkins(超级详细篇).md"
           },
           {
-            text: '常用构建工具(Webpack、Vite、Rollup)详解.md',
+            text: '常用构建工具(Webpack、Vite、Rollup)详解',
             link: "/articles/Engineering/常用构建工具(Webpack、Vite、Rollup)详解.md"
           }
         ]
