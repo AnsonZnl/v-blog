@@ -1,6 +1,5 @@
 # Web API
 
-
 > 调试结果 Google Chrome 浏览器为准
 
 **参考：**
@@ -9,10 +8,11 @@
 2. [MDN-Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
 3. [12 Rarely Used JavaScript Web APIs that Will Boost Your Website to THE MOON](https://dev.to/eludadev/12-rarely-used-javascript-web-apis-that-will-take-your-website-to-the-next-level-4lf1#making-your-website-a-fullscreen-experience)
 4. [7 JavaScript Web APIs to build Futuristic Websites you didn't know](https://dev.to/ruppysuppy/7-javascript-web-apis-to-build-futuristic-websites-you-didnt-know-38bc)
+5. [你（可能）不知道的 web api](https://juejin.cn/post/6844903741024370701#heading-1)
 
 ## Broadcast Channel API
 
-> Broadcast Channel API 可以实现同 源 下浏览器不同窗口，Tab 页，frame 或者 iframe 下的 浏览器上下文 (通常是同一个网站下不同的页面) 之间的简单通讯。
+> Broadcast Channel API 可以实现同源下浏览器不同窗口，Tab 页，frame 或者 iframe 下的 浏览器上下文 (通常是同一个网站下不同的页面) 之间的简单通讯。
 
 可以简单实现两个页面直接的通信.
 页面一：
@@ -66,5 +66,72 @@ function toggle() {
 }
 ```
 
-## Screen Orientation API
+## Online State（网络状态）
 
+就是获取当前的网络状态，同时也有对应的事件去响应网络状态的变化。
+
+```js
+window.addEventListener("online", onlineHandler); // 联网时
+window.addEventListener("offline", offlineHandler); // 断网时
+```
+
+比如很常见的一个需求，断网时提示，网络恢复时刷新。
+
+实现断网重连：
+
+```js
+const onlineHandler = () => {
+    window.location.reload();
+};
+const offlineHandler = () => {
+    alert("网络异常，请检查您的网络");
+};
+window.addEventListener("online", onlineHandler);
+window.addEventListener("offline", offlineHandler);
+```
+
+## Navigator.clipboard
+
+剪切板 API 快速将内容复制到剪切板上，下面是一键复制的方法：
+
+```js
+const onClipText = (text) => {
+    handleCopyValue(text)
+        .then(() => {
+            alert("复制成功");
+        })
+        .catch(() => {
+            alert("自动复制失败，请手动复制");
+        });
+};
+
+const handleCopyValue = (text) => {
+    //浏览器禁用了非安全域的 navigator.clipboard 对象
+    //在线上环境会报错 TypeError: Cannot read properties of undefined (reading 'writeText')
+    if (!navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+    } else {
+        // 判断是否支持拷贝
+        if (!document.execCommand("copy")) return Promise.reject();
+        // 创建标签，并隐藏
+        const textArea = document.createElement("textarea");
+        textArea.style.position = "fixed";
+        textArea.style.top = textArea.style.left = "-100vh";
+        textArea.style.opacity = "0";
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        // 聚焦、复制
+        textArea.focus();
+        textArea.select();
+        return new Promise((resolve, reject) => {
+            // 不知为何，必须写这个三目，不然copy不上
+            document.execCommand("copy") ? resolve() : reject();
+            textArea.remove();
+        });
+    }
+};
+```
+
+## page lifecycle(网页生命周期)
+
+## Screen Orientation API
