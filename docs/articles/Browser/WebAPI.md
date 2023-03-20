@@ -133,5 +133,24 @@ const handleCopyValue = (text) => {
 ```
 
 ## page lifecycle(网页生命周期)
+我们可以用`document.visibitilityState`来监听网页可见度，是否卸载.. 
+在手机和电脑上都会现这种情况，比如页面中有一个视频正在播放，然后在切换tab页后给视频暂停播放，或者有个定时器轮询，在页面不显示的状态下停止无意义的轮询等等。
+比如一个视频的例子来展示：
+``` js
+const video = document.getElementById('vs')
+
+window.addEventListener('visibilitychange',() => {
+    // 通过这个方法来获取当前标签页在浏览器中的激活状态。
+    switch(document.visibilityState){
+        case'prerender': // 网页预渲染 但内容不可见
+        case'hidden':    // 内容不可见 处于后台状态，最小化，或者锁屏状态
+        video.puase()
+        case'visible':   // 内容可见
+        video.play()
+        case'unloaded':  // 文档被卸载
+        video.destory()
+    }
+});
+```
 
 ## Screen Orientation API
