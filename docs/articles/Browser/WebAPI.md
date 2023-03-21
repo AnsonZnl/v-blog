@@ -90,7 +90,7 @@ window.addEventListener("online", onlineHandler);
 window.addEventListener("offline", offlineHandler);
 ```
 
-## Navigator.clipboard
+## Clipboard API
 
 剪切板 API 快速将内容复制到剪切板上，下面是一键复制的方法：
 
@@ -132,7 +132,7 @@ const handleCopyValue = (text) => {
 };
 ```
 
-## page lifecycle(网页生命周期)
+## Page Lifecycle(网页生命周期)
 我们可以用`document.visibitilityState`来监听网页可见度，是否卸载.. 
 在手机和电脑上都会现这种情况，比如页面中有一个视频正在播放，然后在切换tab页后给视频暂停播放，或者有个定时器轮询，在页面不显示的状态下停止无意义的轮询等等。
 比如一个视频的例子来展示：
@@ -152,5 +152,62 @@ window.addEventListener('visibilitychange',() => {
     }
 });
 ```
+这个API的用处就是用来响应我们网页的状态，如果这个标签页显示则视频就开始播放，隐藏就暂停，关闭就卸载。
+
 
 ## Screen Orientation API
+我们可以通过以下代码来演示如何使用Screen Orientation API来控制页面的方向：
+``` js
+// 获取屏幕方向对象
+const orientation = screen.orientation;
+
+// 监听屏幕方向变化事件
+orientation.addEventListener('change', () => {
+  console.log(`屏幕方向变为：${orientation.type}`);
+});
+
+// 锁定屏幕方向为横屏
+orientation.lock('landscape').then(() => {
+  console.log('屏幕方向已锁定为横屏');
+}).catch((err) => {
+  console.log(`锁定屏幕方向失败：${err}`);
+});
+
+// 解锁屏幕方向
+orientation.unlock();
+
+```
+
+
+在这段代码中，我们首先通过`screen.orientation`获取了屏幕方向对象，并通过`addEventListener`方法监听了屏幕方向变化事件。然后，我们使用`lock`方法将屏幕方向锁定为横屏，并在锁定成功后打印了一条消息。最后，我们使用`unlock`方法解锁了屏幕方向。
+
+需要注意的是，`lock`方法可能会在某些设备上无法生效，因此我们需要在实际使用中进行兼容性测试。
+
+
+## Vibration API
+
+以下是一个简单的Web Vibration API例子：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Vibration API Example</title>
+</head>
+<body>
+	<h1>Web Vibration API Example</h1>
+	<button onclick="vibrate()">Vibrate</button>
+	<script>
+		function vibrate() {
+			if ("vibrate" in navigator) {
+				navigator.vibrate(1000); // 1秒钟的震动
+			} else {
+				alert("Vibration API not supported in this browser.");
+			}
+		}
+	</script>
+</body>
+</html>
+```
+
+这个例子中，当用户点击"Vibrate"按钮时，浏览器会尝试通过Web Vibration API来触发设备的震动功能。如果设备支持Web Vibration API，则会进行1秒钟的震动，否则会弹出一个警告框提示用户该功能不被支持。
