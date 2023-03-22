@@ -66,7 +66,7 @@ function toggle() {
 }
 ```
 
-## Online State（网络状态）
+## Online State
 
 就是获取当前的网络状态，同时也有对应的事件去响应网络状态的变化。
 
@@ -132,7 +132,7 @@ const handleCopyValue = (text) => {
 };
 ```
 
-## Page Lifecycle(网页生命周期)
+## Page Visibility API
 我们可以用`document.visibitilityState`来监听网页可见度，是否卸载.. 
 在手机和电脑上都会现这种情况，比如页面中有一个视频正在播放，然后在切换tab页后给视频暂停播放，或者有个定时器轮询，在页面不显示的状态下停止无意义的轮询等等。
 比如一个视频的例子来展示：
@@ -211,3 +211,257 @@ orientation.unlock();
 ```
 
 这个例子中，当用户点击"Vibrate"按钮时，浏览器会尝试通过Web Vibration API来触发设备的震动功能。如果设备支持Web Vibration API，则会进行1秒钟的震动，否则会弹出一个警告框提示用户该功能不被支持。
+
+## Battery API
+以下是一个使用Web Battery API的简单示例：
+
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Battery API Example</title>
+</head>
+<body>
+	<h1>Web Battery API Example</h1>
+	<div id="battery-status">
+		<p>当前电量: <span id="battery-level"></span></p>
+		<p>电池状态: <span id="battery-status"></span></p>
+	</div>
+
+	<script>
+		// 获取电池信息
+		navigator.getBattery().then(function(battery) {
+			// 更新电量信息
+			updateBatteryStatus(battery);
+
+			// 监听电池信息变化
+			battery.addEventListener('levelchange', function() {
+				updateBatteryStatus(battery);
+			});
+
+			battery.addEventListener('chargingchange', function() {
+				updateBatteryStatus(battery);
+			});
+		});
+
+		// 更新电量信息
+		function updateBatteryStatus(battery) {
+			document.querySelector('#battery-level').textContent = battery.level * 100 + '%';
+			document.querySelector('#battery-status').textContent = battery.charging ? '正在充电' : '未充电';
+		}
+	</script>
+</body>
+</html>
+
+```
+这个例子展示了如何使用Web Battery API来获取电池的状态信息，并在页面上显示当前电量和电池状态。
+
+在这个例子中，我们使用了`navigator.getBattery()`方法来获取电池信息，并使用`battery.addEventListener()`方法来监听电池信息变化。最后，我们使用**updateBatteryStatus()**函数来更新电量信息并在页面上显示。
+
+## Contact Picker API
+
+下面提供一个Web联系人选择器API的示例。以下是使用JavaScript编写的一个基本示例：
+
+HTML：
+
+```html
+<input type="text" id="contactPicker" placeholder="Select a contact">
+```
+
+JavaScript：
+
+```js
+// 获取联系人选择器元素
+const contactPicker = document.getElementById("contactPicker");
+
+// 添加点击事件监听器
+contactPicker.addEventListener("click", async () => {
+  // 请求访问用户的联系人
+  const contacts = await navigator.contacts.select(["name", "email"]);
+
+  // 如果用户选择了联系人，则更新输入框的值
+  if (contacts.length > 0) {
+    const contact = contacts[0];
+    const name = contact.name[0];
+    const email = contact.email[0].value;
+    contactPicker.value = `${name} (${email})`;
+  }
+});
+```
+
+该示例使用了Web Contacts API，它允许您访问用户的联系人。在点击联系人选择器时，它将请求访问用户的联系人。
+
+如果用户选择了联系人，则将联系人的名称和电子邮件地址添加到输入框中。
+
+请注意，此API仅适用于支持它的浏览器，例如Chrome或Firefox。
+
+## Web Share API
+以下是一个简单的Web Share API例子：
+
+``` js
+// 获取分享按钮元素
+const shareButton = document.querySelector('#share-button');
+
+// 添加点击事件监听器
+shareButton.addEventListener('click', async () => {
+  try {
+    // 检查浏览器是否支持Web Share API
+    if (navigator.share) {
+      // 调用Web Share API分享
+      await navigator.share({
+        title: '分享标题',
+        text: '分享描述',
+        url: '分享链接'
+      });
+    } else {
+      // 如果不支持，显示提示信息
+      alert('该浏览器不支持Web Share API');
+    }
+  } catch (error) {
+    // 处理异常情况
+    console.error('分享失败:', error);
+  }
+});
+```
+
+这个例子假设页面中有一个id为`share-button`的分享按钮元素。当用户点击该按钮时，代码会检查浏览器是否支持Web Share API，如果支持则调用该API进行分享，否则显示一个提示信息。
+
+在`navigator.share`方法中，我们可以传递一个包含`title`、`text`和`url`等属性的对象，用于指定分享内容的标题、描述和链接。如果用户选择分享，系统会弹出一个分享对话框，让用户选择分享方式（例如通过社交媒体、电子邮件等方式分享）。如果用户取消分享，则`navigator.share`方法会返回一个Promise对象，其状态为rejected。我们可以通过捕获该Promise对象的异常来处理分享失败的情况。
+
+## ImageCapture API
+
+
+以下提供一个基本的Web ImageCapture API示例，如下所示：
+
+HTML代码：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web ImageCapture API Demo</title>
+  </head>
+  <body>
+    <h1>Web ImageCapture API Demo</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <br>
+    <button id="capture-btn">Capture Image</button>
+    <br>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <br>
+    <img id="captured-img">
+  </body>
+</html>
+```
+
+JavaScript代码：
+
+```javascript
+// 获取视频和按钮元素
+const video = document.getElementById('video');
+const captureBtn = document.getElementById('capture-btn');
+
+// 获取画布和图像元素
+const canvas = document.getElementById('canvas');
+const img = document.getElementById('captured-img');
+
+// 获取视频流
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => {
+    video.srcObject = stream;
+    video.play();
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+// 设置ImageCapture
+let imageCapture;
+const track = video.srcObject.getVideoTracks()[0];
+imageCapture = new ImageCapture(track);
+
+// 添加事件监听器
+captureBtn.addEventListener('click', () => {
+  // 拍照
+  imageCapture.takePhoto()
+    .then(blob => {
+      // 将照片显示在画布上
+      const url = URL.createObjectURL(blob);
+      canvas.getContext('2d').drawImage(img, 0, 0);
+      
+      // 将照片显示在图像元素中
+      img.src = url;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+```
+
+这个示例将显示一个视频元素和一个“Capture Image”按钮。当用户点击按钮时，它将使用ImageCapture API拍摄照片，并在画布和图像元素中显示照片。
+
+请注意，此示例仅适用于支持MediaStreamTrack和ImageCapture API的浏览器。
+
+## Selection API
+
+
+下面是一个Web Selection API的例子，如下所示：
+
+HTML代码：
+
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Selection API Example</title>
+	<style>
+		.highlight {
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<h1>Web Selection API Example</h1>
+	<p>Select text in the paragraph below to see the API in action.</p>
+	<p id="demo">The Web Selection API allows you to retrieve and manipulate text selections made by the user.</p>
+</body>
+</html>
+```
+
+JavaScript代码（web-selection-api.js）：
+
+``` js
+// 获取文本节点
+const demoEl = document.getElementById('demo');
+
+// 监听文本节点的选择事件
+demoEl.addEventListener('mouseup', handleSelection);
+
+// 处理选择事件
+function handleSelection() {
+    // 获取用户选择的文本
+    const selection = window.getSelection();
+    const selectedText = selection.toString();
+    // 如果选择的文本不为空
+    if (selectedText) {
+        // 创建一个新的高亮节点
+        const highlightEl = document.createElement('span');
+        highlightEl.classList.add('highlight');
+
+        // 将高亮节点插入到选择范围中
+        const range = selection.getRangeAt(0);
+        range.surroundContents(highlightEl);
+
+        // 取消选择
+        selection.removeAllRanges();
+    }
+}
+```
+
+这个例子演示了如何使用Web Selection API来获取用户选择的文本，并将其高亮显示。
+
+当用户在页面上选择文本时，会触发`mouseup`事件，然后调用`handleSelection`函数来处理选择事件。
+
+在`handleSelection`函数中，我们首先使用`window.getSelection()`方法获取用户选择的文本，然后检查是否选择了文本。
+
+如果选择了文本，我们创建一个新的`span`元素，并将其添加到选择范围中，然后使用`removeAllRanges()`方法取消选择。最后，我们使用CSS样式将高亮显示的文本突出显示。
