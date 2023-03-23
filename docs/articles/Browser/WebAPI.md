@@ -465,3 +465,112 @@ function handleSelection() {
 在`handleSelection`函数中，我们首先使用`window.getSelection()`方法获取用户选择的文本，然后检查是否选择了文本。
 
 如果选择了文本，我们创建一个新的`span`元素，并将其添加到选择范围中，然后使用`removeAllRanges()`方法取消选择。最后，我们使用CSS样式将高亮显示的文本突出显示。
+
+
+## Srceen Capture API
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Web Screen Capture API Example</title>
+</head>
+<body>
+	<h1>Web Screen Capture API Example</h1>
+
+	<button id="start-capture">Start Capture</button>
+	<button id="stop-capture">Stop Capture</button>
+
+	<canvas id="canvas" width="640" height="480"></canvas>
+
+	<script>
+		// 获取DOM元素
+		const startCaptureBtn = document.getElementById('start-capture');
+		const stopCaptureBtn = document.getElementById('stop-capture');
+		const canvas = document.getElementById('canvas');
+
+		// 获取媒体流（屏幕共享）并将其渲染到canvas中
+		async function startCapture() {
+			try {
+				const mediaStream = await navigator.mediaDevices.getDisplayMedia();
+				const context = canvas.getContext('2d');
+				context.drawImage(video, 0, 0, canvas.width, canvas.height);
+			} catch(err) {
+				console.error("Error: " + err);
+			}
+		}
+
+		// 停止捕获并停止媒体流
+		function stopCapture() {
+			const tracks = mediaStream.getTracks();
+			tracks.forEach(track => track.stop());
+		}
+
+		// 注册按钮单击事件
+		startCaptureBtn.addEventListener('click', startCapture);
+		stopCaptureBtn.addEventListener('click', stopCapture);
+	</script>
+</body>
+</html>
+```
+
+这个例子中，页面上有两个按钮，一个用于开始捕获屏幕，另一个用于停止捕获。捕获的内容被呈现在一个画布上。在 `startCapture()` 函数中，我们使用 `navigator.mediaDevices.getDisplayMedia()` 方法获取屏幕共享的媒体流，并将其渲染到canvas上。在 `stopCapture()` 函数中，我们停止所有媒体流的所有轨道，以结束捕获过程。
+
+## Intersection Observer API
+以下是一个示例，演示了如何使用 Intersection Observer API 在元素进入视口时进行检测：
+``` html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intersection Observer Example</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        margin-bottom: 50px;
+      }
+      .visible {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+      const boxes = document.querySelectorAll('.box');
+
+      const options = {
+        rootMargin: '0px',
+        threshold: 0.5
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, options);
+
+      boxes.forEach(box => {
+        observer.observe(box);
+      });
+    </script>
+  </body>
+</html>
+
+```
+
+在这个示例中，我们首先选择所有具有“box”类的元素。然后，我们创建一个带有0像素的rootMargin和0.5的阈值的IntersectionObserver实例。这意味着当元素的50％位于视口内时，它将被视为可见。
+
+然后，我们循环遍历每个盒子元素，并在我们的观察者实例上调用observe方法，将盒子元素作为参数传递。
+
+最后，在IntersectionObserver实例的回调函数中，我们检查每个条目是否与视口相交。如果是，则将“visible”类添加到条目的目标元素中，否则将其删除。
+
