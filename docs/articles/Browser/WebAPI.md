@@ -574,3 +574,78 @@ function handleSelection() {
 
 最后，在IntersectionObserver实例的回调函数中，我们检查每个条目是否与视口相交。如果是，则将“visible”类添加到条目的目标元素中，否则将其删除。
 
+## Web Performance API 
+以下是一个使用 Web Performance API 的例子：
+
+``` js
+// 测量页面加载时间
+const startTime = window.performance.now();
+
+window.addEventListener('load', () => {
+  const loadTime = window.performance.now() - startTime;
+  console.log(`页面加载时间为：${loadTime} 毫秒`);
+});
+
+// 测量网络时间
+const resourceUrl = 'https://example.com/resource';
+
+fetch(resourceUrl)
+  .then(response => {
+    const fetchTime = window.performance.now() - startTime;
+    console.log(`请求时间为：${fetchTime} 毫秒`);
+
+    // 获取网络时间信息
+    const entry = performance.getEntriesByName(resourceUrl)[0];
+    const start = entry.fetchStart;
+    const end = entry.responseEnd;
+
+    console.log(`DNS 查询时间为：${entry.domainLookupEnd - entry.domainLookupStart} 毫秒`);
+    console.log(`TCP 握手时间为：${entry.connectEnd - entry.connectStart} 毫秒`);
+    console.log(`TLS 握手时间为：${entry.secureConnectionStart ? entry.connectEnd - entry.secureConnectionStart : 'N/A'} 毫秒`);
+    console.log(`请求时间为：${entry.responseStart - entry.requestStart} 毫秒`);
+    console.log(`响应时间为：${entry.responseEnd - entry.responseStart} 毫秒`);
+    console.log(`传输大小为：${entry.transferSize} 字节`);
+  });
+
+```
+
+在这个例子中，我们使用了 `Web Performance API `提供的 `performance` 对象来测量页面加载时间和使用 `fetch()` 方法获取资源的网络时间。我们还使用了 `getEntriesByName()` 方法来检索资源的网络时间信息。
+
+## Geolocation API
+以下是一个使用 Geolocation API 获取用户当前位置信息的示例代码：
+``` js
+// 检查浏览器是否支持 Geolocation API
+if ('geolocation' in navigator) {
+  // 获取用户当前位置信息
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords;
+      console.log(`您的纬度为：${latitude}，经度为：${longitude}`);
+    },
+    (error) => {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          console.log('用户拒绝了位置请求');
+          break;
+        case error.POSITION_UNAVAILABLE:
+          console.log('无法获取位置信息');
+          break;
+        case error.TIMEOUT:
+          console.log('请求超时');
+          break;
+        default:
+          console.log('发生未知错误');
+      }
+    }
+  );
+} else {
+  console.log('您的浏览器不支持 Geolocation API');
+}
+
+```
+
+在这个例子中，我们首先检查浏览器是否支持 `Geolocation API`。
+
+如果支持，则调用 `navigator.geolocation.getCurrentPosition()` 方法获取用户当前位置信息。该方法接受两个回调函数作为参数：一个成功的回调函数和一个失败的回调函数。
+
+如果获取位置信息成功，则成功的回调函数将被调用，并传递包含位置信息的对象作为参数。否则将调用失败的回调函数，并传递一个描述错误的对象作为参数。
