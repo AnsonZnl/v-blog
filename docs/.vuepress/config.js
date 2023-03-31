@@ -223,6 +223,9 @@ module.exports = {
         }, {
           text: "使用过WebWorker解决定时器不准确的问",
           link: "/articles/Browser/使用过WebWorker解决定时器不准确的问.md",
+        }, {
+          text: "WebAPI",
+          link: "/articles/Browser/WebAPI.md",
         }]
         //
       },
