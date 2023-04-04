@@ -5,12 +5,13 @@
 本篇文章主要选取了一些有趣且有用的 Web API 进行介绍并且都做了一个简单的例子。
 
 
-- [Broadcast Channel API](#Broadcast-Channel-API)
-- [Fullscreen API](#Fullscreen-API)
+- [Broadcast Channel API（跨页面通信）](#Broadcast-Channel-API)
+- [Fullscreen API（进入/退出全屏）](#Fullscreen-API)
+
+
+## Broadcast Channel API（跨页面通信）
 
 <a id="Broadcast-Channel-API"></a>
-
-## Broadcast Channel API
 
 下面是一个使用 Broadcast Channel API 实现简单的跨窗口通信的例子：
 
@@ -56,9 +57,10 @@
 
 需要注意的是，广播通道的名字需要保持一致，才能实现不同窗口之间的通信。
 
-<a id="Fullscreen-API"></a>
 
-## Fullscreen API
+## Fullscreen API（进入/退出全屏）
+
+<a id="Fullscreen-API"></a>
 
 Fullscreen API 用于在 Web 应用程序中开启全屏模式，使用它就可以在全屏模式下查看页面/元素。在安卓手机中，它会溢出浏览器窗口和安卓顶部的状态栏（显示网络状态、电池状态等的地方）。
 
@@ -695,3 +697,6 @@ if ('geolocation' in navigator) {
 3. [12 Rarely Used JavaScript Web APIs that Will Boost Your Website to THE MOON](https://dev.to/eludadev/12-rarely-used-javascript-web-apis-that-will-take-your-website-to-the-next-level-4lf1#making-your-website-a-fullscreen-experience)
 4. [7 JavaScript Web APIs to build Futuristic Websites you didn't know](https://dev.to/ruppysuppy/7-javascript-web-apis-to-build-futuristic-websites-you-didnt-know-38bc)
 5. [你（可能）不知道的 web api](https://juejin.cn/post/6844903741024370701#heading-1)
+
+
+最后附上我的博客地址[九旬的博客](https://github.com/AnsonZnl/v-blog)，欢迎🌟Star🌟。
