@@ -1,70 +1,108 @@
-# Web API
+# 学会这几个WebAPI
 
-> 调试结果 Google Chrome 浏览器为准
+随着浏览器的日益壮大，浏览器自带的功能也随着增多，在Web开发过程中，我们经常会使用一些 Web API。
 
-**参考：**
+本篇文章主要选取了一些有趣且有用的 Web API 进行介绍并且都做了一个简单的例子。
 
-1. [web-api-examples](https://web-api-examples.github.io/)
-2. [MDN-Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
-3. [12 Rarely Used JavaScript Web APIs that Will Boost Your Website to THE MOON](https://dev.to/eludadev/12-rarely-used-javascript-web-apis-that-will-take-your-website-to-the-next-level-4lf1#making-your-website-a-fullscreen-experience)
-4. [7 JavaScript Web APIs to build Futuristic Websites you didn't know](https://dev.to/ruppysuppy/7-javascript-web-apis-to-build-futuristic-websites-you-didnt-know-38bc)
-5. [你（可能）不知道的 web api](https://juejin.cn/post/6844903741024370701#heading-1)
+
+- [Broadcast Channel API](#Broadcast-Channel-API)
+- [Fullscreen API](#Fullscreen-API)
+
+<a id="Broadcast-Channel-API"></a>
 
 ## Broadcast Channel API
 
-> Broadcast Channel API 可以实现同源下浏览器不同窗口，Tab 页，frame 或者 iframe 下的 浏览器上下文 (通常是同一个网站下不同的页面) 之间的简单通讯。
-
-可以简单实现两个页面直接的通信.
-页面一：
+下面是一个使用 Broadcast Channel API 实现简单的跨窗口通信的例子：
 
 ```html
-<body>
-    <button onclick="send()">点我给2页面发送最新时间</button>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Broadcast Channel API Example</title>
+  </head>
+  <body>
+    <div id="message"></div>
+    <input type="text" id="input-message">
+    <button onclick="sendMessage()">Send Message</button>
+
     <script>
-        // 连接到广播频道
-        var bc = new BroadcastChannel("test_channel"); // 发送简单消息的示例
-        function send() {
-            bc.postMessage(new Date().toLocaleTimeString());
-        }
+      const channel = new BroadcastChannel('my-channel'); // 创建一个广播通道对象
+
+      function sendMessage() {
+        const inputMessage = document.getElementById('input-message');
+        const message = inputMessage.value;
+        channel.postMessage(message); // 将消息发送到广播通道中
+        inputMessage.value = ''; // 清空输入框内容
+      }
+
+      channel.onmessage = (event) => {
+        const message = event.data;
+        const messageDiv = document.getElementById('message');
+        messageDiv.innerHTML = message;
+      }
     </script>
-</body>
+  </body>
+</html>
 ```
 
-页面二：
+上面的例子展示了如何使用 Broadcast Channel API 实现在两个窗口之间进行文本消息的双向通信。
 
-```html
-<body>
-    <div>当前时间：<span id="msg"></span></div>
-    <script>
-        // 连接到广播频道
-        var bc = new BroadcastChannel("test_channel"); // 发送简单消息的示例// 简单示例，用于将事件打印到控制台
-        bc.onmessage = function (ev) {
-            console.log("发过来的数据", ev);
-            msg.innerHTML = ev.data;
-            // bc.close(); // / 断开频道连接
-        };
-    </script>
-</body>
-```
+在 HTML 中，我们定义了一个输入框和一个按钮，用于输入和发送消息。我们还定义了一个 `div` 元素，用于展示接收到的消息。
+
+在 JavaScript 中，我们创建了一个名为 `my-channel` 的广播通道对象，并定义了一个 `sendMessage` 函数，该函数将输入框中的文本消息发送到广播通道中。
+
+同时，我们在 `channel` 对象上通过 `onmessage` 方法监听广播通道上的消息，一旦有消息发送到该通道，就会触发该方法，在该方法中将接收到的消息展示在 `div` 元素中。
+
+需要注意的是，广播通道的名字需要保持一致，才能实现不同窗口之间的通信。
+
+<a id="Fullscreen-API"></a>
 
 ## Fullscreen API
 
 Fullscreen API 用于在 Web 应用程序中开启全屏模式，使用它就可以在全屏模式下查看页面/元素。在安卓手机中，它会溢出浏览器窗口和安卓顶部的状态栏（显示网络状态、电池状态等的地方）。
 
-Fullscreen API 方法：
+下面是一个 Fullscreen API 的例子：
 
-1. requestFullscreen：系统上以全屏模式显示所选元素，会关闭其他应用程序以及浏览器和系统 UI 元素。
-2. exitFullscreen：退出全屏模式并切换到正常模式。
-
-可以通过 document.fullscreenElement 判断当前元素是否全屏。可通过判断做 toggle
-
-```js
-function toggle() {
-    const videoStageEl = document.querySelector(".video-stage");
-    if (!document.fullscreenElement) videoStageEl.requestFullscreen();
-    else document.exitFullscreen();
-}
+``` html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Fullscreen API Example</title>
+  </head>
+  <body>
+    <div id="my-video">
+      <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" controls></video>
+    </div>
+    <button onclick="toggleFullscreen()">Fullscreen</button>
+    
+    <script>
+      var videoDiv = document.getElementById('my-video');
+      var video = videoDiv.querySelector('video');
+      
+      function toggleFullscreen() {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          videoDiv.requestFullscreen().catch(err => {
+            console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
 ```
+
+上面的例子展示了如何通过 Fullscreen API 实现一个视频全屏播放的功能。
+
+在 HTML 中，我们定义了一个视频播放器，使用 `controls` 属性添加了播放器的控制栏。同时，我们也定义了一个按钮，点击该按钮可以全屏播放视频。
+
+在 JavaScript 中，我们首先通过 `getElementById` 获取到视频容器，然后通过 `querySelector` 获取到视频元素本身。接着，定义了一个 `toggleFullscreen` 函数来监听按钮的点击事件，并根据当前全屏状态调用 `requestFullscreen` 或 `exitFullscreen` 来切换全屏状态。
+
+需要注意的是，`requestFullscreen` 方法可能会被浏览器阻止，例如因为用户未授权。因此在实际使用中，我们需要使用 `catch` 方法来捕获 `requestFullscreen` 方法的调用错误信息。
+
 
 ## Online State
 
@@ -649,3 +687,11 @@ if ('geolocation' in navigator) {
 如果支持，则调用 `navigator.geolocation.getCurrentPosition()` 方法获取用户当前位置信息。该方法接受两个回调函数作为参数：一个成功的回调函数和一个失败的回调函数。
 
 如果获取位置信息成功，则成功的回调函数将被调用，并传递包含位置信息的对象作为参数。否则将调用失败的回调函数，并传递一个描述错误的对象作为参数。
+
+## **参考**
+
+1. [web-api-examples](https://web-api-examples.github.io/)
+2. [MDN-Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
+3. [12 Rarely Used JavaScript Web APIs that Will Boost Your Website to THE MOON](https://dev.to/eludadev/12-rarely-used-javascript-web-apis-that-will-take-your-website-to-the-next-level-4lf1#making-your-website-a-fullscreen-experience)
+4. [7 JavaScript Web APIs to build Futuristic Websites you didn't know](https://dev.to/ruppysuppy/7-javascript-web-apis-to-build-futuristic-websites-you-didnt-know-38bc)
+5. [你（可能）不知道的 web api](https://juejin.cn/post/6844903741024370701#heading-1)
