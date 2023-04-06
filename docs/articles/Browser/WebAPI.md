@@ -1,4 +1,4 @@
-# 学会这几个WebAPI
+# 学会这些 Web API 使你的开发效率翻倍
 
 随着浏览器的日益壮大，浏览器自带的功能也随着增多，在Web开发过程中，我们经常会使用一些 Web API。
 
@@ -7,7 +7,7 @@
 
 - [Broadcast Channel API（跨页面通信）](#Broadcast-Channel-API)
 - [Fullscreen API（进入/退出全屏）](#Fullscreen-API)
-
+- [Online-State-API](#Online-State-API)
 
 ## Broadcast Channel API（跨页面通信）
 
@@ -106,7 +106,8 @@ Fullscreen API 用于在 Web 应用程序中开启全屏模式，使用它就可
 需要注意的是，`requestFullscreen` 方法可能会被浏览器阻止，例如因为用户未授权。因此在实际使用中，我们需要使用 `catch` 方法来捕获 `requestFullscreen` 方法的调用错误信息。
 
 
-## Online State
+## Online State API（网络状态）
+<a id="Online-State-API"></a>
 
 就是获取当前的网络状态，同时也有对应的事件去响应网络状态的变化。
 
@@ -130,6 +131,7 @@ window.addEventListener("online", onlineHandler);
 window.addEventListener("offline", offlineHandler);
 ```
 
+这样就可以监听用户的网络状态，如网络链接、断开时可以对用户进行提示以及做相应的逻辑处理。
 ## Clipboard API
 
 剪切板 API 快速将内容复制到剪切板上，下面是一键复制的方法：
@@ -172,9 +174,13 @@ const handleCopyValue = (text) => {
 };
 ```
 
+执行`onClipText`方法，即可将想复制内容，复制到用户的剪切板上。
+
 ## Page Visibility API
 我们可以用`document.visibitilityState`来监听网页可见度，是否卸载.. 
+
 在手机和电脑上都会现这种情况，比如页面中有一个视频正在播放，然后在切换tab页后给视频暂停播放，或者有个定时器轮询，在页面不显示的状态下停止无意义的轮询等等。
+
 比如一个视频的例子来展示：
 ``` js
 const video = document.getElementById('vs')
@@ -366,7 +372,9 @@ shareButton.addEventListener('click', async () => {
 
 这个例子假设页面中有一个id为`share-button`的分享按钮元素。当用户点击该按钮时，代码会检查浏览器是否支持Web Share API，如果支持则调用该API进行分享，否则显示一个提示信息。
 
-在`navigator.share`方法中，我们可以传递一个包含`title`、`text`和`url`等属性的对象，用于指定分享内容的标题、描述和链接。如果用户选择分享，系统会弹出一个分享对话框，让用户选择分享方式（例如通过社交媒体、电子邮件等方式分享）。如果用户取消分享，则`navigator.share`方法会返回一个Promise对象，其状态为rejected。我们可以通过捕获该Promise对象的异常来处理分享失败的情况。
+在`navigator.share`方法中，我们可以传递一个包含`title`、`text`和`url`等属性的对象，用于指定分享内容的标题、描述和链接。如果用户选择分享，系统会弹出一个分享对话框，让用户选择分享方式（例如通过社交媒体、电子邮件等方式分享）。
+
+如果用户取消分享，则`navigator.share`方法会返回一个Promise对象，其状态为rejected。我们可以通过捕获该Promise对象的异常来处理分享失败的情况。
 
 ## ImageCapture API
 
@@ -554,7 +562,9 @@ function handleSelection() {
 </html>
 ```
 
-这个例子中，页面上有两个按钮，一个用于开始捕获屏幕，另一个用于停止捕获。捕获的内容被呈现在一个画布上。在 `startCapture()` 函数中，我们使用 `navigator.mediaDevices.getDisplayMedia()` 方法获取屏幕共享的媒体流，并将其渲染到canvas上。在 `stopCapture()` 函数中，我们停止所有媒体流的所有轨道，以结束捕获过程。
+这个例子中，页面上有两个按钮，一个用于开始捕获屏幕，另一个用于停止捕获。捕获的内容被呈现在一个画布上。
+
+在 `startCapture()` 函数中，我们使用 `navigator.mediaDevices.getDisplayMedia()` 方法获取屏幕共享的媒体流，并将其渲染到canvas上。在 `stopCapture()` 函数中，我们停止所有媒体流的所有轨道，以结束捕获过程。
 
 ## Intersection Observer API
 以下是一个示例，演示了如何使用 Intersection Observer API 在元素进入视口时进行检测：
@@ -608,11 +618,11 @@ function handleSelection() {
 
 ```
 
-在这个示例中，我们首先选择所有具有“box”类的元素。然后，我们创建一个带有0像素的rootMargin和0.5的阈值的IntersectionObserver实例。这意味着当元素的50％位于视口内时，它将被视为可见。
+在这个示例中，我们首先选择所有具有“`box`”类的元素。然后，我们创建一个带有0像素的`rootMargin`和0.5的阈值的`IntersectionObserver`实例。这意味着当元素的50％位于视口内时，它将被视为可见。
 
-然后，我们循环遍历每个盒子元素，并在我们的观察者实例上调用observe方法，将盒子元素作为参数传递。
+然后，我们循环遍历每个盒子元素，并在我们的观察者实例上调用`observe`方法，将盒子元素作为参数传递。
 
-最后，在IntersectionObserver实例的回调函数中，我们检查每个条目是否与视口相交。如果是，则将“visible”类添加到条目的目标元素中，否则将其删除。
+最后，在`IntersectionObserver`实例的回调函数中，我们检查每个条目是否与视口相交。如果是，则将“`visible`”类添加到条目的目标元素中，否则将其删除。
 
 ## Web Performance API 
 以下是一个使用 Web Performance API 的例子：
