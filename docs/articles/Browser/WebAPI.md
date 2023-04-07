@@ -1,61 +1,72 @@
 # 学会这些 Web API 使你的开发效率翻倍
 
-随着浏览器的日益壮大，浏览器自带的功能也随着增多，在Web开发过程中，我们经常会使用一些 Web API。
+随着浏览器的日益壮大，浏览器自带的功能也随着增多，在 Web 开发过程中，我们经常会使用一些 Web API 增加我们的开发效率。
 
-本篇文章主要选取了一些有趣且有用的 Web API 进行介绍并且都做了一个简单的例子。
+本篇文章主要选取了一些有趣且有用的 Web API 进行介绍，并且 API 可以在线运行预览。
 
+<!--根据常用 > 不常用进行排序-->
 
-- [Broadcast Channel API（跨页面通信）](#Broadcast-Channel-API)
+- [Clipboard API（剪切板）](#Clipboard-API)
 - [Fullscreen API（进入/退出全屏）](#Fullscreen-API)
-- [Online-State-API](#Online-State-API)
+- [Online State API（网络状态）](#Online-State-API)
+- [Page Visibility API（页面显示）](#Page-Visibility-API)
+- [Screen Orientation API（页面方向）](#Screen-Orientation-API)
+- [Battery API（电池信息）](#Battery-API)
+- [Web Share API（分享）](#Web-Share-API)
+- [ImageCapture API（图片抓取）](#ImageCapture-API)
+- [Selection API（文本选区）](#Selection-API)
+- [Performance API（性能检测）](#Performance-API)
+- [Geolocation API（获取位置）](#Geolocation-API)
+- [Broadcast Channel API（跨页面通信）](#Broadcast-Channel-API)
+- [Vibration API（设备振动）](#Vibration-API)
+- [Srceen Capture API（视频截图）](#Srceen-Capture-API)
+- [Intersection Observer API（元素监听）](#Intersection-Observer-API）)
 
-## Broadcast Channel API（跨页面通信）
+## Clipboard API（剪切板）
 
-<a id="Broadcast-Channel-API"></a>
+<a id="Clipboard-API"></a>
 
-下面是一个使用 Broadcast Channel API 实现简单的跨窗口通信的例子：
+剪切板 API 快速将内容复制到剪切板上，下面是一键复制的方法：
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Broadcast Channel API Example</title>
-  </head>
-  <body>
-    <div id="message"></div>
-    <input type="text" id="input-message">
-    <button onclick="sendMessage()">Send Message</button>
+```js
+const onClipText = (text) => {
+    handleCopyValue(text)
+        .then(() => {
+            alert("复制成功");
+        })
+        .catch(() => {
+            alert("自动复制失败，请手动复制");
+        });
+};
 
-    <script>
-      const channel = new BroadcastChannel('my-channel'); // 创建一个广播通道对象
-
-      function sendMessage() {
-        const inputMessage = document.getElementById('input-message');
-        const message = inputMessage.value;
-        channel.postMessage(message); // 将消息发送到广播通道中
-        inputMessage.value = ''; // 清空输入框内容
-      }
-
-      channel.onmessage = (event) => {
-        const message = event.data;
-        const messageDiv = document.getElementById('message');
-        messageDiv.innerHTML = message;
-      }
-    </script>
-  </body>
-</html>
+const handleCopyValue = (text) => {
+    //浏览器禁用了非安全域的 navigator.clipboard 对象
+    //在线上环境会报错 TypeError: Cannot read properties of undefined (reading 'writeText')
+    if (!navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+    } else {
+        // 判断是否支持拷贝
+        if (!document.execCommand("copy")) return Promise.reject();
+        // 创建标签，并隐藏
+        const textArea = document.createElement("textarea");
+        textArea.style.position = "fixed";
+        textArea.style.top = textArea.style.left = "-100vh";
+        textArea.style.opacity = "0";
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        // 聚焦、复制
+        textArea.focus();
+        textArea.select();
+        return new Promise((resolve, reject) => {
+            // 不知为何，必须写这个三目，不然copy不上
+            document.execCommand("copy") ? resolve() : reject();
+            textArea.remove();
+        });
+    }
+};
 ```
 
-上面的例子展示了如何使用 Broadcast Channel API 实现在两个窗口之间进行文本消息的双向通信。
-
-在 HTML 中，我们定义了一个输入框和一个按钮，用于输入和发送消息。我们还定义了一个 `div` 元素，用于展示接收到的消息。
-
-在 JavaScript 中，我们创建了一个名为 `my-channel` 的广播通道对象，并定义了一个 `sendMessage` 函数，该函数将输入框中的文本消息发送到广播通道中。
-
-同时，我们在 `channel` 对象上通过 `onmessage` 方法监听广播通道上的消息，一旦有消息发送到该通道，就会触发该方法，在该方法中将接收到的消息展示在 `div` 元素中。
-
-需要注意的是，广播通道的名字需要保持一致，才能实现不同窗口之间的通信。
+执行`onClipText`方法，即可将想复制内容，复制到用户的剪切板上。
 
 
 ## Fullscreen API（进入/退出全屏）
@@ -74,20 +85,20 @@ Fullscreen API 用于在 Web 应用程序中开启全屏模式，使用它就可
     <title>Fullscreen API Example</title>
   </head>
   <body>
-    <div id="my-video">
-      <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" controls></video>
+    <div id="booktext">
+       <h1>正能量先锋</h1>
+        <p>在今天这个快节奏、竞争激烈的时代里，我们时常会面临一些挑战和困难，有时甚至会让我们感到绝望和沮丧。但我们应该时刻铭记，每一个困难背后都有无限的机会和可能。</p>
+       <button onclick="toggleFullscreen()">进入/退出沉浸式阅读</button>
     </div>
-    <button onclick="toggleFullscreen()">Fullscreen</button>
     
     <script>
-      var videoDiv = document.getElementById('my-video');
-      var video = videoDiv.querySelector('video');
+      var bookText = document.getElementById('booktext');
       
       function toggleFullscreen() {
         if (document.fullscreenElement) {
           document.exitFullscreen();
         } else {
-          videoDiv.requestFullscreen().catch(err => {
+          bookText.requestFullscreen().catch(err => {
             console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
           });
         }
@@ -132,57 +143,27 @@ window.addEventListener("offline", offlineHandler);
 ```
 
 这样就可以监听用户的网络状态，如网络链接、断开时可以对用户进行提示以及做相应的逻辑处理。
-## Clipboard API
 
-剪切板 API 快速将内容复制到剪切板上，下面是一键复制的方法：
+## Page Visibility API（页面显示）
 
-```js
-const onClipText = (text) => {
-    handleCopyValue(text)
-        .then(() => {
-            alert("复制成功");
-        })
-        .catch(() => {
-            alert("自动复制失败，请手动复制");
-        });
-};
+<a id="Page-Visibility-API"></a>
 
-const handleCopyValue = (text) => {
-    //浏览器禁用了非安全域的 navigator.clipboard 对象
-    //在线上环境会报错 TypeError: Cannot read properties of undefined (reading 'writeText')
-    if (!navigator.clipboard && window.isSecureContext) {
-        return navigator.clipboard.writeText(text);
-    } else {
-        // 判断是否支持拷贝
-        if (!document.execCommand("copy")) return Promise.reject();
-        // 创建标签，并隐藏
-        const textArea = document.createElement("textarea");
-        textArea.style.position = "fixed";
-        textArea.style.top = textArea.style.left = "-100vh";
-        textArea.style.opacity = "0";
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        // 聚焦、复制
-        textArea.focus();
-        textArea.select();
-        return new Promise((resolve, reject) => {
-            // 不知为何，必须写这个三目，不然copy不上
-            document.execCommand("copy") ? resolve() : reject();
-            textArea.remove();
-        });
-    }
-};
-```
-
-执行`onClipText`方法，即可将想复制内容，复制到用户的剪切板上。
-
-## Page Visibility API
 我们可以用`document.visibitilityState`来监听网页可见度，是否卸载.. 
 
 在手机和电脑上都会现这种情况，比如页面中有一个视频正在播放，然后在切换tab页后给视频暂停播放，或者有个定时器轮询，在页面不显示的状态下停止无意义的轮询等等。
 
 比如一个视频的例子来展示：
-``` js
+``` html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Fullscreen API Example</title>
+  </head>
+  <body>
+ <video id="vs" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" controls>
+ </video>
+<script>
 const video = document.getElementById('vs')
 
 window.addEventListener('visibilitychange',() => {
@@ -197,12 +178,19 @@ window.addEventListener('visibilitychange',() => {
         video.destory()
     }
 });
+</script>
+</body>
+</html>
 ```
 这个API的用处就是用来响应我们网页的状态，如果这个标签页显示则视频就开始播放，隐藏就暂停，关闭就卸载。
 
 
-## Screen Orientation API
+## Screen Orientation API（页面方向）
+
+<a id="Screen-Orientation-API"></a>
+
 我们可以通过以下代码来演示如何使用Screen Orientation API来控制页面的方向：
+
 ``` js
 // 获取屏幕方向对象
 const orientation = screen.orientation;
@@ -230,36 +218,11 @@ orientation.unlock();
 需要注意的是，`lock`方法可能会在某些设备上无法生效，因此我们需要在实际使用中进行兼容性测试。
 
 
-## Vibration API
+## Battery API（电池信息）
 
-以下是一个简单的Web Vibration API例子：
+<a id="Battery-API"></a>
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Web Vibration API Example</title>
-</head>
-<body>
-	<h1>Web Vibration API Example</h1>
-	<button onclick="vibrate()">Vibrate</button>
-	<script>
-		function vibrate() {
-			if ("vibrate" in navigator) {
-				navigator.vibrate(1000); // 1秒钟的震动
-			} else {
-				alert("Vibration API not supported in this browser.");
-			}
-		}
-	</script>
-</body>
-</html>
-```
-
-这个例子中，当用户点击"Vibrate"按钮时，浏览器会尝试通过Web Vibration API来触发设备的震动功能。如果设备支持Web Vibration API，则会进行1秒钟的震动，否则会弹出一个警告框提示用户该功能不被支持。
-
-## Battery API
-以下是一个使用Web Battery API的简单示例：
+以下是一个使用 Battery API 的简单示例：
 
 ``` html
 <!DOCTYPE html>
@@ -304,44 +267,10 @@ orientation.unlock();
 
 在这个例子中，我们使用了`navigator.getBattery()`方法来获取电池信息，并使用`battery.addEventListener()`方法来监听电池信息变化。最后，我们使用**updateBatteryStatus()**函数来更新电量信息并在页面上显示。
 
-## Contact Picker API
+## Web Share API（分享）
 
-下面提供一个Web联系人选择器API的示例。以下是使用JavaScript编写的一个基本示例：
+<a id="Web-Share-API"></a>
 
-HTML：
-
-```html
-<input type="text" id="contactPicker" placeholder="Select a contact">
-```
-
-JavaScript：
-
-```js
-// 获取联系人选择器元素
-const contactPicker = document.getElementById("contactPicker");
-
-// 添加点击事件监听器
-contactPicker.addEventListener("click", async () => {
-  // 请求访问用户的联系人
-  const contacts = await navigator.contacts.select(["name", "email"]);
-
-  // 如果用户选择了联系人，则更新输入框的值
-  if (contacts.length > 0) {
-    const contact = contacts[0];
-    const name = contact.name[0];
-    const email = contact.email[0].value;
-    contactPicker.value = `${name} (${email})`;
-  }
-});
-```
-
-该示例使用了Web Contacts API，它允许您访问用户的联系人。在点击联系人选择器时，它将请求访问用户的联系人。
-
-如果用户选择了联系人，则将联系人的名称和电子邮件地址添加到输入框中。
-
-请注意，此API仅适用于支持它的浏览器，例如Chrome或Firefox。
-
-## Web Share API
 以下是一个简单的Web Share API例子：
 
 ``` js
@@ -376,8 +305,9 @@ shareButton.addEventListener('click', async () => {
 
 如果用户取消分享，则`navigator.share`方法会返回一个Promise对象，其状态为rejected。我们可以通过捕获该Promise对象的异常来处理分享失败的情况。
 
-## ImageCapture API
+## ImageCapture API（图片抓取）
 
+<a id="ImageCapture-API"></a>
 
 以下提供一个基本的Web ImageCapture API示例，如下所示：
 
@@ -450,8 +380,8 @@ captureBtn.addEventListener('click', () => {
 
 请注意，此示例仅适用于支持MediaStreamTrack和ImageCapture API的浏览器。
 
-## Selection API
-
+## Selection API（文本选区）
+<a id="Selection-API"></a>
 
 下面是一个Web Selection API的例子，如下所示：
 
@@ -515,7 +445,176 @@ function handleSelection() {
 如果选择了文本，我们创建一个新的`span`元素，并将其添加到选择范围中，然后使用`removeAllRanges()`方法取消选择。最后，我们使用CSS样式将高亮显示的文本突出显示。
 
 
-## Srceen Capture API
+## Performance API（性能检测）
+
+<a id="Performance-API"></a>
+
+以下是一个使用 Web Performance API 的例子：
+
+``` js
+// 测量页面加载时间
+const startTime = window.performance.now();
+
+window.addEventListener('load', () => {
+  const loadTime = window.performance.now() - startTime;
+  console.log(`页面加载时间为：${loadTime} 毫秒`);
+});
+
+// 测量网络时间
+const resourceUrl = 'https://example.com/resource';
+
+fetch(resourceUrl)
+  .then(response => {
+    const fetchTime = window.performance.now() - startTime;
+    console.log(`请求时间为：${fetchTime} 毫秒`);
+
+    // 获取网络时间信息
+    const entry = performance.getEntriesByName(resourceUrl)[0];
+    const start = entry.fetchStart;
+    const end = entry.responseEnd;
+
+    console.log(`DNS 查询时间为：${entry.domainLookupEnd - entry.domainLookupStart} 毫秒`);
+    console.log(`TCP 握手时间为：${entry.connectEnd - entry.connectStart} 毫秒`);
+    console.log(`TLS 握手时间为：${entry.secureConnectionStart ? entry.connectEnd - entry.secureConnectionStart : 'N/A'} 毫秒`);
+    console.log(`请求时间为：${entry.responseStart - entry.requestStart} 毫秒`);
+    console.log(`响应时间为：${entry.responseEnd - entry.responseStart} 毫秒`);
+    console.log(`传输大小为：${entry.transferSize} 字节`);
+  });
+
+```
+
+在这个例子中，我们使用了 `Web Performance API `提供的 `performance` 对象来测量页面加载时间和使用 `fetch()` 方法获取资源的网络时间。我们还使用了 `getEntriesByName()` 方法来检索资源的网络时间信息。
+
+## Geolocation API（获取位置）
+
+<a id="Geolocation-API"></a>
+
+以下是一个使用 Geolocation API 获取用户当前位置信息的示例代码：
+``` js
+// 检查浏览器是否支持 Geolocation API
+if ('geolocation' in navigator) {
+  // 获取用户当前位置信息
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords;
+      console.log(`您的纬度为：${latitude}，经度为：${longitude}`);
+    },
+    (error) => {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          console.log('用户拒绝了位置请求');
+          break;
+        case error.POSITION_UNAVAILABLE:
+          console.log('无法获取位置信息');
+          break;
+        case error.TIMEOUT:
+          console.log('请求超时');
+          break;
+        default:
+          console.log('发生未知错误');
+      }
+    }
+  );
+} else {
+  console.log('您的浏览器不支持 Geolocation API');
+}
+
+```
+
+在这个例子中，我们首先检查浏览器是否支持 `Geolocation API`。
+
+如果支持，则调用 `navigator.geolocation.getCurrentPosition()` 方法获取用户当前位置信息。该方法接受两个回调函数作为参数：一个成功的回调函数和一个失败的回调函数。
+
+如果获取位置信息成功，则成功的回调函数将被调用，并传递包含位置信息的对象作为参数。否则将调用失败的回调函数，并传递一个描述错误的对象作为参数。
+
+
+## Broadcast Channel API（跨页面通信）
+
+<a id="Broadcast-Channel-API"></a>
+
+下面是一个使用 Broadcast Channel API 实现简单的跨窗口通信的例子：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Broadcast Channel API Example</title>
+  </head>
+  <body>
+    <div id="message"></div>
+    <input type="text" id="input-message">
+    <button onclick="sendMessage()">Send Message</button>
+
+    <script>
+      const channel = new BroadcastChannel('my-channel'); // 创建一个广播通道对象
+
+      function sendMessage() {
+        const inputMessage = document.getElementById('input-message');
+        const message = inputMessage.value;
+        channel.postMessage(message); // 将消息发送到广播通道中
+        inputMessage.value = ''; // 清空输入框内容
+      }
+
+      channel.onmessage = (event) => {
+        const message = event.data;
+        const messageDiv = document.getElementById('message');
+        messageDiv.innerHTML = message;
+      }
+    </script>
+  </body>
+</html>
+```
+
+上面的例子展示了如何使用 Broadcast Channel API 实现在两个窗口之间进行文本消息的双向通信。
+
+在 HTML 中，我们定义了一个输入框和一个按钮，用于输入和发送消息。我们还定义了一个 `div` 元素，用于展示接收到的消息。
+
+在 JavaScript 中，我们创建了一个名为 `my-channel` 的广播通道对象，并定义了一个 `sendMessage` 函数，该函数将输入框中的文本消息发送到广播通道中。
+
+同时，我们在 `channel` 对象上通过 `onmessage` 方法监听广播通道上的消息，一旦有消息发送到该通道，就会触发该方法，在该方法中将接收到的消息展示在 `div` 元素中。
+
+需要注意的是，广播通道的名字需要保持一致，才能实现不同窗口之间的通信。
+
+
+## Vibration API（设备振动）
+
+<a id="Vibration-API"></a>
+
+以下是一个简单的Web Vibration API例子：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Vibration API Example</title>
+</head>
+<body>
+	<h1>Web Vibration API Example</h1>
+	<button onclick="vibrate()">Vibrate</button>
+	<script>
+		function vibrate() {
+			if ("vibrate" in navigator) {
+				navigator.vibrate(1000); // 1秒钟的震动
+			} else {
+				alert("Vibration API not supported in this browser.");
+			}
+		}
+	</script>
+</body>
+</html>
+```
+
+这个例子中，当用户点击"Vibrate"按钮时，浏览器会尝试通过Web Vibration API来触发设备的震动功能。
+
+如果设备支持Web Vibration API，则会进行1秒钟的震动，否则会弹出一个警告框提示用户该功能不被支持。
+
+
+
+## Srceen Capture API（视频截图）
+
+<a id="Srceen-Capture-API"></a>
+
 ``` html
 <!DOCTYPE html>
 <html>
@@ -566,7 +665,10 @@ function handleSelection() {
 
 在 `startCapture()` 函数中，我们使用 `navigator.mediaDevices.getDisplayMedia()` 方法获取屏幕共享的媒体流，并将其渲染到canvas上。在 `stopCapture()` 函数中，我们停止所有媒体流的所有轨道，以结束捕获过程。
 
-## Intersection Observer API
+## Intersection Observer API（元素监听）
+
+<a id="Intersection-Observer-API"></a>
+
 以下是一个示例，演示了如何使用 Intersection Observer API 在元素进入视口时进行检测：
 ``` html
 <!DOCTYPE html>
@@ -624,81 +726,6 @@ function handleSelection() {
 
 最后，在`IntersectionObserver`实例的回调函数中，我们检查每个条目是否与视口相交。如果是，则将“`visible`”类添加到条目的目标元素中，否则将其删除。
 
-## Web Performance API 
-以下是一个使用 Web Performance API 的例子：
-
-``` js
-// 测量页面加载时间
-const startTime = window.performance.now();
-
-window.addEventListener('load', () => {
-  const loadTime = window.performance.now() - startTime;
-  console.log(`页面加载时间为：${loadTime} 毫秒`);
-});
-
-// 测量网络时间
-const resourceUrl = 'https://example.com/resource';
-
-fetch(resourceUrl)
-  .then(response => {
-    const fetchTime = window.performance.now() - startTime;
-    console.log(`请求时间为：${fetchTime} 毫秒`);
-
-    // 获取网络时间信息
-    const entry = performance.getEntriesByName(resourceUrl)[0];
-    const start = entry.fetchStart;
-    const end = entry.responseEnd;
-
-    console.log(`DNS 查询时间为：${entry.domainLookupEnd - entry.domainLookupStart} 毫秒`);
-    console.log(`TCP 握手时间为：${entry.connectEnd - entry.connectStart} 毫秒`);
-    console.log(`TLS 握手时间为：${entry.secureConnectionStart ? entry.connectEnd - entry.secureConnectionStart : 'N/A'} 毫秒`);
-    console.log(`请求时间为：${entry.responseStart - entry.requestStart} 毫秒`);
-    console.log(`响应时间为：${entry.responseEnd - entry.responseStart} 毫秒`);
-    console.log(`传输大小为：${entry.transferSize} 字节`);
-  });
-
-```
-
-在这个例子中，我们使用了 `Web Performance API `提供的 `performance` 对象来测量页面加载时间和使用 `fetch()` 方法获取资源的网络时间。我们还使用了 `getEntriesByName()` 方法来检索资源的网络时间信息。
-
-## Geolocation API
-以下是一个使用 Geolocation API 获取用户当前位置信息的示例代码：
-``` js
-// 检查浏览器是否支持 Geolocation API
-if ('geolocation' in navigator) {
-  // 获取用户当前位置信息
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const { latitude, longitude } = position.coords;
-      console.log(`您的纬度为：${latitude}，经度为：${longitude}`);
-    },
-    (error) => {
-      switch (error.code) {
-        case error.PERMISSION_DENIED:
-          console.log('用户拒绝了位置请求');
-          break;
-        case error.POSITION_UNAVAILABLE:
-          console.log('无法获取位置信息');
-          break;
-        case error.TIMEOUT:
-          console.log('请求超时');
-          break;
-        default:
-          console.log('发生未知错误');
-      }
-    }
-  );
-} else {
-  console.log('您的浏览器不支持 Geolocation API');
-}
-
-```
-
-在这个例子中，我们首先检查浏览器是否支持 `Geolocation API`。
-
-如果支持，则调用 `navigator.geolocation.getCurrentPosition()` 方法获取用户当前位置信息。该方法接受两个回调函数作为参数：一个成功的回调函数和一个失败的回调函数。
-
-如果获取位置信息成功，则成功的回调函数将被调用，并传递包含位置信息的对象作为参数。否则将调用失败的回调函数，并传递一个描述错误的对象作为参数。
 
 ## **参考**
 
@@ -709,4 +736,4 @@ if ('geolocation' in navigator) {
 5. [你（可能）不知道的 web api](https://juejin.cn/post/6844903741024370701#heading-1)
 
 
-最后附上我的博客地址[九旬的博客](https://github.com/AnsonZnl/v-blog)，欢迎🌟Star🌟。
+最后附上我的博客地址————[九旬的博客](https://github.com/AnsonZnl/v-blog)，欢迎🌟Star🌟。
