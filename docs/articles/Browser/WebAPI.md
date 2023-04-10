@@ -22,9 +22,9 @@
 - [Srceen Capture API（视频截图）](#Srceen-Capture-API)
 - [Intersection Observer API（元素监听）](#Intersection-Observer-API）)
 
-## Clipboard API（剪切板）
-
 <a id="Clipboard-API"></a>
+
+## Clipboard API（剪切板）
 
 剪切板 API 快速将内容复制到剪切板上，下面是一键复制的方法：
 
@@ -69,10 +69,11 @@ const handleCopyValue = (text) => {
 执行`onClipText`方法，即可将想复制内容，复制到用户的剪切板上。
 
 
-## Fullscreen API（进入/退出全屏）
 
 <a id="Fullscreen-API"></a>
 
+
+## Fullscreen API（进入/退出全屏）
 Fullscreen API 用于在 Web 应用程序中开启全屏模式，使用它就可以在全屏模式下查看页面/元素。在安卓手机中，它会溢出浏览器窗口和安卓顶部的状态栏（显示网络状态、电池状态等的地方）。
 
 下面是一个 Fullscreen API 的例子：
@@ -117,7 +118,11 @@ Fullscreen API 用于在 Web 应用程序中开启全屏模式，使用它就可
 需要注意的是，`requestFullscreen` 方法可能会被浏览器阻止，例如因为用户未授权。因此在实际使用中，我们需要使用 `catch` 方法来捕获 `requestFullscreen` 方法的调用错误信息。
 
 
+
+<a id="Online-State-API"></a>
+
 ## Online State API（网络状态）
+
 <a id="Online-State-API"></a>
 
 就是获取当前的网络状态，同时也有对应的事件去响应网络状态的变化。
@@ -144,9 +149,10 @@ window.addEventListener("offline", offlineHandler);
 
 这样就可以监听用户的网络状态，如网络链接、断开时可以对用户进行提示以及做相应的逻辑处理。
 
-## Page Visibility API（页面显示）
 
 <a id="Page-Visibility-API"></a>
+
+## Page Visibility API（页面显示）
 
 我们可以用`document.visibitilityState`来监听网页可见度，是否卸载.. 
 
@@ -185,10 +191,10 @@ window.addEventListener('visibilitychange',() => {
 这个API的用处就是用来响应我们网页的状态，如果这个标签页显示则视频就开始播放，隐藏就暂停，关闭就卸载。
 
 
-## Screen Orientation API（页面方向）
 
 <a id="Screen-Orientation-API"></a>
 
+## Screen Orientation API（页面方向）
 我们可以通过以下代码来演示如何使用Screen Orientation API来控制页面的方向：
 
 ``` js
@@ -218,10 +224,10 @@ orientation.unlock();
 需要注意的是，`lock`方法可能会在某些设备上无法生效，因此我们需要在实际使用中进行兼容性测试。
 
 
-## Battery API（电池信息）
 
 <a id="Battery-API"></a>
 
+## Battery API（电池信息）
 以下是一个使用 Battery API 的简单示例：
 
 ``` html
@@ -267,10 +273,10 @@ orientation.unlock();
 
 在这个例子中，我们使用了`navigator.getBattery()`方法来获取电池信息，并使用`battery.addEventListener()`方法来监听电池信息变化。最后，我们使用**updateBatteryStatus()**函数来更新电量信息并在页面上显示。
 
-## Web Share API（分享）
 
 <a id="Web-Share-API"></a>
 
+## Web Share API（分享）
 以下是一个简单的Web Share API例子：
 
 ``` js
@@ -305,9 +311,10 @@ shareButton.addEventListener('click', async () => {
 
 如果用户取消分享，则`navigator.share`方法会返回一个Promise对象，其状态为rejected。我们可以通过捕获该Promise对象的异常来处理分享失败的情况。
 
-## ImageCapture API（图片抓取）
 
 <a id="ImageCapture-API"></a>
+
+## ImageCapture API（图片抓取）
 
 以下提供一个基本的Web ImageCapture API示例，如下所示：
 
@@ -380,8 +387,10 @@ captureBtn.addEventListener('click', () => {
 
 请注意，此示例仅适用于支持MediaStreamTrack和ImageCapture API的浏览器。
 
-## Selection API（文本选区）
+
 <a id="Selection-API"></a>
+
+## Selection API（文本选区）
 
 下面是一个Web Selection API的例子，如下所示：
 
@@ -445,10 +454,10 @@ function handleSelection() {
 如果选择了文本，我们创建一个新的`span`元素，并将其添加到选择范围中，然后使用`removeAllRanges()`方法取消选择。最后，我们使用CSS样式将高亮显示的文本突出显示。
 
 
-## Performance API（性能检测）
 
 <a id="Performance-API"></a>
 
+## Performance API（性能检测）
 以下是一个使用 Web Performance API 的例子：
 
 ``` js
@@ -485,10 +494,10 @@ fetch(resourceUrl)
 
 在这个例子中，我们使用了 `Web Performance API `提供的 `performance` 对象来测量页面加载时间和使用 `fetch()` 方法获取资源的网络时间。我们还使用了 `getEntriesByName()` 方法来检索资源的网络时间信息。
 
-## Geolocation API（获取位置）
 
 <a id="Geolocation-API"></a>
 
+## Geolocation API（获取位置）
 以下是一个使用 Geolocation API 获取用户当前位置信息的示例代码：
 ``` js
 // 检查浏览器是否支持 Geolocation API
@@ -528,10 +537,10 @@ if ('geolocation' in navigator) {
 如果获取位置信息成功，则成功的回调函数将被调用，并传递包含位置信息的对象作为参数。否则将调用失败的回调函数，并传递一个描述错误的对象作为参数。
 
 
-## Broadcast Channel API（跨页面通信）
 
 <a id="Broadcast-Channel-API"></a>
 
+## Broadcast Channel API（跨页面通信）
 下面是一个使用 Broadcast Channel API 实现简单的跨窗口通信的例子：
 
 ```html
@@ -577,10 +586,10 @@ if ('geolocation' in navigator) {
 需要注意的是，广播通道的名字需要保持一致，才能实现不同窗口之间的通信。
 
 
-## Vibration API（设备振动）
 
 <a id="Vibration-API"></a>
 
+## Vibration API（设备振动）
 以下是一个简单的Web Vibration API例子：
 
 ```html
@@ -611,10 +620,10 @@ if ('geolocation' in navigator) {
 
 
 
-## Srceen Capture API（视频截图）
 
 <a id="Srceen-Capture-API"></a>
 
+## Srceen Capture API（视频截图）
 ``` html
 <!DOCTYPE html>
 <html>
@@ -665,10 +674,10 @@ if ('geolocation' in navigator) {
 
 在 `startCapture()` 函数中，我们使用 `navigator.mediaDevices.getDisplayMedia()` 方法获取屏幕共享的媒体流，并将其渲染到canvas上。在 `stopCapture()` 函数中，我们停止所有媒体流的所有轨道，以结束捕获过程。
 
-## Intersection Observer API（元素监听）
 
 <a id="Intersection-Observer-API"></a>
 
+## Intersection Observer API（元素监听）
 以下是一个示例，演示了如何使用 Intersection Observer API 在元素进入视口时进行检测：
 ``` html
 <!DOCTYPE html>

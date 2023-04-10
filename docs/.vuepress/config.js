@@ -221,10 +221,10 @@ module.exports = {
           text: "前端图片压缩方案",
           link: "/articles/Browser/前端图片压缩方案.md",
         }, {
-          text: "使用过WebWorker解决定时器不准确的问",
-          link: "/articles/Browser/使用过WebWorker解决定时器不准确的问.md",
+          text: "使用过WebWorker解决定时器不准确的问题",
+          link: "/articles/Browser/使用过WebWorker解决定时器不准确的问题.md",
         }, {
-          text: "WebAPI",
+          text: "学会这些 Web API 使你的开发效率翻倍",
           link: "/articles/Browser/WebAPI.md",
         }]
         //
