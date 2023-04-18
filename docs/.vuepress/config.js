@@ -108,7 +108,7 @@ module.exports = {
 
         children: [{
           text: "只出现一次的数字",
-          link: "/computer-base/LeetCode/只出现一次的数字",
+          link: "/computer-base/LeetCode/只出现一次的数字.md",
         },
         {
           text: "两数之和",
@@ -300,11 +300,11 @@ module.exports = {
         children: [
           {
             text: 'React中实现简单的Toast组件',
-            link: '/articles/React/React中实现简单的Toast组件'
+            link: '/articles/React/React中实现简单的Toast组件.md'
           },
           {
             text: 'useState的原理及实现',
-            link: '/articles/React/useState的原理及实现'
+            link: '/articles/React/useState的原理及实现.md'
           }
         ]
       },
