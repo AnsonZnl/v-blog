@@ -9,124 +9,159 @@
 在完成差异计算之后，React会将需要更新的那些节点转换为真实的DOM元素，并利用浏览器的API将这些元素添加到网页的DOM树中。这样我们就完成了JSX到真实DOM的转换，从而实现了网页的渲染。
 
 过程：
-1. jsx语法最终会被babel编译成为虚拟DOM
-2. React.createElement()并返回虚拟DOM
-3. 由render方法将虚拟DOM转化为真实DOM并挂在到真实DOM上(#app)
+1. jsx语法最终会被Babel编译js对象
+2. 然后虚拟DOM会被React.createElement()执行并返回真实的DOM
+3. 由render方法将生成的真实DOM并挂到页面上(#app)
 
 流程：书写JSX代码 => Babel编译JSX => 编译后的JSX执行React.createElement的调用 => 传入到ReactElement方法中生成虚拟Dom => 最终返回给ReactDom.render生成真实DOM
 
 最关键的两个函数：
 
-1. `createElement`：接收标签名、属性和子节点，返回一个包含标签名、属性和子节点的对象，用于表示虚拟DOM节点。
+1. `createElement`：接收虚拟DOM对象，参数是标签名、属性和子节点，返回一个包含标签名、属性和子节点的对象。
 2. `render`：接收一个虚拟DOM节点作为参数，返回该节点对应的真实DOM元素。
+上面的 JSX 代码可以被转换为等价的 React.createElement() 调用，从而创建一个 React 元素。具体过程如下：
 
-好的，我可以为您编写一个JSX转换为真实DOM的例子。在编写之前，简单介绍一下JSX。JSX本质是一种语法糖，它可以让我们以类似HTML的方式编写JavaScript并实现组件化编程。JSX最终还是需要被babel编译成传统的JavaScript代码才能被浏览器识别。下面我会演示如何使用`React.createElement`功能的函数和render函数来将JSX转换成真实DOM。
 
-我们先定义一个名为`createElement`的函数，用于创建虚拟DOM：
+## 使用babel编译tsx文件
+当我们写一个使用 JSX 的组件，并将其保存为 `example.jsx` 文件时，我们可以使用 Babel 进行转换，生成一个普通的 JavaScript 文件 `example.js`。以下是一个简单的方法将 `example.jsx` 转换为 `example.js`：
 
-```javascript
-function createElement(tag, props, ...children) {
-  const element = document.createElement(tag);
+1. 使用 Node.js 安装 Babel 的基本依赖：
 
-  // 设置元素属性
-  for (let name in props) {
-    if (name && props.hasOwnProperty(name)) {
-      element.setAttribute(name, props[name]);
-    }
-  }
+```
+npm install --save-dev @babel/core @babel/cli @babel/preset-react
+```
 
-  // 处理子元素
-  children.forEach(child => {
-    if (typeof child === "string") {
-      element.appendChild(document.createTextNode(child));
-    } else {
-      element.appendChild(child);
-    }
-  });
+2. 创建一个 `.babelrc` 文件，并添加以下内容。这些将 Babel 配置为将 JSX 转换为标准的 JavaScript 代码：
 
-  return element;
+```
+{
+  "presets": ["@babel/preset-react"]
 }
 ```
 
-这个函数接受三个参数：标签名、属性对象和子元素。它首先通过`document.createElement`方法创建一个元素，并遍历属性对象，将属性加到元素上。然后通过遍历子元素数组，将每个子元素插入到元素内部。最后返回该元素。这个过程实现了虚拟DOM的创建。
+3. 在命令行中使用以下命令将 JSX 转换为 JavaScript：
 
-接下来就是将JSX转化为虚拟DOM的过程，我们定义一个JSX解析函数：
-
-```javascript
-function parseJSX(jsxElem) {
-  // 处理函数组件
-  if (typeof jsxElem.type === 'function') {
-    const Component = jsxElem.type;
-    const instance = new Component(jsxElem.props);
-    const childElem = parseJSX(instance.render());
-    instance.element = childElem;
-    return childElem;
-  }
-
-  // 处理原生组件
-  const { type, ...props } = jsxElem;
-  const childElems = jsxElem.children.map(child => {
-    return parseJSX(child);
-  });
-  return createElement(type, props, ...childElems);
-}
+```
+npx babel example.jsx --out-file example.js
 ```
 
-这个函数接受一个JSX对象，它可以是原生组件或函数组件，然后进行解析和转换。如果它是一个函数组件，我们实例化该组件并调用它的`render`方法，并递归调用`parseJSX`解析其返回值。然后将结果赋值给该实例的`element`对象，最后返回虚拟DOM。如果JSX对象是一个原生组件，则从JSX对象中提取标签名和属性，并递归地调用`parseJSX`解析其子元素，并将结果传入`createElement`函数，从而创建虚拟DOM。
+这将使用在第二步中定义的插件集，将 `example.jsx` 文件转换为 `example.js` 文件。
 
-现在我们可以创建一个`render`函数将虚拟DOM渲染成真实DOM：
 
-```javascript
-function render(element, container) {
-  container.appendChild(element);
-}
 ```
-
-这个函数接受虚拟DOM和目标容器，将虚拟DOM插入到容器内部。
-
-接下来我们可以使用上面的函数，将JSX转换为真实DOM。例如，我们想要创建一个简单的“Hello, World!”应用，并将它显示在页面上：
-
-```javascript
 const element = (
-  <div className="my-class">
-    <p>Hello, World!</p>
-  </div>
+    <div className="my-class">
+        <p>Hello, World!</p>
+    </div>
 );
 
-const container = document.getElementById('root');
-const domTree = parseJSX(element);
-render(domTree, container);
+// 编译后的代码
+const element = React.createElement(
+    "div",
+    { className: "my-class" },
+    React.createElement(
+        "p",
+        null,
+        "Hello, World!"
+    )
+);
 ```
 
-这个代码片段首先定义了一个`<div>`元素，该元素具有一个类名和一个子元素`<p>`标签。然后它选择了一个DOM节点作为容器，并将虚拟DOM通过`parseJSX`函数解析为真实DOM，最后通过`render`函数渲染到容器内部。运行结果如下：
+理解这个过程的关键是 JSX 语法只是一种语法糖。当我们使用 JSX 时，Babel 这样的工具会将 JSX 转换为普通的 JavaScript 代码，并将 React.createElement() 函数用来创建 React 元素。这些元素最终被 React 用来构建虚拟 DOM，以用于后续的渲染。由于这个过程需要在运行时进行，因此可以在浏览器中使用 JSX 语法，因为浏览器能够动态执行 JavaScript 代码。
+
+## 使用JS模拟Bebal这个过程
+好的，以下是使用原生JS（不依赖 Babel）将 JSX 转换为 JavaScript 的步骤：
+
+首先，我们需要将 JSX 代码包含在 HTML 文件中，以便在浏览器中运行。以下是一个示例：
 
 ```html
-<div class="my-class">
-  <p>Hello, World!</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JSX to JS</title>
+</head>
+<body>
+	<div id="root"></div>
+	<script>
+		// 在此处添加 JSX 代码
+	</script>
+</body>
+</html>
 ```
 
-以上就是一个使用JS实现JSX转换为真实DOM的例子。
+接下来，我们需要在页面中添加一个 JavaScript 脚本来将 JSX 转换为标准的 JavaScript 代码。这是一个过程：
 
-## React 不同版本的区别
-React在不同版本中，对JSX转换为真实DOM的过程可能会有不同的实现方法，但是其核心思想是不变的。
+1. 创建一个函数，将 JSX 代码作为其输入参数。
 
-在React v16及以下版本中，JSX转换为真实DOM的过程是通过React的Reconciler和Renderer两个模块来实现的。
+2. 创建一个新的 `div` 元素，并将其添加到文档的根节点中。
 
-Reconciler模块主要负责对虚拟DOM树进行Diff算法的实现，并得到需要进行更新的DOM节点列表。在该模块中，主要涉及到以下函数：
+3. 将 JSX 代码中的标签名称转换为标准的 HTML 元素名称。
 
-- shouldComponentUpdate()：组件是否需要更新的判断函数
-- diff算法：用来比较新旧虚拟DOM树之间的差异
+4. 将 JSX 中的所有属性名称转换为标准的 HTML 属性名称。
 
-Renderer模块主要负责将需要进行更新的节点进行渲染，生成真实的DOM节点，并将其添加到网页中。在该模块中，主要涉及到以下函数：
+5. 将 JSX 中的所有属性值添加到 HTML 元素的属性中。
 
-- render()：由ReactDOM暴露的函数，用来将虚拟DOM节点渲染到真实DOM上
-- createComponentFromVNode()：将虚拟DOM节点转换为真实DOM节点的函数
+6. 递归遍历所有子元素，并将它们添加到 HTML 元素中。
 
-而在React v17及以上版本中，原本的Reconciler和Renderer模块被统一合并，形成了名为「React Fiber」的新架构。在这个架构中，Diff算法也有了新的实现方式。主要涉及到以下函数：
+7. 将生成的 HTML 元素添加到根节点中。
 
-- mount()：将组件挂载到DOM节点的方法
-- update()：按照新的属性和状态更新组件的方法
-- commitRoot()：将更新过的组件提交到DOM树上
+以下是示例代码：
 
-无论是新版还是旧版，React在处理JSX转换为真实DOM的过程中，都是通过一系列的函数和算法来实现的，从而为我们提供了方便快捷的组件化开发和性能优化。
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JSX to JS</title>
+</head>
+<body>
+	<div id="root"></div>
+	<script>
+		// 1. 创建一个将 JSX 代码转换为 HTML 元素的函数
+		function jsxToHTMLElement(jsxCode) {
+			// 2. 创建一个新的 div 元素
+			const element = document.createElement('div');
+
+			// 3. 获取标签名称（用于创建 HTML 元素）
+			const tagName = jsxCode.match(/(?:<)([a-zA-Z]+)/)[1].toLowerCase();
+
+			// 4. 获取所有属性，并将它们添加到 HTML 元素中
+			const attributes = jsxCode.match(/(?:<+[a-zA-Z]+)([a-zA-Z \-]+=['"][^"']*["'])+/);
+			if (attributes) {
+				// 将所有属性名称和值添加到 HTML 元素中
+				attributes[0].match(/([a-zA-Z\-]+)=["']?([^"']*)/g).forEach(attr => {
+					const [name, value] = attr.split('=');
+					element.setAttribute(name, value.replace(/"/g, ''));
+				});
+			}
+
+			// 5. 将所有子元素逐个转换为 HTML 元素，并将它们添加到当前元素中
+			const children = jsxCode.match(/(?:>)([\s\S]*)(?:<\/)/);
+			if (children) {
+				children[1].trim().split(/(?=<)/).forEach(child => {
+					const childElement = jsxToHTMLElement(child);
+					element.appendChild(childElement);
+				});
+			}
+
+			// 6. 返回生成的 HTML 元素
+			return element;
+		}
+
+		// 7. 调用 jsxToHTMLElement() 函数将 JSX 代码转换为 HTML 元素，并将其添加到页面中
+		const jsxCode = `
+			<div>
+				<h1 class="title">Hello, World!</h1>
+				<p>This is some text.</p>
+			</div>
+		`;
+		const rootElement = document.getElementById('root');
+		const htmlElement = jsxToHTMLElement(jsxCode);
+		rootElement.appendChild(htmlElement);
+	</script>
+</body>
+</html>
+```
+
+总之，这是一种使用原生JS将JSX转换为JavaScript的基本方法，尽管这种方法在复杂的JSX中可能不太实用。 在实际项目中，您应该使用专门为此目的构建的库（例如React）。
