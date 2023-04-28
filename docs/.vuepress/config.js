@@ -305,6 +305,10 @@ module.exports = {
           {
             text: 'useState的原理及实现',
             link: '/articles/React/useState的原理及实现.md'
+          },
+          {
+            text: '从JSX到真实DOM的过程',
+            link: '/articles/React/从JSX到真实DOM的过程.md'
           }
         ]
       },
