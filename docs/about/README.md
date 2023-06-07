@@ -9,7 +9,7 @@
   - 前端：React、Vue、ES6/7/8、Typescript、Element、Antd、Tailwindcss
   - 前端工程化：Webpack、Vite
   - 移动端：微信小程序、React Native
-  - 服务端：Node、Next.js、Koa2、Prisma、Typeorm
+  - 服务端：Node、Next、Nest、Koa2、Prisma、Typeorm
   - 数据库：Mysql、MongoDB、Postgresql
   - 其他：Serverless、Docker、Jenkins
   - 联系方式：QQ：1160030724(同 WX)
