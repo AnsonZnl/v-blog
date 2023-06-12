@@ -459,6 +459,10 @@ module.exports = {
               text: "小程序生成海报图片并保存",
               link: "/articles/WeApp/小程序生成海报图片并保存.md",
             },
+            {
+              text: "IOS微信浏览器视频自动播放问题解决方法",
+              link: "/articles/WeApp/IOS微信浏览器视频自动播放问题解决方法.md",
+            },
           ],
         },
         {
