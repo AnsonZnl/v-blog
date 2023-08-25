@@ -97,11 +97,17 @@ tsc xx.ts # 生成 xx.js 文件
 
 - Never
 
-  ```ts
-  function infiniteLoop(): never {
-    while (true) {}
+```ts
+function fn(x:string|number) {
+  if (typeof x === 'string') {
+    // ...
+  } else if (typeof x === 'number') {
+    // ...
+  } else {
+    x; // never 类型
   }
-  ```
+}
+```
 
 - Object
 
@@ -116,13 +122,83 @@ tsc xx.ts # 生成 xx.js 文件
   };
   ```
 
-变量声明：变量使用`let`，常量使用`const`
-
-联合属性：
+- Number 和 number的区别是，包装对象基础类型的区别。前者代表的是`new Number(1)`, 后者代表的是`1`, String、Boolean 也是一样
+- Object 和 object 区别也是一样，但是Object 包括Function、Array，而object 只表示`{}`
+- 联合类型，反之有交叉类型，使用 & 链接
 
 ```ts
+
+// 联合类型
 let value: string | number = 666;
+
+// 交叉类型
+let obj:
+  { foo: string } &
+  { bar: string };
+
+obj = {
+  foo: 'hello',
+  bar: 'world'
+};
 ```
+
+- 顶级类型和底层类型
+  - 从集合论的角度看，any类型可以看成是所有其他类型的全集，包含了一切可能的类型。TypeScript 将这种类型称为“顶层类型”（top type），意为涵盖了所有下层。
+  - 在集合论上，unknown也可以视为所有其他类型（除了any）的全集，所以它和any一样，也属于 TypeScript 的顶层类型。
+  - TypeScript 就相应规定，任何类型都包含了never类型。因此，never类型是任何其他类型所共有的，TypeScript 把这种情况称为“底层类型”（bottom type）。
+  - 总之，TypeScript 有两个“顶层类型”（any和unknown），但是“底层类型”只有never唯一一个。
+
+
+## 数组
+``` ts
+// 普通类型
+const arr1:number[] = [1,2,3]
+
+// 联合类型
+const arr2:(string | number)[] = [1,'2']
+// 也可以写成
+const arr3: Array<number | string> = [1]
+
+// 任意类型
+const arr4: any[] = [false, 2, arr3]
+
+// 只读数组
+const arr5: readonly number[] = [1,2,3]
+
+arr5.push(4) // 报错：Property 'push' does not exist on type 'readonly number[]'.
+
+// 多维数组 number 表示的是最底层数组成员的类型
+const multi: number[][] = [[1,2,3],[4,5,6]]
+```
+
+## 元组(tuple)
+
+元组必须明确声明每个成员的类型
+
+数组于元组的区别
+``` ts
+// 数组
+let a:number[] = [1];
+
+// 元组
+let t:[number] = [1];
+
+```
+
+ 使用扩展运算符（...），可以表示不限成员数量的元组。
+```ts
+type NamedNums = [
+  string,
+  ...number[]
+];
+
+const a:NamedNums = ['A', 1, 2];
+const b:NamedNums = ['B', 1, 2, 3];
+```
+
+可以通过 readonly 设置只读元组
+
+
 
 ## 接口
 
