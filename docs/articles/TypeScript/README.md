@@ -347,6 +347,16 @@ console.log(result); // 24
 - `z?: string`：定义可选参数
 - `...rest: number[]`： 接受剩余参数
 
+### 函数的类型
+``` ts
+type addType = (num1: number, num2: number)=> number
+// 定义函数的入参和返回值的类型。
+const add: addType = function (num1, num2){
+  return num1 + num2
+}
+
+```
+
 ### 函数表达式
 
 ```ts
@@ -690,6 +700,18 @@ function identity<T extends Length>(arg: T): T {
 ### 泛型参考文章
 
 - [掘金-一文读懂 TypeScript 泛型及应用（ 7.8K 字）](https://juejin.im/post/5ee00fca51882536846781ee)
+
+## 其他
+### 定义window
+``` ts
+// 宿主环境的类型TS提供了
+let w:Window = window
+let ele:HTMLElement = document.createElement('div')
+ele.addEventListener('click',function(e:MouseEvent){
+    w.alert(1)
+},false)
+
+```
 
 ## tsconfig.json
 
