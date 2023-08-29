@@ -15,7 +15,7 @@ tsc xx.ts # 生成 xx.js 文件
 
 太麻烦？线上直接上手 [TypeScript Play](https://www.typescriptlang.org/play/)
 
-配合阮老师的 [ES6 入门教程](https://es6.ruanyifeng.com/#README) 一起食用效果更佳！
+配合阮老师的 [ES6 入门教程-阮一峰](https://es6.ruanyifeng.com/#README) 、[TypeScript 入门指南-阮一峰](https://wangdoc.com/typescript)一起食用效果更佳！
 
 ## 基础类型
 
@@ -198,6 +198,77 @@ const b:NamedNums = ['B', 1, 2, 3];
 
 可以通过 readonly 设置只读元组
 
+
+## 对象
+``` ts
+// 写法一
+type MyObj = {
+  x:number;
+  y:number;
+};
+
+const obj:MyObj = { x: 1, y: 1 };
+
+// 写法二
+interface MyObj {
+  x: number;
+  y: number;
+}
+
+const obj:MyObj = { x: 1, y: 1 };
+```
+Type 和 interface的区别
+1. 使用范围不同：Type可以用来声明所有类型，包括非对象类型，而Interface只能用来声明对象类型。
+2. 声明对象时：Interface可以多次声明同一个接口，而Type定义的是别名，别名不能重复。
+3. 继承方面：Interface支持继承，Type不支持。
+4. 表示类型：Type可以表示非对象类型，Interface只能表示对象类型。
+5. 合并方面：Interface可以声明合并，Type不可以。
+
+### 可选属性
+``` ts
+type User = {
+  firstName: string;
+  lastName?: string;
+};
+
+// 等同于
+type User = {
+  firstName: string;
+  lastName?: string|undefined;
+};
+```
+
+### 只读属性
+``` ts
+type Point = {
+  readonly x: number;
+  readonly y: number;
+};
+
+const p:Point = { x: 0, y: 0 };
+
+p.x = 100; // 报错
+```
+
+### 属性名的索引类型
+
+如果对象的属性非常多，一个个声明类型就很麻烦，而且有些时候，无法事前知道对象会有多少属性，比如外部 API 返回的对象。这时 TypeScript 允许采用属性名表达式的写法来描述类型，称为“属性名的索引类型”。
+
+索引类型里面，最常见的就是属性名的字符串索引。
+
+``` ts
+type MyObj = {
+  [property: string]: string
+};
+
+const obj:MyObj = {
+  foo: 'a',
+  bar: 'b',
+  baz: 'c',
+};
+```
+
+上面示例中，类型MyObj的属性名类型就采用了表达式形式，写在方括号里面。[property: string]的property表示属性名，这个是可以随便起的，它的类型是string，即属性名类型为string。也就是说，不管这个对象有多少属性，只要属性名为字符串，且属性值也是字符串，就符合这个类型声明。
 
 
 ## 接口
