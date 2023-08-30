@@ -149,7 +149,7 @@ obj = {
   - 总之，TypeScript 有两个“顶层类型”（any和unknown），但是“底层类型”只有never唯一一个。
 
 
-## 数组
+## 数组(Array)
 ``` ts
 // 普通类型
 const arr1:number[] = [1,2,3]
@@ -199,7 +199,7 @@ const b:NamedNums = ['B', 1, 2, 3];
 可以通过 readonly 设置只读元组
 
 
-## 对象
+## 对象(Object)
 ``` ts
 // 写法一
 type MyObj = {
@@ -217,12 +217,7 @@ interface MyObj {
 
 const obj:MyObj = { x: 1, y: 1 };
 ```
-Type 和 interface的区别
-1. 使用范围不同：Type可以用来声明所有类型，包括非对象类型，而Interface只能用来声明对象类型。
-2. 声明对象时：Interface可以多次声明同一个接口，而Type定义的是别名，别名不能重复。
-3. 继承方面：Interface支持继承，Type不支持。
-4. 表示类型：Type可以表示非对象类型，Interface只能表示对象类型。
-5. 合并方面：Interface可以声明合并，Type不可以。
+
 
 ### 可选属性
 ``` ts
@@ -271,7 +266,7 @@ const obj:MyObj = {
 上面示例中，类型MyObj的属性名类型就采用了表达式形式，写在方括号里面。[property: string]的property表示属性名，这个是可以随便起的，它的类型是string，即属性名类型为string。也就是说，不管这个对象有多少属性，只要属性名为字符串，且属性值也是字符串，就符合这个类型声明。
 
 
-## 接口
+## 接口(Interface)
 
 > 接口是对值的名称和类型做检查
 
@@ -296,14 +291,120 @@ interface Person {
 
 ```typescript
 function getPerson(person: Person) {
-  console.log(`我叫 ${person.name}, 今年 ${person.age}, 来自 ${person.from}`);
+  console.log(`我叫 ${person.name}, 今年 ${person.age}, 来自 ${person.from}，${person.say('英语')}`);
 }
 
-let Tom = { name: "Tom", age: 23, from: "China" };
-getPerson(Tom); // 我叫 Tom, 今年23, 来自 China
+let Tom = { name: "Tom", age: 23, from: "China", say:(words: string)=> `我会说：${words}` };
+getPerson(Tom); // "我叫 Tom, 今年 23, 来自 China，我会说：英语" 
 ```
 
 函数接受的参数必须满足接口类型的要求。
+
+### 5种语法形式
+**对象属性**
+见定义
+**对象的属性索引**
+见定义
+**对象方法**
+见定义
+**函数**
+interface 也可以用来声明独立的函数。
+```ts
+interface Add {
+  (x:number, y:number): number;
+}
+
+const myAdd:Add = (x,y) => x + y;
+```
+**构造函数**
+interface 内部可以使用new关键字，表示构造函数。
+```ts
+interface ErrorConstructor {
+  new (message?: string): Error;
+}
+```
+上面示例中，接口ErrorConstructor内部有new命令，表示它是一个构造函数。
+ 
+
+### interface的继承
+**interface继承interface**
+interface 可以使用extends关键字，继承其他 interface。
+``` ts
+interface Shape {
+  name: string;
+}
+
+interface Circle extends Shape {
+  radius: number;
+}
+```
+上面示例中，Circle继承了Shape，所以Circle其实有两个属性name和radius。这时，Circle是子接口，Shape是父接口。
+
+extends关键字会从继承的接口里面拷贝属性类型，这样就不必书写重复的属性。
+
+**interface 继承 type**
+interface 可以继承type命令定义的对象类型。
+```ts
+type Country = {
+  name: string;
+  capital: string;
+}
+
+interface CountryWithPop extends Country {
+  population: number;
+}
+```
+上面示例中，CountryWithPop继承了type命令定义的Country对象，并且新增了一个population属性。
+
+注意，如果type命令定义的类型不是对象，interface 就无法继承。
+
+### 接口合并
+多个同名接口会合并成一个接口。
+``` ts
+interface Box {
+  height: number;
+  width: number;
+}
+
+interface Box {
+  length: number;
+}
+```
+上面示例中，两个Box接口会合并成一个接口，同时有height、width和length三个属性。
+
+这样的设计主要是为了兼容 JavaScript 的行为。JavaScript 开发者常常对全局对象或者外部库，添加自己的属性和方法。那么，只要使用 interface 给出这些自定义属性和方法的类型，就能自动跟原始的 interface 合并，使得扩展外部类型非常方便。
+
+举例来说，Web 网页开发经常会对windows对象和document对象添加自定义属性，但是 TypeScript 会报错，因为原始定义没有这些属性。解决方法就是把自定义属性写成 interface，合并进原始定义。
+``` ts
+interface Document {
+  foo: string;
+}
+
+document.foo = 'hello';
+```
+上面示例中，接口Document增加了一个自定义属性foo，从而就可以在document对象上使用自定义属性。
+
+同名接口合并时，同一个属性如果有多个类型声明，彼此不能有类型冲突。
+``` ts
+interface A {
+  a: number;
+}
+
+interface A {
+  a: string; // 报错
+}
+```
+### Type 和 interface的区别
+1. 使用范围不同：Type可以用来声明所有类型，包括非对象类型，而Interface只能用来声明对象类型。
+2. 声明对象时：Interface可以多次声明同一个接口，而Type定义的是别名，别名不能重复。
+3. 继承方面：Interface支持继承，Type不支持。
+4. 表示类型：Type可以表示非对象类型，Interface只能表示对象类型。
+5. 合并方面：Interface可以声明合并，Type不可以。
+6. type 可以扩展原始数据类型，interface 不行。
+7. this关键字只能用于interface。
+8. interface不能包含属性映射（mapping），type可以。
+
+综上所述，如果有复杂的类型运算，那么没有其他选择只能使用type；一般情况下，interface灵活性比较高，便于扩充类型或自动合并，建议优先使用。
 
 ## 类
 
