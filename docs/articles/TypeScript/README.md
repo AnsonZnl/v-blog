@@ -406,7 +406,7 @@ interface A {
 
 综上所述，如果有复杂的类型运算，那么没有其他选择只能使用type；一般情况下，interface灵活性比较高，便于扩充类型或自动合并，建议优先使用。
 
-## 类
+## 类(class)
 
 ### 定义
 
@@ -423,6 +423,8 @@ class Greeter {
 
 let greeter = new Greeter("world");
 ```
+
+### get set
 
 ### 继承
 
@@ -451,8 +453,20 @@ dog.bark();
 
 ### 抽象类
 
-- 在 `class`前加`abstract` 关键字，表示这是一个抽象类
-- 抽象类不能直接实例化，通常我们使用子类继承它，然后实例化子类
+TypeScript 允许在类的定义前面，**加上关键字abstract，表示该类不能被实例化，只能当作其他类的模板**。这种类就叫做“抽象类”（abstract class）。
+抽象类只能当作基类使用，用来在它的基础上定义子类。
+``` ts
+abstract class A {
+  id = 1;
+}
+class B extends A {
+  amount = 100;
+}
+const b = new B();
+b.id // 1
+b.amount // 100
+```
+上面示例中，A是一个抽象类，B是A的子类，继承了A的所有成员，并且可以定义自己的成员和实例化。
 
 ### 访问限定符
 
@@ -475,7 +489,7 @@ dog.bark();
 interface interfaceName { ... }
 ```
 
-- 类使用某个接口
+- 类使用某个接口，使用 implements 关键字
 
 ```ts
 class className implements InterfaceName{ ... }
