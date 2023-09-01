@@ -708,6 +708,26 @@ window.foo = "foo"; // index.ts:1:8 - error TS2339: Property 'foo' does not exis
 
 > 泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。
 
+## 写法
+
+## 函数使用
+上一节提到，function关键字定义的泛型函数，类型参数放在尖括号中，写在函数名后面。
+```ts
+function id<T>(arg:T):T {
+  return arg;
+}
+id<string>('1')// 1
+```
+那么对于变量形式定义的函数，泛型有下面两种写法。
+```ts
+// 写法一
+let myId:<T>(arg:T) => T = id;
+
+// 写法二
+let myId:{ <T>(arg:T): T } = id;
+```
+
+
 ### 类型断言 VS 泛型
 
 举个例子：
@@ -754,11 +774,7 @@ function identity<T>(value: T): T {
 console.log(identity<Number>(1)); // 1
 ```
 
-其中`<T>`就是传递的类型参数，用于特性函数调用的类型，
-
-![](https://user-gold-cdn.xitu.io/2020/6/10/1729b3d9774a21ac?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-类型也可以传递多个,使用`<T, U>`
+其中`<T>`就是传递的类型参数，用于特性函数调用的类型，类型也可以传递多个,使用`<T, U>`
 
 ```ts
 function identity<T, U>(value: T, message: U): T {
@@ -768,11 +784,7 @@ function identity<T, U>(value: T, message: U): T {
 console.log(identity<Number, string>(68, "Semlinker"));
 ```
 
-![](https://user-gold-cdn.xitu.io/2020/6/10/1729b3dbccc38ea7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-当然，现在的编译器足够聪明，调用的时候可以不传递类型，编译器可以自己识别的
-
-传递类型时，这个类型在函数中使用时的方法/属性，必须是存在的，或者继承自某个接口。
+当然，现在的编译器足够聪明，调用的时候可以不传递类型，编译器可以自己识别的，传递类型时，这个类型在函数中使用时的方法/属性，必须是存在的，或者继承自某个接口。
 
 比如不能使用 number 类型的数据获取 length，但是 array 却可以。
 
@@ -787,36 +799,110 @@ cosole.log(identity("Hello！")) // Hello!
 cosole.log(identity<number>([1,2,3]))// 1,2,3
 ```
 
-![](https://user-gold-cdn.xitu.io/2020/6/10/1729b3d9773f34ad?imageslim)
-
 ### 泛型接口
 
 可以为泛型提供一个用于约束参数/属性的类型的接口
 
+**函数**
 ```ts
-interface Identities<V, M> {
-  value: V;
-  message: M;
+// 定义一个泛型接口
+interface ListItem<T> {
+  value: T;
+  index: number;
 }
 
-function identity<T, U>(value: T, message: U): Identities<T, U> {
-  console.log(value + ": " + typeof value);
-  console.log(message + ": " + typeof message);
-  let identities: Identities<T, U> = {
-    value,
-    message,
-  };
-  return identities;
+// 定义一个泛型函数，该函数接受一个泛型参数 T
+function processList<T>(items: ListItem<T>[]): void {
+  items.forEach((item) => {
+    console.log(`type: ${typeof item.value} Index: ${item.index}, Value: ${item.value}`);
+  });
 }
-console.log(identity(68, "Semlinker"));
 
-/*
- * output
- * 68: number
- * Semlinker: string
- * {value: 68, message: "Semlinker"}
- */
+// 创建一个整数列表并处理
+const intList = [
+  { value: 1, index: 0 },
+  { value: 2, index: 1 },
+];
+processList<number>(intList);
+
+// 创建一个字符串列表并处理
+const strList = [
+  { value: "apple", index: 0 },
+  { value: "banana", index: 1 },
+];
+processList<string>(strList);
 ```
+在上面的例子中，我们首先定义了一个泛型接口 ListItem<T>，该接口具有两个属性：value 和 index，它们的类型是泛型参数 T。然后，我们定义了一个泛型函数 processList<T>，该函数接受一个类型为 ListItem<T>[] 的参数 items，并使用 forEach 方法遍历列表中的每个元素，并打印出每个元素的索引和值。
+
+接下来，我们创建了一个整数列表 intList 和一个字符串列表 strList，并将它们传递给 processList 函数进行处理。通过使用泛型参数 T，我们可以在同一个函数中处理不同类型的列表。
+
+**类**
+```ts
+// 定义一个泛型接口
+interface List<T> {
+  // 使用类型参数 T
+  length: number;
+  add(item: T): void;
+  remove(item: T): boolean;
+  get(index: number): T;
+}
+
+// 实现一个整数列表
+class IntList implements List<number> {
+  private items: number[] = [];
+
+  get length(): number {
+    return this.items.length;
+  }
+
+  add(item: number): void {
+    this.items.push(item);
+  }
+
+  remove(item: number): boolean {
+    const index = this.items.indexOf(item);
+    if (index !== -1) {
+      this.items.splice(index, 1);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  get(index: number): number {
+    return this.items[index];
+  }
+}
+
+// 定义一个字符串列表
+class StringList implements List<string> {
+  private items: string[] = [];
+
+  get length(): number {
+    return this.items.length;
+  }
+
+  add(item: string): void {
+    this.items.push(item);
+  }
+
+  remove(item: string): boolean {
+    const index = this.items.indexOf(item);
+    if (index !== -1) {
+      this.items.splice(index, 1);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  get(index: number): string {
+    return this.items[index];
+  }
+}
+```
+
+在上面的例子中，我们定义了一个泛型接口 List<T>，其中 T 是一个类型参数。该接口具有四个属性和方法，其中 item 的类型是 T。然后，我们分别实现了两个类 IntList 和 StringList，它们都实现了 List<T> 接口，并使用具体的类型 number 和 string 分别替代了类型参数 T。这样，我们就可以使用泛型接口来创建不同类型的列表，而不需要为每种类型编写重复的代码。
 
 ### 泛型类
 
