@@ -98,10 +98,10 @@ tsc xx.ts # 生成 xx.js 文件
 - Never
 
 ```ts
-function fn(x:string|number) {
-  if (typeof x === 'string') {
+function fn(x: string | number) {
+  if (typeof x === "string") {
     // ...
-  } else if (typeof x === 'number') {
+  } else if (typeof x === "number") {
     // ...
   } else {
     x; // never 类型
@@ -122,53 +122,53 @@ function fn(x:string|number) {
   };
   ```
 
-- Number 和 number的区别是，包装对象基础类型的区别。前者代表的是`new Number(1)`, 后者代表的是`1`, String、Boolean 也是一样
-- Object 和 object 区别也是一样，但是Object 包括Function、Array，而object 只表示`{}`
+- Number 和 number 的区别是，包装对象基础类型的区别。前者代表的是`new Number(1)`, 后者代表的是`1`, String、Boolean 也是一样
+- Object 和 object 区别也是一样，但是 Object 包括 Function、Array，而 object 只表示`{}`
 - 联合类型，反之有交叉类型，使用 & 链接
 
 ```ts
-
 // 联合类型
 let value: string | number = 666;
 
 // 交叉类型
-let obj:
-  { foo: string } &
-  { bar: string };
+let obj: { foo: string } & { bar: string };
 
 obj = {
-  foo: 'hello',
-  bar: 'world'
+  foo: "hello",
+  bar: "world",
 };
 ```
 
 - 顶级类型和底层类型
-  - 从集合论的角度看，any类型可以看成是所有其他类型的全集，包含了一切可能的类型。TypeScript 将这种类型称为“顶层类型”（top type），意为涵盖了所有下层。
-  - 在集合论上，unknown也可以视为所有其他类型（除了any）的全集，所以它和any一样，也属于 TypeScript 的顶层类型。
-  - TypeScript 就相应规定，任何类型都包含了never类型。因此，never类型是任何其他类型所共有的，TypeScript 把这种情况称为“底层类型”（bottom type）。
-  - 总之，TypeScript 有两个“顶层类型”（any和unknown），但是“底层类型”只有never唯一一个。
-
+  - 从集合论的角度看，any 类型可以看成是所有其他类型的全集，包含了一切可能的类型。TypeScript 将这种类型称为“顶层类型”（top type），意为涵盖了所有下层。
+  - 在集合论上，unknown 也可以视为所有其他类型（除了 any）的全集，所以它和 any 一样，也属于 TypeScript 的顶层类型。
+  - TypeScript 就相应规定，任何类型都包含了 never 类型。因此，never 类型是任何其他类型所共有的，TypeScript 把这种情况称为“底层类型”（bottom type）。
+  - 总之，TypeScript 有两个“顶层类型”（any 和 unknown），但是“底层类型”只有 never 唯一一个。
 
 ## 数组(Array)
-``` ts
+
+```ts
 // 普通类型
-const arr1:number[] = [1,2,3]
+const arr1: number[] = [1, 2, 3];
 
 // 联合类型
-const arr2:(string | number)[] = [1,'2']
+const arr2: (string | number)[] = [1, "2"];
 // 也可以写成
-const arr3: Array<number | string> = [1]
+const arr3: Array<number | string> = [1];
 
 // 任意类型
-const arr4: any[] = [false, 2, arr3]
+const arr4: any[] = [false, 2, arr3];
 
 // 只读数组
-const arr5: readonly number[] = [1,2,3]
+const arr5: readonly number[] = [1, 2, 3];
 
-arr5.push(4) // 报错：Property 'push' does not exist on type 'readonly number[]'.
+arr5.push(4); // 报错：Property 'push' does not exist on type 'readonly number[]'.
 
 // 多维数组 number 表示的是最底层数组成员的类型
-const multi: number[][] = [[1,2,3],[4,5,6]]
+const multi: number[][] = [
+  [1, 2, 3],
+  [4, 5, 6],
+];
 ```
 
 ## 元组(tuple)
@@ -176,38 +176,36 @@ const multi: number[][] = [[1,2,3],[4,5,6]]
 元组必须明确声明每个成员的类型
 
 数组于元组的区别
-``` ts
+
+```ts
 // 数组
-let a:number[] = [1];
+let a: number[] = [1];
 
 // 元组
-let t:[number] = [1];
-
+let t: [number] = [1];
 ```
 
- 使用扩展运算符（...），可以表示不限成员数量的元组。
-```ts
-type NamedNums = [
-  string,
-  ...number[]
-];
+使用扩展运算符（...），可以表示不限成员数量的元组。
 
-const a:NamedNums = ['A', 1, 2];
-const b:NamedNums = ['B', 1, 2, 3];
+```ts
+type NamedNums = [string, ...number[]];
+
+const a: NamedNums = ["A", 1, 2];
+const b: NamedNums = ["B", 1, 2, 3];
 ```
 
 可以通过 readonly 设置只读元组
 
-
 ## 对象(Object)
-``` ts
+
+```ts
 // 写法一
 type MyObj = {
-  x:number;
-  y:number;
+  x: number;
+  y: number;
 };
 
-const obj:MyObj = { x: 1, y: 1 };
+const obj: MyObj = { x: 1, y: 1 };
 
 // 写法二
 interface MyObj {
@@ -215,12 +213,12 @@ interface MyObj {
   y: number;
 }
 
-const obj:MyObj = { x: 1, y: 1 };
+const obj: MyObj = { x: 1, y: 1 };
 ```
 
-
 ### 可选属性
-``` ts
+
+```ts
 type User = {
   firstName: string;
   lastName?: string;
@@ -229,18 +227,19 @@ type User = {
 // 等同于
 type User = {
   firstName: string;
-  lastName?: string|undefined;
+  lastName?: string | undefined;
 };
 ```
 
 ### 只读属性
-``` ts
+
+```ts
 type Point = {
   readonly x: number;
   readonly y: number;
 };
 
-const p:Point = { x: 0, y: 0 };
+const p: Point = { x: 0, y: 0 };
 
 p.x = 100; // 报错
 ```
@@ -251,20 +250,19 @@ p.x = 100; // 报错
 
 索引类型里面，最常见的就是属性名的字符串索引。
 
-``` ts
+```ts
 type MyObj = {
-  [property: string]: string
+  [property: string]: string;
 };
 
-const obj:MyObj = {
-  foo: 'a',
-  bar: 'b',
-  baz: 'c',
+const obj: MyObj = {
+  foo: "a",
+  bar: "b",
+  baz: "c",
 };
 ```
 
-上面示例中，类型MyObj的属性名类型就采用了表达式形式，写在方括号里面。[property: string]的property表示属性名，这个是可以随便起的，它的类型是string，即属性名类型为string。也就是说，不管这个对象有多少属性，只要属性名为字符串，且属性值也是字符串，就符合这个类型声明。
-
+上面示例中，类型 MyObj 的属性名类型就采用了表达式形式，写在方括号里面。[property: string]的 property 表示属性名，这个是可以随便起的，它的类型是 string，即属性名类型为 string。也就是说，不管这个对象有多少属性，只要属性名为字符串，且属性值也是字符串，就符合这个类型声明。
 
 ## 接口(Interface)
 
@@ -291,16 +289,17 @@ interface Person {
 
 ```typescript
 function getPerson(person: Person) {
-  console.log(`我叫 ${person.name}, 今年 ${person.age}, 来自 ${person.from}，${person.say('英语')}`);
+  console.log(`我叫 ${person.name}, 今年 ${person.age}, 来自 ${person.from}，${person.say("英语")}`);
 }
 
-let Tom = { name: "Tom", age: 23, from: "China", say:(words: string)=> `我会说：${words}` };
-getPerson(Tom); // "我叫 Tom, 今年 23, 来自 China，我会说：英语" 
+let Tom = { name: "Tom", age: 23, from: "China", say: (words: string) => `我会说：${words}` };
+getPerson(Tom); // "我叫 Tom, 今年 23, 来自 China，我会说：英语"
 ```
 
 函数接受的参数必须满足接口类型的要求。
 
-### 5种语法形式
+### 5 种语法形式
+
 **对象属性**
 见定义
 **对象的属性索引**
@@ -309,27 +308,32 @@ getPerson(Tom); // "我叫 Tom, 今年 23, 来自 China，我会说：英语"
 见定义
 **函数**
 interface 也可以用来声明独立的函数。
+
 ```ts
 interface Add {
-  (x:number, y:number): number;
+  (x: number, y: number): number;
 }
 
-const myAdd:Add = (x,y) => x + y;
+const myAdd: Add = (x, y) => x + y;
 ```
+
 **构造函数**
-interface 内部可以使用new关键字，表示构造函数。
+interface 内部可以使用 new 关键字，表示构造函数。
+
 ```ts
 interface ErrorConstructor {
   new (message?: string): Error;
 }
 ```
-上面示例中，接口ErrorConstructor内部有new命令，表示它是一个构造函数。
- 
 
-### interface的继承
-**interface继承interface**
-interface 可以使用extends关键字，继承其他 interface。
-``` ts
+上面示例中，接口 ErrorConstructor 内部有 new 命令，表示它是一个构造函数。
+
+### interface 的继承
+
+**interface 继承 interface**
+interface 可以使用 extends 关键字，继承其他 interface。
+
+```ts
 interface Shape {
   name: string;
 }
@@ -338,29 +342,34 @@ interface Circle extends Shape {
   radius: number;
 }
 ```
-上面示例中，Circle继承了Shape，所以Circle其实有两个属性name和radius。这时，Circle是子接口，Shape是父接口。
 
-extends关键字会从继承的接口里面拷贝属性类型，这样就不必书写重复的属性。
+上面示例中，Circle 继承了 Shape，所以 Circle 其实有两个属性 name 和 radius。这时，Circle 是子接口，Shape 是父接口。
+
+extends 关键字会从继承的接口里面拷贝属性类型，这样就不必书写重复的属性。
 
 **interface 继承 type**
-interface 可以继承type命令定义的对象类型。
+interface 可以继承 type 命令定义的对象类型。
+
 ```ts
 type Country = {
   name: string;
   capital: string;
-}
+};
 
 interface CountryWithPop extends Country {
   population: number;
 }
 ```
-上面示例中，CountryWithPop继承了type命令定义的Country对象，并且新增了一个population属性。
 
-注意，如果type命令定义的类型不是对象，interface 就无法继承。
+上面示例中，CountryWithPop 继承了 type 命令定义的 Country 对象，并且新增了一个 population 属性。
+
+注意，如果 type 命令定义的类型不是对象，interface 就无法继承。
 
 ### 接口合并
+
 多个同名接口会合并成一个接口。
-``` ts
+
+```ts
 interface Box {
   height: number;
   width: number;
@@ -370,22 +379,26 @@ interface Box {
   length: number;
 }
 ```
-上面示例中，两个Box接口会合并成一个接口，同时有height、width和length三个属性。
+
+上面示例中，两个 Box 接口会合并成一个接口，同时有 height、width 和 length 三个属性。
 
 这样的设计主要是为了兼容 JavaScript 的行为。JavaScript 开发者常常对全局对象或者外部库，添加自己的属性和方法。那么，只要使用 interface 给出这些自定义属性和方法的类型，就能自动跟原始的 interface 合并，使得扩展外部类型非常方便。
 
-举例来说，Web 网页开发经常会对windows对象和document对象添加自定义属性，但是 TypeScript 会报错，因为原始定义没有这些属性。解决方法就是把自定义属性写成 interface，合并进原始定义。
-``` ts
+举例来说，Web 网页开发经常会对 windows 对象和 document 对象添加自定义属性，但是 TypeScript 会报错，因为原始定义没有这些属性。解决方法就是把自定义属性写成 interface，合并进原始定义。
+
+```ts
 interface Document {
   foo: string;
 }
 
-document.foo = 'hello';
+document.foo = "hello";
 ```
-上面示例中，接口Document增加了一个自定义属性foo，从而就可以在document对象上使用自定义属性。
+
+上面示例中，接口 Document 增加了一个自定义属性 foo，从而就可以在 document 对象上使用自定义属性。
 
 同名接口合并时，同一个属性如果有多个类型声明，彼此不能有类型冲突。
-``` ts
+
+```ts
 interface A {
   a: number;
 }
@@ -394,17 +407,19 @@ interface A {
   a: string; // 报错
 }
 ```
-### Type 和 interface的区别
-1. 使用范围不同：Type可以用来声明所有类型，包括非对象类型，而Interface只能用来声明对象类型。
-2. 声明对象时：Interface可以多次声明同一个接口，而Type定义的是别名，别名不能重复。
-3. 继承方面：Interface支持继承，Type不支持。
-4. 表示类型：Type可以表示非对象类型，Interface只能表示对象类型。
-5. 合并方面：Interface可以声明合并，Type不可以。
-6. type 可以扩展原始数据类型，interface 不行。
-7. this关键字只能用于interface。
-8. interface不能包含属性映射（mapping），type可以。
 
-综上所述，如果有复杂的类型运算，那么没有其他选择只能使用type；一般情况下，interface灵活性比较高，便于扩充类型或自动合并，建议优先使用。
+### Type 和 interface 的区别
+
+1. 使用范围不同：Type 可以用来声明所有类型，包括非对象类型，而 Interface 只能用来声明对象类型。
+2. 声明对象时：Interface 可以多次声明同一个接口，而 Type 定义的是别名，别名不能重复。
+3. 继承方面：Interface 支持继承，Type 不支持。
+4. 表示类型：Type 可以表示非对象类型，Interface 只能表示对象类型。
+5. 合并方面：Interface 可以声明合并，Type 不可以。
+6. type 可以扩展原始数据类型，interface 不行。
+7. this 关键字只能用于 interface。
+8. interface 不能包含属性映射（mapping），type 可以。
+
+综上所述，如果有复杂的类型运算，那么没有其他选择只能使用 type；一般情况下，interface 灵活性比较高，便于扩充类型或自动合并，建议优先使用。
 
 ## 类(class)
 
@@ -453,9 +468,10 @@ dog.bark();
 
 ### 抽象类
 
-TypeScript 允许在类的定义前面，**加上关键字abstract，表示该类不能被实例化，只能当作其他类的模板**。这种类就叫做“抽象类”（abstract class）。
+TypeScript 允许在类的定义前面，**加上关键字 abstract，表示该类不能被实例化，只能当作其他类的模板**。这种类就叫做“抽象类”（abstract class）。
 抽象类只能当作基类使用，用来在它的基础上定义子类。
-``` ts
+
+```ts
 abstract class A {
   id = 1;
 }
@@ -463,10 +479,11 @@ class B extends A {
   amount = 100;
 }
 const b = new B();
-b.id // 1
-b.amount // 100
+b.id; // 1
+b.amount; // 100
 ```
-上面示例中，A是一个抽象类，B是A的子类，继承了A的所有成员，并且可以定义自己的成员和实例化。
+
+上面示例中，A 是一个抽象类，B 是 A 的子类，继承了 A 的所有成员，并且可以定义自己的成员和实例化。
 
 ### 访问限定符
 
@@ -534,22 +551,19 @@ console.log(result); // 24
 - `...rest: number[]`： 接受剩余参数
 
 ### 函数的类型
-``` ts
-type addType = (num1: number, num2: number)=> number
-// 定义函数的入参和返回值的类型。
-const add: addType = function (num1, num2){
-  return num1 + num2
-}
 
+```ts
+type addType = (num1: number, num2: number) => number;
+// 定义函数的入参和返回值的类型。
+const add: addType = function (num1, num2) {
+  return num1 + num2;
+};
 ```
 
 ### 函数表达式
 
 ```ts
-let mySum: (x: number, y: number) => number = function(
-  x: number,
-  y: number
-): number {
+let mySum: (x: number, y: number) => number = function (x: number, y: number): number {
   return x + y;
 };
 let result = mySum(1, 2);
@@ -587,18 +601,9 @@ console.log(result); //3
 ```ts
 function reverse(x: number | string): number | string {
   if (typeof x === "number") {
-    return Number(
-      x
-        .toString()
-        .split("")
-        .reverse()
-        .join("")
-    );
+    return Number(x.toString().split("").reverse().join(""));
   } else if (typeof x === "string") {
-    return x
-      .split("")
-      .reverse()
-      .join("");
+    return x.split("").reverse().join("");
   }
 }
 ```
@@ -612,18 +617,9 @@ function reverse(x: number): number;
 function reverse(x: string): string;
 function reverse(x: number | string): number | string {
   if (typeof x === "number") {
-    return Number(
-      x
-        .toString()
-        .split("")
-        .reverse()
-        .join("")
-    );
+    return Number(x.toString().split("").reverse().join(""));
   } else if (typeof x === "string") {
-    return x
-      .split("")
-      .reverse()
-      .join("");
+    return x.split("").reverse().join("");
   }
 }
 ```
@@ -708,61 +704,7 @@ window.foo = "foo"; // index.ts:1:8 - error TS2339: Property 'foo' does not exis
 
 > 泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。
 
-## 写法
-
-## 函数使用
-上一节提到，function关键字定义的泛型函数，类型参数放在尖括号中，写在函数名后面。
-```ts
-function id<T>(arg:T):T {
-  return arg;
-}
-id<string>('1')// 1
-```
-那么对于变量形式定义的函数，泛型有下面两种写法。
-```ts
-// 写法一
-let myId:<T>(arg:T) => T = id;
-
-// 写法二
-let myId:{ <T>(arg:T): T } = id;
-```
-
-
-### 类型断言 VS 泛型
-
-举个例子：
-
-```ts
-function getCacheData(key: string): any {
-  return (window as any).cache[key];
-}
-
-interface Cat {
-  name: string;
-  run(): void;
-}
-
-const tom = getCacheData("tom") as Cat;
-tom.run();
-```
-
-还可以使用另外一种方法来解决这个问题
-
-```ts
-function getCacheData<T>(key: string): T {
-  return (window as any).cache[key];
-}
-
-interface Cat {
-  name: string;
-  run(): void;
-}
-
-const tom = getCacheData<Cat>("tom");
-tom.run();
-```
-
-通过给 `getCacheData` 函数添加了一个泛型 `<T>`，我们可以更加规范的实现对 `getCacheData` 返回值的约束，这也同时去除掉了代码中的 `any`，是最优的一个解决方案。
+![image.png](https://s2.loli.net/2023/09/01/ltALJ7RrghwVo91.png)
 
 ### 使用
 
@@ -804,6 +746,7 @@ cosole.log(identity<number>([1,2,3]))// 1,2,3
 可以为泛型提供一个用于约束参数/属性的类型的接口
 
 **函数**
+
 ```ts
 // 定义一个泛型接口
 interface ListItem<T> {
@@ -832,11 +775,13 @@ const strList = [
 ];
 processList<string>(strList);
 ```
+
 在上面的例子中，我们首先定义了一个泛型接口 ListItem<T>，该接口具有两个属性：value 和 index，它们的类型是泛型参数 T。然后，我们定义了一个泛型函数 processList<T>，该函数接受一个类型为 ListItem<T>[] 的参数 items，并使用 forEach 方法遍历列表中的每个元素，并打印出每个元素的索引和值。
 
 接下来，我们创建了一个整数列表 intList 和一个字符串列表 strList，并将它们传递给 processList 函数进行处理。通过使用泛型参数 T，我们可以在同一个函数中处理不同类型的列表。
 
 **类**
+
 ```ts
 // 定义一个泛型接口
 interface List<T> {
@@ -938,6 +883,15 @@ console.log(myStringClass.getIdentity()); // Semlinker!
 - `IdentityClass` 类实现了 `GenericInterface<T>`，而此时 T 表示 `Number` 类型，因此等价于该类实现了 `GenericInterface<Number>` 接口；
 - 而对于 `GenericInterface <U>` 接口来说，类型变量 U 也变成了 `Number`。这里我有意使用不同的变量名，以表明类型值沿链向上传播，且与变量名无关。
 
+### 类型别名的泛型写法
+
+```ts
+type Container<T> = { value: T };
+
+const a: Container<number> = { value: 0 };
+const b: Container<string> = { value: "b" };
+```
+
 ### 泛型约束
 
 **确保属性存在**
@@ -969,20 +923,68 @@ function identity<T extends Length>(arg: T): T {
 **检查对象上的键是否存在**
 先认识 keyof 操作符
 
+### 类型断言 VS 泛型
+
+举个例子：
+
+```ts
+function getCacheData(key: string): any {
+  return (window as any).cache[key];
+}
+
+interface Cat {
+  name: string;
+  run(): void;
+}
+
+const tom = getCacheData("tom") as Cat;
+tom.run();
+```
+
+还可以使用另外一种方法来解决这个问题
+
+```ts
+function getCacheData<T>(key: string): T {
+  return (window as any).cache[key];
+}
+
+interface Cat {
+  name: string;
+  run(): void;
+}
+
+const tom = getCacheData<Cat>("tom");
+tom.run();
+```
+
+通过给 `getCacheData` 函数添加了一个泛型 `<T>`，我们可以更加规范的实现对 `getCacheData` 返回值的约束，这也同时去除掉了代码中的 `any`，是最优的一个解决方案。
+
+### 使用注意点
+
+1. 尽量少用泛型
+2. 类型参数越少越好
+3. 类型参数需要出现两次
+4. 泛型可以嵌套
+
 ### 泛型参考文章
 
 - [掘金-一文读懂 TypeScript 泛型及应用（ 7.8K 字）](https://juejin.im/post/5ee00fca51882536846781ee)
 
 ## 其他
-### 定义window
-``` ts
-// 宿主环境的类型TS提供了
-let w:Window = window
-let ele:HTMLElement = document.createElement('div')
-ele.addEventListener('click',function(e:MouseEvent){
-    w.alert(1)
-},false)
 
+### 定义 window
+
+```ts
+// 宿主环境的类型TS提供了
+let w: Window = window;
+let ele: HTMLElement = document.createElement("div");
+ele.addEventListener(
+  "click",
+  function (e: MouseEvent) {
+    w.alert(1);
+  },
+  false
+);
 ```
 
 ## tsconfig.json
