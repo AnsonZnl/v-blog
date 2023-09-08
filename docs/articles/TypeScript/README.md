@@ -741,6 +741,24 @@ window.foo = "foo"; // index.ts:1:8 - error TS2339: Property 'foo' does not exis
 - `any` 可以被断言为任何类型
 - 要使得 A 能够被断言为 B，只需要 A 兼容 B 或 B 兼容 A 即可
 
+### 非空断言
+
+可以使用非空断言操作符(!)来告诉编译器你确信表达式将不会为空。下面是一个例子：
+
+```ts
+let str: string | null = getSomeString();
+let length = str.length;
+```
+
+上面代码在 ts 中会报错，因为 str 可能为空，为了使这行代码不报错，当你确定 str 肯定有 length 属性时，可以使用非空断言。
+
+```ts
+let str: string | null = getSomeString();
+let length = str!.length;
+```
+
+这样就不会报错了，但是需要自己确保 str 有 length 属性。
+
 ## 泛型
 
 > 泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。
