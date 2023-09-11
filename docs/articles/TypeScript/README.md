@@ -835,7 +835,7 @@ const strList = [
 processList<string>(strList);
 ```
 
-在上面的例子中，我们首先定义了一个泛型接口 ListItem<T>，该接口具有两个属性：value 和 index，它们的类型是泛型参数 T。然后，我们定义了一个泛型函数 processList<T>，该函数接受一个类型为 ListItem<T>[] 的参数 items，并使用 forEach 方法遍历列表中的每个元素，并打印出每个元素的索引和值。
+在上面的例子中，我们首先定义了一个泛型接口 ListItem`<T>`，该接口具有两个属性：value 和 index，它们的类型是泛型参数 T。然后，我们定义了一个泛型函数 processList`<T>`，该函数接受一个类型为 ListItem`<T>[]` 的参数 items，并使用 forEach 方法遍历列表中的每个元素，并打印出每个元素的索引和值。
 
 接下来，我们创建了一个整数列表 intList 和一个字符串列表 strList，并将它们传递给 processList 函数进行处理。通过使用泛型参数 T，我们可以在同一个函数中处理不同类型的列表。
 
@@ -1028,6 +1028,10 @@ tom.run();
 ### 泛型参考文章
 
 - [掘金-一文读懂 TypeScript 泛型及应用（ 7.8K 字）](https://juejin.im/post/5ee00fca51882536846781ee)
+
+## 模块
+
+任何包含 import 或 export 语句的文件，就是一个模块（module）。
 
 ## 其他
 
