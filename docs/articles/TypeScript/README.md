@@ -1033,6 +1033,26 @@ tom.run();
 
 任何包含 import 或 export 语句的文件，就是一个模块（module）。
 
+导入导出的语法和 ES6 一致，使用`export` 导出，使用`import`导入，ES6 支持的 TS 都支持。
+
+### 导入 type 和 interface
+
+```ts
+// a.ts export
+export interface A {
+  foo: string;
+}
+export type B = String;
+export const C = 123;
+// b.ts import
+import { type A, type B, C } from "./aa";
+const a: A = { foo: "12" };
+const b = "34";
+console.log(a, b, C);
+```
+
+## 装饰器
+
 ## 其他
 
 ### 定义 window
