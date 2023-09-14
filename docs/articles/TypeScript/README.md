@@ -1121,9 +1121,170 @@ function decorator(value: any, context: ClassMethodDecoratorContext) {
 
 ### 装饰类
 
+类装饰器的类型描述如下。
+
+```ts
+type ClassDecorator = (
+  value: Function,
+  context: {
+    kind: "class";
+    name: string | undefined;
+    addInitializer(initializer: () => void): void;
+  }
+) => Function | void;
+```
+
+类装饰器接受两个参数：`value`（当前类本身）和 `context`（上下文对象）。其中，`context` 对象的 `kind` 属性固定为字符串 `class`。
+
+类装饰器一般用来对类进行操作，可以不返回任何值，请看下面的例子。
+
+```ts
+function Greeter(value: any, context: ClassDecoratorContext) {
+  if (context.kind === "class") {
+    value.prototype.greet = function () {
+      console.log("你好");
+    };
+  }
+}
+
+@Greeter
+class User {
+  [x: string]: any;
+}
+
+let u: User = new User();
+u.greet(); // "你好"
+```
+
+- 类装饰器可以返回一个函数，替代当前类的构造方法。
+- 类装饰器也可以返回一个新的类，替代原来所装饰的类。
+
 ### 装饰类的方法
 
+方法装饰器用来装饰类的方法（method）。它的类型描述如下。
+
+```ts
+type ClassMethodDecorator = (
+  value: Function,
+  context: {
+    kind: "method";
+    name: string | symbol;
+    static: boolean;
+    private: boolean;
+    access: { get: () => unknown };
+    addInitializer(initializer: () => void): void;
+  }
+) => Function | void;
+```
+
+根据上面的类型，方法装饰器是一个函数，接受两个参数：`value` 和 `context`。
+
+参数 `value` 是方法本身，参数 `context` 是上下文对象，有以下属性。
+
+- kind：值固定为字符串 method，表示当前为方法装饰器。
+- name：所装饰的方法名，类型为字符串或 Symbol 值。
+- static：布尔值，表示是否为静态方法。该属性为只读属性。
+- private：布尔值，表示是否为私有方法。该属性为只读属性。
+- access：对象，包含了方法的存取器，但是只有 get()方法用来取值，没有 set()方法进行赋值。
+- addInitializer()：为方法增加初始化函数。
+
+方法装饰器会改写类的原始方法，实质等同于下面的操作。
+
+```ts
+function trace(decoratedMethod) {
+  // ...
+}
+
+class C {
+  @trace
+  toString() {
+    return "C";
+  }
+}
+
+// `@trace` 等同于
+// C.prototype.toString = trace(C.prototype.toString);
+```
+
+上面示例中，@trace 是方法 toString()的装饰器，它的效果等同于最后一行对 toString()的改写。
+
+- 如果方法装饰器返回一个新的函数，就会替代所装饰的原始函数。
+
+```ts
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  @log
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+
+function log(originalMethod: any, context: ClassMethodDecoratorContext) {
+  const methodName = String(context.name);
+
+  function replacementMethod(this: any, ...args: any[]) {
+    console.log(`LOG: Entering method '${methodName}'.`);
+    const result = originalMethod.call(this, ...args);
+    console.log(`LOG: Exiting method '${methodName}'.`);
+    return result;
+  }
+
+  return replacementMethod;
+}
+
+const person = new Person("张三");
+person.greet();
+// "LOG: Entering method 'greet'."
+// "Hello, my name is 张三."
+// "LOG: Exiting method 'greet'."
+```
+
 ### 装饰类的属性
+
+属性装饰器用来装饰定义在类顶部的属性（field）。它的类型描述如下。
+
+```ts
+type ClassFieldDecorator = (
+  value: undefined,
+  context: {
+    kind: "field";
+    name: string | symbol;
+    static: boolean;
+    private: boolean;
+    access: { get: () => unknown; set: (value: unknown) => void };
+    addInitializer(initializer: () => void): void;
+  }
+) => (initialValue: unknown) => unknown | void;
+```
+
+注意，装饰器的第一个参数 value 的类型是 undefined，这意味着这个参数实际上没用的，装饰器不能从 value 获取所装饰属性的值。另外，第二个参数 context 对象的 kind 属性的值为字符串 field，而不是“property”或“attribute”，这一点是需要注意的。
+
+属性装饰器要么不返回值，要么返回一个函数，该函数会自动执行，用来对所装饰属性进行初始化。该函数的参数是所装饰属性的初始值，该函数的返回值是该属性的最终值。
+
+```ts
+function logged(value: any, context: any) {
+  const { kind, name } = context;
+  if (kind === "field") {
+    return function (initialValue) {
+      console.log(`initializing ${name} with value ${initialValue}`);
+      return initialValue;
+    };
+  }
+}
+
+class Color {
+  @logged name = "green";
+}
+
+const color = new Color();
+// "initializing name with value green"
+```
+
+上面示例中，属性装饰器@logged 装饰属性 name。@logged 的返回值是一个函数，该函数用来对属性 name 进行初始化，它的参数 initialValue 就是属性 name 的初始值 green。新建实例对象 color 时，该函数会自动执行。
 
 ### 装饰 getter、setter
 
