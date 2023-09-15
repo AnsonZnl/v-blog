@@ -1286,7 +1286,135 @@ const color = new Color();
 
 上面示例中，属性装饰器@logged 装饰属性 name。@logged 的返回值是一个函数，该函数用来对属性 name 进行初始化，它的参数 initialValue 就是属性 name 的初始值 green。新建实例对象 color 时，该函数会自动执行。
 
+属性装饰器的返回值函数，可以用来更改属性的初始值。
+
+```ts
+function twice(initialValue: any, context: any) {
+  return (initialValue: number) => initialValue * 2;
+}
+
+class C {
+  @twice
+  field: number = 3;
+}
+
+const inst = new C();
+console.log(inst.field);
+// 6
+```
+
+上面示例中，属性装饰器`@twice` 返回一个函数，该函数的返回值是属性 field 的初始值乘以 2，所以属性 field 的最终值是 6。
+
 ### 装饰 getter、setter
+
+用的不多 略
+
+### accessor 装饰器
+
+用的不多 略
+
+### 装饰器的执行顺序
+
+装饰器的执行分为两个阶段。
+
+- （1）评估（evaluation）：计算@符号后面的表达式的值，得到的应该是函数。
+
+- （2）应用（application）：将评估装饰器后得到的函数，应用于所装饰对象。
+
+也就是说，装饰器的执行顺序是，先评估所有装饰器表达式的值，再将其应用于当前类。
+
+应用装饰器时，顺序依次为方法装饰器和属性装饰器，然后是类装饰器。
+
+请看下面的例子。
+
+```ts
+function d(str: string) {
+  console.log(`评估 @d(): ${str}`);
+  return (value: any, context: any) => console.log(`应用 @d(): ${str}`);
+}
+
+function log(str: string) {
+  console.log(str);
+  return str;
+}
+
+@d("类装饰器") //1 9
+class T {
+  @d("静态属性装饰器") //2 7
+  static staticField = log("静态属性值");
+
+  @d("原型方法") //3 6
+  [log("计算方法名")]() {} // 4
+
+  @d("实例属性") // 5 8
+  instanceField = log("实例属性值"); // 10
+}
+```
+
+上面示例中，类 T 有四种装饰器：类装饰器、静态属性装饰器、方法装饰器、属性装饰器。
+
+它的运行结果如下。
+
+```ts
+// "评估 @d(): 类装饰器"
+// "评估 @d(): 静态属性装饰器"
+// "评估 @d(): 原型方法"
+// "计算方法名"
+// "评估 @d(): 实例属性"
+// "应用 @d(): 原型方法"
+// "应用 @d(): 静态属性装饰器"
+// "应用 @d(): 实例属性"
+// "应用 @d(): 类装饰器"
+// "静态属性值"
+```
+
+可以看到，类载入的时候，代码按照以下顺序执行。
+
+- （1）装饰器评估：这一步计算装饰器的值，首先是类装饰器，然后是类内部的装饰器，按照它们出现的顺序。
+
+注意，如果属性名或方法名是计算值（本例是“计算方法名”），则它们在对应的装饰器评估之后，也会进行自身的评估。
+
+- （2）装饰器应用：实际执行装饰器函数，将它们与对应的方法和属性进行结合。
+
+原型方法的装饰器首先应用，然后是静态属性和静态方法装饰器，接下来是实例属性装饰器，最后是类装饰器。
+
+注意，“实例属性值”在类初始化的阶段并不执行，直到类实例化时才会执行。
+
+如果一个方法或属性有多个装饰器，则内层的装饰器先执行，外层的装饰器后执行。
+
+```ts
+function bound() {
+  return (value: any, context: any) => {
+    console.log("bound");
+  };
+}
+function log() {
+  return (value: any, context: any) => {
+    console.log("log");
+  };
+}
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  @bound()
+  @log()
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+const coco = new Person("coco");
+const cocoName = coco.greet();
+/*
+[LOG]: "log" 
+[LOG]: "bound" 
+[LOG]: "Hello, my name is coco."  
+*/
+```
+
+上面示例中，greet()有两个装饰器，内层的@log 先执行，外层的@bound 针对得到的结果再执行。
 
 ## 其他
 
