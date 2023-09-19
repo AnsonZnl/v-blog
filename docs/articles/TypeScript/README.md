@@ -1431,26 +1431,109 @@ declare 关键字可以描述以下类型。
 - 函数（function）
 - 模块（module）
 - 命名空间（namespace）
-- declare 关键字的重要特点是，它只是通知编译器某个类型是存在的，不用给出具体实现。比如，只描述函数的类型，不给出函数的实现，如果不使用 declare，这是做不到的。
+- declare 关键字的重要特点是，**它只是通知编译器某个类型是存在的，不用给出具体实现**。比如，只描述函数的类型，不给出函数的实现，如果不使用 declare，这是做不到的。
 
 declare 只能用来描述已经存在的变量和数据结构，不能用来声明新的变量和数据结构。另外，所有 declare 语句都不会出现在编译后的文件里面。
 
-## 其他
-
-### 定义 window
+declare 可以用于 variable、function、class、module、namespace、global、enum 和外部的 module 类型声明文件
 
 ```ts
-// 宿主环境的类型TS提供了
-let w: Window = window;
-let ele: HTMLElement = document.createElement("div");
-ele.addEventListener(
-  "click",
-  function (e: MouseEvent) {
-    w.alert(1);
-  },
-  false
-);
+// declare 关键字可以给出外部变量的类型描述。
+declare let x: number;
+
+// declare 关键字可以给出外部函数的类型描述。
+declare function sayHello(name: string): void;
+sayHello("张三");
+
+// declare 给出 class 类型描述的写法如下。
+declare class Animal {
+  constructor(name: string);
+  eat(): void;
+  sleep(): void;
+}
+
+// 如果想把变量、函数、类组织在一起，可以将 declare 与 module 或 namespace 一起使用。
+declare namespace AnimalLib {
+  class Animal {
+    constructor(name: string);
+    eat(): void;
+    sleep(): void;
+  }
+  type Animals = "Fish" | "Dog";
+} // 或者 declare module AnimalLib { class Animal { constructor(name:string); eat(): void; sleep(): void; } type Animals = 'Fish' | 'Dog'; }
+
+// 如果要为 JavaScript 引擎的原生对象添加属性和方法，可以使用declare global {}语法。
+export {};
+declare global {
+  interface window {
+    myAppConfig: object;
+  }
+}
+const config = window.myAppConfig;
+
+// declare 关键字给出 enum 类型描述的例子如下，下面的写法都是允许的。
+declare enum E1 {
+  A,
+  B,
+}
+
+declare enum E2 {
+  A = 0,
+  B = 1,
+}
+
+declare const enum E3 {
+  A,
+  B,
+}
+
+declare const enum E4 {
+  A = 0,
+  B = 1,
+}
 ```
+
+### 如何将 declare module 用于类型声明文件呢
+
+在 TypeScript 中，你可以使用 `declare module` 来创建类型声明文件，以补充或扩展已有的 JavaScript 模块或库的类型信息。以下是如何使用 `declare module` 创建类型声明文件的一般步骤：
+
+1. 创建一个新的 `.d.ts` 文件（类型声明文件），文件名可以与被声明的模块或库的文件名相同，只是后缀为 `.d.ts`。
+
+2. 在类型声明文件中使用 `declare module` 来声明目标模块或库的类型。
+
+3. 在 `declare module` 中使用 `import` 或 `export` 来引入或导出需要的类型、接口、类、枚举等定义。
+
+以下是一个示例，假设你要为一个名为 `my-module` 的 JavaScript 模块创建类型声明文件：
+
+```typescript
+// my-module.d.ts
+
+// 使用 declare module 来声明模块
+declare module "my-module" {
+  // 在模块内部定义需要的类型、接口等
+  interface MyModuleOptions {
+    option1: string;
+    option2: number;
+  }
+
+  // 你还可以导出函数、类、枚举等
+  export function myFunction(param: string): void;
+  export class MyClass {
+    constructor(name: string);
+    sayHello(): string;
+  }
+
+  // 如果模块本身导出了一些内容，可以使用 import 语句来引入并导出
+  import SomeType from "other-module";
+  export { SomeType };
+}
+```
+
+在这个示例中，我们创建了一个类型声明文件 `my-module.d.ts`，并使用 `declare module 'my-module'` 来声明模块 `my-module` 的类型信息。然后，在模块内部，我们定义了接口 `MyModuleOptions`、函数 `myFunction`、类 `MyClass`，并使用 `export` 将它们导出。还可以使用 `import` 语句来引入来自其他模块的类型，并导出它们。
+
+接下来，当你在项目中导入 `my-module` 时，TypeScript 将能够识别和验证模块的类型信息，以提供更好的类型检查和智能提示。
+
+确保将类型声明文件放在 TypeScript 项目中的正确位置，并且项目的 `tsconfig.json` 中包含了相应的配置来识别和处理类型声明文件。
 
 ## tsconfig.json
 
