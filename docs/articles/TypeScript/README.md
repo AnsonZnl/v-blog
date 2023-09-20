@@ -1535,6 +1535,45 @@ declare module "my-module" {
 
 确保将类型声明文件放在 TypeScript 项目中的正确位置，并且项目的 `tsconfig.json` 中包含了相应的配置来识别和处理类型声明文件。
 
+## d.ts 类型声明文件
+
+单独使用的模块，一般会同时提供一个单独的类型声明文件（declaration file），把本模块的外部接口的所有类型都写在这个文件里面，便于模块使用者了解接口，也便于编译器检查使用者的用法是否正确。
+
+类型声明文件里面只有类型代码，没有具体的代码实现。它的文件名一般为`[模块名].d.ts`的形式，其中的 d 表示 declaration（声明）。
+
+举例来说，有一个模块的代码如下。
+
+```ts
+const maxInterval = 12;
+
+function getArrayLength(arr) {
+  return arr.length;
+}
+
+module.exports = {
+  getArrayLength,
+  maxInterval,
+};
+```
+
+它的类型声明文件可以写成下面这样。
+
+```ts
+export function getArrayLength(arr: any[]): number;
+export const maxInterval: 12;
+```
+
+类型声明文件也可以使用 `export =`命令，输出对外接口。下面是 `moment` 模块的类型声明文件的例子。
+
+```ts
+declare module "moment" {
+  function moment(): any;
+  export = moment;
+}
+```
+
+上面示例中，模块 `moment` 内部有一个函数 `moment()`，而 `export =`表示 `module.exports` 输出的就是这个函数。
+
 ## tsconfig.json
 
 ```json
