@@ -587,6 +587,11 @@ module.exports = {
               link: "/articles/Performance/微信小程序性能优化.md",
             },
           ],
+        }, 
+        { 
+          text: "Java", 
+          link: "/articles/Java/", 
+          children: [], 
         },
         {
           text: "安全",
