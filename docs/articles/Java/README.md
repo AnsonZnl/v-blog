@@ -3,7 +3,7 @@
 **学习资料**
 
 - [Java 教程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1252599548343744)
-- [java从中级升到高级开发的个人全部总结](https://github.com/tangweicz/upgrade-to-high-high-high-level-java-coder)
+- [Java从中级升到高级开发的个人全部总结](https://github.com/tangweicz/upgrade-to-high-high-high-level-java-coder)
 
 ## Java 的主要数据类型：
 
