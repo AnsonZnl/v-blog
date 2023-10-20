@@ -1,8 +1,7 @@
 module.exports = {
   title: "九旬的博客",
   description: "种一棵树最好的时间在十年前，其次是现在。",
-  keywords:
-    "前端开发，全栈开发，个人博客，JavaScript、Vue、React、ReactNative、Node，微信小程序,张宁乐，张宁乐的博客，九旬，九旬的博客，WEB前端技术博客，技术，博客",
+  keywords: "前端开发，全栈开发，个人博客，JavaScript、Vue、React、ReactNative、Node，微信小程序,张宁乐，张宁乐的博客，九旬，九旬的博客，WEB前端技术博客，技术，博客",
   head: [
     [
       "link",
@@ -10,6 +9,17 @@ module.exports = {
         rel: "icon",
         href: "/img/logo.ico",
       },
+    ],
+    [
+      "script",
+      {},
+      `var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3cd236a05c52c534bbcc794ec45f52a3";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();`,
     ],
   ],
   base: "/",
@@ -587,11 +597,11 @@ module.exports = {
               link: "/articles/Performance/微信小程序性能优化.md",
             },
           ],
-        }, 
-        { 
-          text: "Java", 
-          link: "/articles/Java/", 
-          children: [], 
+        },
+        {
+          text: "Java",
+          link: "/articles/Java/",
+          children: [],
         },
         {
           text: "安全",
