@@ -108,8 +108,8 @@ module.exports = {
               link: "./学会如何工作和学习技术一样重要.md",
             },
             {
-              text: "我的颈椎病腰突康复指南",
-              link: "./我的颈椎病腰突康复指南.md",
+              text: "我的颈椎病腰突康复历程",
+              link: "./我的颈椎病腰突康复历程.md",
             },
           ],
         },
@@ -483,6 +483,18 @@ module.exports = {
           text: "Node",
           link: "/articles/Node/",
           children: [
+            {
+              text: "为了方便写文章，我开发了一个目录树🌲生成器",
+              link: "/articles/Next/为了方便写文章，我开发了一个目录树🌲生成器.md",
+            },
+            {
+              text: "如何将Next.js部署到Github Pages",
+              link: "/articles/Next/如何将Next.js部署到GithubPages.md",
+            },
+            {
+              text: "使用Next 13、Vercel、Prisma开发的全栈 TodoList",
+              link: "/articles/Next/使用Next13、Vercel、Prisma开发的全栈TodoList.md",
+            },
             {
               text: "初试MongoDB数据库",
               link: "/articles/Node/初试MongoDB数据库.md",
