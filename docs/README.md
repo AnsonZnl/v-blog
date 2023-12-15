@@ -18,6 +18,7 @@ footer: MIT Licensed | Copyright © 2018-2023 AnsonZnl
 
 ## 最新文章
 
+- 2023 年 12 月 15 日 - [使用 PM2 部署 Next 服务](/articles/Next/使用PM2部署Next服务)
 - 2023 年 10 月 27 日 - [我的颈椎病腰突康复历程](/life-essay/我的颈椎病腰突康复历程.md)
 - 2023 年 10 月 18 日 - [为了方便写文章，我开发了一个目录树 🌲 生成器](/articles/Next/为了方便写文章，我开发了一个目录树🌲生成器.md)
 - 2023 年 09 月 17 日 - [如何将 Next.js 部署到 Github Pages](/articles/Next/如何将Next.js部署到GithubPages.md)
