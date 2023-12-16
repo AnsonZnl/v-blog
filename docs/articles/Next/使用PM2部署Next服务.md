@@ -87,10 +87,14 @@ http://123.123.123.123:3000， run 起来后，会自动打开浏览器，然后
 
 ## 常用命令
 
-### 登陆
+### 登陆登出
 
 ```
 ssh username@ip
+```
+
+```
+exit
 ```
 
 ### 查询端口并关闭：
@@ -125,15 +129,15 @@ sudo lsof -i :端口号
 PM2 是一个流行的进程管理器，它可以帮助你管理和维护在服务器上运行的应用程序。
 以下是一些常用的 PM2 命令：
 
-pm2 start <app_name>：启动一个应用程序。
-pm2 restart <app_name>：重启一个应用程序。
-pm2 stop <app_name>：停止一个应用程序。
-pm2 delete <app_name>：删除一个应用程序。
-pm2 show <app_name>：展示一个应用程序的详情。
-pm2 list：列出所有正在运行的应用程序。
-pm2 monit：监视所有应用程序的 CPU 和内存使用情况。
-pm2 logs：显示所有应用程序的日志。
-pm2 flush：清空所有应用程序的日志。
-pm2 save：保存当前应用程序列表。
-pm2 resurrect：重新加载保存的应用程序列表。
-pm2 update：保存当前进程，杀死 PM2，并恢复进程。
+- pm2 start <app_name>：启动一个应用程序。
+- pm2 restart <app_name>：重启一个应用程序。
+- pm2 stop <app_name>：停止一个应用程序。
+- pm2 delete <app_name>：删除一个应用程序。
+- pm2 show <app_name>：展示一个应用程序的详情。
+- pm2 list：列出所有正在运行的应用程序。
+- pm2 monit：监视所有应用程序的 CPU 和内存使用情况。
+- pm2 logs：显示所有应用程序的日志。
+- pm2 flush：清空所有应用程序的日志。
+- pm2 save：保存当前应用程序列表。
+- pm2 resurrect：重新加载保存的应用程序列表。
+- pm2 update：保存当前进程，杀死 PM2，并恢复进程。
