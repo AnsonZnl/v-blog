@@ -71,6 +71,12 @@ npm run build
 pm2 start --name yourappname npm -- start
 ```
 
+也可以指定端口启动：
+
+```
+pm2 start npm --name "yourappname" -- start -- -p 8000
+```
+
 启动成功后，使用命令查看服务状态：
 
 ```
