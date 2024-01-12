@@ -72,10 +72,6 @@ module.exports = {
           text: "生活杂文",
           children: [
             {
-              text: "把博客从Hexo迁移至VuePress",
-              link: "/life-essay/把博客从Hexo迁移至VuePress.md",
-            },
-            {
               text: "2020年总结与2021年计划",
               link: "/life-essay/2020年总结与2021年计划.md",
             },
@@ -86,6 +82,14 @@ module.exports = {
             {
               text: "2022年总结与2023年计划",
               link: "/life-essay/2022年总结与2023年计划.md",
+            },
+            {
+              text: "2023年总结与2024年计划",
+              link: "/life-essay/2023年总结与2024年计划.md",
+            },
+            {
+              text: "把博客从Hexo迁移至VuePress",
+              link: "/life-essay/把博客从Hexo迁移至VuePress.md",
             },
             {
               text: "Chrome常用插件",
