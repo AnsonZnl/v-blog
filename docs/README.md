@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/hero.png
+heroImage: /img/qrcode_for_jiuxun.jpg
 heroText: 九旬的博客
 tagline: 种一棵树最好的时间在十年前，其次是现在。
 actions:
@@ -18,6 +18,7 @@ footer: MIT Licensed | Copyright © 2018-2023 AnsonZnl
 
 ## 最新文章
 
+- 2024 年 04 月 14 日 - [程序员接单指南](/life-essay/程序员接单指南.md)
 - 2024 年 01 月 12 日 - [2023 年总结与 2024 年计划](/life-essay/2023年总结与2024年计划.md)
 - 2023 年 12 月 15 日 - [使用 PM2 部署 Next 服务](/articles/Next/使用PM2部署Next服务)
 - 2023 年 10 月 27 日 - [我的颈椎病腰突康复历程](/life-essay/我的颈椎病腰突康复历程.md)
